@@ -26,22 +26,14 @@ import java.awt.event.ActionEvent;
 public class PanelCFormation extends JPanel
 {
 
-	private JPanel contenuAriane;
-	private fen_main fenetre;
 	
-	public fen_main getFenetre()
-	{
-		return fenetre;
-	}
-
 	/**
 	 * Create the panel.
 	 */
-	public PanelCFormation(fen_main f)
+	public PanelCFormation()
 	{
 		
-		this.fenetre = f;
-		contenuAriane = new ContenuAriane(this);
+		
 		this.setBorder(null);
 		this.setBackground(Color.WHITE);
 		this.setLayout(new BorderLayout(0, 0));
@@ -54,7 +46,6 @@ public class PanelCFormation extends JPanel
 		panelArianeWest.setLayout(new BoxLayout(panelArianeWest, BoxLayout.Y_AXIS));
 		
 		
-		panelArianeWest.add(contenuAriane);
 		
 		
 		JPanel panelActionEast = new JPanel();
@@ -110,12 +101,7 @@ public class PanelCFormation extends JPanel
 		panelButton.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton btnAjouterUneFormation = new JButton("Ajouter");
-		btnAjouterUneFormation.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e)
-			{
-				fenetre.creerModule();
-			}
-		});
+
 		btnAjouterUneFormation.setHorizontalAlignment(SwingConstants.LEFT);
 		panelButton.add(btnAjouterUneFormation);
 		
@@ -124,10 +110,5 @@ public class PanelCFormation extends JPanel
 		panelButton.add(btnSuivant);
 	}
 
-	public void updateAriane()
-	{
-		contenuAriane = new ContenuAriane(this);
-		SwingUtilities.updateComponentTreeUI(this);
-	}
 	
 }

@@ -37,10 +37,10 @@ public class ContenuAriane extends JPanel
 		
 		this.add(titreAriane);
 
-		chargerModule();
+		//chargerModule();
 
 	}
-	
+	/*
 	public void chargerModule()
 	{
 		if (this.panelCFormation.getFenetre().getModule().size() == 0)
@@ -82,7 +82,7 @@ public class ContenuAriane extends JPanel
 			}
 		}
 	}
-
+*/
 	
 	
 	

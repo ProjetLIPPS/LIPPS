@@ -24,7 +24,7 @@ import utilisateur.Sequence;
 public class fen_main extends JFrame {
 	
 	private JPanel contentPane;
-	private JPanel panelCenterFormation;
+	private JPanel panelCenterFormation = new PanelCFormation();
 	private JPanel panelCenterCompte = new PanelCCompte();
 	private JPanel panelCenterMain = new JPanel();
 	private JPanel contentPaneCenter;
@@ -49,18 +49,6 @@ public class fen_main extends JFrame {
 		frame.setVisible(true);
 		frame.refresh();
 		
-		/*
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					fen_main frame = new fen_main();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-		*/
 	}
 
 	/**
@@ -68,20 +56,7 @@ public class fen_main extends JFrame {
 	 */
 	public fen_main() {
 		
-		/*
-		Module module1 = new Module("mod1");
-		module1.ajouterSeq(new Sequence("sq1"));
-		module1.ajouterSeq(new Sequence("sq2"));
 		
-		Module module2 = new Module("mod2");
-		module2.ajouterSeq(new Sequence("sq1"));
-		module2.ajouterSeq(new Sequence("sq2"));
-		module2.ajouterSeq(new Sequence("sq3"));
-		module2.ajouterSeq(new Sequence("sq4"));
-		module.add(module1);
-		module.add(module2);
-		*/
-		panelCenterFormation = new PanelCFormation(this);
 		contentPaneCenter = panelCenterFormation;
 		setIconImage(Toolkit.getDefaultToolkit().getImage("./img/60x60.gif"));
 		setTitle("LIPPS");
@@ -166,7 +141,6 @@ public class fen_main extends JFrame {
 			}
 		});
 		panelCompte.setBackground(Color.decode("#f2f2f2"));
-		//panelCompte.setOpaque(false);
 		panelTab.add(panelCompte);
 		
 		lblGererLesComptes = new JLabel("G\u00E9rer les comptes");
@@ -192,28 +166,5 @@ public class fen_main extends JFrame {
 		SwingUtilities.updateComponentTreeUI(/*panelCenterMain*/ this);
 	}
 	
-	public void creerModule()
-	{
-		
-		
-		Module module1 = new Module("mod1");
-		module1.ajouterSeq(new Sequence("sq1"));
-		module1.ajouterSeq(new Sequence("sq2"));
-		
-		Module module2 = new Module("mod2");
-		module2.ajouterSeq(new Sequence("sq1"));
-		module2.ajouterSeq(new Sequence("sq2"));
-		module2.ajouterSeq(new Sequence("sq3"));
-		module2.ajouterSeq(new Sequence("sq4"));
-		module.add(module1);
-		module.add(module2);
-		
-		
-		panelCenterMain.remove(contentPaneCenter);
-		panelCenterFormation = new PanelCFormation(this);
-		contentPaneCenter = panelCenterFormation;
-		panelCenterMain.add(contentPaneCenter);
-		refresh();
-		
-	}
+	
 }
