@@ -156,7 +156,7 @@ public class CreationModule extends JFrame {
 		
 		
 		listeSequence.add(new RowSequence());
-		chargerSequence();
+		ajouterSequence();
 		
 		
 		
@@ -172,23 +172,20 @@ public class CreationModule extends JFrame {
 		
 		
 
-		//SwingUtilities.updateComponentTreeUI(/*panelCenterMain*/ this);
+		
 	}
 	
 	public void chargerSequence()
 	{
-		/*
-		Iterator<RowSequence> itseq = listeSequence.iterator();
-		while (itseq.hasNext()) 
-		{
-			panelSequence.add(itseq.next());
-		}
-		*/
+		
+		panelSequence.removeAll();
+		
 		for (int i = 0; i < listeSequence.size(); i++)
 		{
 			panelSequence.add(listeSequence.get(i));
 		}
 		
+		SwingUtilities.updateComponentTreeUI(this);
 	}
 	
 	public void ajouterSequence()
@@ -202,17 +199,32 @@ public class CreationModule extends JFrame {
 	public void supprimerSequence(RowSequence seq)
 	{
 		listeSequence.remove(seq);
-		panelSequence.removeAll();
 		chargerSequence();
-		SwingUtilities.updateComponentTreeUI(this);
-		
 	}
 	
-	/*
-	public CreationModule getJFrame()
+	
+	public void monterSequence(RowSequence seq)
 	{
-		return this;
+		int position = listeSequence.indexOf(seq);
+		if (position > 1)
+		{
+			listeSequence.remove(seq);
+			listeSequence.add((position-1), seq);
+			chargerSequence();
+		}
 	}
-	*/
+	
+	public void descendreSequence(RowSequence seq)
+	{
+		int position = listeSequence.indexOf(seq);
+		if (position < listeSequence.size()-1)
+		{
+			listeSequence.remove(seq);
+			listeSequence.add((position+1), seq);
+			chargerSequence();
+		}
+	}
+	
+	
 
 }

@@ -26,6 +26,7 @@ public class RowSequence extends JPanel {
 	/**
 	 * Create the panel.
 	 */
+	
 	public RowSequence()
 	{
 		
@@ -36,6 +37,7 @@ public class RowSequence extends JPanel {
 		lblEnregistrementDesSquences.setFont(new Font("Arial", Font.PLAIN, 17));
 		this.add(lblEnregistrementDesSquences);
 	}
+	
 	
 	public RowSequence(CreationModule JFrame) 
 	{
@@ -49,7 +51,7 @@ public class RowSequence extends JPanel {
 		this.setAlignmentX(0.0f);
 		this.setLayout(null);
 		
-		JLabel label = new JLabel("Description de la s\u00E9quence " + " :");
+		JLabel label = new JLabel("Description de la séquence " + " :");
 		label.setBounds(20, 20, 167, 15);
 		label.setFont(new Font("Arial", Font.PLAIN, 12));
 		this.add(label);
@@ -84,18 +86,32 @@ public class RowSequence extends JPanel {
 		btnSupprimer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				getJFrame().supprimerSequence((RowSequence)(((JButton)e.getSource()).getParent()));
+				getJFrame().supprimerSequence(getRowSequence());
 			}
 		});
 		
 		add(btnSupprimer);
 		
 		JLabel Move_up = new JLabel("");
+		Move_up.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e)
+			{
+				getJFrame().monterSequence(getRowSequence());
+			}
+		});
 		Move_up.setIcon(new ImageIcon(RowSequence.class.getResource("/javax/swing/plaf/metal/icons/sortUp.png")));
 		Move_up.setBounds(546, 21, 46, 14);
 		add(Move_up);
 		
 		JLabel Move_down = new JLabel("");
+		Move_down.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) 
+			{
+				getJFrame().descendreSequence(getRowSequence());
+			}
+		});
 		Move_down.setIcon(new ImageIcon(RowSequence.class.getResource("/javax/swing/plaf/metal/icons/sortDown.png")));
 		Move_down.setBounds(546, 43, 46, 14);
 		add(Move_down);
@@ -110,5 +126,4 @@ public class RowSequence extends JPanel {
 	{
 		return this;
 	}
-	
 }
