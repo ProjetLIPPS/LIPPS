@@ -28,7 +28,6 @@ import javax.swing.border.MatteBorder;
 
 public class CreationModule extends JDialog {
 
-	private JPanel panelGlobal;
 	private JPanel panelSequence;
 	private ArrayList<RowSequence> listeSequence = new ArrayList<RowSequence>();
 	
@@ -43,7 +42,7 @@ public class CreationModule extends JDialog {
 		setBounds(100, 100, 500, 450);
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		
-		panelGlobal = new JPanel();
+		JPanel panelGlobal = new JPanel();
 		panelGlobal.setAutoscrolls(true);
 		panelGlobal.setBackground(Color.decode("#3787C8"));
 		

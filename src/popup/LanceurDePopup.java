@@ -37,6 +37,7 @@ public class LanceurDePopup extends JFrame
 				}
 			}
 		});
+		
 	}
 
 	/**
