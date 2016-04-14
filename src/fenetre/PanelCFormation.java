@@ -18,6 +18,9 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+
+import theme.ThemeLIPPS;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
@@ -63,7 +66,7 @@ public class PanelCFormation extends JPanel
 		txtpnTitre.setBorder(null);
 		txtpnTitre.setOpaque(false);
 		txtpnTitre.setEditable(false);
-		txtpnTitre.setFont(new Font("Arial", Font.PLAIN, 17));
+		txtpnTitre.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 17));
 		txtpnTitre.setText("Selectionnez une formation");
 		panelTitle.add(txtpnTitre);
 		
@@ -90,7 +93,7 @@ public class PanelCFormation extends JPanel
 				return values[index];
 			}
 		});
-		list.setFont(new Font("Arial", Font.PLAIN, 17));
+		list.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 17));
 		list.setToolTipText("");
 		panelList.add(list, BorderLayout.CENTER);
 		

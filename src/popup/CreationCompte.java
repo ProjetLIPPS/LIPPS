@@ -20,8 +20,6 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 public class CreationCompte extends JFrame {
-
-	private JPanel panelTitre;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
@@ -58,177 +56,158 @@ public class CreationCompte extends JFrame {
 		setTitle("Cr\u00E9er un module");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 450);
-		getContentPane().setLayout(new BorderLayout(0, 0));
+		getContentPane().setLayout(null);
 		
-		panelTitre = new JPanel();
-		getContentPane().add(panelTitre, BorderLayout.NORTH);
-		panelTitre.setAutoscrolls(true);
-		panelTitre.setBackground(Color.decode("#3787C8"));
-		panelTitre.setBorder(new EmptyBorder(55, 20, 20, 20));
-		
-		panelTitre.setLayout(new BorderLayout(0, 25));
+		ButtonGroup groupRadio = new ButtonGroup();
 		
 		JLabel lblEditionDeCompte = new JLabel("Edition de compte");
+		lblEditionDeCompte.setBounds(149, 40, 361, 37);
+		getContentPane().add(lblEditionDeCompte);
 		lblEditionDeCompte.setForeground(Color.WHITE);
 		lblEditionDeCompte.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lblEditionDeCompte.setHorizontalAlignment(SwingConstants.CENTER);
-		panelTitre.add(lblEditionDeCompte, BorderLayout.NORTH);
 		
-		JPanel panelBoutton = new JPanel();
-		FlowLayout flowLayout = (FlowLayout) panelBoutton.getLayout();
-		getContentPane().add(panelBoutton, BorderLayout.SOUTH);
-		panelBoutton.setOpaque(false);
-		panelBoutton.setBackground(Color.decode("#3787C8"));
+		JLabel lblNom = new JLabel("Nom :");
+		lblNom.setBounds(144, 288, 45, 21);
+		getContentPane().add(lblNom);
+		lblNom.setForeground(Color.WHITE);
+		lblNom.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		
+		textField = new JTextField();
+		textField.setBounds(206, 335, 277, 27);
+		getContentPane().add(textField);
+		textField.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		textField.setColumns(10);
+		
+		JLabel lblPrenom = new JLabel("Prenom :");
+		lblPrenom.setBounds(126, 339, 67, 21);
+		getContentPane().add(lblPrenom);
+		lblPrenom.setForeground(Color.WHITE);
+		lblPrenom.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(206, 286, 277, 27);
+		getContentPane().add(textField_1);
+		textField_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		textField_1.setColumns(10);
+		
+		JLabel lblDateDeNaissance = new JLabel("Date de naissance :");
+		lblDateDeNaissance.setBounds(49, 445, 148, 21);
+		getContentPane().add(lblDateDeNaissance);
+		lblDateDeNaissance.setForeground(Color.WHITE);
+		lblDateDeNaissance.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		
+		JLabel lblNumroAfpa = new JLabel("Numéro AFPA :");
+		lblNumroAfpa.setBounds(76, 242, 114, 21);
+		getContentPane().add(lblNumroAfpa);
+		lblNumroAfpa.setForeground(Color.WHITE);
+		lblNumroAfpa.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		
+		JLabel lblEmail = new JLabel("Email :");
+		lblEmail.setBounds(141, 369, 57, 55);
+		getContentPane().add(lblEmail);
+		lblEmail.setForeground(Color.WHITE);
+		lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		
+		JLabel label = new JLabel("@");
+		label.setBounds(342, 386, 15, 31);
+		getContentPane().add(label);
+		label.setForeground(Color.WHITE);
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		
+		textField_2 = new JTextField();
+		textField_2.setBounds(276, 442, 57, 27);
+		getContentPane().add(textField_2);
+		textField_2.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		textField_2.setColumns(10);
+		
+		textField_3 = new JTextField();
+		textField_3.setBounds(208, 441, 57, 27);
+		getContentPane().add(textField_3);
+		textField_3.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		textField_3.setColumns(10);
+		
+		textField_4 = new JTextField();
+		textField_4.setBounds(208, 386, 122, 27);
+		getContentPane().add(textField_4);
+		textField_4.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		textField_4.setColumns(10);
+		
+		textField_5 = new JTextField();
+		textField_5.setBounds(369, 387, 143, 27);
+		getContentPane().add(textField_5);
+		textField_5.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		textField_5.setColumns(10);
+		
+		textField_6 = new JTextField();
+		textField_6.setBounds(349, 443, 114, 27);
+		getContentPane().add(textField_6);
+		textField_6.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		textField_6.setColumns(10);
+		
+		textField_7 = new JTextField();
+		textField_7.setBounds(208, 239, 277, 27);
+		getContentPane().add(textField_7);
+		textField_7.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		textField_7.setColumns(10);
+		
+		JRadioButton rdbtnAdministrateur = new JRadioButton("Administrateur");
+		rdbtnAdministrateur.setBounds(68, 157, 139, 31);
+		getContentPane().add(rdbtnAdministrateur);
+		rdbtnAdministrateur.setForeground(Color.WHITE);
+		rdbtnAdministrateur.setBackground(Color.decode("#3787C8"));
+		rdbtnAdministrateur.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		rdbtnAdministrateur.setFocusable(false);
+		groupRadio.add(rdbtnAdministrateur);
+		
+		JRadioButton rdbtnFormateur = new JRadioButton("Formateur");
+		rdbtnFormateur.setBounds(216, 156, 105, 31);
+		getContentPane().add(rdbtnFormateur);
+		rdbtnFormateur.setForeground(Color.WHITE);
+		rdbtnFormateur.setBackground(Color.decode("#3787C8"));
+		rdbtnFormateur.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		rdbtnFormateur.setFocusable(false);
+		groupRadio.add(rdbtnFormateur);
+		
+		JRadioButton rdbtnStagiaire = new JRadioButton("Stagiaire\r\n");
+		rdbtnStagiaire.setBounds(331, 157, 93, 31);
+		getContentPane().add(rdbtnStagiaire);
+		rdbtnStagiaire.setForeground(Color.WHITE);
+		rdbtnStagiaire.setBackground(Color.decode("#3787C8"));
+		rdbtnStagiaire.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		rdbtnStagiaire.setFocusable(false);
+		groupRadio.add(rdbtnStagiaire);
+		
+		JRadioButton rdbtnTuteur = new JRadioButton("Tuteur");
+		rdbtnTuteur.setBounds(438, 157, 77, 31);
+		getContentPane().add(rdbtnTuteur);
+		rdbtnTuteur.setForeground(Color.WHITE);
+		rdbtnTuteur.setBackground(Color.decode("#3787C8"));
+		rdbtnTuteur.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		rdbtnTuteur.setFocusable(false);
+		groupRadio.add(rdbtnTuteur);
 		
 		JButton btnNewButton = new JButton("Valider\r\n");
+		btnNewButton.setBounds(214, 597, 83, 33);
+		getContentPane().add(btnNewButton);
 		btnNewButton.setForeground(new Color(0, 102, 255));
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnNewButton.setMargin(new Insets(6, 20, 6, 20));
 		
 		btnNewButton.setBackground(Color.WHITE);
-		panelBoutton.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Annuler");
+		btnNewButton_1.setBounds(370, 599, 87, 33);
+		getContentPane().add(btnNewButton_1);
 		btnNewButton_1.setForeground(new Color(0, 102, 255));
 		btnNewButton_1.setMargin(new Insets(6, 18, 6, 18));
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnNewButton_1.setBackground(Color.WHITE);
-		panelBoutton.add(btnNewButton_1);
-		
-		JPanel panelCentre = new JPanel();
-		panelCentre.setBorder(new EmptyBorder(40, 0, 0, 0));
-		panelCentre.setBackground(Color.decode("#3787C8"));
-		getContentPane().add(panelCentre, BorderLayout.CENTER);
-		panelCentre.setLayout(new BoxLayout(panelCentre, BoxLayout.Y_AXIS));
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(Color.decode("#3787C8"));
-		panel.setBorder(new EmptyBorder(0, 0, 0, 0));
-		panelCentre.add(panel);
-		panel.setLayout(null);
-		
-		JRadioButton rdbtnAdministrateur = new JRadioButton("Administrateur");
-		rdbtnAdministrateur.setForeground(Color.WHITE);
-		rdbtnAdministrateur.setBackground(Color.decode("#3787C8"));
-		rdbtnAdministrateur.setBounds(86, 5, 139, 31);
-		rdbtnAdministrateur.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		rdbtnAdministrateur.setFocusable(false);
-		panel.add(rdbtnAdministrateur);
-		
-		JRadioButton rdbtnFormateur = new JRadioButton("Formateur");
-		rdbtnFormateur.setForeground(Color.WHITE);
-		rdbtnFormateur.setBackground(Color.decode("#3787C8"));
-		rdbtnFormateur.setBounds(270, 5, 105, 31);
-		rdbtnFormateur.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		rdbtnFormateur.setFocusable(false);
-		panel.add(rdbtnFormateur);
-		
-		JRadioButton rdbtnStagiaire = new JRadioButton("Stagiaire\r\n");
-		rdbtnStagiaire.setForeground(Color.WHITE);
-		rdbtnStagiaire.setBackground(Color.decode("#3787C8"));
-		rdbtnStagiaire.setBounds(416, 5, 93, 31);
-		rdbtnStagiaire.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		rdbtnStagiaire.setFocusable(false);
-		panel.add(rdbtnStagiaire);
-		
-		JRadioButton rdbtnTuteur = new JRadioButton("Tuteur");
-		rdbtnTuteur.setForeground(Color.WHITE);
-		rdbtnTuteur.setBackground(Color.decode("#3787C8"));
-		rdbtnTuteur.setBounds(552, 5, 77, 31);
-		rdbtnTuteur.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		rdbtnTuteur.setFocusable(false);
-		panel.add(rdbtnTuteur);
-		
-		ButtonGroup groupRadio = new ButtonGroup();
-		groupRadio.add(rdbtnTuteur);
-		groupRadio.add(rdbtnStagiaire);
-		groupRadio.add(rdbtnFormateur);
-		groupRadio.add(rdbtnAdministrateur);
-		
-		JLabel lblNom = new JLabel("Nom :");
-		lblNom.setForeground(Color.WHITE);
-		lblNom.setBounds(170, 96, 45, 21);
-		panel.add(lblNom);
-		lblNom.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		
-		textField = new JTextField();
-		textField.setBounds(232, 93, 277, 27);
-		panel.add(textField);
-		textField.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		textField.setColumns(10);
-		
-		JLabel lblPrenom = new JLabel("Prenom :");
-		lblPrenom.setForeground(Color.WHITE);
-		lblPrenom.setBounds(148, 158, 67, 21);
-		panel.add(lblPrenom);
-		lblPrenom.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		
-		textField_1 = new JTextField();
-		textField_1.setBounds(232, 155, 277, 27);
-		panel.add(textField_1);
-		textField_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		textField_1.setColumns(10);
-		
-		JLabel lblDateDeNaissance = new JLabel("Date de naissance :");
-		lblDateDeNaissance.setForeground(Color.WHITE);
-		lblDateDeNaissance.setBounds(67, 219, 148, 21);
-		panel.add(lblDateDeNaissance);
-		lblDateDeNaissance.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		
-		JLabel lblNumroAfpa = new JLabel("Numéro AFPA :");
-		lblNumroAfpa.setForeground(Color.WHITE);
-		lblNumroAfpa.setBounds(101, 285, 114, 21);
-		panel.add(lblNumroAfpa);
-		lblNumroAfpa.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		
-		JLabel lblEmail = new JLabel("Email :");
-		lblEmail.setForeground(Color.WHITE);
-		lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblEmail.setBounds(168, 331, 57, 55);
-		panel.add(lblEmail);
-		
-		JLabel label = new JLabel("@");
-		label.setForeground(Color.WHITE);
-		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		label.setBounds(377, 343, 15, 31);
-		panel.add(label);
-		
-		textField_2 = new JTextField();
-		textField_2.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		textField_2.setColumns(10);
-		textField_2.setBounds(232, 216, 57, 27);
-		panel.add(textField_2);
-		
-		textField_3 = new JTextField();
-		textField_3.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		textField_3.setColumns(10);
-		textField_3.setBounds(310, 216, 57, 27);
-		panel.add(textField_3);
-		
-		textField_4 = new JTextField();
-		textField_4.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		textField_4.setColumns(10);
-		textField_4.setBounds(387, 216, 122, 27);
-		panel.add(textField_4);
-		
-		textField_5 = new JTextField();
-		textField_5.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		textField_5.setColumns(10);
-		textField_5.setBounds(232, 345, 143, 27);
-		panel.add(textField_5);
-		
-		textField_6 = new JTextField();
-		textField_6.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		textField_6.setColumns(10);
-		textField_6.setBounds(395, 345, 114, 27);
-		panel.add(textField_6);
-		
-		textField_7 = new JTextField();
-		textField_7.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		textField_7.setColumns(10);
-		textField_7.setBounds(232, 279, 277, 27);
-		panel.add(textField_7);
+		panel.setBounds(0, 0, 10, 10);
+		getContentPane().add(panel);
 		
 		
 		

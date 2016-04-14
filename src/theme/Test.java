@@ -50,13 +50,13 @@ public class Test extends JFrame
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 635, 475);
 		contentPane = new JPanel();
-		contentPane.setBackground(ThemeLIPPS.BLEU);
+		contentPane.setBackground(ThemeLIPPS.BLUE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(ThemeLIPPS.BLEU_FONCE);
+		panel.setBackground(ThemeLIPPS.BLUE_DARK);
 		contentPane.add(panel, BorderLayout.WEST);
 		
 		JPanel panel_1 = new JPanel();
@@ -71,43 +71,53 @@ public class Test extends JFrame
 		panel_1.add(btnRegular);
 		
 		JPanel panel_2 = new JPanel();
+		panel_2.setOpaque(false);
 		panel_2.setBorder(new EmptyBorder(20, 20, 0, 0));
 		contentPane.add(panel_2, BorderLayout.CENTER);
 		panel_2.setLayout(new BoxLayout(panel_2, BoxLayout.Y_AXIS));
 		
 		JLabel lblRalewayThin = new JLabel("Raleway Thin");
+		lblRalewayThin.setForeground(Color.WHITE);
 		lblRalewayThin.setFont(new Font(ThemeLIPPS.FONT_RALEWAY_THIN, Font.PLAIN, 18));
 		panel_2.add(lblRalewayThin);
 		
 		JLabel lblRalewayExtraLight = new JLabel("Raleway ExtraLight");
+		lblRalewayExtraLight.setForeground(Color.WHITE);
 		lblRalewayExtraLight.setFont(new Font(ThemeLIPPS.FONT_RALEWAY_EXTRALIGHT, Font.PLAIN, 18));
 		panel_2.add(lblRalewayExtraLight);
 		
 		JLabel lblRalewayLight = new JLabel("Raleway Light");
+		lblRalewayLight.setForeground(Color.WHITE);
 		lblRalewayLight.setFont(new Font(ThemeLIPPS.FONT_RALEWAY_LIGHT, Font.PLAIN, 18));
 		panel_2.add(lblRalewayLight);
 		
 		JLabel lblRalewayRegular = new JLabel("Raleway Regular");
+		lblRalewayRegular.setForeground(Color.WHITE);
 		lblRalewayRegular.setFont(new Font(ThemeLIPPS.FONT_RALEWAY_REGULAR, Font.PLAIN, 18));
 		panel_2.add(lblRalewayRegular);
 		
 		JLabel lblRalewayMedium = new JLabel("Raleway Medium");
+		lblRalewayMedium.setForeground(Color.WHITE);
 		lblRalewayMedium.setFont(new Font(ThemeLIPPS.FONT_RALEWAY_MEDIUM, Font.PLAIN, 18));
 		panel_2.add(lblRalewayMedium);
 		
 		JLabel lblRalewaySemibold = new JLabel("Raleway SemiBold");
+		lblRalewaySemibold.setForeground(Color.WHITE);
 		lblRalewaySemibold.setFont(new Font(ThemeLIPPS.FONT_RALEWAY_SEMIBOLD, Font.PLAIN, 18));
 		panel_2.add(lblRalewaySemibold);
 		
 		JLabel lblRalewayBold = new JLabel("Raleway Bold");
+		lblRalewayBold.setForeground(Color.WHITE);
 		lblRalewayBold.setFont(new Font(ThemeLIPPS.FONT_RALEWAY_BOLD, Font.PLAIN, 18));
 		panel_2.add(lblRalewayBold);
 		
 		JLabel lblRalewayExtrabold = new JLabel("Raleway ExtraBold");
+		lblRalewayExtrabold.setForeground(Color.WHITE);
 		lblRalewayExtrabold.setFont(new Font(ThemeLIPPS.FONT_RALEWAY_EXTRABOLD, Font.PLAIN, 18));
 		panel_2.add(lblRalewayExtrabold);
 		
 		JLabel lblRalewayHeavy = new JLabel("Raleway Heavy");
+		lblRalewayHeavy.setForeground(Color.WHITE);
 		lblRalewayHeavy.setFont(new Font(ThemeLIPPS.FONT_RALEWAY_HEAVY, Font.PLAIN, 18));
 		panel_2.add(lblRalewayHeavy);
 		

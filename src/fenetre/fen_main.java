@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 
+import theme.ThemeLIPPS;
 import utilisateur.Module;
 import utilisateur.Sequence;
 
@@ -86,7 +87,7 @@ public class fen_main extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("Utilisateur");
 		lblNewLabel.setForeground(Color.DARK_GRAY);
-		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 18));
+		lblNewLabel.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 18));
 		panelNorth.add(lblNewLabel, BorderLayout.EAST);
 		lblNewLabel.setIcon(new ImageIcon("./img/icon_profil.png"));
 		
@@ -105,8 +106,8 @@ public class fen_main extends JFrame {
 			@Override
 			public void mousePressed(MouseEvent e)
 			{
-				panelFormation.setBackground(Color.decode("#3887c9"));
-				panelCompte.setBackground(Color.decode("#f2f2f2"));
+				panelFormation.setBackground(ThemeLIPPS.BLUE);
+				panelCompte.setBackground(ThemeLIPPS.GREY_LIGHT);
 				lblFormation.setForeground(Color.WHITE);
 				lblGererLesComptes.setForeground(Color.DARK_GRAY);
 				panelCenterMain.remove(contentPaneCenter);
@@ -115,14 +116,14 @@ public class fen_main extends JFrame {
 				refresh();
 			}
 		});
-		panelFormation.setBackground(Color.decode("#3887c9"));
+		panelFormation.setBackground(ThemeLIPPS.BLUE);
 		panelFormation.setBorder(new EmptyBorder(0, 0, 0, 0));
 		panelTab.add(panelFormation);
 		
 		lblFormation = new JLabel("G\u00E9rer les formations");
 		lblFormation.setForeground(Color.WHITE);
 		lblFormation.setBorder(new EmptyBorder(10, 10, 10, 10));
-		lblFormation.setFont(new Font("Arial", Font.PLAIN, 16));
+		lblFormation.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 16));
 		panelFormation.add(lblFormation);
 		
 		panelCompte = new JPanel();
@@ -130,8 +131,8 @@ public class fen_main extends JFrame {
 			@Override
 			public void mousePressed(MouseEvent e)
 			{
-				panelFormation.setBackground(Color.decode("#f2f2f2"));
-				panelCompte.setBackground(Color.decode("#3887c9"));
+				panelFormation.setBackground(ThemeLIPPS.GREY_LIGHT);
+				panelCompte.setBackground(ThemeLIPPS.BLUE);
 				lblFormation.setForeground(Color.DARK_GRAY);
 				lblGererLesComptes.setForeground(Color.WHITE);
 				panelCenterMain.remove(contentPaneCenter);
@@ -140,17 +141,17 @@ public class fen_main extends JFrame {
 				refresh();
 			}
 		});
-		panelCompte.setBackground(Color.decode("#f2f2f2"));
+		panelCompte.setBackground(ThemeLIPPS.GREY_LIGHT);
 		panelTab.add(panelCompte);
 		
 		lblGererLesComptes = new JLabel("G\u00E9rer les comptes");
 		lblGererLesComptes.setBorder(new EmptyBorder(10, 10, 10, 10));
 		lblGererLesComptes.setForeground(Color.DARK_GRAY);
-		lblGererLesComptes.setFont(new Font("Arial", Font.PLAIN, 16));
+		lblGererLesComptes.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 16));
 		panelCompte.add(lblGererLesComptes);
 		
 		
-		panelCenterMain.setBackground(Color.decode("#3887c9"));
+		panelCenterMain.setBackground(ThemeLIPPS.BLUE);
 		panelCenterMain.setBorder(new EmptyBorder(80, 80, 80, 80));
 		panelCenter.add(panelCenterMain, BorderLayout.CENTER);
 		panelCenterMain.setLayout(new BorderLayout(0, 0));
