@@ -16,6 +16,8 @@ import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 
+import theme.ThemeLIPPS;
+
 public class RowSequence extends JPanel {
 
 	private CreationModule JFrame;
@@ -27,40 +29,44 @@ public class RowSequence extends JPanel {
 	
 	public RowSequence()
 	{
+		setOpaque(false);
 		
 		this.setMaximumSize(new Dimension(32767, 60));
 		this.setBackground(Color.WHITE);
 		this.setAlignmentX(0.0f);
 		JLabel lblEnregistrementDesSquences = new JLabel("Enregistrement des séquences :");
-		lblEnregistrementDesSquences.setFont(new Font("Arial", Font.PLAIN, 17));
+		lblEnregistrementDesSquences.setForeground(Color.WHITE);
+		lblEnregistrementDesSquences.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 17));
 		this.add(lblEnregistrementDesSquences);
 	}
 	
 	
 	public RowSequence(CreationModule JFrame) 
 	{
+		setOpaque(false);
 		this.JFrame = JFrame;
 		
-		setPreferredSize(new Dimension(628, 85));
+		setPreferredSize(new Dimension(689, 85));
 		this.setMinimumSize(new Dimension(10, 100));
 		this.setMaximumSize(new Dimension(32767, 100));
-		this.setBorder(new MatteBorder(2, 0, 0, 0, (Color) Color.LIGHT_GRAY));
+		this.setBorder(new MatteBorder(2, 0, 0, 0, (Color) Color.WHITE));
 		this.setBackground(Color.WHITE);
 		this.setAlignmentX(0.0f);
 		this.setLayout(null);
 		
-		JLabel label = new JLabel("Description de la séquence " + " :");
-		label.setBounds(20, 20, 167, 15);
-		label.setFont(new Font("Arial", Font.PLAIN, 12));
-		this.add(label);
+		JLabel lblDescription = new JLabel("Description  :");
+		lblDescription.setForeground(Color.WHITE);
+		lblDescription.setBounds(10, 29, 88, 15);
+		lblDescription.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 14));
+		this.add(lblDescription);
 		
 		JTextArea textArea = new JTextArea();
-		textArea.setBounds(193, 19, 332, 47);
+		textArea.setBounds(120, 11, 370, 47);
 		textArea.setWrapStyleWord(true);
 		textArea.setText("Entrez ici la description de la séquence.");
 		textArea.setRows(3);
 		textArea.setLineWrap(true);
-		textArea.setFont(new Font("Arial", Font.PLAIN, 13));
+		textArea.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 13));
 		textArea.setColumns(30);
 		textArea.setBorder(new LineBorder(new Color(192, 192, 192), 1, true));
 		textArea.addMouseListener(new MouseAdapter() {
@@ -78,7 +84,9 @@ public class RowSequence extends JPanel {
 		this.add(textArea);
 		
 		JButton btnSupprimer = new JButton("Supprimer");
-		btnSupprimer.setBounds(40, 43, 98, 23);
+		btnSupprimer.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 12));
+		btnSupprimer.setForeground(Color.DARK_GRAY);
+		btnSupprimer.setBounds(539, 22, 98, 23);
 		
 		
 		btnSupprimer.addActionListener(new ActionListener() {
@@ -91,6 +99,7 @@ public class RowSequence extends JPanel {
 		add(btnSupprimer);
 		
 		JLabel Move_up = new JLabel("");
+		Move_up.setForeground(Color.BLACK);
 		Move_up.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e)
@@ -99,7 +108,7 @@ public class RowSequence extends JPanel {
 			}
 		});
 		Move_up.setIcon(new ImageIcon(RowSequence.class.getResource("/javax/swing/plaf/metal/icons/sortUp.png")));
-		Move_up.setBounds(546, 21, 46, 14);
+		Move_up.setBounds(500, 11, 12, 14);
 		add(Move_up);
 		
 		JLabel Move_down = new JLabel("");
@@ -111,7 +120,7 @@ public class RowSequence extends JPanel {
 			}
 		});
 		Move_down.setIcon(new ImageIcon(RowSequence.class.getResource("/javax/swing/plaf/metal/icons/sortDown.png")));
-		Move_down.setBounds(546, 43, 46, 14);
+		Move_down.setBounds(500, 44, 12, 14);
 		add(Move_down);
 	}
 	

@@ -26,6 +26,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 
+import theme.ThemeLIPPS;
+
 public class CreationModule extends JDialog {
 
 	private JPanel panelSequence;
@@ -34,6 +36,7 @@ public class CreationModule extends JDialog {
 
 	
 	public CreationModule() {
+		getContentPane().setBackground(ThemeLIPPS.BLUE);
 		setModal(true);
 		setResizable(false);
 		setMinimumSize(new Dimension(700, 700));
@@ -43,8 +46,8 @@ public class CreationModule extends JDialog {
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		
 		JPanel panelGlobal = new JPanel();
+		panelGlobal.setOpaque(false);
 		panelGlobal.setAutoscrolls(true);
-		panelGlobal.setBackground(Color.decode("#3787C8"));
 		
 		
 		getContentPane().add(panelGlobal);
@@ -54,17 +57,19 @@ public class CreationModule extends JDialog {
 		panelGlobal.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panelNorth = new JPanel();
+		panelNorth.setOpaque(false);
 		panelNorth.setBorder(new MatteBorder(0, 0, 12, 0, (Color) new Color(55, 135, 200)));
-		panelNorth.setFont(new Font("Arial", Font.PLAIN, 20));
+		panelNorth.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 20));
 		panelNorth.setBackground(Color.WHITE);
 		panelGlobal.add(panelNorth, BorderLayout.NORTH);
 		panelNorth.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblModule = new JLabel("Création d'un nouveau module :");
+		JLabel lblModule = new JLabel("Création d'un nouveau module");
+		lblModule.setForeground(Color.WHITE);
 		lblModule.setPreferredSize(new Dimension(153, 45));
 		lblModule.setHorizontalAlignment(SwingConstants.CENTER);
 		lblModule.setHorizontalTextPosition(SwingConstants.CENTER);
-		lblModule.setFont(new Font("Arial", Font.PLAIN, 17));
+		lblModule.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 17));
 		panelNorth.add(lblModule, BorderLayout.NORTH);
 		
 		JTextArea labelDescription = new JTextArea();
@@ -81,7 +86,7 @@ public class CreationModule extends JDialog {
 		});
 		labelDescription.setLineWrap(true);
 		labelDescription.setRows(3);
-		labelDescription.setFont(new Font("Arial", Font.PLAIN, 13));
+		labelDescription.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 13));
 		labelDescription.setBorder(new LineBorder(Color.LIGHT_GRAY, 1, true));
 		labelDescription.setMargin(new Insets(10, 10, 10, 10));
 		labelDescription.setText("Entrez ici la description du module.");
@@ -89,8 +94,9 @@ public class CreationModule extends JDialog {
 		panelNorth.add(labelDescription, BorderLayout.SOUTH);
 		
 		JLabel lblDescriptionDuModule = new JLabel("Description du module :");
+		lblDescriptionDuModule.setForeground(Color.WHITE);
 		lblDescriptionDuModule.setPreferredSize(new Dimension(200, 40));
-		lblDescriptionDuModule.setFont(new Font("Arial", Font.PLAIN, 14));
+		lblDescriptionDuModule.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 14));
 		panelNorth.add(lblDescriptionDuModule, BorderLayout.WEST);
 		
 		JPanel panelBoutton = new JPanel();
@@ -119,16 +125,21 @@ public class CreationModule extends JDialog {
 		
 		
 		panelSequence = new JPanel();
+		panelSequence.setBackground(ThemeLIPPS.BLUE);
 		panelSequence.setBorder(null);
 		
 		JScrollPane scrollSeq = new JScrollPane();
+		scrollSeq.setEnabled(false);
+		scrollSeq.setRequestFocusEnabled(false);
+		scrollSeq.setIgnoreRepaint(true);
+		scrollSeq.setBorder(new LineBorder(null, 0));
+		scrollSeq.setBackground(ThemeLIPPS.BLUE);
 		scrollSeq.setPreferredSize(new Dimension(2, 400));
 		scrollSeq.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollSeq.getVerticalScrollBar().setUnitIncrement(10);
 		scrollSeq.setViewportView(panelSequence);
 		
 		panelGlobal.add(scrollSeq, BorderLayout.CENTER);
-		panelSequence.setBackground(Color.WHITE);
 		panelSequence.setMaximumSize(new Dimension(32767, 32767));
 		panelSequence.setLayout(new BoxLayout(panelSequence, BoxLayout.Y_AXIS));
 		

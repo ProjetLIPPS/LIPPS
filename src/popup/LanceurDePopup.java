@@ -68,6 +68,13 @@ public class LanceurDePopup extends JFrame
 		contentPane.add(panel_4);
 		
 		JButton btnCrationCompte = new JButton("Création Compte");
+		btnCrationCompte.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				JDialog pop = new CreationCompte();
+				pop.setVisible(true);
+			}
+		});
 		panel_4.add(btnCrationCompte);
 		
 		JPanel panel_1 = new JPanel();
