@@ -62,7 +62,7 @@ public class fen_main extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("./img/60x60.gif"));
 		setTitle("LIPPS");
 		this.setExtendedState(this.MAXIMIZED_BOTH);
-		setMinimumSize(new Dimension(1000,800));
+		setMinimumSize(new Dimension(1280,800));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1200, 800);
 		contentPane = new JPanel();

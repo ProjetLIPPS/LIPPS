@@ -32,14 +32,15 @@ import javax.swing.table.DefaultTableModel;
 import actionListener.RechercheListener;
 import actionListener.TypeCompteListener;
 import theme.ThemeLIPPS;
+import javax.swing.border.MatteBorder;
 
 public class PanelCCompte extends JPanel {
 	private JTextField barreRecherche;
 	private JTable table;
-	private JLabel lblAdministrateur = new JLabel("Administrateur");
-	private JLabel lblFormateur = new JLabel("Formateur");
-	private JLabel lblStagiaire = new JLabel("Stagiaire");
-	private JLabel lblTuteur = new JLabel("Tuteur");
+	private JLabel lblAdministrateur = new JLabel(" Administrateur");
+	private JLabel lblFormateur = new JLabel(" Formateur");
+	private JLabel lblStagiaire = new JLabel(" Stagiaire");
+	private JLabel lblTuteur = new JLabel(" Tuteur");
 	/**
 	 * Create the panel.
 	 */
@@ -54,7 +55,7 @@ public class PanelCCompte extends JPanel {
 
 		JPanel panelArianeWest = new JPanel();
 		panelArianeWest.setPreferredSize(new Dimension(250, 10));
-		panelArianeWest.setBackground(ThemeLIPPS.BLEU_FONCE);
+		panelArianeWest.setBackground(ThemeLIPPS.BLUE_DARK);
 		this.add(panelArianeWest, BorderLayout.WEST);
 		panelArianeWest.setBorder(new EmptyBorder(0, 0, 0, 0));
 		panelArianeWest.setLayout(new BorderLayout(0, 0));
@@ -75,10 +76,13 @@ public class PanelCCompte extends JPanel {
 		JPanel panel_5 = new JPanel();
 		panel_5.setFont(new Font("Century Gothic", Font.BOLD, 20));
 		FlowLayout flowLayout_4 = (FlowLayout) panel_5.getLayout();
-		flowLayout_4.setHgap(38);
+		flowLayout_4.setHgap(25);
 		flowLayout_4.setAlignment(FlowLayout.LEFT);
 		panel_5.setOpaque(false);
 		panel_4.add(panel_5);
+		lblAdministrateur.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblAdministrateur.setHorizontalAlignment(SwingConstants.CENTER);
+		
 
 		lblAdministrateur.addMouseListener(typeCListener);
 		lblAdministrateur.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -89,10 +93,11 @@ public class PanelCCompte extends JPanel {
 
 		JPanel panel_6 = new JPanel();
 		FlowLayout flowLayout_5 = (FlowLayout) panel_6.getLayout();
-		flowLayout_5.setHgap(38);
+		flowLayout_5.setHgap(25);
 		flowLayout_5.setAlignment(FlowLayout.LEFT);
 		panel_6.setOpaque(false);
 		panel_4.add(panel_6);
+		
 
 		lblFormateur.addMouseListener(typeCListener);
 		lblFormateur.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -103,9 +108,10 @@ public class PanelCCompte extends JPanel {
 		JPanel panel_7 = new JPanel();
 		FlowLayout flowLayout_6 = (FlowLayout) panel_7.getLayout();
 		flowLayout_6.setAlignment(FlowLayout.LEFT);
-		flowLayout_6.setHgap(38);
+		flowLayout_6.setHgap(25);
 		panel_7.setOpaque(false);
 		panel_4.add(panel_7);
+		
 
 		lblStagiaire.addMouseListener(typeCListener);
 		lblStagiaire.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -115,11 +121,11 @@ public class PanelCCompte extends JPanel {
 
 		JPanel panel_8 = new JPanel();
 		FlowLayout flowLayout_7 = (FlowLayout) panel_8.getLayout();
-		flowLayout_7.setHgap(38);
+		flowLayout_7.setHgap(25);
 		flowLayout_7.setAlignment(FlowLayout.LEFT);
 		panel_8.setOpaque(false);
 		panel_4.add(panel_8);
-
+		
 		lblTuteur.addMouseListener(typeCListener);
 		lblTuteur.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblTuteur.setFont(new Font("Century Gothic", Font.BOLD, 25));
@@ -143,7 +149,7 @@ public class PanelCCompte extends JPanel {
 		panelSup.setPreferredSize(new Dimension(10, 90));
 		panelSup.setMinimumSize(new Dimension(1500, 1500));
 		panelSup.setBorder(new EmptyBorder(20, 0, 5, 0));
-		panelSup.setBackground(ThemeLIPPS.BLEU_FONCE);
+		panelSup.setBackground(ThemeLIPPS.BLUE_DARK);
 		panelConteneurCentre.add(panelSup, BorderLayout.NORTH);
 		panelSup.setLayout(new BorderLayout(0, 0));
 
@@ -156,7 +162,7 @@ public class PanelCCompte extends JPanel {
 		JPanel panelRecherche = new JPanel();
 		panelRecherche.setOpaque(false);
 		panelRecherche.setBorder(new EmptyBorder(0, 0, 0, 0));
-		panelRecherche.setBackground(ThemeLIPPS.BLEU_FONCE);
+		panelRecherche.setBackground(ThemeLIPPS.BLUE_DARK);
 		FlowLayout flowLayout_1 = (FlowLayout) panelRecherche.getLayout();
 		flowLayout_1.setHgap(0);
 		flowLayout_1.setVgap(15);
@@ -277,17 +283,17 @@ public class PanelCCompte extends JPanel {
 		FlowLayout flowLayout_8 = (FlowLayout) panelSud.getLayout();
 		flowLayout_8.setVgap(18);
 		panelSud.setPreferredSize(new Dimension(10, 90));
-		panelSud.setBackground(ThemeLIPPS.BLEU_FONCE);
+		panelSud.setBackground(ThemeLIPPS.BLUE_DARK);
 		panelConteneurCentre.add(panelSud, BorderLayout.SOUTH);
 
 		JPanel panelBouttonsSud = new JPanel();
 		FlowLayout flowLayout_3 = (FlowLayout) panelBouttonsSud.getLayout();
 		flowLayout_3.setHgap(15);
-		panelBouttonsSud.setBackground(ThemeLIPPS.BLEU_FONCE);
+		panelBouttonsSud.setBackground(ThemeLIPPS.BLUE_DARK);
 		panelSud.add(panelBouttonsSud);
 
 		JPanel panelButton = new JPanel();
-		panelButton.setBackground(ThemeLIPPS.BLEU_FONCE);
+		panelButton.setBackground(ThemeLIPPS.BLUE_DARK);
 		panelBouttonsSud.add(panelButton);
 		panelButton.setOpaque(false);
 		panelButton.setBorder(new EmptyBorder(0, 20, 0, 20));
@@ -329,7 +335,7 @@ public class PanelCCompte extends JPanel {
 
 		JPanel panel_11 = new JPanel();
 		panel_11.setPreferredSize(new Dimension(90, 10));
-		panel_11.setBackground(ThemeLIPPS.BLEU_FONCE);
+		panel_11.setBackground(ThemeLIPPS.BLUE_DARK);
 		add(panel_11, BorderLayout.EAST);
 
 		
