@@ -1,30 +1,24 @@
 package popup;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.Color;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.AbstractListModel;
-import javax.swing.JTextField;
-import java.awt.FlowLayout;
 import java.awt.Dimension;
+import java.awt.EventQueue;
 import java.awt.Font;
-import javax.swing.SwingConstants;
-import javax.swing.border.LineBorder;
-import javax.swing.JScrollBar;
+
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
 import javax.swing.JTextPane;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
 import com.toedter.calendar.JDateChooser;
-import javax.swing.JButton;
-import javax.swing.JSeparator;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
 
 public class CreationModele extends JFrame {
 
