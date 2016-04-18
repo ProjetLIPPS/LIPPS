@@ -1,4 +1,4 @@
-package fenetre;
+package ihm.fenetre;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;

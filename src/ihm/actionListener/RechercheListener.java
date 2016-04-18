@@ -1,4 +1,4 @@
-package actionListener;
+package ihm.actionListener;
 
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -8,7 +8,7 @@ import java.awt.event.MouseListener;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import fenetre.PanelCCompte;
+import ihm.fenetre.PanelCCompte;
 
 public class RechercheListener implements FocusListener
 

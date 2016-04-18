@@ -1,4 +1,4 @@
-package popup;
+package ihm.popup;
 
 import java.awt.Component;
 import java.awt.EventQueue;

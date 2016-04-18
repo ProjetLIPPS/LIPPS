@@ -1,4 +1,4 @@
-package theme;
+package ihm.theme;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;

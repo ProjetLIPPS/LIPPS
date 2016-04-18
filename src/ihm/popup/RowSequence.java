@@ -1,4 +1,4 @@
-package popup;
+package ihm.popup;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -16,7 +16,7 @@ import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 
-import theme.ThemeLIPPS;
+import ihm.theme.ThemeLIPPS;
 
 public class RowSequence extends JPanel {
 

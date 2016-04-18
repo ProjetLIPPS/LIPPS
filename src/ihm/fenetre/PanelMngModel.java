@@ -1,4 +1,4 @@
-package fenetre;
+package ihm.fenetre;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -24,32 +24,32 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.EmptyBorder;
 import java.awt.FlowLayout;
 
+import ihm.theme.ThemeLIPPS;
 
-public class Panel7MesFormations extends JPanel
+
+public class PanelMngModel extends JPanel
 {
 	private JTextField txtDveloppeurLogiciel;
 	private JTextField textField_1;
 	private JTextField txtInformatique;
 	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
 
 	
 	/**
 	 * Create the panel.
 	 */
-	public PanelMyFrmWith()
+	public PanelMngModel()
 	{
 		setMinimumSize(new Dimension(400, 10));
 		
 		
 		this.setBorder(null);
-		this.setBackground(Color.decode("#3787C8"));
+		this.setBackground(ThemeLIPPS.BLUE);
 		this.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panelLeft = new JPanel();
 		panelLeft.setBackground(Color.decode("#003C6E"));
-		panelLeft.setPreferredSize(new Dimension(250, 10));
+		panelLeft.setPreferredSize(new Dimension(350, 10));
 		add(panelLeft, BorderLayout.WEST);
 		panelLeft.setLayout(new BorderLayout(0, 0));
 		
@@ -64,7 +64,7 @@ public class Panel7MesFormations extends JPanel
 		panelLeft.add(panelLabel, BorderLayout.NORTH);
 		panelLabel.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblMesFormations = new JLabel("Mes Formations");
+		JLabel lblMesFormations = new JLabel("Modèles");
 		lblMesFormations.setForeground(Color.WHITE);
 		panelLabel.add(lblMesFormations, BorderLayout.NORTH);
 		lblMesFormations.setFont(new Font("Century Gothic", Font.BOLD, 22));
@@ -85,22 +85,16 @@ public class Panel7MesFormations extends JPanel
 		list.setBackground(Color.decode("#003C6E"));
 		list.setFont(new Font("Century Gothic", Font.BOLD, 20));
 		panelJlist.add(list);
-		list.setModel(new AbstractListModel() {
-			String[] values = new String[] {"Test1", "Test2", "Test3"};
-			public int getSize() {
-				return values.length;
-			}
-			public Object getElementAt(int index) {
-				return values[index];
-			}
-		});
+		
+		String[] values = new String[] {"Test1", "Test2", "Test3"};
+		list.setListData(values); 
 		
 		JPanel panelBtn = new JPanel();
 		panelBtn.setBorder(new EmptyBorder(0, 0, 10, 0));
 		panelBtn.setBackground(Color.decode("#003C6E"));
 		panelLeft.add(panelBtn, BorderLayout.SOUTH);
 		
-		JButton btnCrerNouvelleFormation = new JButton("Créer nouvelle formation");
+		JButton btnCrerNouvelleFormation = new JButton("Créer nouveau modèle");
 		btnCrerNouvelleFormation.setOpaque(false);
 		btnCrerNouvelleFormation.setMnemonic('n');
 		btnCrerNouvelleFormation.setFont(new Font("Century Gothic", Font.PLAIN, 14));
@@ -184,7 +178,6 @@ public class Panel7MesFormations extends JPanel
 		txtInformatique.setColumns(10);
 		
 		JPanel panelFlow2ndLine = new JPanel();
-		panelFlow2ndLine.setBorder(new EmptyBorder(0, 0, 5, 0));
 		panelFlow2ndLine.setMinimumSize(new Dimension(10, 20));
 		panelFlow2ndLine.setPreferredSize(new Dimension(0, 0));
 		panelFlow2ndLine.setBackground(Color.WHITE);
@@ -214,26 +207,6 @@ public class Panel7MesFormations extends JPanel
 		rigidArea_8.setPreferredSize(new Dimension(45, 20));
 		horizontalBox2.add(rigidArea_8);
 		
-		JLabel lblNDoffre = new JLabel("N° d'offre:");
-		lblNDoffre.setForeground(Color.BLACK);
-		lblNDoffre.setFont(new Font("Century Gothic", Font.BOLD, 14));
-		horizontalBox2.add(lblNDoffre);
-		
-		Component rigidArea_7 = Box.createRigidArea(new Dimension(20, 20));
-		rigidArea_7.setPreferredSize(new Dimension(5, 20));
-		horizontalBox2.add(rigidArea_7);
-		
-		textField_4 = new JTextField();
-		textField_4.setText("654321");
-		textField_4.setEditable(false);
-		textField_4.setFont(new Font("Century Gothic", Font.PLAIN, 12));
-		horizontalBox2.add(textField_4);
-		textField_4.setColumns(7);
-		
-		Component rigidArea_5 = Box.createRigidArea(new Dimension(20, 20));
-		rigidArea_5.setPreferredSize(new Dimension(40, 20));
-		horizontalBox2.add(rigidArea_5);
-		
 		JLabel lblDure = new JLabel("Durée:");
 		lblDure.setForeground(Color.BLACK);
 		lblDure.setFont(new Font("Century Gothic", Font.BOLD, 14));
@@ -258,41 +231,6 @@ public class Panel7MesFormations extends JPanel
 		lblHeures.setForeground(Color.BLACK);
 		lblHeures.setFont(new Font("Century Gothic", Font.BOLD, 14));
 		horizontalBox2.add(lblHeures);
-		
-		JPanel panelFlow3rdLine = new JPanel();
-		panelFlow3rdLine.setBorder(new EmptyBorder(0, 0, 5, 0));
-		panelFlow3rdLine.setPreferredSize(new Dimension(0, 0));
-		panelFlow3rdLine.setBackground(Color.WHITE);
-		panelBox.add(panelFlow3rdLine);
-		
-		Box horizontalBox3 = Box.createHorizontalBox();
-		panelFlow3rdLine.add(horizontalBox3);
-		
-		JLabel lblNombdreDeStages = new JLabel("Nombre de stages:");
-		lblNombdreDeStages.setForeground(Color.BLACK);
-		lblNombdreDeStages.setFont(new Font("Century Gothic", Font.BOLD, 14));
-		horizontalBox3.add(lblNombdreDeStages);
-		
-		Component rigidArea_9 = Box.createRigidArea(new Dimension(20, 20));
-		rigidArea_9.setPreferredSize(new Dimension(5, 5));
-		horizontalBox3.add(rigidArea_9);
-		
-		textField_5 = new JTextField();
-		textField_5.setText("1");
-		textField_5.setEditable(false);
-		textField_5.setFont(new Font("Century Gothic", Font.PLAIN, 12));
-		horizontalBox3.add(textField_5);
-		textField_5.setColumns(2);
-		
-		Component rigidArea_10 = Box.createRigidArea(new Dimension(20, 20));
-		rigidArea_10.setPreferredSize(new Dimension(15, 15));
-		horizontalBox3.add(rigidArea_10);
-		
-		JButton btnVoirPriodesDe = new JButton("Voir périodes de stage");
-		btnVoirPriodesDe.setOpaque(false);
-		btnVoirPriodesDe.setMnemonic('v');
-		btnVoirPriodesDe.setFont(new Font("Century Gothic", Font.PLAIN, 14));
-		horizontalBox3.add(btnVoirPriodesDe);
 		
 		JPanel panelCcpDebGridLbl = new JPanel();
 		panelCcpDebGridLbl.setBackground(Color.WHITE);
@@ -348,7 +286,7 @@ public class Panel7MesFormations extends JPanel
 		textDebouche.setRows(7);
 		
 		Component verticalStrut = Box.createVerticalStrut(20);
-		verticalStrut.setPreferredSize(new Dimension(0, 25));
+		verticalStrut.setPreferredSize(new Dimension(0, 150));
 		panelBox.add(verticalStrut);
 		
 		JPanel panelButton = new JPanel();
@@ -356,7 +294,8 @@ public class Panel7MesFormations extends JPanel
 		panelButton.setBackground(Color.WHITE);
 		panelRight.add(panelButton, BorderLayout.SOUTH);
 		
-		JButton btnCrerModule = new JButton("Éditer modules");
+		JButton btnCrerModule = new JButton("Éditer");
+		btnCrerModule.setMnemonic('c');
 		btnCrerModule.setOpaque(false);
 		btnCrerModule.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnCrerModule.setVerticalAlignment(SwingConstants.BOTTOM);
@@ -364,7 +303,8 @@ public class Panel7MesFormations extends JPanel
 		btnCrerModule.setMnemonic('m');
 		panelButton.add(btnCrerModule);
 		
-		JButton btnditerFormation = new JButton("Éditer formation");
+		JButton btnditerFormation = new JButton("Supprimer");
+		btnditerFormation.setMnemonic('e');
 		btnditerFormation.setOpaque(false);
 		btnditerFormation.setMnemonic('f');
 		btnditerFormation.setFont(new Font("Century Gothic", Font.PLAIN, 14));

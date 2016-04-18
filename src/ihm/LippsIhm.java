@@ -1,15 +1,13 @@
-package fenetre;
+package ihm;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -18,11 +16,12 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 
-import theme.ThemeLIPPS;
-import utilisateur.Module;
-import utilisateur.Sequence;
+import ihm.fenetre.PanelCCompte;
+import ihm.fenetre.PanelCFormation;
+import ihm.theme.ThemeLIPPS;
 
-public class fen_main extends JFrame {
+
+public class LippsIhm extends JFrame {
 	
 	private JPanel contentPane;
 	private JPanel panelCenterFormation = new PanelCFormation();
@@ -33,20 +32,16 @@ public class fen_main extends JFrame {
 	private JPanel panelCompte;
 	private JLabel lblFormation;
 	private JLabel lblGererLesComptes;
-	private ArrayList<Module> module = new ArrayList<Module>();
 	
-	public ArrayList<Module> getModule()
-	{
-		return module;
-	}
-
+	
+	
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		
 		
-		fen_main frame = new fen_main();
+		LippsIhm frame = new LippsIhm();
 		frame.setVisible(true);
 		frame.refresh();
 		
@@ -55,7 +50,7 @@ public class fen_main extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public fen_main() {
+	public LippsIhm() {
 		
 		
 		contentPaneCenter = panelCenterFormation;

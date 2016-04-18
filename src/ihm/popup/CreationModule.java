@@ -1,4 +1,4 @@
-package popup;
+package ihm.popup;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -26,7 +26,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 
-import theme.ThemeLIPPS;
+import ihm.theme.ThemeLIPPS;
 
 public class CreationModule extends JDialog {
 

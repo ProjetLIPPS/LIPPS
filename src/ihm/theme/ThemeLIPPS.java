@@ -1,4 +1,4 @@
-package theme;
+package ihm.theme;
 
 import java.awt.Color;
 import java.awt.Font;

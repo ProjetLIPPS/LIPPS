@@ -1,4 +1,4 @@
-package fenetre;
+package ihm.fenetre;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -29,9 +29,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 import javax.swing.table.DefaultTableModel;
 
-import actionListener.RechercheListener;
-import actionListener.TypeCompteListener;
-import theme.ThemeLIPPS;
+import ihm.actionListener.RechercheListener;
+import ihm.actionListener.TypeCompteListener;
+import ihm.theme.ThemeLIPPS;
 import javax.swing.border.MatteBorder;
 
 public class PanelCCompte extends JPanel {

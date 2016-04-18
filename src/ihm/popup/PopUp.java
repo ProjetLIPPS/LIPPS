@@ -1,4 +1,4 @@
-package popup;
+package ihm.popup;
 
 import javax.swing.JDialog;
 

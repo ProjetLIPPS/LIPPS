@@ -1,4 +1,4 @@
-package popup;
+package ihm.popup;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -15,7 +15,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import theme.ThemeLIPPS;
+import ihm.theme.ThemeLIPPS;
 
 public class CreationCompte extends JDialog {
 	private JTextField textField;

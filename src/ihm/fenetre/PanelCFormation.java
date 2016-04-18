@@ -1,4 +1,4 @@
-package fenetre;
+package ihm.fenetre;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -19,7 +19,7 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
-import theme.ThemeLIPPS;
+import ihm.theme.ThemeLIPPS;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;

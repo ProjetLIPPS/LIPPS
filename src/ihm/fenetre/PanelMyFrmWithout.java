@@ -1,4 +1,4 @@
-package fenetre;
+package ihm.fenetre;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -25,7 +25,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.FlowLayout;
 
 
-public class Panel7NoFormation extends JPanel
+public class PanelMyFrmWithout extends JPanel
 {
 
 	

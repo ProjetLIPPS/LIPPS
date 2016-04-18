@@ -1,4 +1,4 @@
-package popup;
+package ihm.popup;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;

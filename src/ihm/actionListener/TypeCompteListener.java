@@ -1,4 +1,4 @@
-package actionListener;
+package ihm.actionListener;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -10,8 +10,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.border.MatteBorder;
 
-import fenetre.PanelCCompte;
-import theme.ThemeLIPPS;
+import ihm.fenetre.PanelCCompte;
+import ihm.theme.ThemeLIPPS;
 
 public class TypeCompteListener implements MouseListener {
 

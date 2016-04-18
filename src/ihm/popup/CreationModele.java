@@ -1,4 +1,4 @@
-package popup;
+package ihm.popup;
 
 import java.awt.Color;
 import java.awt.Dimension;
