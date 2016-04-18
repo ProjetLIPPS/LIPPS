@@ -1,33 +1,27 @@
 package ihm.popup;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.Color;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.AbstractListModel;
-import javax.swing.JTextField;
-import java.awt.FlowLayout;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
-import javax.swing.SwingConstants;
-import javax.swing.border.LineBorder;
-import javax.swing.JScrollBar;
+
+import javax.swing.AbstractListModel;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.ScrollPaneConstants;
-import com.toedter.calendar.*;
-import javax.swing.JButton;
-import javax.swing.JSeparator;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-import java.awt.Component;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
-public class CreaForm extends JFrame {
+import com.toedter.calendar.JDateChooser;
+
+public class CreaForm extends JDialog {
 
 	private JPanel contentPane;
 	private JTextField textField_1;
@@ -38,26 +32,15 @@ public class CreaForm extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CreaForm frame = new CreaForm();
-					frame.setVisible(true);
-				}
-				catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.
 	 */
 	public CreaForm() {
+		setModal(true);
 		setResizable(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 709, 790);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(55, 135, 200));

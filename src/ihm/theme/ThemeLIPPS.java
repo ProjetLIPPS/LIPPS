@@ -17,167 +17,19 @@ public class ThemeLIPPS
 	public static final Color GREY_TEXT = new Color(105, 105, 105);
 	public static final Color GREY_LIGHT = new Color(242, 242, 242);
 	
-	public static final String FONT_RALEWAY_THIN = getRalewayThin();
-	public static final String FONT_RALEWAY_EXTRALIGHT = getRalewayExtraLight();
-	public static final String FONT_RALEWAY_LIGHT = getRalewayLight();
-	public static final String FONT_RALEWAY_REGULAR = getRalewayRegular();
-	public static final String FONT_RALEWAY_MEDIUM = getRalewayMedium();
-	public static final String FONT_RALEWAY_SEMIBOLD = getRalewaySemiBold();
-	public static final String FONT_RALEWAY_BOLD = getRalewayBold();
-	public static final String FONT_RALEWAY_EXTRABOLD = getRalewayExtraBold();
-	public static final String FONT_RALEWAY_HEAVY = getRalewayHeavy();
+	
 	public static final String FONT_DEFAULT = "Century Gothic";
 	
+	public static final Integer FONT_SIZE_TITLE = 30;
+	public static final Integer FONT_SIZE_BUTTON = 15;
+	public static final Integer FONT_SIZE_DEFAULT = 17;
+	
 
 	
 	
 	
 	
 	
-	private static String getRalewayThin()
-	{
-		try 
-		{
-		     GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-		     ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("ressources/Raleway-Thin.ttf")));
-		} 
-		catch (IOException|FontFormatException e) 
-		{e.printStackTrace();}
-		
-		return "Raleway Thin";
-	}
-
-
-
-
-	private static String getRalewayExtraLight()
-	{
-		try 
-		{
-		     GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-		     ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("ressources/Raleway-ExtraLight.ttf")));
-		     
-		} 
-		catch (IOException|FontFormatException e) 
-		{e.printStackTrace();}
-		
-		return "Raleway ExtraLight";
-	}
-
-
-	private static String getRalewayLight()
-	{
-		try 
-		{
-		     GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-		     ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("ressources/Raleway-Light.ttf")));
-		     
-		} 
-		catch (IOException|FontFormatException e) 
-		{e.printStackTrace();}
-		
-		return "Raleway Light";
-	}
-
-
-	private static String getRalewayRegular()
-	{
-		try 
-		{
-		     GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-		     ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("ressources/Raleway-Regular.ttf")));
-		     
-		} 
-		catch (IOException|FontFormatException e) 
-		{e.printStackTrace();}
-		
-		return "Raleway Regular";
-	}
 	
-	
-	
-
-
-	private static String getRalewayMedium()
-	{
-		
-		try 
-		{
-		     GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-		     ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("ressources/Raleway-Medium.ttf")));
-		} 
-		catch (IOException|FontFormatException e) 
-		{e.printStackTrace();}
-		
-		return "Raleway Medium";
-	}
-
-
-	
-	
-	private static String getRalewaySemiBold()
-	{
-		try 
-		{
-		     GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-		     ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("ressources/Raleway-SemiBold.ttf")));
-		     
-		} 
-		catch (IOException|FontFormatException e) 
-		{e.printStackTrace();}
-		
-		return "Raleway SemiBold";
-	}
-	
-
-
-
-	private static String getRalewayBold()
-	{
-		try 
-		{
-		     GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-		     ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("ressources/Raleway-Bold.ttf")));
-		     
-		} 
-		catch (IOException|FontFormatException e) 
-		{e.printStackTrace();}
-		
-		return "Raleway Bold";
-	}
-
-
-
-
-
-	private static String getRalewayExtraBold()
-	{
-		try 
-		{
-		     GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-		     ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("ressources/Raleway-ExtraBold.ttf")));
-		     
-		} 
-		catch (IOException|FontFormatException e) 
-		{e.printStackTrace();}
-		
-		return "Raleway ExtraBold";
-	}
-
-
-
-
-	private static String getRalewayHeavy()
-	{
-		try 
-		{
-		     GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-		     ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("ressources/Raleway-Heavy.ttf")));
-		} 
-		catch (IOException|FontFormatException e) 
-		{e.printStackTrace();}
-		
-		return "Raleway Heavy";
-	}
 	
 }

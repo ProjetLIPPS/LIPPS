@@ -17,6 +17,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 
 import ihm.theme.ThemeLIPPS;
+import javax.swing.JScrollPane;
 
 public class RowSequence extends JPanel {
 
@@ -60,8 +61,12 @@ public class RowSequence extends JPanel {
 		lblDescription.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 14));
 		this.add(lblDescription);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(120, 11, 370, 63);
+		add(scrollPane);
+		
 		JTextArea textArea = new JTextArea();
-		textArea.setBounds(120, 11, 370, 47);
+		scrollPane.setViewportView(textArea);
 		textArea.setWrapStyleWord(true);
 		textArea.setText("Entrez ici la description de la séquence.");
 		textArea.setRows(3);
@@ -81,12 +86,11 @@ public class RowSequence extends JPanel {
 			}
 		});
 		
-		this.add(textArea);
-		
 		JButton btnSupprimer = new JButton("Supprimer");
+		btnSupprimer.setBackground(Color.WHITE);
 		btnSupprimer.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 12));
 		btnSupprimer.setForeground(Color.DARK_GRAY);
-		btnSupprimer.setBounds(539, 22, 98, 23);
+		btnSupprimer.setBounds(531, 30, 98, 23);
 		
 		
 		btnSupprimer.addActionListener(new ActionListener() {
@@ -99,7 +103,7 @@ public class RowSequence extends JPanel {
 		add(btnSupprimer);
 		
 		JLabel Move_up = new JLabel("");
-		Move_up.setForeground(Color.BLACK);
+		Move_up.setForeground(Color.WHITE);
 		Move_up.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e)
@@ -107,8 +111,8 @@ public class RowSequence extends JPanel {
 				getJFrame().monterSequence(getRowSequence());
 			}
 		});
-		Move_up.setIcon(new ImageIcon(RowSequence.class.getResource("/javax/swing/plaf/metal/icons/sortUp.png")));
-		Move_up.setBounds(500, 11, 12, 14);
+		Move_up.setIcon(new ImageIcon("C:\\WorkEclipse\\LippsBeta\\img\\fleche_haut16x16.png"));
+		Move_up.setBounds(500, 11, 16, 14);
 		add(Move_up);
 		
 		JLabel Move_down = new JLabel("");
@@ -119,8 +123,8 @@ public class RowSequence extends JPanel {
 				getJFrame().descendreSequence(getRowSequence());
 			}
 		});
-		Move_down.setIcon(new ImageIcon(RowSequence.class.getResource("/javax/swing/plaf/metal/icons/sortDown.png")));
-		Move_down.setBounds(500, 44, 12, 14);
+		Move_down.setIcon(new ImageIcon("C:\\WorkEclipse\\LippsBeta\\img\\fleche_bas16x16.png"));
+		Move_down.setBounds(500, 60, 16, 14);
 		add(Move_down);
 	}
 	
