@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM 
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	
+	<session-factory>
+	
+		<property name="hibernate.dialect">
+			org.hibernate.dialect.MySQL5InnoDBDialect
+		</property>
+		
+		<property name="hibernate.connection.driver_class">
+			com.mysql.jdbc.Driver
+		</property>
+
+		<!-- Assume test is the database name -->
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/lippsdb</property>
+		<property name="hibernate.connection.username">
+			root
+		</property>
+		
+		<property name="hibernate.connection.password">
+		</property>
+
+		<property name="show_sql">true</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		
+
+		<!-- List of XML mapping files -->
+		<mapping class = "model.objet.AnnexeLiv"/>
+		<mapping class = "model.objet.Contact"/>
+		<mapping class = "model.objet.Formation" />
+		<mapping class = "model.objet.Livret"/>
+		<mapping class = "model.objet.Log"/>
+		<mapping class = "model.objet.Module"/>
+		<mapping class = "model.objet.ModuleLiv"/>
+		<mapping class = "model.objet.Periode"/>
+		<mapping class = "model.objet.PeriodeLiv"/>
+		<mapping class = "model.objet.ProjetProLiv"/>				
+		<mapping class = "model.objet.ResultParcoursLiv"/>
+		<mapping class = "model.objet.Sequence"/>
+		<mapping class = "model.objet.SequenceLiv"/>
+		<mapping class = "model.objet.Specialisation" />
+		<mapping class = "model.objet.SuiviLiv"/>
+		<mapping class = "model.objet.TypeUtilisateur"/>
+		<mapping class = "model.objet.Utilisateur"/>
+		
+		
+		
+		
+		<mapping class = "model.objet.Periode"/>
+		
+		<mapping class = "model.objet.Periode"/>
+		<mapping class = "model.objet.Periode"/>
+		<mapping class = "model.objet.Periode"/>
+		
+		
+			
+	</session-factory>
+	
+</hibernate-configuration>

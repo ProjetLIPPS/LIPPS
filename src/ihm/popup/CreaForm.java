@@ -20,7 +20,7 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.ScrollPaneConstants;
-import com.toedter.calendar.*;
+import com.toedter.calendar.*;									
 import javax.swing.JButton;
 import javax.swing.JSeparator;
 import javax.swing.JComboBox;

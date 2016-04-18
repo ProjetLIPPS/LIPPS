@@ -35,17 +35,6 @@ public class LippsIhm extends JFrame {
 	
 	
 	
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		
-		
-		LippsIhm frame = new LippsIhm();
-		frame.setVisible(true);
-		frame.refresh();
-		
-	}
 
 	/**
 	 * Create the frame.

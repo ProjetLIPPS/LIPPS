@@ -13,7 +13,7 @@ import javax.swing.border.MatteBorder;
 import ihm.fenetre.PanelCCompte;
 import ihm.theme.ThemeLIPPS;
 
-public class TypeCompteListener implements MouseListener {
+public class TypeCompteListener implements MouseListener  {
 
 	private PanelCCompte panelCCompte ;
 	private Integer isSelected = 0;
