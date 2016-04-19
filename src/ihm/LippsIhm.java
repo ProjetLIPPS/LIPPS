@@ -18,6 +18,7 @@ import javax.swing.border.EmptyBorder;
 
 import ihm.fenetre.PanelCCompte;
 import ihm.fenetre.PanelCFormation;
+import ihm.fenetre.PanelMngModule;
 import ihm.theme.ThemeLIPPS;
 
 

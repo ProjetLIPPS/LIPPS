@@ -1,28 +1,22 @@
 package ihm.fenetre;
+
+import controleur.*;
+import ihm.popup.CreationModule;
+import ihm.theme.ThemeLIPPS;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.GridLayout;
-
-import javax.swing.AbstractListModel;
-import javax.swing.Box;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.border.MatteBorder;
 import javax.swing.border.LineBorder;
-import javax.swing.border.EmptyBorder;
-import java.awt.FlowLayout;
+import javax.swing.border.MatteBorder;
 
 
 public class PanelMngModule extends JPanel
@@ -66,11 +60,11 @@ public class PanelMngModule extends JPanel
 		lblMesFormations.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMesFormations.setPreferredSize(new Dimension(75, 150));
 		
-		JPanel panelCenterLbl = new JPanel();
-		panelCenterLbl.setMinimumSize(new Dimension(0, 10));
-		panelCenterLbl.setBackground(Color.decode("#003C6E"));
-		panelLeft.add(panelCenterLbl, BorderLayout.CENTER);
-		panelCenterLbl.setPreferredSize(new Dimension(50, 10));
+		JPanel panelCenterModList = new JPanel();
+		panelCenterModList.setMinimumSize(new Dimension(0, 10));
+		panelCenterModList.setBackground(Color.decode("#003C6E"));
+		panelLeft.add(panelCenterModList, BorderLayout.CENTER);
+		panelCenterModList.setPreferredSize(new Dimension(50, 10));
 		
 		JPanel panelMid = new JPanel();
 		panelBoxTrio.add(panelMid);
@@ -92,17 +86,10 @@ public class PanelMngModule extends JPanel
 		lblMesModules.setFont(new Font("Century Gothic", Font.BOLD, 22));
 		panelMyMod.add(lblMesModules, BorderLayout.NORTH);
 		
+		
 		JPanel panelLoadMod = new JPanel();
-		
-		panelLoadMod.setPreferredSize(new Dimension(50, 10));
-		panelLoadMod.setMinimumSize(new Dimension(0, 10));
-		panelLoadMod.setBackground(Color.decode("#003C6E"));
+		panelLoadMod.setOpaque(false);
 		panelMid.add(panelLoadMod, BorderLayout.CENTER);
-		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBackground(Color.decode("#003C6E"));
-		scrollPane.add(panelLoadMod);
-		panelMid.add(scrollPane, BorderLayout.CENTER);
 		
 		JPanel panelRight = new JPanel();
 		panelBoxTrio.add(panelRight);
@@ -134,9 +121,21 @@ public class PanelMngModule extends JPanel
 		add(panelButton, BorderLayout.SOUTH);
 		
 		JButton btnCrerNouveauModule = new JButton("Créer nouveau module");
-		btnCrerNouveauModule.setFont(new Font("Century Gothic", Font.PLAIN, 12));
+		btnCrerNouveauModule.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_BUTTON));
 		btnCrerNouveauModule.setMnemonic('n');
 		panelButton.add(btnCrerNouveauModule);
+		
+		
+		btnCrerNouveauModule.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CreationModule newModule = new CreationModule();	
+				newModule.setVisible(true);
+			}
+		});
+		
+	
+		
+		
 	}
 
 	

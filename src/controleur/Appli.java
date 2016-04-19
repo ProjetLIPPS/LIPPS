@@ -17,7 +17,7 @@ public class Appli {
 		Boolean result = null;
 
 		
-		try
+	/*	try
 		{
 			// configure hibernate
 			 new Configuration().configure().buildSessionFactory();
@@ -51,7 +51,7 @@ public class Appli {
 		{
 			System.out.println(String.valueOf(result));
 		}
-		
+		*/
 		
 
 		LippsIhm frame = new LippsIhm();

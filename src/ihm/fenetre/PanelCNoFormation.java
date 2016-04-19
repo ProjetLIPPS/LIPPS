@@ -25,14 +25,14 @@ import javax.swing.border.EmptyBorder;
 import java.awt.FlowLayout;
 
 
-public class PanelMyFrmWithout extends JPanel
+public class PanelCNoFormation extends JPanel
 {
 
 	
 	/**
 	 * Create the panel.
 	 */
-	public PanelMyFrmWithout()
+	public PanelCNoFormation()
 	{
 		setMinimumSize(new Dimension(400, 10));
 		
