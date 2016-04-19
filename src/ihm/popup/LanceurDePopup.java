@@ -56,12 +56,26 @@ public class LanceurDePopup extends JFrame
 		contentPane.add(panel_3);
 		
 		JButton btnCrationFormation = new JButton("Création Formation");
+		btnCrationFormation.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				JDialog pop = new CreaForm();
+				pop.setVisible(true);
+			}
+		});
 		panel_3.add(btnCrationFormation);
 		
 		JPanel panel_2 = new JPanel();
 		contentPane.add(panel_2);
 		
 		JButton btnCrationModleDe = new JButton("Création Modèle de Formation");
+		btnCrationModleDe.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				JDialog pop = new CreationModele();
+				pop.setVisible(true);
+			}
+		});
 		panel_2.add(btnCrationModleDe);
 		
 		JPanel panel_4 = new JPanel();

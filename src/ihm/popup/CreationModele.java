@@ -1,169 +1,130 @@
 package ihm.popup;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JSeparator;
+import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import com.toedter.calendar.JDateChooser;
+import ihm.theme.ThemeLIPPS;
 
-public class CreationModele extends JFrame {
+public class CreationModele extends JDialog {
 
 	private JPanel contentPane;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CreationModele frame = new CreationModele();
-					frame.setVisible(true);
-				}
-				catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
+	
 
 	/**
 	 * Create the frame.
 	 */
 	public CreationModele() {
+		setModal(true);
 		setResizable(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 709, 790);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.WHITE);
+		contentPane.setBackground(ThemeLIPPS.BLUE);
 		contentPane.setBorder(new EmptyBorder(20, 20, 20, 20));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel panelElement = new JPanel();
-		panelElement.setBounds(20, 26, 663, 736);
-		panelElement.setBackground(Color.WHITE);
-		panelElement.setPreferredSize(new Dimension(200, 550));
-		contentPane.add(panelElement);
-		panelElement.setLayout(null);
-		
-		JLabel lblSelectionnerUnModle = new JLabel("Edition modèle : ");
+		JLabel lblSelectionnerUnModle = new JLabel("Création modèle : ");
+		lblSelectionnerUnModle.setForeground(Color.WHITE);
+		lblSelectionnerUnModle.setBounds(222, 48, 276, 29);
+		contentPane.add(lblSelectionnerUnModle);
 		lblSelectionnerUnModle.setHorizontalAlignment(SwingConstants.LEFT);
-		lblSelectionnerUnModle.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblSelectionnerUnModle.setBounds(193, 0, 124, 16);
-		panelElement.add(lblSelectionnerUnModle);
+		lblSelectionnerUnModle.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_TITLE));
 		
-		JLabel lblNumrodescription = new JLabel("Numéro/description");
-		lblNumrodescription.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblNumrodescription.setForeground(Color.GRAY);
-		lblNumrodescription.setBounds(329, 1, 155, 16);
-		panelElement.add(lblNumrodescription);
-		
-		JLabel lblIntituler = new JLabel("Intituler :");
-		lblIntituler.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblIntituler.setBounds(12, 86, 56, 16);
-		panelElement.add(lblIntituler);
-		
-		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPane_1.setBounds(80, 86, 571, 45);
-		panelElement.add(scrollPane_1);
-		
-		JTextPane champ1 = new JTextPane();
-		scrollPane_1.setViewportView(champ1);
-		
-		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(12, 150, 639, 12);
-		panelElement.add(separator_1);
+		JLabel lblIntituler = new JLabel("Intitulé :");
+		lblIntituler.setForeground(Color.WHITE);
+		lblIntituler.setBounds(47, 157, 72, 16);
+		contentPane.add(lblIntituler);
+		lblIntituler.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
 		
 		JLabel lblGrn = new JLabel("N° GRN :");
-		lblGrn.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblGrn.setBounds(12, 184, 75, 16);
-		panelElement.add(lblGrn);
-		
-		JScrollPane scrollPane_2 = new JScrollPane();
-		scrollPane_2.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPane_2.setBounds(91, 184, 560, 45);
-		panelElement.add(scrollPane_2);
-		
-		JTextPane champ2 = new JTextPane();
-		scrollPane_2.setViewportView(champ2);
-		
-		JSeparator separator_2 = new JSeparator();
-		separator_2.setBounds(12, 253, 639, 12);
-		panelElement.add(separator_2);
+		lblGrn.setForeground(Color.WHITE);
+		lblGrn.setBounds(47, 271, 77, 16);
+		contentPane.add(lblGrn);
+		lblGrn.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
 		
 		JLabel lblEmploisAccessibles = new JLabel("Emplois accessibles :");
-		lblEmploisAccessibles.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblEmploisAccessibles.setBounds(12, 292, 143, 16);
-		panelElement.add(lblEmploisAccessibles);
+		lblEmploisAccessibles.setForeground(Color.WHITE);
+		lblEmploisAccessibles.setBounds(134, 356, 170, 29);
+		contentPane.add(lblEmploisAccessibles);
+		lblEmploisAccessibles.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
 		
 		JScrollPane scrollPane_3 = new JScrollPane();
+		scrollPane_3.setBackground(Color.WHITE);
+		scrollPane_3.setBounds(134, 396, 464, 136);
+		contentPane.add(scrollPane_3);
 		scrollPane_3.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPane_3.setBounds(12, 322, 639, 80);
-		panelElement.add(scrollPane_3);
 		
 		JTextPane champ3 = new JTextPane();
+		champ3.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
 		scrollPane_3.setViewportView(champ3);
 		
-		JDateChooser dateChooser = new JDateChooser();
-		dateChooser.setBounds(159, 520, 135, 26);
-		panelElement.add(dateChooser);
-		
-		JLabel lblLesDates = new JLabel("Les dates :");
-		lblLesDates.setBounds(12, 520, 75, 16);
-		panelElement.add(lblLesDates);
-		
-		JLabel lblDu = new JLabel("Du ");
-		lblDu.setBounds(112, 520, 61, 16);
-		panelElement.add(lblDu);
-		
-		JLabel lblAu = new JLabel("Au");
-		lblAu.setBounds(337, 520, 61, 16);
-		panelElement.add(lblAu);
-		
-		JDateChooser dateChooser_1 = new JDateChooser();
-		dateChooser_1.setBounds(377, 520, 135, 26);
-		panelElement.add(dateChooser_1);
-		
 		JButton btnNewButton = new JButton("Valider");
-		btnNewButton.setBounds(159, 694, 117, 29);
-		panelElement.add(btnNewButton);
-		btnNewButton.setFont(new Font("Arial", Font.PLAIN, 13));
+		btnNewButton.setBackground(Color.WHITE);
+		btnNewButton.setBounds(381, 692, 117, 29);
+		contentPane.add(btnNewButton);
+		btnNewButton.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_BUTTON));
 		
 		JButton btnNewButton_1 = new JButton("Annuler");
-		btnNewButton_1.setBounds(366, 694, 117, 29);
-		panelElement.add(btnNewButton_1);
-		
-		JSeparator separator_3 = new JSeparator();
-		separator_3.setBounds(12, 428, 639, 12);
-		panelElement.add(separator_3);
+		btnNewButton_1.setBackground(Color.WHITE);
+		btnNewButton_1.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_BUTTON));
+		btnNewButton_1.setBounds(212, 692, 117, 29);
+		contentPane.add(btnNewButton_1);
 		
 		JLabel lblSpcialit = new JLabel("Spécialité :");
-		lblSpcialit.setBounds(12, 457, 80, 16);
-		panelElement.add(lblSpcialit);
+		lblSpcialit.setForeground(Color.WHITE);
+		lblSpcialit.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
+		lblSpcialit.setBounds(311, 243, 91, 22);
+		contentPane.add(lblSpcialit);
 		
 		JComboBox comboBox = new JComboBox();
+		comboBox.setBackground(Color.WHITE);
+		comboBox.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
+		comboBox.setBounds(424, 241, 174, 27);
+		contentPane.add(comboBox);
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"spe 1", "spe 2", "spe 3"}));
-		comboBox.setBounds(107, 457, 150, 27);
-		panelElement.add(comboBox);
 		
-		JSeparator separator_5 = new JSeparator();
-		separator_5.setBounds(12, 573, 639, 12);
-		panelElement.add(separator_5);
+		textField = new JTextField();
+		textField.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
+		textField.setBounds(134, 268, 104, 25);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblDure = new JLabel("Durée :");
+		lblDure.setForeground(Color.WHITE);
+		lblDure.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
+		lblDure.setBounds(47, 217, 67, 14);
+		contentPane.add(lblDure);
+		
+		textField_1 = new JTextField();
+		textField_1.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
+		textField_1.setBounds(134, 213, 104, 25);
+		contentPane.add(textField_1);
+		textField_1.setColumns(10);
+		
+		textField_2 = new JTextField();
+		textField_2.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
+		textField_2.setBounds(131, 156, 467, 25);
+		contentPane.add(textField_2);
+		textField_2.setColumns(10);
 	}
 }
