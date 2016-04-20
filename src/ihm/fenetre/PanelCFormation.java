@@ -4,9 +4,12 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
-import javax.swing.AbstractListModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -18,29 +21,23 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.border.MatteBorder;
+import javax.swing.border.EmptyBorder;
 
-import ihm.actionListener.PanelCFormationListener;
-import ihm.actionListener.RechercheListener;
+import ihm.actionListener.PanelCFormationListSelectionListener;
 import ihm.popup.CreaForm;
 import ihm.theme.ThemeLIPPS;
-
-import javax.swing.border.LineBorder;
-import javax.swing.border.EmptyBorder;
-import java.awt.FlowLayout;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 
 public class PanelCFormation extends JPanel
 {
-	private JTextField txtDveloppeurLogiciel;
-	private JTextField textField_1;
-	private JTextField txtInformatique;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
+	private JTextField txtIntitule;
+	private JTextField txtDuree;
+	private JTextField txtSpe;
+	private JTextField txtGrn;
+	private JTextField txtOffre;
+	private JTextField txtNbStage;
+	private JTextArea textCcp;
+	private JTextArea textDebouche;
 
 	
 	/**
@@ -49,40 +46,40 @@ public class PanelCFormation extends JPanel
 	public PanelCFormation()
 	{
 		
-		PanelCFormationListener panelCFormationListener = new PanelCFormationListener(this);
+		PanelCFormationListSelectionListener panelCFormationListSelectionListener = new PanelCFormationListSelectionListener(this);
 		setMinimumSize(new Dimension(400, 10));
 		
 		
 		this.setBorder(null);
-		this.setBackground(Color.decode("#3787C8"));
+		this.setBackground(ThemeLIPPS.BLUE);
 		this.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panelLeft = new JPanel();
-		panelLeft.setBackground(Color.decode("#003C6E"));
+		panelLeft.setBackground(ThemeLIPPS.BLUE_DARK);
 		panelLeft.setPreferredSize(new Dimension(250, 10));
 		add(panelLeft, BorderLayout.WEST);
 		panelLeft.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panelLeftMargin = new JPanel();
 		panelLeftMargin.setMinimumSize(new Dimension(0, 10));
-		panelLeftMargin.setBackground(Color.decode("#003C6E"));
+		panelLeftMargin.setBackground(ThemeLIPPS.BLUE_DARK);
 		panelLeft.add(panelLeftMargin, BorderLayout.WEST);
 		panelLeftMargin.setPreferredSize(new Dimension(50, 10));
 		
 		JPanel panelLabel = new JPanel();
-		panelLabel.setBackground(Color.decode("#003C6E"));
+		panelLabel.setBackground(ThemeLIPPS.BLUE_DARK);
 		panelLeft.add(panelLabel, BorderLayout.NORTH);
 		panelLabel.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblMesFormations = new JLabel("Mes Formations");
 		lblMesFormations.setForeground(Color.WHITE);
 		panelLabel.add(lblMesFormations, BorderLayout.NORTH);
-		lblMesFormations.setFont(new Font("Century Gothic", Font.BOLD, 22));
+		lblMesFormations.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, ThemeLIPPS.FONT_SIZE_TITLE));
 		lblMesFormations.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMesFormations.setPreferredSize(new Dimension(75, 150));
 		
 		JPanel panelJlist = new JPanel();
-		panelJlist.setBackground(Color.decode("#003C6E"));
+		panelJlist.setBackground(ThemeLIPPS.BLUE_DARK);
 		panelLeft.add(panelJlist, BorderLayout.CENTER);
 		panelJlist.setLayout(new BorderLayout(0, 0));
 		
@@ -92,19 +89,19 @@ public class PanelCFormation extends JPanel
 		list.setFixedCellHeight(40);
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		list.setForeground(Color.WHITE);
-		list.setBackground(Color.decode("#003C6E"));
-		list.setFont(new Font("Century Gothic", Font.BOLD, 20));
+		list.setBackground(ThemeLIPPS.BLUE_DARK);
+		list.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, ThemeLIPPS.FONT_SIZE_DEFAULT));
 				
-		// METHODE POUR RECUPERER LISTE FORMATIONS DANS BDD
+		// TODO METHODE POUR RECUPERER LISTE FORMATIONS DANS BDD
 		String[] values = new String[] {"Test1", "Test2", "Test3"};
 		list.setListData(values);
 		
-		list.addListSelectionListener(panelCFormationListener);
+		list.addListSelectionListener(panelCFormationListSelectionListener);
 		panelJlist.add(list);
 		
 		JPanel panelBtn = new JPanel();
 		panelBtn.setBorder(new EmptyBorder(0, 0, 10, 0));
-		panelBtn.setBackground(Color.decode("#003C6E"));
+		panelBtn.setBackground(ThemeLIPPS.BLUE_DARK);
 		panelLeft.add(panelBtn, BorderLayout.SOUTH);
 		
 		
@@ -122,7 +119,7 @@ public class PanelCFormation extends JPanel
 		JPanel panelTrioMargin = new JPanel();
 		panelTrioMargin.setOpaque(false);
 		panelTrioMargin.setBackground(Color.WHITE);
-		panelTrioMargin.setBackground(Color.decode("#3787C8"));
+		panelTrioMargin.setBackground(ThemeLIPPS.BLUE);
 		panelTrioMargin.setPreferredSize(new Dimension(10, 28));
 		panelTrio.add(panelTrioMargin);
 		
@@ -155,13 +152,13 @@ public class PanelCFormation extends JPanel
 		rigidArea.setPreferredSize(new Dimension(5, 5));
 		horizontalBox1.add(rigidArea);
 		
-		txtDveloppeurLogiciel = new JTextField();
-		txtDveloppeurLogiciel.setMinimumSize(new Dimension(6, 50));
-		txtDveloppeurLogiciel.setText("Développeur Logiciel");
-		txtDveloppeurLogiciel.setEditable(false);
-		txtDveloppeurLogiciel.setFont(new Font("Century Gothic", Font.PLAIN, 12));
-		horizontalBox1.add(txtDveloppeurLogiciel);
-		txtDveloppeurLogiciel.setColumns(25);
+		txtIntitule = new JTextField();
+		txtIntitule.setMinimumSize(new Dimension(6, 50));
+		txtIntitule.setText("Développeur Logiciel");
+		txtIntitule.setEditable(false);
+		txtIntitule.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
+		horizontalBox1.add(txtIntitule);
+		txtIntitule.setColumns(25);
 		
 		Component rigidArea_4 = Box.createRigidArea(new Dimension(20, 20));
 		rigidArea_4.setPreferredSize(new Dimension(45, 20));
@@ -177,13 +174,13 @@ public class PanelCFormation extends JPanel
 		rigidArea_1.setPreferredSize(new Dimension(5, 5));
 		horizontalBox1.add(rigidArea_1);
 		
-		txtInformatique = new JTextField();
-		txtInformatique.setMinimumSize(new Dimension(6, 50));
-		txtInformatique.setText("Informatique");
-		txtInformatique.setEditable(false);
-		txtInformatique.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
-		horizontalBox1.add(txtInformatique);
-		txtInformatique.setColumns(10);
+		txtSpe = new JTextField();
+		txtSpe.setMinimumSize(new Dimension(6, 50));
+		txtSpe.setText("Informatique");
+		txtSpe.setEditable(false);
+		txtSpe.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
+		horizontalBox1.add(txtSpe);
+		txtSpe.setColumns(10);
 		
 		JPanel panelFlow2ndLine = new JPanel();
 		panelFlow2ndLine.setBorder(new EmptyBorder(0, 0, 5, 0));
@@ -205,12 +202,12 @@ public class PanelCFormation extends JPanel
 		rigidArea_6.setPreferredSize(new Dimension(5, 5));
 		horizontalBox2.add(rigidArea_6);
 		
-		textField_3 = new JTextField();
-		textField_3.setText("123456");
-		textField_3.setEditable(false);
-		textField_3.setFont(new Font("Century Gothic", Font.PLAIN, 12));
-		horizontalBox2.add(textField_3);
-		textField_3.setColumns(10);
+		txtGrn = new JTextField();
+		txtGrn.setText("123456");
+		txtGrn.setEditable(false);
+		txtGrn.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
+		horizontalBox2.add(txtGrn);
+		txtGrn.setColumns(10);
 		
 		Component rigidArea_8 = Box.createRigidArea(new Dimension(20, 20));
 		rigidArea_8.setPreferredSize(new Dimension(45, 20));
@@ -225,12 +222,12 @@ public class PanelCFormation extends JPanel
 		rigidArea_7.setPreferredSize(new Dimension(5, 20));
 		horizontalBox2.add(rigidArea_7);
 		
-		textField_4 = new JTextField();
-		textField_4.setText("654321");
-		textField_4.setEditable(false);
-		textField_4.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
-		horizontalBox2.add(textField_4);
-		textField_4.setColumns(7);
+		txtOffre = new JTextField();
+		txtOffre.setText("654321");
+		txtOffre.setEditable(false);
+		txtOffre.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
+		horizontalBox2.add(txtOffre);
+		txtOffre.setColumns(7);
 		
 		Component rigidArea_5 = Box.createRigidArea(new Dimension(20, 20));
 		rigidArea_5.setPreferredSize(new Dimension(40, 20));
@@ -245,12 +242,12 @@ public class PanelCFormation extends JPanel
 		horizontalBox2.add(rigidArea_2);
 		rigidArea_2.setPreferredSize(new Dimension(5, 5));
 		
-		textField_1 = new JTextField();
-		textField_1.setText("1295\r\n");
-		textField_1.setEditable(false);
-		textField_1.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
-		horizontalBox2.add(textField_1);
-		textField_1.setColumns(6);
+		txtDuree = new JTextField();
+		txtDuree.setText("1295\r\n");
+		txtDuree.setEditable(false);
+		txtDuree.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
+		horizontalBox2.add(txtDuree);
+		txtDuree.setColumns(6);
 		
 		Component rigidArea_3 = Box.createRigidArea(new Dimension(20, 20));
 		horizontalBox2.add(rigidArea_3);
@@ -279,16 +276,12 @@ public class PanelCFormation extends JPanel
 		rigidArea_9.setPreferredSize(new Dimension(5, 5));
 		horizontalBox3.add(rigidArea_9);
 		
-		textField_5 = new JTextField();
-		textField_5.setText("1");
-		textField_5.setEditable(false);
-		textField_5.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
-		horizontalBox3.add(textField_5);
-		textField_5.setColumns(2);
-		
-		Component rigidArea_10 = Box.createRigidArea(new Dimension(20, 20));
-		rigidArea_10.setPreferredSize(new Dimension(15, 15));
-		horizontalBox3.add(rigidArea_10);
+		txtNbStage = new JTextField();
+		txtNbStage.setText("1");
+		txtNbStage.setEditable(false);
+		txtNbStage.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
+		horizontalBox3.add(txtNbStage);
+		txtNbStage.setColumns(2);
 		
 		JPanel panelCcpDebGridLbl = new JPanel();
 		panelCcpDebGridLbl.setBackground(Color.WHITE);
@@ -314,34 +307,37 @@ public class PanelCFormation extends JPanel
 		panelBox.add(panelCcpDebTxt);
 		panelCcpDebTxt.setLayout(new GridLayout(0, 2, 10, 0));
 		
-		JScrollPane scrollPaneCcp = new JScrollPane();
-		scrollPaneCcp.setOpaque(false);
-		panelCcpDebTxt.add(scrollPaneCcp);
-		
-		JTextArea textCcp = new JTextArea();
+			
+		textCcp = new JTextArea();
 		textCcp.setTabSize(10);
 		textCcp.setEditable(false);
 		textCcp.setText("Sed ut tum ad senem senex de senectute, sic hoc libro ad amicum amicissimus scripsi de amicitia. Tum est Cato locutus, quo erat nemo fere senior temporibus illis, nemo prudentior; nunc Laelius et sapiens (sic enim est habitus) et amicitiae gloria excellens de amicitia loquetur. Tu velim a me animum parumper avertas, Laelium loqui ipsum putes. C. Fannius et Q. Mucius ad socerum veniunt post mortem Africani; ab his sermo oritur, respondet Laelius, cuius tota disputatio est de amicitia, quam legens te ipse cognosces.\r\n\r\nAc ne quis a nobis hoc ita dici forte miretur, quod alia quaedam in hoc facultas sit ingeni, neque haec dicendi ratio aut disciplina, ne nos quidem huic uni studio penitus umquam dediti fuimus. Etenim omnes artes, quae ad humanitatem pertinent, habent quoddam commune vinculum, et quasi cognatione quadam inter se continentur.\r\n\r\nSed si ille hac tam eximia fortuna propter utilitatem rei publicae frui non properat, ut omnia illa conficiat, quid ego, senator, facere debeo, quem, etiamsi ille aliud vellet, rei publicae consulere oporteret?\r\n\r\nEt quia Mesopotamiae tractus omnes crebro inquietari sueti praetenturis et stationibus servabantur agrariis, laevorsum flexo itinere Osdroenae subsederat extimas partes, novum parumque aliquando temptatum commentum adgressus. quod si impetrasset, fulminis modo cuncta vastarat. erat autem quod cogitabat huius modi.\r\n\r\nHoc inmaturo interitu ipse quoque sui pertaesus excessit e vita aetatis nono anno atque vicensimo cum quadriennio imperasset. natus apud Tuscos in Massa Veternensi, patre Constantio Constantini fratre imperatoris, matreque Galla sorore Rufini et Cerealis, quos trabeae consulares nobilitarunt et praefecturae.\r\nSed ut tum ad senem senex de senectute, sic hoc libro ad amicum amicissimus scripsi de amicitia. Tum est Cato locutus, quo erat nemo fere senior temporibus illis, nemo prudentior; nunc Laelius et sapiens (sic enim est habitus) et amicitiae gloria excellens de amicitia loquetur. Tu velim a me animum parumper avertas, Laelium loqui ipsum putes. C. Fannius et Q. Mucius ad socerum veniunt post mortem Africani; ab his sermo oritur, respondet Laelius, cuius tota disputatio est de amicitia, quam legens te ipse cognosces.\r\n\r\nAc ne quis a nobis hoc ita dici forte miretur, quod alia quaedam in hoc facultas sit ingeni, neque haec dicendi ratio aut disciplina, ne nos quidem huic uni studio penitus umquam dediti fuimus. Etenim omnes artes, quae ad humanitatem pertinent, habent quoddam commune vinculum, et quasi cognatione quadam inter se continentur.\r\n\r\nSed si ille hac tam eximia fortuna propter utilitatem rei publicae frui non properat, ut omnia illa conficiat, quid ego, senator, facere debeo, quem, etiamsi ille aliud vellet, rei publicae consulere oporteret?\r\n\r\nEt quia Mesopotamiae tractus omnes crebro inquietari sueti praetenturis et stationibus servabantur agrariis, laevorsum flexo itinere Osdroenae subsederat extimas partes, novum parumque aliquando temptatum commentum adgressus. quod si impetrasset, fulminis modo cuncta vastarat. erat autem quod cogitabat huius modi.\r\n\r\nHoc inmaturo interitu ipse quoque sui pertaesus excessit e vita aetatis nono anno atque vicensimo cum quadriennio imperasset. natus apud Tuscos in Massa Veternensi, patre Constantio Constantini fratre imperatoris, matreque Galla sorore Rufini et Cerealis, quos trabeae consulares nobilitarunt et praefecturae.");
 		textCcp.setPreferredSize(new Dimension(0, 0));
 		textCcp.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
-		scrollPaneCcp.setViewportView(textCcp);
 		textCcp.setRows(7);
 		textCcp.setLineWrap(true);
 		textCcp.setColumns(20);
 		
-		JScrollPane scrollPaneDeb = new JScrollPane();
-		panelCcpDebTxt.add(scrollPaneDeb);
+		JScrollPane scrollPaneCcp = new JScrollPane();
+		scrollPaneCcp.setOpaque(false);
+		scrollPaneCcp.setViewportView(textCcp);
 		
-		JTextArea textDebouche = new JTextArea();
+		panelCcpDebTxt.add(scrollPaneCcp);
+		
+				
+		textDebouche = new JTextArea();
 		textDebouche.setTabSize(10);
 		textDebouche.setText("Sed ut tum ad senem senex de senectute, sic hoc libro ad amicum amicissimus scripsi de amicitia. Tum est Cato locutus, quo erat nemo fere senior temporibus illis, nemo prudentior; nunc Laelius et sapiens (sic enim est habitus) et amicitiae gloria excellens de amicitia loquetur. Tu velim a me animum parumper avertas, Laelium loqui ipsum putes. C. Fannius et Q. Mucius ad socerum veniunt post mortem Africani; ab his sermo oritur, respondet Laelius, cuius tota disputatio est de amicitia, quam legens te ipse cognosces.\r\n\r\nAc ne quis a nobis hoc ita dici forte miretur, quod alia quaedam in hoc facultas sit ingeni, neque haec dicendi ratio aut disciplina, ne nos quidem huic uni studio penitus umquam dediti fuimus. Etenim omnes artes, quae ad humanitatem pertinent, habent quoddam commune vinculum, et quasi cognatione quadam inter se continentur.\r\n\r\nSed si ille hac tam eximia fortuna propter utilitatem rei publicae frui non properat, ut omnia illa conficiat, quid ego, senator, facere debeo, quem, etiamsi ille aliud vellet, rei publicae consulere oporteret?\r\n\r\nEt quia Mesopotamiae tractus omnes crebro inquietari sueti praetenturis et stationibus servabantur agrariis, laevorsum flexo itinere Osdroenae subsederat extimas partes, novum parumque aliquando temptatum commentum adgressus. quod si impetrasset, fulminis modo cuncta vastarat. erat autem quod cogitabat huius modi.\r\n\r\nHoc inmaturo interitu ipse quoque sui pertaesus excessit e vita aetatis nono anno atque vicensimo cum quadriennio imperasset. natus apud Tuscos in Massa Veternensi, patre Constantio Constantini fratre imperatoris, matreque Galla sorore Rufini et Cerealis, quos trabeae consulares nobilitarunt et praefecturae.");
 		textDebouche.setLineWrap(true);
 		textDebouche.setEditable(false);
 		textDebouche.setPreferredSize(new Dimension(0, 0));
 		textDebouche.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
-		scrollPaneDeb.setViewportView(textDebouche);
 		textDebouche.setColumns(20);
 		textDebouche.setRows(7);
+		
+		JScrollPane scrollPaneDeb = new JScrollPane();
+		panelCcpDebTxt.add(scrollPaneDeb);
+		scrollPaneDeb.setViewportView(textDebouche);
 		
 		Component verticalStrut = Box.createVerticalStrut(20);
 		verticalStrut.setPreferredSize(new Dimension(0, 25));
@@ -366,5 +362,43 @@ public class PanelCFormation extends JPanel
 		});
 	}
 
+
+	public JTextField getTxtIntitule() {
+		return txtIntitule;
+	}
+
+
+	public JTextField getTxtDuree() {
+		return txtDuree;
+	}
+
+
+	public JTextField getTxtSpe() {
+		return txtSpe;
+	}
+
+
+	public JTextField getTxtGrn() {
+		return txtGrn;
+	}
+
+
+	public JTextField getTxtOffre() {
+		return txtOffre;
+	}
+
+
+	public JTextField getTxtNbStage() {
+		return txtNbStage;
+	}
+
+	public JTextArea getTextCcp() {
+		return textCcp;
+	}
+	
+	public JTextArea getTextDebouche() {
+		return textDebouche;
+	}
+	
 	
 }
