@@ -32,12 +32,12 @@ public class Specialisation extends DataParent {
 	@NotNull
 	private String nom = null;
 
-	@OneToMany(fetch = FetchType.LAZY)
+	@OneToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name = "frm_id")
 	@NotNull
 	private List<Formation> listFormation = null;
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "j_utilisateur_specialisation", joinColumns = @JoinColumn(name = "spe_id") , inverseJoinColumns = @JoinColumn(name = "uti_id") )
 	@NotNull
 	private List<Utilisateur> listUtilisateur = null;

@@ -4,12 +4,12 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import ihm.fenetre.PanelCFormation;
 
-public class PanelCFormationListSelectionListener implements ListSelectionListener {
+public class PanelCFormationListener implements ListSelectionListener {
 
 
 	private PanelCFormation panelCFormation;
 
-	public  PanelCFormationListSelectionListener(PanelCFormation panelListened) 
+	public  PanelCFormationListener(PanelCFormation panelListened) 
 	{
 		this.panelCFormation = panelListened;
 	}

@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
+import javax.swing.JScrollPane;
 
 
 public class PanelMngModule extends JPanel
@@ -61,11 +62,19 @@ public class PanelMngModule extends JPanel
 		lblMesFormations.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMesFormations.setPreferredSize(new Dimension(75, 70));
 		
-		JPanel panelCenterModList = new JPanel();
-		panelCenterModList.setOpaque(false);
-		panelCenterModList.setMinimumSize(new Dimension(0, 10));
-		panelLeft.add(panelCenterModList, BorderLayout.CENTER);
-		panelCenterModList.setPreferredSize(new Dimension(50, 10));
+		JPanel panelAllModList = new JPanel();
+		panelAllModList.setOpaque(false);
+		panelAllModList.setMinimumSize(new Dimension(0, 10));
+		panelLeft.add(panelAllModList, BorderLayout.CENTER);
+		panelAllModList.setPreferredSize(new Dimension(50, 10));
+		panelAllModList.setLayout(new BoxLayout(panelAllModList, BoxLayout.X_AXIS));
+		
+		JScrollPane scrollAllModList = new JScrollPane();
+		scrollAllModList.add(panelAllModList);
+		
+		panelLeft.add(scrollAllModList, BorderLayout.SOUTH);
+		
+		
 		
 		JPanel panelMid = new JPanel();
 		panelMid.setOpaque(false);
@@ -93,6 +102,11 @@ public class PanelMngModule extends JPanel
 		JPanel panelLoadMod = new JPanel();
 		panelLoadMod.setOpaque(false);
 		panelMid.add(panelLoadMod, BorderLayout.CENTER);
+		panelLoadMod.setLayout(new BoxLayout(panelLoadMod, BoxLayout.X_AXIS));
+		
+		JScrollPane scrollPaneLoadMod = new JScrollPane();
+		scrollPaneLoadMod.add(panelLoadMod);
+		panelMid.add(scrollPaneLoadMod, BorderLayout.SOUTH);
 		
 		JPanel panelRight = new JPanel();
 		panelRight.setOpaque(false);
@@ -122,6 +136,12 @@ public class PanelMngModule extends JPanel
 		panelLoadSeq.setMinimumSize(new Dimension(0, 10));
 		panelLoadSeq.setBackground(new Color(0, 60, 110));
 		panelRight.add(panelLoadSeq, BorderLayout.CENTER);
+		panelLoadSeq.setLayout(new BoxLayout(panelLoadSeq, BoxLayout.X_AXIS));
+		
+		JScrollPane scrollPaneLoadSeq = new JScrollPane();
+		scrollPaneLoadSeq.add(panelLoadSeq);
+		
+		panelRight.add(scrollPaneLoadSeq, BorderLayout.SOUTH);
 		
 		JPanel panelButton = new JPanel();
 		add(panelButton, BorderLayout.SOUTH);

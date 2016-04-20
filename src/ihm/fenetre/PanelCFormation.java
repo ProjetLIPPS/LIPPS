@@ -23,7 +23,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import ihm.actionListener.PanelCFormationListSelectionListener;
+import ihm.actionListener.PanelCFormationListener;
 import ihm.popup.CreaForm;
 import ihm.theme.ThemeLIPPS;
 
@@ -46,7 +46,7 @@ public class PanelCFormation extends JPanel
 	public PanelCFormation()
 	{
 		
-		PanelCFormationListSelectionListener panelCFormationListSelectionListener = new PanelCFormationListSelectionListener(this);
+		PanelCFormationListener panelCFormationListSelectionListener = new PanelCFormationListener(this);
 		setMinimumSize(new Dimension(400, 10));
 		
 		

@@ -56,6 +56,10 @@ public class Formation extends DataParent {
 	@Column(name = "frm_nb_stage")
 	@NotNull
 	private Integer nbstage = null;
+	
+	@Column(name = "frm_model")
+	@NotNull
+	private boolean isModel;
 
 	@OneToMany(fetch = FetchType.LAZY)
 	@JoinColumn(name = "prd_id")

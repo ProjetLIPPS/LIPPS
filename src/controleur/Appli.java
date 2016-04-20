@@ -5,8 +5,11 @@ package controleur;
 import org.hibernate.cfg.Configuration;         
 import ihm.LippsIhm;
 import model.baseDAO.DaoFactory;
+import model.baseDAO.DaoParent;
 import model.objet.Contact;
+import model.objet.Formation;
 import model.objet.Log;
+import model.objet.Specialisation;
 import model.objet.Utilisateur;
 
 
@@ -16,11 +19,10 @@ public class Appli {
 		
 		Boolean result = null;
 
-		
-	/*	try
+		try
 		{
 			// configure hibernate
-			 new Configuration().configure().buildSessionFactory();
+			// new Configuration().configure().buildSessionFactory();
 			//Utilisateur user1 = new Utilisateur(null, "Connu", "Alain", "2012/02/10" , 26262, "5545654610");
 			
 			
@@ -32,12 +34,13 @@ public class Appli {
 //			
 //			Log log1 = new Log(null ,user1);
 //			DaoFactory.getDaoLog().save(log1);
-			
-			
-			
-			
-			
-			
+//		Specialisation spe1 = new Specialisation("Informatique");
+//		DaoFactory.getDaoSpecialisation().save(spe1);
+//		
+//		//DaoFactory.getDaoSpecialisation().save(spe1);
+//			
+//		Formation frm1 = new Formation(123, 456, "Dev logiciel", 1295, "emplois blabla", 2, 3, spe1);
+//		DaoFactory.getDaoFormation().save(frm1);
 			
 			result = true;
 		}
@@ -51,7 +54,7 @@ public class Appli {
 		{
 			System.out.println(String.valueOf(result));
 		}
-		*/
+	
 		
 
 		LippsIhm frame = new LippsIhm();
