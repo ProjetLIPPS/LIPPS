@@ -23,22 +23,17 @@ public class Appli {
 			 new Configuration().configure().buildSessionFactory();
 			//Utilisateur user1 = new Utilisateur(null, "Connu", "Alain", "2012/02/10" , 26262, "5545654610");
 			
+			/*
+			Contact contact1 = new Contact(null, "test@dechavanne.fr");
+			DaoFactory.getDaoContact().save(contact1);
 			
-//			Contact contact1 = new Contact(null, "test@dechavanne.fr");
-//			DaoFactory.getDaoContact().save(contact1);
-//			
-//		    user1.setContact(contact1);
-//			DaoFactory.getDaoUtilisateur().save(user1);
-//			
-//			Log log1 = new Log(null ,user1);
-//			DaoFactory.getDaoLog().save(log1);
+		    user1.setContact(contact1);
+			DaoFactory.getDaoUtilisateur().save(user1);
 			
-			
-			
-			
-			
-			
-			
+			Log log1 = new Log(null ,user1);
+			DaoFactory.getDaoLog().save(log1);
+			*/
+
 			result = true;
 		}
 		catch (Exception e)
@@ -53,11 +48,11 @@ public class Appli {
 		}
 		
 		
-
+		/*
 		LippsIhm frame = new LippsIhm();
 		frame.setVisible(true);
 		frame.refresh();
-				
+		*/	
 
 	}
 

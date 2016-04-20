@@ -33,72 +33,15 @@ public class Contact extends DataParent {
 	private String ville = null;
 
 	@Column(name = "con_tel")
-	private String tel = null;
+	private String telephone = null;
 
 	@Column(name = "con_mail")
 	@NotNull
 	private String mail = null;
 
-	public Contact(Integer id, String mail) {
-		super();
-		this.id = id;
-		this.mail = mail;
-	}
-
 	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getRaisonSociale() {
-		return raisonSociale;
-	}
-
-	public void setRaisonSociale(String raisonSociale) {
-		this.raisonSociale = raisonSociale;
-	}
-
-	public String getRue() {
-		return rue;
-	}
-
-	public void setRue(String rue) {
-		this.rue = rue;
-	}
-
-	public Integer getCp() {
-		return cp;
-	}
-
-	public void setCp(Integer cp) {
-		this.cp = cp;
-	}
-
-	public String getVille() {
-		return ville;
-	}
-
-	public void setVille(String ville) {
-		this.ville = ville;
-	}
-
-	public String getTel() {
-		return tel;
-	}
-
-	public void setTel(String tel) {
-		this.tel = tel;
-	}
-
-	public String getMail() {
-		return mail;
-	}
-
-	public void setMail(String mail) {
-		this.mail = mail;
-	}
 
 }

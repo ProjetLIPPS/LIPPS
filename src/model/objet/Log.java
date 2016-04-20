@@ -28,45 +28,14 @@ public class Log extends DataParent {
 	private Integer id = null;
 
 	@Type(type = "date")
-	@Column(name = "log_lastconn")
+	@Column(name = "log_last_conn")
 	@NotNull
-	protected Date lastconn = null;
+	protected Date derniereConnexion= null;
 
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "uti_id")
-	@NotNull
-	private Utilisateur user = null;
-
-	public Log(Integer id, Utilisateur user) {
-		super();
-		this.id = id;
-		lastconn = Date.from(Instant.now());
-		this.user = user;
-
-	}
-
+	
 	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public Date getLastconn() {
-		return lastconn;
-	}
-
-	public void setLastconn(Date lastconn) {
-		this.lastconn = lastconn;
-	}
-
-	public Utilisateur getListUtilisateur() {
-		return user;
-	}
-
-	public void setUtilisateur(Utilisateur user) {
-		this.user = user;
-	}
 
 }// End Log

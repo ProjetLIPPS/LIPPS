@@ -30,39 +30,9 @@ public class TypeUtilisateur extends DataParent {
 	@Column(name = "typ_role")
 	private String role = null;
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "j_utilisateur_role", joinColumns = @JoinColumn(name = "typ_id") , inverseJoinColumns = @JoinColumn(name = "uti_id") )
-	private List<Utilisateur> listUtilisateur = null;
-
-	public TypeUtilisateur(Integer id, String role, List<Utilisateur> listUtilisateur) {
-		super();
-		this.id = id;
-		this.role = role;
-		this.listUtilisateur = listUtilisateur;
-	}
-
+	
 	public Integer getId() {
 		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
-
-	public List<Utilisateur> getListUtilisateur() {
-		return listUtilisateur;
-	}
-
-	public void setListUtilisateur(List<Utilisateur> listUtilisateur) {
-		this.listUtilisateur = listUtilisateur;
 	}
 
 }

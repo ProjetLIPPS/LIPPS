@@ -28,33 +28,23 @@
 		
 
 		<!-- List of XML mapping files -->
-		<mapping class = "model.objet.AnnexeLiv"/>
+		<mapping class = "model.objet.AnnexeLivret"/>
 		<mapping class = "model.objet.Contact"/>
 		<mapping class = "model.objet.Formation" />
 		<mapping class = "model.objet.Livret"/>
 		<mapping class = "model.objet.Log"/>
 		<mapping class = "model.objet.Module"/>
-		<mapping class = "model.objet.ModuleLiv"/>
+		<mapping class = "model.objet.ModuleLivret"/>
 		<mapping class = "model.objet.Periode"/>
-		<mapping class = "model.objet.PeriodeLiv"/>
-		<mapping class = "model.objet.ProjetProLiv"/>				
-		<mapping class = "model.objet.ResultParcoursLiv"/>
+		<mapping class = "model.objet.PeriodeLivret"/>
+		<mapping class = "model.objet.ProjetProLivret"/>				
+		<mapping class = "model.objet.ResultatParcoursLivret"/>
 		<mapping class = "model.objet.Sequence"/>
-		<mapping class = "model.objet.SequenceLiv"/>
+		<mapping class = "model.objet.SequenceLivret"/>
 		<mapping class = "model.objet.Specialisation" />
-		<mapping class = "model.objet.SuiviLiv"/>
+		<mapping class = "model.objet.SuiviLivret"/>
 		<mapping class = "model.objet.TypeUtilisateur"/>
 		<mapping class = "model.objet.Utilisateur"/>
-		
-		
-		
-		
-		<mapping class = "model.objet.Periode"/>
-		
-		<mapping class = "model.objet.Periode"/>
-		<mapping class = "model.objet.Periode"/>
-		<mapping class = "model.objet.Periode"/>
-		
 		
 			
 	</session-factory>

@@ -34,52 +34,11 @@ public class Periode extends DataParent {
 	@Type(type = "date")
 	private Date dateFin = null;
 
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "frm_id")
-	private Formation formation = null;
-
 	@Column(name = "prd_typ")
 	private Integer typePeriode = null;
 
-	public Periode(Integer id, Date dateDebut, Date dateFin, Formation formation, Integer typeId) {
-		super();
-		this.id = id;
-		this.dateDebut = dateDebut;
-		this.dateFin = dateFin;
-		this.formation = formation;
-		this.typePeriode = typeId;
-	}
-
 	public Integer getId() {
 		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public Date getDateDebut() {
-		return dateDebut;
-	}
-
-	public void setDateDebut(Date dateDebut) {
-		this.dateDebut = dateDebut;
-	}
-
-	public Date getDateFin() {
-		return dateFin;
-	}
-
-	public void setDateFin(Date dateFin) {
-		this.dateFin = dateFin;
-	}
-
-	public Formation getFrmId() {
-		return formation;
-	}
-
-	public void setFrmId(Formation formation) {
-		this.formation = formation;
 	}
 
 }

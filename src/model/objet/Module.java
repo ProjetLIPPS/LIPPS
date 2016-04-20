@@ -31,34 +31,10 @@ public class Module extends DataParent {
 	@NotNull
 	private String intitule = null;
 
-	@OneToMany(fetch = FetchType.LAZY)
-	@JoinColumn(name = "seq_id")
-	private List<Sequence> listSequence = null;
-
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinTable(name = "j_formation_module", joinColumns = @JoinColumn(name = "mod_id") , inverseJoinColumns = @JoinColumn(name = "frm_id") )
-	private List<Formation> listFormation = null;
-
-	public Module(Integer id, String intitule) {
-		super();
-		this.id = id;
-		this.intitule = intitule;
-	}
-
+	
 	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getIntitule() {
-		return intitule;
-	}
-
-	public void setIntitule(String intitule) {
-		this.intitule = intitule;
-	}
 
 }
