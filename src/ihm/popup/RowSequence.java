@@ -19,7 +19,8 @@ import javax.swing.border.MatteBorder;
 import ihm.theme.ThemeLIPPS;
 import javax.swing.JScrollPane;
 
-public class RowSequence extends JPanel {
+public class RowSequence extends JPanel
+{
 
 	private CreationModule JFrame;
 	

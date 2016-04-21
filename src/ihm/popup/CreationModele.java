@@ -80,14 +80,14 @@ public class CreationModele extends JDialog {
 		
 		JButton btnNewButton = new JButton("Valider");
 		btnNewButton.setBackground(Color.WHITE);
-		btnNewButton.setBounds(381, 692, 117, 29);
+		btnNewButton.setBounds(210, 692, 117, 29);
 		contentPane.add(btnNewButton);
 		btnNewButton.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_BUTTON));
 		
 		JButton btnNewButton_1 = new JButton("Annuler");
 		btnNewButton_1.setBackground(Color.WHITE);
 		btnNewButton_1.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_BUTTON));
-		btnNewButton_1.setBounds(212, 692, 117, 29);
+		btnNewButton_1.setBounds(381, 692, 117, 29);
 		contentPane.add(btnNewButton_1);
 		
 		JLabel lblSpcialit = new JLabel("Spécialité :");
