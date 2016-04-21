@@ -20,8 +20,10 @@ import javax.swing.border.MatteBorder;
 
 import controleur.LoadModSeqList;
 import controleur.RenvoiListeFormation;
+import ihm.actionListener.MngModuleListener;
 import ihm.popup.CreationModule;
 import ihm.theme.ThemeLIPPS;
+import javax.swing.AbstractListModel;
 
 
 
@@ -29,12 +31,15 @@ public class PanelMngModule extends JPanel {
 
 	
 	private static final long serialVersionUID = 1L;
-
-	/**
-	 * TODO implementation rowsequences !!!
-	 */
 	
+	private MngModuleListener mngModuleListener;
+	private JPanel panelAllModList = new JPanel();
+	
+	
+
 	public PanelMngModule()	{
+		
+		mngModuleListener = new MngModuleListener(this);
 		
 		setMinimumSize(new Dimension(400, 10));
 		
@@ -61,10 +66,10 @@ public class PanelMngModule extends JPanel {
 		panelFormSelec.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblMesFormations_1 = new JLabel("Mes Formations");
-		lblMesFormations_1.setPreferredSize(new Dimension(75, 70));
+		lblMesFormations_1.setPreferredSize(new Dimension(75, 40));
 		lblMesFormations_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMesFormations_1.setForeground(Color.WHITE);
-		lblMesFormations_1.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, ThemeLIPPS.FONT_SIZE_TITLE));
+		lblMesFormations_1.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, ThemeLIPPS.FONT_SIZE_BUTTON));
 		lblMesFormations_1.setBorder(new MatteBorder(0, 0, 1, 0, (Color) Color.WHITE));
 		panelFormSelec.add(lblMesFormations_1, BorderLayout.NORTH);
 		
@@ -74,20 +79,32 @@ public class PanelMngModule extends JPanel {
 		panelMyForm.setLayout(new BorderLayout(0, 0));
 		
 		JList<String> listFormation = new JList<String>();
+		listFormation.setModel(new AbstractListModel<String>() {
+	
+			private static final long serialVersionUID = 1L;
+			String[] values = RenvoiListeFormation.renvoiListeFormation();
+			public int getSize() {
+				return values.length;
+			}
+			public String getElementAt(int index) {
+				return values[index];
+			}
+		});
+			
 		listFormation.setOpaque(false);		
-		String[] values = RenvoiListeFormation.renvoiListeFormation();  	// CE STRING CONTIENT LES FORMATIONS
-		listFormation.setListData(values);
 		listFormation.setForeground(Color.WHITE);
 		listFormation.setBackground(ThemeLIPPS.BLUE_DARK);
-
 		listFormation.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listFormation.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, ThemeLIPPS.FONT_SIZE_BUTTON));
-		panelMyForm.add(listFormation);
+		listFormation.addListSelectionListener(mngModuleListener);
+		
+		panelMyForm.add(listFormation, BorderLayout.CENTER);
 		
 		// PANELLEFT en borderlayout contient panels existingmod  pour le label (north) et allmodlist (center) pour afficher les modules (via des panelmngmodulerowmod)
 		
 		JPanel panelLeft = new JPanel();
 		panelLeft.setOpaque(false);
+		panelLeft.setBackground(ThemeLIPPS.BLUE_DARK);
 		panelBoxTrio.add(panelLeft);
 		panelLeft.setBorder(new MatteBorder(2, 0, 2, 1, (Color) new Color(0, 0, 0)));
 		panelLeft.setPreferredSize(new Dimension(250, 10));
@@ -102,29 +119,25 @@ public class PanelMngModule extends JPanel {
 		lblMesFormations.setBorder(new MatteBorder(0, 0, 1, 0, (Color) Color.WHITE));
 		lblMesFormations.setForeground(Color.WHITE);
 		panelExistingMod.add(lblMesFormations, BorderLayout.NORTH);
-		lblMesFormations.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, ThemeLIPPS.FONT_SIZE_TITLE));
+		lblMesFormations.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, ThemeLIPPS.FONT_SIZE_BUTTON));
 		lblMesFormations.setHorizontalAlignment(SwingConstants.CENTER);
-		lblMesFormations.setPreferredSize(new Dimension(75, 70));
+		lblMesFormations.setPreferredSize(new Dimension(75, 40));
 		
-		JPanel panelAllModList = new JPanel();
-		panelAllModList.setOpaque(false);
+		
+		panelAllModList.setOpaque(true);
+		panelAllModList.setBackground(ThemeLIPPS.BLUE_DARK);
 		panelAllModList.setMinimumSize(new Dimension(0, 10));
 		panelAllModList.setPreferredSize(new Dimension(50, 10));
 		panelAllModList.setLayout(new BoxLayout(panelAllModList, BoxLayout.Y_AXIS));
 		
-		// ICI ON RECUPERE VIA LE CONTROLLER TOUS LES MODULES DE LA FORMATION,  QU'ON INTEGRE A DES PANELROWMODS AVANT DE LES ENVOYER DANS LE PANEL (BOXLAYOUT)
-		List<PanelMngModuleRowMod> listMod = LoadModSeqList.listeAllModule();
 		
-		for (PanelMngModuleRowMod mod : listMod)  {
-			
-			panelAllModList.add(mod);
-		}
-		
-		
-		JScrollPane scrollAllModList = new JScrollPane();
-		scrollAllModList.setOpaque(false);
-		scrollAllModList.setViewportView(panelAllModList);
-		panelLeft.add(scrollAllModList, BorderLayout.CENTER);
+		panelLeft.add(panelAllModList, BorderLayout.CENTER);
+		/*JScrollPane scrollAllModList = new JScrollPane();
+		scrollAllModList.setBorder(null);
+		scrollAllModList.setBackground(ThemeLIPPS.BLUE_DARK);
+		scrollAllModList.setOpaque(true);
+		scrollAllModList.setViewportView(panelAllModList);*/
+		//panelLeft.add(scrollAllModList, BorderLayout.CENTER);
 		
 	
 		
@@ -147,10 +160,10 @@ public class PanelMngModule extends JPanel {
 		
 		JLabel lblMesModules = new JLabel("Mes modules ");
 		lblMesModules.setBorder(new MatteBorder(0, 0, 1, 0, (Color) Color.WHITE));
-		lblMesModules.setPreferredSize(new Dimension(75, 70));
+		lblMesModules.setPreferredSize(new Dimension(75, 40));
 		lblMesModules.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMesModules.setForeground(Color.WHITE);
-		lblMesModules.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, ThemeLIPPS.FONT_SIZE_TITLE));
+		lblMesModules.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, ThemeLIPPS.FONT_SIZE_BUTTON));
 		panelMyMod.add(lblMesModules, BorderLayout.NORTH);
 		
 		
@@ -170,9 +183,10 @@ public class PanelMngModule extends JPanel {
 			
 			panelLoadMod.add(mod);
 		}
+		*/
+		//	panelMid.add(scrollPaneLoadMod, BorderLayout.CENTER);
 		
-		
-		panelMid.add(scrollPaneLoadMod, BorderLayout.CENTER);*/
+		panelMid.add(panelLoadMod, BorderLayout.CENTER);
 		
 	
 		
@@ -194,10 +208,10 @@ public class PanelMngModule extends JPanel {
 		
 		JLabel lblSodules = new JLabel("Séquences liées");
 		lblSodules.setBorder(new MatteBorder(0, 0, 1, 0, (Color) Color.WHITE));
-		lblSodules.setPreferredSize(new Dimension(75, 70));
+		lblSodules.setPreferredSize(new Dimension(75, 40));
 		lblSodules.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSodules.setForeground(Color.WHITE);
-		lblSodules.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, ThemeLIPPS.FONT_SIZE_TITLE));
+		lblSodules.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, ThemeLIPPS.FONT_SIZE_BUTTON));
 		panelMySeq.add(lblSodules, BorderLayout.NORTH);
 		
 			
@@ -210,12 +224,14 @@ public class PanelMngModule extends JPanel {
 		panelLoadSeq.setLayout(new BoxLayout(panelLoadSeq, BoxLayout.X_AXIS));
 		
 		JScrollPane scrollPaneLoadSeq = new JScrollPane();
+		scrollPaneLoadSeq.setBorder(null);
 		//scrollPaneLoadSeq.add(panelLoadSeq);
 		
 		panelRight.add(scrollPaneLoadSeq, BorderLayout.SOUTH);
 		
 		JPanel panelButton = new JPanel();
 		add(panelButton, BorderLayout.SOUTH);
+		panelButton.setBackground(ThemeLIPPS.BLUE);
 		
 		JButton btnCrerNouveauModule = new JButton("Créer nouveau module");
 		btnCrerNouveauModule.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_BUTTON));
@@ -230,9 +246,10 @@ public class PanelMngModule extends JPanel {
 			}
 		});
 		
+	}
 	
-		
-		
+	public JPanel getPanelAllModList() {
+		return panelAllModList;
 	}
 
 	

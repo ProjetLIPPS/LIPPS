@@ -1,5 +1,6 @@
 package model.objet;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -71,12 +72,17 @@ public class Formation extends DataParent {
 
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinTable(name = "j_formation_module", joinColumns = @JoinColumn(name = "frm_id") , inverseJoinColumns = @JoinColumn(name = "mod_id") )
-	private List<Module> listModule = null;
+	private List<Module> listModule = new ArrayList<Module>();
 
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinTable(name = "j_utilisateur_formation", joinColumns = @JoinColumn(name = "frm_id") , inverseJoinColumns = @JoinColumn(name = "uti_id") )
 	private List<Utilisateur> listUtilisateur = null;
 
+	
+	public Formation() {
+		super();
+	}
+	
 	public Formation(Integer grn, Integer offre, String intitule, Integer duree, String debouche, Integer nbccp,
 			Integer nbstage, Specialisation spe_id) {
 		super();
@@ -168,6 +174,10 @@ public class Formation extends DataParent {
 
 	public void setListModule(List<Module> listModule) {
 		this.listModule = listModule;
+	}
+	
+	public void addModule(Module module) {
+		this.listModule.add(module);
 	}
 
 	public List<Utilisateur> getListUtilisateur() {

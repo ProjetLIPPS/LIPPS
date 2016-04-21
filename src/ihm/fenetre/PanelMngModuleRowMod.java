@@ -8,7 +8,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
-import javax.swing.border.MatteBorder;
 
 import ihm.theme.ThemeLIPPS;
 import model.objet.Module;
@@ -17,19 +16,17 @@ import model.objet.Module;
 public class PanelMngModuleRowMod extends JPanel {
 
 	
-	
-	public PanelMngModuleRowMod(Module  module) 
-	{
-		setOpaque(false);
-	
+	private static final long serialVersionUID = 1L;
+
+	public PanelMngModuleRowMod(Module  module) 	{
 		
+		setOpaque(false);
 		setPreferredSize(new Dimension(250, 50));
-		this.setMinimumSize(new Dimension(10, 70));
-		this.setMaximumSize(new Dimension(32767, 100));
-		this.setBorder(new MatteBorder(1, 0, 0, 0, (Color) Color.WHITE));
-		this.setBackground(Color.WHITE);
+		setMinimumSize(new Dimension(10, 70));
+		setMaximumSize(new Dimension(32767, 100));
+		//this.setBorder(new MatteBorder(1, 0, 0, 0, (Color) Color.WHITE));
 		//this.setAlignmentX(0.0f);
-		this.setLayout(null);
+		setBackground(ThemeLIPPS.BLUE_DARK);
 		
 				
 		JScrollPane scrollPane = new JScrollPane();
@@ -37,6 +34,7 @@ public class PanelMngModuleRowMod extends JPanel {
 		add(scrollPane);
 		
 		JTextArea textArea = new JTextArea();
+		textArea.setEditable(false);
 		scrollPane.setViewportView(textArea);
 		textArea.setWrapStyleWord(true);
 		textArea.setText(module.getIntitule()); 
