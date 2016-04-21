@@ -2,16 +2,12 @@ package model.objet;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -31,26 +27,23 @@ public class Module extends DataParent {
 	@NotNull
 	private String intitule = null;
 
-	@OneToMany(fetch = FetchType.LAZY)
-	@JoinColumn(name = "seq_id")
-	private List<Sequence> listSequence = null;
-
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinTable(name = "j_formation_module", joinColumns = @JoinColumn(name = "mod_id") , inverseJoinColumns = @JoinColumn(name = "frm_id") )
-	private List<Formation> listFormation = null;
-
-	public Module(Integer id, String intitule) {
-		super();
-		this.id = id;
-		this.intitule = intitule;
-	}
+	@OneToMany(mappedBy = "module", fetch = FetchType.LAZY)
+	private List<FormationToModule> formationToModule = null;
 
 	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public Module() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Module(Integer id, String intitule, List<FormationToModule> formationToModule) {
+		super();
 		this.id = id;
+		this.intitule = intitule;
+		this.formationToModule = formationToModule;
 	}
 
 	public String getIntitule() {
@@ -61,4 +54,17 @@ public class Module extends DataParent {
 		this.intitule = intitule;
 	}
 
+	public List<FormationToModule> getFormationToModule() {
+		return formationToModule;
+	}
+
+	public void setFormationToModule(List<FormationToModule> formationToModule) {
+		this.formationToModule = formationToModule;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	
 }

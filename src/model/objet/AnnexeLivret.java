@@ -16,8 +16,8 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.Type;
 
 @Entity
-@Table(name = "annexe_liv")
-public class AnnexeLiv extends DataParent {
+@Table(name = "annexe_livret")
+public class AnnexeLivret extends DataParent {
 
 	public static final String NOM_ID = "anx_id";
 
@@ -36,8 +36,8 @@ public class AnnexeLiv extends DataParent {
 	@Column(name = "anx_duree")
 	private Integer duree = null;
 
-	@Column(name = "anx_duree_tot")
-	private Integer dureetotale = null;
+	@Column(name = "anx_duree_totale")
+	private Integer dureeTotale = null;
 
 	@Column(name = "anx_modalite")
 	private String modalite = null;
@@ -45,82 +45,110 @@ public class AnnexeLiv extends DataParent {
 	@Column(name = "anx_acteur")
 	private String acteur = null;
 
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "liv_id")
+	@OneToOne (fetch=FetchType.LAZY)
+	@JoinColumn (name = "liv_id")
 	@NotNull
 	private Livret livret = null;
-
-	// Constructeur
-
-	public AnnexeLiv(Livret livret) {
-		super();
-		this.livret = livret;
-	}
-
-	// GetSets
-
+	
+	
 	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+
+	public AnnexeLivret() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
+
+
+	public AnnexeLivret(Integer id, String objet, Date date, Integer duree, Integer dureeTotale, String modalite,
+			String acteur, Livret livret) {
+		super();
+		this.id = id;
+		this.objet = objet;
+		this.date = date;
+		this.duree = duree;
+		this.dureeTotale = dureeTotale;
+		this.modalite = modalite;
+		this.acteur = acteur;
+		this.livret = livret;
+	}
+
 
 	public String getObjet() {
 		return objet;
 	}
 
+
 	public void setObjet(String objet) {
 		this.objet = objet;
 	}
+
 
 	public Date getDate() {
 		return date;
 	}
 
+
 	public void setDate(Date date) {
 		this.date = date;
 	}
+
 
 	public Integer getDuree() {
 		return duree;
 	}
 
+
 	public void setDuree(Integer duree) {
 		this.duree = duree;
 	}
 
-	public Integer getDureetotale() {
-		return dureetotale;
+
+	public Integer getDureeTotale() {
+		return dureeTotale;
 	}
 
-	public void setDureetotale(Integer dureetotale) {
-		this.dureetotale = dureetotale;
+
+	public void setDureeTotale(Integer dureeTotale) {
+		this.dureeTotale = dureeTotale;
 	}
+
 
 	public String getModalite() {
 		return modalite;
 	}
 
+
 	public void setModalite(String modalite) {
 		this.modalite = modalite;
 	}
+
 
 	public String getActeur() {
 		return acteur;
 	}
 
+
 	public void setActeur(String acteur) {
 		this.acteur = acteur;
 	}
+
 
 	public Livret getLivret() {
 		return livret;
 	}
 
-	public void setLivret(Livret idLivret) {
-		this.livret = idLivret;
+
+	public void setLivret(Livret livret) {
+		this.livret = livret;
 	}
 
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	
 }

@@ -1,7 +1,5 @@
 package model.objet;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,15 +7,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "module_liv")
+@Table(name = "module_livret")
 
-public class ModuleLiv extends DataParent {
+public class ModuleLivret extends DataParent {
 
 	public static final String NOM_ID = "mdl_id";
 
@@ -30,84 +27,100 @@ public class ModuleLiv extends DataParent {
 	@NotNull
 	private String intitule = null;
 
-	@Column(name = "mdl_result")
-	private boolean result;
+	@Column(name = "mdl_resultat")
+	private boolean resultat;
 
-	@Column(name = "mdl_obs")
+	@Column(name = "mdl_observation")
 	@NotNull
 	private String observation = null;
 
-	@Column(name = "mdl_spe_int")
-	private String speInt = null;
-
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "liv_id")
+	@Column(name = "mdl_intitule_specialisation")
+	private String intituleSpecialisation = null;
+	
+	@OneToOne (fetch=FetchType.LAZY)
+	@JoinColumn (name = "liv_id")
+	@NotNull
 	private Livret livret = null;
-
-	@OneToMany(fetch = FetchType.LAZY)
-	@JoinColumn(name = "sql_id")
-	private List<SequenceLiv> listSequenceLiv = null;
-
-	public ModuleLiv(Integer id, String intitule) {
-		super();
-		this.id = id;
-		this.intitule = intitule;
-	}
+	
 
 	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+
+	public ModuleLivret() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
+
+
+	public ModuleLivret(Integer id, String intitule, boolean resultat, String observation,
+			String intituleSpecialisation, Livret livret) {
+		super();
+		this.id = id;
+		this.intitule = intitule;
+		this.resultat = resultat;
+		this.observation = observation;
+		this.intituleSpecialisation = intituleSpecialisation;
+		this.livret = livret;
+	}
+
 
 	public String getIntitule() {
 		return intitule;
 	}
 
+
 	public void setIntitule(String intitule) {
 		this.intitule = intitule;
 	}
 
-	public boolean isResult() {
-		return result;
+
+	public boolean isResultat() {
+		return resultat;
 	}
 
-	public void setResult(boolean result) {
-		this.result = result;
+
+	public void setResultat(boolean resultat) {
+		this.resultat = resultat;
 	}
+
 
 	public String getObservation() {
 		return observation;
 	}
 
+
 	public void setObservation(String observation) {
 		this.observation = observation;
 	}
 
-	public String getSpeInt() {
-		return speInt;
+
+	public String getIntituleSpecialisation() {
+		return intituleSpecialisation;
 	}
 
-	public void setSpeInt(String speInt) {
-		this.speInt = speInt;
+
+	public void setIntituleSpecialisation(String intituleSpecialisation) {
+		this.intituleSpecialisation = intituleSpecialisation;
 	}
+
 
 	public Livret getLivret() {
 		return livret;
 	}
 
+
 	public void setLivret(Livret livret) {
 		this.livret = livret;
 	}
 
-	public List<SequenceLiv> getListSequenceLiv() {
-		return listSequenceLiv;
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
-	public void setListSequenceLiv(List<SequenceLiv> listSequenceLiv) {
-		this.listSequenceLiv = listSequenceLiv;
-	}
+
+	
 
 }

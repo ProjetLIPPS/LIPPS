@@ -33,7 +33,8 @@ public class Appli {
 //			Log log1 = new Log(null ,user1);
 //			DaoFactory.getDaoLog().save(log1);
 			
-			
+			ControleurFMain ctrl = new ControleurFMain();
+			ctrl.init();
 			
 			
 			
@@ -54,9 +55,7 @@ public class Appli {
 		
 		
 
-		LippsIhm frame = new LippsIhm();
-		frame.setVisible(true);
-		frame.refresh();
+		
 				
 
 	}

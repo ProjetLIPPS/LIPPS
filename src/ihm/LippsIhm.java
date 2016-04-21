@@ -8,6 +8,7 @@ import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -32,6 +33,7 @@ public class LippsIhm extends JFrame {
 	private JPanel panelCompte;
 	private JLabel lblFormation;
 	private JLabel lblGererLesComptes;
+	
 	
 	
 	
@@ -148,7 +150,7 @@ public class LippsIhm extends JFrame {
 	
 	public void refresh()
 	{
-		SwingUtilities.updateComponentTreeUI(/*panelCenterMain*/ this);
+		SwingUtilities.updateComponentTreeUI(panelCenterMain);
 	}
 	
 	

@@ -2,33 +2,35 @@ package model.baseDAO;
 
 public class DaoFactory {
 	
-	private static DaoAnnexe daoAnnexe = null;
+	private static DaoAnnexeLivret daoAnnexeLivret = null;
 	private static DaoContact daoContact = null;
 	private static DaoFormation daoFormation = null;
 	private static DaoLivret daoLivret = null;
 	private static DaoLog daoLog = null;
 	private static DaoModule daoModule = null;
-	private static DaoModuleLiv daoModuleLiv = null;
+	private static DaoModuleLivret daoModuleLivret = null;
 	private static DaoPeriode daoPeriode = null;
-	private static DaoPeriodeLiv daoPeriodeLiv = null;
-	private static DaoProjetProLiv daoProjetProLiv = null;
-	private static DaoResultatParcoursLiv daoResultatParcoursLiv = null;
+	private static DaoPeriodeLivret daoPeriodeLivret = null;
+	private static DaoProjetProLivret daoProjetProLivret = null;
+	private static DaoResultatParcoursLivret daoResultatParcoursLivret = null;
+	private static DaoRole daoRole = null;
 	private static DaoSequence daoSequence = null;
-	private static DaoSequenceLiv daoSequenceLiv = null;
+	private static DaoSequenceLivret daoSequenceLivret = null;
 	private static DaoSpecialisation daoSpecialisation = null;
-	private static DaoSuiviLiv daoSuiviLiv = null;
-	private static DaoTypeUtilisateur daoTypeUtilisateur = null;
+	private static DaoSuiviLivret daoSuiviLivret = null;
+	private static DaoTypePeriode daoTypePeriode = null;
+	private static DaoTypePeriodeLivret daoTypePeriodeLivret = null;
 	private static DaoUtilisateur daoUtilisateur = null;
 	
 	
-	public static DaoParent getDaoAnnexe()
+	public static DaoParent getDaoAnnexeLivret()
 	{
-		if (daoAnnexe == null)
+		if (daoAnnexeLivret == null)
 		{
-			daoAnnexe = new DaoAnnexe();
+			daoAnnexeLivret = new DaoAnnexeLivret();
 		}
 		
-		return daoAnnexe;
+		return daoAnnexeLivret;
 	}
 	
 	public static DaoParent getDaoContact()
@@ -81,14 +83,14 @@ public class DaoFactory {
 		return daoModule;
 	}
 	
-	public static DaoParent getDaoModuleLiv()
+	public static DaoParent getDaoModuleLivret()
 	{
-		if (daoModuleLiv == null)
+		if (daoModuleLivret == null)
 		{
-			daoModuleLiv = new DaoModuleLiv();
+			daoModuleLivret = new DaoModuleLivret();
 		}
 		
-		return daoModule;
+		return daoModuleLivret;
 	}
 	
 	public static DaoParent getDaoPeriode()
@@ -101,35 +103,45 @@ public class DaoFactory {
 		return daoPeriode;
 	}
 	
-	public static DaoParent getDaoPeriodeLiv()
+	public static DaoParent getDaoPeriodeLivret()
 	{
-		if (daoPeriodeLiv == null)
+		if (daoPeriodeLivret == null)
 		{
-			daoPeriodeLiv = new DaoPeriodeLiv();
+			daoPeriodeLivret = new DaoPeriodeLivret();
 		}
 		
-		return daoPeriode;
+		return daoPeriodeLivret;
 	}
 	
 	
-	public static DaoParent getDaoProjetProLiv()
+	public static DaoParent getDaoProjetProLivret()
 	{
-		if (daoProjetProLiv == null)
+		if (daoProjetProLivret == null)
 		{
-			daoProjetProLiv = new DaoProjetProLiv();
+			daoProjetProLivret = new DaoProjetProLivret();
 		}
 		
-		return daoProjetProLiv;
+		return daoProjetProLivret;
 	}
 	
-	public static DaoParent getDaoResultatParcoursLiv()
+	public static DaoParent getDaoResultatParcoursLivret()
 	{
-		if (daoResultatParcoursLiv == null)
+		if (daoResultatParcoursLivret == null)
 		{
-			daoResultatParcoursLiv = new DaoResultatParcoursLiv();
+			daoResultatParcoursLivret = new DaoResultatParcoursLivret();
 		}
 		
-		return daoResultatParcoursLiv;
+		return daoResultatParcoursLivret;
+	}
+	
+	public static DaoParent getDaoRole()
+	{
+		if (daoRole == null)
+		{
+			daoRole = new DaoRole();
+		}
+		
+		return daoRole;
 	}
 	
 	public static DaoParent getDaoSequence()
@@ -142,14 +154,14 @@ public class DaoFactory {
 		return daoSequence;
 	}
 	
-	public static DaoParent getDaoSequenceLiv()
+	public static DaoParent getDaoSequenceLivret()
 	{
-		if (daoSequenceLiv == null)
+		if (daoSequenceLivret == null)
 		{
-			daoSequenceLiv = new DaoSequenceLiv();
+			daoSequenceLivret = new DaoSequenceLivret();
 		}
 		
-		return daoSequenceLiv;
+		return daoSequenceLivret;
 	}
 	
 	
@@ -163,14 +175,34 @@ public class DaoFactory {
 		return daoSpecialisation;
 	}
 	
-	public static DaoParent getDaoSuiviLiv()
+	public static DaoParent getDaoSuiviLivret()
 	{
-		if (daoSuiviLiv == null)
+		if (daoSuiviLivret == null)
 		{
-			daoSuiviLiv = new DaoSuiviLiv();
+			daoSuiviLivret = new DaoSuiviLivret();
 		}
 		
-		return daoSuiviLiv;
+		return daoSuiviLivret;
+	}
+	
+	public static DaoParent getDaoTypePeriode()
+	{
+		if (daoTypePeriode == null)
+		{
+			daoTypePeriode = new DaoTypePeriode();
+		}
+		
+		return daoTypePeriode;
+	}
+	
+	public static DaoParent getDaoTypePeriodeLivret()
+	{
+		if (daoTypePeriodeLivret == null)
+		{
+			daoTypePeriodeLivret = new DaoTypePeriodeLivret();
+		}
+		
+		return daoTypePeriodeLivret;
 	}
 	
 	public static DaoParent getDaoUtilisateur()
@@ -183,13 +215,5 @@ public class DaoFactory {
 		return daoUtilisateur;
 	}
 	
-	public static DaoParent getDaoTypeUtilisateur()
-	{
-		if (daoTypeUtilisateur == null)
-		{
-			daoTypeUtilisateur = new DaoTypeUtilisateur();
-		}
-		
-		return daoTypeUtilisateur;
-	}
+	
 }

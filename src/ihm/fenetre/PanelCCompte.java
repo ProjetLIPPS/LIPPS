@@ -11,8 +11,6 @@ import java.awt.Insets;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -27,12 +25,12 @@ import javax.swing.UIManager;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
-import ihm.actionListener.RechercheListener;
-import ihm.actionListener.TypeCompteListener;
+import actionListener.FocusListeners;
+import actionListener.MouseListeners;
 import ihm.theme.ThemeLIPPS;
-import javax.swing.border.MatteBorder;
 
 public class PanelCCompte extends JPanel {
 	private JTextField barreRecherche;
@@ -46,8 +44,8 @@ public class PanelCCompte extends JPanel {
 	 */
 	public PanelCCompte() {
 		
-		TypeCompteListener typeCListener =  new TypeCompteListener(this);
-		RechercheListener rechercheListener = new RechercheListener(this);
+		MouseListeners mouseEvents =  new MouseListeners(this);
+		FocusListeners rechercheListener = new FocusListeners(this);
 
 		this.setBorder(null);
 		this.setBackground(Color.WHITE);
@@ -84,7 +82,7 @@ public class PanelCCompte extends JPanel {
 		lblAdministrateur.setHorizontalAlignment(SwingConstants.CENTER);
 		
 
-		lblAdministrateur.addMouseListener(typeCListener);
+		lblAdministrateur.addMouseListener(mouseEvents);
 		lblAdministrateur.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblAdministrateur.setMaximumSize(new Dimension(70, 20));
 		lblAdministrateur.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, 25));
@@ -99,7 +97,7 @@ public class PanelCCompte extends JPanel {
 		panelTypeCompte.add(panelFormateur);
 		
 
-		lblFormateur.addMouseListener(typeCListener);
+		lblFormateur.addMouseListener(mouseEvents);
 		lblFormateur.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblFormateur.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, 25));
 		lblFormateur.setForeground(Color.WHITE);
@@ -113,7 +111,7 @@ public class PanelCCompte extends JPanel {
 		panelTypeCompte.add(panelStagiaire);
 		
 
-		lblStagiaire.addMouseListener(typeCListener);
+		lblStagiaire.addMouseListener(mouseEvents);
 		lblStagiaire.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblStagiaire.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, 25));
 		lblStagiaire.setForeground(Color.WHITE);
@@ -126,7 +124,7 @@ public class PanelCCompte extends JPanel {
 		panelTuteur.setOpaque(false);
 		panelTypeCompte.add(panelTuteur);
 		
-		lblTuteur.addMouseListener(typeCListener);
+		lblTuteur.addMouseListener(mouseEvents);
 		lblTuteur.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblTuteur.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, 25));
 		lblTuteur.setForeground(Color.WHITE);
@@ -177,7 +175,7 @@ public class PanelCCompte extends JPanel {
 		panelRecherche.add(barreRecherche);
 		barreRecherche.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 15));
 		barreRecherche.setToolTipText("");
-		barreRecherche.setText("Nom ou n\u00B0AFPA");
+		barreRecherche.setText("Nom ou n°AFPA");
 		barreRecherche.setColumns(15);
 		barreRecherche.addFocusListener(rechercheListener);
 
@@ -192,6 +190,7 @@ public class PanelCCompte extends JPanel {
 		btnRecherche.setMargin(new Insets(3, 14, 4, 14));
 		panelRecherche.add(btnRecherche);
 		btnRecherche.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
@@ -207,7 +206,8 @@ public class PanelCCompte extends JPanel {
 		fl_panelSecMetier.setHgap(0);
 		fl_panelSecMetier.setVgap(15);
 
-		JComboBox comboSecMetier = new JComboBox();
+		JComboBox<?> comboSecMetier = new JComboBox();
+		((JLabel)comboSecMetier.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
 		comboSecMetier.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		panelSecMetier.add(comboSecMetier);
 		comboSecMetier.setMinimumSize(new Dimension(28, 25));
@@ -228,7 +228,8 @@ public class PanelCCompte extends JPanel {
 		fl_panelOrdAlpha.setAlignment(FlowLayout.RIGHT);
 		fl_panelOrdAlpha.setVgap(15);
 
-		JComboBox comboOrdreAlpha = new JComboBox();
+		JComboBox<Object> comboOrdreAlpha = new JComboBox<Object>();
+		((JLabel)comboOrdreAlpha.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
 		comboOrdreAlpha.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		comboOrdreAlpha.setPreferredSize(new Dimension(235, 30));
 		panelOrdAlpha.add(comboOrdreAlpha);
@@ -252,29 +253,51 @@ public class PanelCCompte extends JPanel {
 		panelTableau.setLayout(new BorderLayout(0, 0));
 
 		tableau = new JTable();
-		tableau.setShowVerticalLines(false);
+		tableau.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		tableau.setShowHorizontalLines(false);
 		tableau.setShowGrid(false);
+		tableau.setRowHeight(23);
+		tableau.setIntercellSpacing(new Dimension(3, 20));
+		tableau.setRowMargin(6);
+		tableau.setShowVerticalLines(false);
 		tableau.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(192, 192, 192), new Color(192, 192, 192),
 				new Color(192, 192, 192), new Color(192, 192, 192)));
 		tableau.setBackground(SystemColor.textHighlightText);
 		tableau.setFocusable(false);
 		tableau.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		tableau.setModel(new DefaultTableModel(new Object[][] { { null, null, null, null, null, null }, },
-				new String[] { "N\u00B0 AFPA", "Nom", "Prenom", "Formation", "Email", "N\u00B0 T\u00E9l\u00E9phone" }) {
-			Class[] columnTypes = new Class[] { String.class, String.class, String.class, String.class, String.class,
-					String.class };
-
-			public Class getColumnClass(int columnIndex) {
+		
+		
+		tableau.setModel(new DefaultTableModel(
+			new Object[][] {},new String[] {"Identifiant AFPA", "Nom", "Prenom", "Formation", "Email", "Numéro Téléphone"}) 
+			{/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+			Class[] columnTypes = new Class[] {String.class, String.class, String.class, String.class, String.class, String.class};
+			
+			@Override
+			public Class<?> getColumnClass(int columnIndex) 
+			{
 				return columnTypes[columnIndex];
 			}
 		});
-		tableau.getColumnModel().getColumn(0).setResizable(false);
-		tableau.getColumnModel().getColumn(1).setResizable(false);
-		tableau.getColumnModel().getColumn(2).setResizable(false);
-		tableau.getColumnModel().getColumn(3).setResizable(false);
-		tableau.getColumnModel().getColumn(4).setResizable(false);
-		tableau.getColumnModel().getColumn(5).setResizable(false);
+		
+		tableau.getTableHeader().setFont(new Font(ThemeLIPPS.FONT_DEFAULT,Font.PLAIN, ThemeLIPPS.FONT_SIZE_BUTTON));
+		tableau.setDefaultEditor(Object.class, null);
+		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+		centerRenderer.setHorizontalAlignment( SwingConstants.CENTER );
+		
+		for (int i = 0 ; i < 6 ; i++)
+		{
+			tableau.getColumnModel().getColumn(i).setResizable(false);
+			tableau.getColumnModel().getColumn(i).setCellRenderer( centerRenderer );
+			
+		}
+		
+		
+		
+		
+		
 
 		panelTableau.add(tableau, BorderLayout.CENTER);
 		panelTableau.add(tableau.getTableHeader(), BorderLayout.NORTH);
@@ -306,6 +329,7 @@ public class PanelCCompte extends JPanel {
 		btnSuivant.setSelectedIcon(null);
 		btnSuivant.setPreferredSize(new Dimension(100, 36));
 		btnSuivant.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 
 			}
@@ -341,6 +365,8 @@ public class PanelCCompte extends JPanel {
 		
 	}
 	
+	
+	
 	public JTextField getBarreRecherche()
 	{
 		return this.barreRecherche ;
@@ -368,5 +394,11 @@ public class PanelCCompte extends JPanel {
 	{
 		
 		return this.lblTuteur;  
+	}
+	
+	public JTable getTable()
+	
+	{
+		return this.tableau;
 	}
 }
