@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -25,7 +25,11 @@ public class Sequence extends DataParent {
 	@NotNull
 	private String intitule = null;
 
-	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "mod_id")
+	@NotNull
+	private Module module = null;
+
 	public Integer getId() {
 		return id;
 	}

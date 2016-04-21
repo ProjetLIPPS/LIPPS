@@ -16,7 +16,7 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.Type;
 
 @Entity
-@Table(name = "result_parcours_livret")
+@Table(name = "resultat_parcours_livret")
 public class ResultatParcoursLivret extends DataParent {
 
 	public static final String NOM_ID = "res_id";

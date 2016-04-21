@@ -31,6 +31,7 @@
 		<mapping class = "model.objet.AnnexeLivret"/>
 		<mapping class = "model.objet.Contact"/>
 		<mapping class = "model.objet.Formation" />
+		<mapping class = "model.objet.FormationToModule" />
 		<mapping class = "model.objet.Livret"/>
 		<mapping class = "model.objet.Log"/>
 		<mapping class = "model.objet.Module"/>
@@ -44,6 +45,8 @@
 		<mapping class = "model.objet.SequenceLivret"/>
 		<mapping class = "model.objet.Specialisation" />
 		<mapping class = "model.objet.SuiviLivret"/>
+		<mapping class = "model.objet.TypePeriode" />
+		<mapping class = "model.objet.TypePeriodeLivret" />
 		<mapping class = "model.objet.Utilisateur"/>
 		<mapping class = "model.objet.UtilisateurToFormation"/>
 		<mapping class = "model.objet.UtilisateurToRole"/>

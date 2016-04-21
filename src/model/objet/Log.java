@@ -1,6 +1,5 @@
 package model.objet;
 
-import java.time.Instant;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -10,7 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -32,7 +31,11 @@ public class Log extends DataParent {
 	@NotNull
 	protected Date derniereConnexion= null;
 
-	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "uti_id")
+	@NotNull
+	private Utilisateur utilisateur = null;
+
 	public Integer getId() {
 		return id;
 	}

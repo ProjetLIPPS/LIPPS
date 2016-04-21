@@ -9,7 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -34,8 +34,15 @@ public class Periode extends DataParent {
 	@Type(type = "date")
 	private Date dateFin = null;
 
-	@Column(name = "prd_type_periode")
-	private Integer typePeriode = null;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "frm_id")
+	@NotNull
+	private Formation formation = null;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "tpe_id")
+	@NotNull
+	private TypePeriode typePeriode = null;
 
 	public Integer getId() {
 		return id;

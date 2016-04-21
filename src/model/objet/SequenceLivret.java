@@ -9,7 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -56,6 +56,11 @@ public class SequenceLivret extends DataParent {
 	@Column(name = "sel_t_observation_tuteur")
 	@NotNull
 	private String observationTuteur = null;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "mdl_id")
+	@NotNull
+	private ModuleLivret moduleLivret = null;
 
 	
 	public Integer getId() {
