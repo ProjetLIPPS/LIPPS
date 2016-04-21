@@ -32,6 +32,11 @@ public class Specialisation extends DataParent {
 	@NotNull
 	private String nom = null;
 
+	
+	@OneToMany(mappedBy = "specialisation", fetch = FetchType.LAZY)
+	private List<UtilisateurToSpecialisation> utilisateurToSpecialisation = null;
+
+	
 	public Integer getId() {
 		return id;
 	}

@@ -16,7 +16,7 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.Type;
 
 @Entity
-@Table(name = "projet_pro_liv")
+@Table(name = "projet_pro_livret")
 public class ProjetProLivret extends DataParent {
 
 	public static final String NOM_ID = "pro_id";
@@ -26,10 +26,10 @@ public class ProjetProLivret extends DataParent {
 	@Column(name = NOM_ID)
 	private Integer id = null;
 
-	@Column(name = "pro_xp")
+	@Column(name = "pro_experience")
 	private String experience = null;
 
-	@Column(name = "pro_motiv")
+	@Column(name = "pro_motivation")
 	private String motivation = null;
 
 	@Column(name = "pro_attente")
@@ -42,6 +42,11 @@ public class ProjetProLivret extends DataParent {
 	@Column(name = "pro_date")
 	private Date date = null;
 
+	@OneToOne (fetch=FetchType.LAZY)
+	@JoinColumn (name = "liv_id")
+	@NotNull
+	private Livret livret = null;
+	
 	public Integer getId() {
 		return id;
 	}

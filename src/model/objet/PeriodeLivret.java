@@ -17,7 +17,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "periode_liv")
+@Table(name = "periode_livret")
 public class PeriodeLivret extends DataParent {
 
 	public static final String NOM_ID = "per_id";
@@ -27,13 +27,13 @@ public class PeriodeLivret extends DataParent {
 	@Column(name = NOM_ID)
 	private Integer id = null;
 
-	@Column(name = "per_date_deb")
+	@Column(name = "per_date_debut")
 	private Date dateDebut = null;
 
 	@Column(name = "per_date_fin")
 	private Date dateFin = null;
 
-	@Column(name = "per_typ")
+	@Column(name = "per_type_periode")
 	private Integer typePeriode = null;
 
 	public Integer getId() {

@@ -16,7 +16,7 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.Type;
 
 @Entity
-@Table(name = "sequence_liv")
+@Table(name = "sequence_livret")
 
 public class SequenceLivret extends DataParent {
 
@@ -32,12 +32,12 @@ public class SequenceLivret extends DataParent {
 	private String intitule = null;
 
 	@Type(type = "date")
-	@Column(name = "sel_date_mes")
+	@Column(name = "sel_date_message")
 	@NotNull
 	private Date dateMessage = null;
 
 	@Type(type = "date")
-	@Column(name = "sel_date_acq")
+	@Column(name = "sel_date_acquisition")
 	@NotNull
 	private Date dateAcquisition = null;
 
@@ -45,18 +45,19 @@ public class SequenceLivret extends DataParent {
 	@NotNull
 	private String niveau = null;
 
-	@Column(name = "sel_s_obs")
+	@Column(name = "sel_s_observation_stagiaire")
 	@NotNull
 	private String observationStagiaire = null;
 
-	@Column(name = "sel_f_obs")
+	@Column(name = "sel_f_observation_formateur")
 	@NotNull
 	private String observationFormateur = null;
 
-	@Column(name = "sel_t_obs")
+	@Column(name = "sel_t_observation_tuteur")
 	@NotNull
 	private String observationTuteur = null;
 
+	
 	public Integer getId() {
 		return id;
 	}

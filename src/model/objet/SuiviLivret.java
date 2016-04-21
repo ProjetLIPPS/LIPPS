@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "suivi_liv")
+@Table(name = "suivi_livret")
 public class SuiviLivret extends DataParent {
 
 	public static final String NOM_ID = "sui_id";
@@ -49,27 +49,33 @@ public class SuiviLivret extends DataParent {
 	@Column(name = "sui_autonomie")
 	private String autonomie = null;
 
-	@Column(name = "sui_maitriseDeSoi")
+	@Column(name = "sui_maitrise_de_soi")
 	private String maitriseDeSoi = null;
 
 	@Column(name = "sui_organisation")
 	private String organisation = null;
 
-	@Column(name = "sui_respectRegle")
+	@Column(name = "sui_respect_regle")
 	private String respectRegle = null;
 
 	@Column(name = "sui_securite")
 	private String securite = null;
 
-	@Column(name = "sui_respectMateriel")
+	@Column(name = "sui_respect_materiel")
 	private String respectMateriel = null;
 
-	@Column(name = "sui_qualiteTravail")
+	@Column(name = "sui_qualite_travail")
 	private String qualiteTravail = null;
 
 	@Column(name = "sui_citoyennete")
 	private String citoyennete = null;
 
+	@OneToOne (fetch=FetchType.LAZY)
+	@JoinColumn (name = "liv_id")
+	@NotNull
+	private Livret livret = null;
+	
+	
 	public Integer getId() {
 		return id;
 	}

@@ -28,7 +28,7 @@ public class Log extends DataParent {
 	private Integer id = null;
 
 	@Type(type = "date")
-	@Column(name = "log_last_conn")
+	@Column(name = "log_derniere_connexion")
 	@NotNull
 	protected Date derniereConnexion= null;
 

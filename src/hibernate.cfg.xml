@@ -39,12 +39,15 @@
 		<mapping class = "model.objet.PeriodeLivret"/>
 		<mapping class = "model.objet.ProjetProLivret"/>				
 		<mapping class = "model.objet.ResultatParcoursLivret"/>
+		<mapping class = "model.objet.Role"/>
 		<mapping class = "model.objet.Sequence"/>
 		<mapping class = "model.objet.SequenceLivret"/>
 		<mapping class = "model.objet.Specialisation" />
 		<mapping class = "model.objet.SuiviLivret"/>
-		<mapping class = "model.objet.TypeUtilisateur"/>
 		<mapping class = "model.objet.Utilisateur"/>
+		<mapping class = "model.objet.UtilisateurToFormation"/>
+		<mapping class = "model.objet.UtilisateurToRole"/>
+		<mapping class = "model.objet.UtilisateurToSpecialisation"/>
 		
 			
 	</session-factory>

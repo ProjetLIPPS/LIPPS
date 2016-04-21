@@ -25,16 +25,16 @@ public class Periode extends DataParent {
 	@Column(name = NOM_ID)
 	private Integer id = null;
 
-	@Column(name = "prd_debut")
+	@Column(name = "prd_date_debut")
 	@Type(type = "date")
 	@NotNull
 	private Date dateDebut = null;
 
-	@Column(name = "prd_fin")
+	@Column(name = "prd_date_fin")
 	@Type(type = "date")
 	private Date dateFin = null;
 
-	@Column(name = "prd_typ")
+	@Column(name = "prd_type_periode")
 	private Integer typePeriode = null;
 
 	public Integer getId() {

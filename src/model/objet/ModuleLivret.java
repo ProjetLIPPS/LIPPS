@@ -15,7 +15,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "module_liv")
+@Table(name = "module_livret")
 
 public class ModuleLivret extends DataParent {
 
@@ -30,15 +30,21 @@ public class ModuleLivret extends DataParent {
 	@NotNull
 	private String intitule = null;
 
-	@Column(name = "mdl_result")
+	@Column(name = "mdl_resultat")
 	private boolean resultat;
 
-	@Column(name = "mdl_obs")
+	@Column(name = "mdl_observation")
 	@NotNull
 	private String observation = null;
 
-	@Column(name = "mdl_spe_int")
+	@Column(name = "mdl_intitule_specialisation")
 	private String intituleSpecialisation = null;
+	
+	@OneToOne (fetch=FetchType.LAZY)
+	@JoinColumn (name = "liv_id")
+	@NotNull
+	private Livret livret = null;
+	
 
 	public Integer getId() {
 		return id;
