@@ -11,8 +11,6 @@ import java.awt.Insets;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -32,7 +30,6 @@ import javax.swing.table.DefaultTableModel;
 import ihm.actionListener.RechercheListener;
 import ihm.actionListener.TypeCompteListener;
 import ihm.theme.ThemeLIPPS;
-import javax.swing.border.MatteBorder;
 
 public class PanelCCompte extends JPanel {
 	private JTextField barreRecherche;

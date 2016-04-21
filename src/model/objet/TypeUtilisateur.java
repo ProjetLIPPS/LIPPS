@@ -14,8 +14,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import model.objet.Utilisateur;
-
 @Entity
 @Table(name = "role")
 public class TypeUtilisateur extends DataParent {

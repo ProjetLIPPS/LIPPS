@@ -2,15 +2,7 @@ package controleur;
 
 
 
-import org.hibernate.cfg.Configuration;         
 import ihm.LippsIhm;
-import model.baseDAO.DaoFactory;
-import model.baseDAO.DaoParent;
-import model.objet.Contact;
-import model.objet.Formation;
-import model.objet.Log;
-import model.objet.Specialisation;
-import model.objet.Utilisateur;
 
 
 public class Appli {

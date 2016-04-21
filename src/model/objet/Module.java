@@ -39,7 +39,7 @@ public class Module extends DataParent {
 	@JoinTable(name = "j_formation_module", joinColumns = @JoinColumn(name = "mod_id") , inverseJoinColumns = @JoinColumn(name = "frm_id") )
 	private List<Formation> listFormation = null;
 
-	public Module(Integer id, String intitule) {
+	public Module(String intitule) {
 		super();
 		this.id = id;
 		this.intitule = intitule;

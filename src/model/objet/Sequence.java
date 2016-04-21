@@ -29,7 +29,7 @@ public class Sequence extends DataParent {
 	@JoinColumn(name = "mod_id")
 	private Module modId = null;
 
-	public Sequence(Integer id, String intitule, Module modId) {
+	public Sequence(String intitule) {
 		super();
 		this.id = id;
 		this.intitule = intitule;

@@ -7,7 +7,7 @@ import ihm.fenetre.DeleteConf;
 
 
 
-public class ControllerSuppressionModele {
+public class SuppressionModele {
 
 	
 	public static void deleteModele(JPanel panelMngModel)	{

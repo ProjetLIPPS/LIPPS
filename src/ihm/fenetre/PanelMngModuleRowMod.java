@@ -3,14 +3,13 @@ package ihm.fenetre;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import javax.swing.JLabel;
+
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 
-import ihm.LippsIhm;
 import ihm.theme.ThemeLIPPS;
 import model.objet.Module;
 
@@ -18,35 +17,29 @@ import model.objet.Module;
 public class PanelMngModuleRowMod extends JPanel {
 
 	
-	private LippsIhm lippsMainFrame;
 	
 	public PanelMngModuleRowMod(Module  module) 
 	{
 		setOpaque(false);
-		this.lippsMainFrame = lippsMainFrame;
+	
 		
-		setPreferredSize(new Dimension(689, 85));
-		this.setMinimumSize(new Dimension(10, 100));
+		setPreferredSize(new Dimension(250, 50));
+		this.setMinimumSize(new Dimension(10, 70));
 		this.setMaximumSize(new Dimension(32767, 100));
-		this.setBorder(new MatteBorder(2, 0, 0, 0, (Color) Color.WHITE));
+		this.setBorder(new MatteBorder(1, 0, 0, 0, (Color) Color.WHITE));
 		this.setBackground(Color.WHITE);
-		this.setAlignmentX(0.0f);
+		//this.setAlignmentX(0.0f);
 		this.setLayout(null);
 		
-		JLabel lblDescription = new JLabel("Description  :");
-		lblDescription.setForeground(Color.WHITE);
-		lblDescription.setBounds(10, 29, 88, 15);
-		lblDescription.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 14));
-		this.add(lblDescription);
-		
+				
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(120, 11, 370, 63);
+		scrollPane.setBounds(0, 8, 250, 63);
 		add(scrollPane);
 		
 		JTextArea textArea = new JTextArea();
 		scrollPane.setViewportView(textArea);
 		textArea.setWrapStyleWord(true);
-		textArea.setText("//METHODE CONTROLLER QUI RECUPERE INTITULE MODULE"); // TODO
+		textArea.setText(module.getIntitule()); 
 		textArea.setRows(3);
 		textArea.setLineWrap(true);
 		textArea.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));

@@ -7,7 +7,7 @@ import javax.swing.JButton;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import controleur.ControllerSuppressionModele;
+import controleur.SuppressionModele;
 import ihm.fenetre.PanelMngModel;
 
 public class PanelMngModelListener implements ActionListener, ListSelectionListener  {
@@ -30,7 +30,7 @@ public class PanelMngModelListener implements ActionListener, ListSelectionListe
 		JButton delete = (JButton) e.getSource();
 		if (delete.getText() == "Supprimer"  ) 
 		{
-			ControllerSuppressionModele.deleteModele(panelMngModel);
+			SuppressionModele.deleteModele(panelMngModel);
 		}
 		
 	}

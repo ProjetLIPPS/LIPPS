@@ -12,12 +12,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 
 import ihm.theme.ThemeLIPPS;
-import javax.swing.JScrollPane;
 
 public class RowSequence extends JPanel {
 

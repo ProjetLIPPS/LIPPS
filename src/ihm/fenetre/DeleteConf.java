@@ -1,6 +1,5 @@
 package ihm.fenetre;
 
-import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
