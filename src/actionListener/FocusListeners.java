@@ -1,4 +1,4 @@
-package ihm.actionListener;
+package actionListener;
 
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -10,12 +10,12 @@ import javax.swing.JTextField;
 
 import ihm.fenetre.PanelCCompte;
 
-public class RechercheListener implements FocusListener
+public class FocusListeners implements FocusListener
 
 {
 	private PanelCCompte panelCCompte ;
 
-	public  RechercheListener(PanelCCompte panelCCompte) 
+	public  FocusListeners(PanelCCompte panelCCompte) 
 	{
 		this.panelCCompte = panelCCompte;
 	}

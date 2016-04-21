@@ -13,53 +13,49 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.annotations.Type;
-
 @Entity
-@Table(name = "periode")
-public class Periode extends DataParent {
-	public static final String NOM_ID = "prd_id";
+@Table(name = "periode_livret")
+public class PeriodeLivret extends DataParent {
+
+	public static final String NOM_ID = "per_id";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = NOM_ID)
 	private Integer id = null;
 
-	@Column(name = "prd_date_debut")
-	@Type(type = "date")
-	@NotNull
+	@Column(name = "per_date_debut")
 	private Date dateDebut = null;
 
-	@Column(name = "prd_date_fin")
-	@Type(type = "date")
+	@Column(name = "per_date_fin")
 	private Date dateFin = null;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "frm_id")
+	@JoinColumn(name = "tpl_id")
 	@NotNull
-	private Formation formation = null;
+	private TypePeriodeLivret typePeriodeLivret = null;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "tpe_id")
+	@JoinColumn(name = "liv_id")
 	@NotNull
-	private TypePeriode typePeriode = null;
+	private Livret livret = null;
 
 	public Integer getId() {
 		return id;
 	}
 
-	public Periode() {
+	public PeriodeLivret() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Periode(Integer id, Date dateDebut, Date dateFin, Formation formation, TypePeriode typePeriode) {
+	public PeriodeLivret(Integer id, Date dateDebut, Date dateFin, TypePeriodeLivret typePeriodeLivret, Livret livret) {
 		super();
 		this.id = id;
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
-		this.formation = formation;
-		this.typePeriode = typePeriode;
+		this.typePeriodeLivret = typePeriodeLivret;
+		this.livret = livret;
 	}
 
 	public Date getDateDebut() {
@@ -78,25 +74,25 @@ public class Periode extends DataParent {
 		this.dateFin = dateFin;
 	}
 
-	public Formation getFormation() {
-		return formation;
+	public TypePeriodeLivret getTypePeriodeLivret() {
+		return typePeriodeLivret;
 	}
 
-	public void setFormation(Formation formation) {
-		this.formation = formation;
+	public void setTypePeriodeLivret(TypePeriodeLivret typePeriodeLivret) {
+		this.typePeriodeLivret = typePeriodeLivret;
 	}
 
-	public TypePeriode getTypePeriode() {
-		return typePeriode;
+	public Livret getLivret() {
+		return livret;
 	}
 
-	public void setTypePeriode(TypePeriode typePeriode) {
-		this.typePeriode = typePeriode;
+	public void setLivret(Livret livret) {
+		this.livret = livret;
 	}
 
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
+
 	
 }

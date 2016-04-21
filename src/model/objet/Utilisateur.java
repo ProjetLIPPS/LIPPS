@@ -1,20 +1,15 @@
 package model.objet;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -40,56 +35,48 @@ public class Utilisateur extends DataParent {
 	private String prenom = null;
 
 	@Type(type = "date")
-	@Column(name = "uti_birthday")
-	private Date birthday = null;
+	@Column(name = "uti_date_naissance")
+	private Date dateNaissance = null;
 
-	@Column(name = "uti_num_afpa")
+	@Column(name = "uti_identifiant_afpa")
 	@NotNull
-	private Integer numAfpa = null;
+	private Integer identifiantAFPA = null;
 
 	@Column(name = "uti_password")
 	@NotNull
 	private String password = null;
 
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "con_id")
-	@NotNull
-	private Contact contact = null;
+	@OneToMany(mappedBy = "utilisateur", fetch = FetchType.LAZY)
+	private List<UtilisateurToFormation> utilisateurToFormation = null;
 
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinTable(name = "j_utilisateur_role", joinColumns = @JoinColumn(name = "uti_id") , inverseJoinColumns = @JoinColumn(name = "typ_id") )
-	private List<TypeUtilisateur> listTypeUtilisateur = null;
+	@OneToMany(mappedBy = "utilisateur", fetch = FetchType.LAZY)
+	private List<UtilisateurToRole> utilisateurToRole = null;
 
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinTable(name = "j_utilisateur_specialisation", joinColumns = @JoinColumn(name = "uti_id") , inverseJoinColumns = @JoinColumn(name = "spe_id") )
-	private List<Specialisation> listSpecialisation = null;
-
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinTable(name = "j_utilisateur_formation", joinColumns = @JoinColumn(name = "uti_id") , inverseJoinColumns = @JoinColumn(name = "frm_id") )
-	private List<Formation> listFormation = null;
-
-	public Utilisateur(Integer id, String nom, String prenom, String myDate, Integer numAfpa, String password)
-			throws Exception {
-		super();
-
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-		Date date = sdf.parse(myDate);
-
-		this.birthday = date;
-		this.id = id;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.numAfpa = numAfpa;
-		this.password = password;
-
-	}
+	@OneToMany(mappedBy = "utilisateur", fetch = FetchType.LAZY)
+	private List<UtilisateurToSpecialisation> utilisateurToSpecialisation = null;
 
 	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public Utilisateur() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Utilisateur(Integer id, String nom, String prenom, Date dateNaissance, Integer identifiantAFPA,
+			String password, List<UtilisateurToFormation> utilisateurToFormation,
+			List<UtilisateurToRole> utilisateurToRole, List<UtilisateurToSpecialisation> utilisateurToSpecialisation) {
+		super();
 		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.dateNaissance = dateNaissance;
+		this.identifiantAFPA = identifiantAFPA;
+		this.password = password;
+		this.utilisateurToFormation = utilisateurToFormation;
+		this.utilisateurToRole = utilisateurToRole;
+		this.utilisateurToSpecialisation = utilisateurToSpecialisation;
 	}
 
 	public String getNom() {
@@ -108,20 +95,20 @@ public class Utilisateur extends DataParent {
 		this.prenom = prenom;
 	}
 
-	public Date getBirthday() {
-		return birthday;
+	public Date getDateNaissance() {
+		return dateNaissance;
 	}
 
-	public void setBirthday(Date birthday) {
-		this.birthday = birthday;
+	public void setDateNaissance(Date dateNaissance) {
+		this.dateNaissance = dateNaissance;
 	}
 
-	public Integer getNumAfpa() {
-		return numAfpa;
+	public Integer getIdentifiantAFPA() {
+		return identifiantAFPA;
 	}
 
-	public void setNumAfpa(Integer numAfpa) {
-		this.numAfpa = numAfpa;
+	public void setIdentifiantAFPA(Integer identifiantAFPA) {
+		this.identifiantAFPA = identifiantAFPA;
 	}
 
 	public String getPassword() {
@@ -132,36 +119,35 @@ public class Utilisateur extends DataParent {
 		this.password = password;
 	}
 
-	public Contact getContact() {
-		return contact;
+	public List<UtilisateurToFormation> getUtilisateurToFormation() {
+		return utilisateurToFormation;
 	}
 
-	public void setContact(Contact contact) {
-		this.contact = contact;
+	public void setUtilisateurToFormation(List<UtilisateurToFormation> utilisateurToFormation) {
+		this.utilisateurToFormation = utilisateurToFormation;
 	}
 
-	public List<TypeUtilisateur> getListTypeUtilisateur() {
-		return listTypeUtilisateur;
+	public List<UtilisateurToRole> getUtilisateurToRole() {
+		return utilisateurToRole;
 	}
 
-	public void setListTypeUtilisateur(List<TypeUtilisateur> listAdresse) {
-		this.listTypeUtilisateur = listAdresse;
+	public void setUtilisateurToRole(List<UtilisateurToRole> utilisateurToRole) {
+		this.utilisateurToRole = utilisateurToRole;
 	}
 
-	public List<Specialisation> getListSpecialisation() {
-		return listSpecialisation;
+	public List<UtilisateurToSpecialisation> getUtilisateurToSpecialisation() {
+		return utilisateurToSpecialisation;
 	}
 
-	public void setListSpecialisation(List<Specialisation> listSpecialisation) {
-		this.listSpecialisation = listSpecialisation;
+	public void setUtilisateurToSpecialisation(List<UtilisateurToSpecialisation> utilisateurToSpecialisation) {
+		this.utilisateurToSpecialisation = utilisateurToSpecialisation;
 	}
 
-	public List<Formation> getListFormation() {
-		return listFormation;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
-	public void setListFormation(List<Formation> listFormation) {
-		this.listFormation = listFormation;
-	}
+	
+	
 
 }

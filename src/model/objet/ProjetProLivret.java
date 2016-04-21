@@ -16,8 +16,8 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.Type;
 
 @Entity
-@Table(name = "projet_pro_liv")
-public class ProjetProLiv extends DataParent {
+@Table(name = "projet_pro_livret")
+public class ProjetProLivret extends DataParent {
 
 	public static final String NOM_ID = "pro_id";
 
@@ -26,10 +26,10 @@ public class ProjetProLiv extends DataParent {
 	@Column(name = NOM_ID)
 	private Integer id = null;
 
-	@Column(name = "pro_xp")
+	@Column(name = "pro_experience")
 	private String experience = null;
 
-	@Column(name = "pro_motiv")
+	@Column(name = "pro_motivation")
 	private String motivation = null;
 
 	@Column(name = "pro_attente")
@@ -42,25 +42,30 @@ public class ProjetProLiv extends DataParent {
 	@Column(name = "pro_date")
 	private Date date = null;
 
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "liv_id")
+	@OneToOne (fetch=FetchType.LAZY)
+	@JoinColumn (name = "liv_id")
 	@NotNull
 	private Livret livret = null;
-
-	// Constructeur
-
-	public ProjetProLiv() {
-		super();
-	}
-
-	// GetSets
-
+	
 	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public ProjetProLivret() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public ProjetProLivret(Integer id, String experience, String motivation, String attente, String action, Date date,
+			Livret livret) {
+		super();
 		this.id = id;
+		this.experience = experience;
+		this.motivation = motivation;
+		this.attente = attente;
+		this.action = action;
+		this.date = date;
+		this.livret = livret;
 	}
 
 	public String getExperience() {
@@ -111,4 +116,9 @@ public class ProjetProLiv extends DataParent {
 		this.livret = livret;
 	}
 
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
+	
 }

@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -25,23 +25,25 @@ public class Sequence extends DataParent {
 	@NotNull
 	private String intitule = null;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "mod_id")
-	private Module modId = null;
-
-	public Sequence(Integer id, String intitule, Module modId) {
-		super();
-		this.id = id;
-		this.intitule = intitule;
-		this.modId = modId;
-	}
+	@NotNull
+	private Module module = null;
 
 	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public Sequence() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Sequence(Integer id, String intitule, Module module) {
+		super();
 		this.id = id;
+		this.intitule = intitule;
+		this.module = module;
 	}
 
 	public String getIntitule() {
@@ -52,16 +54,17 @@ public class Sequence extends DataParent {
 		this.intitule = intitule;
 	}
 
-	public Module getModId() {
-		return modId;
+	public Module getModule() {
+		return module;
 	}
 
-	public void setModId(Module modId) {
-		this.modId = modId;
+	public void setModule(Module module) {
+		this.module = module;
 	}
 
-	public static String getNomId() {
-		return NOM_ID;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
+	
 }
