@@ -29,7 +29,11 @@ public class ControleurLogin
 		}
 		else if (flogin.getTxtEmail().getText().split("\\.").length != 2)
 		{
-			flogin.AfficheErreur("Entrez un email valide !!!!");
+			flogin.AfficheErreur("Entrez un email valide !");
+		}
+		else if (isPasswordCorrect(flogin.getTxtEmail().getText(), new String(flogin.getPwdMotDePasse().getPassword())))
+		{
+			
 		}
 		else
 		{
@@ -37,6 +41,16 @@ public class ControleurLogin
 		}
 		
 		
+	}
+
+
+	private boolean isPasswordCorrect(String email, String password)
+	{
+		
+		//TODO DaoContact
+		
+		
+		return false;
 	}
 
 
