@@ -1,6 +1,6 @@
 package controleur;
 
-import ihm.actionListener.LoginListener;
+import actionListener.LoginListener;
 import ihm.fenetre.FenLogin;
 import model.baseDAO.DaoFactory;
 import model.objet.Utilisateur;

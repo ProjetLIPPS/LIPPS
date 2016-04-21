@@ -14,8 +14,9 @@ import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import actionListener.LoginListener;
 import controleur.ControleurLogin;
-import ihm.actionListener.LoginListener;
+import ihm.theme.ThemeLIPPS;
 
 public class FenLogin extends JFrame
 {
@@ -47,6 +48,8 @@ public class FenLogin extends JFrame
 		getContentPane().setLayout(null);
 
 		txtEmail = new JTextField();
+		txtEmail.addMouseListener(listener);
+		txtEmail.addFocusListener(listener);
 		txtEmail.setFont(new Font("Arial", Font.PLAIN, 16));
 		txtEmail.setText("Email");
 		txtEmail.setBounds(125, 230, 200, 35);
@@ -54,6 +57,8 @@ public class FenLogin extends JFrame
 		txtEmail.setColumns(10);
 
 		pwdMotDePasse = new JPasswordField();
+		pwdMotDePasse.addMouseListener(listener);
+		pwdMotDePasse.addFocusListener(listener);
 		pwdMotDePasse.setFont(new Font("Arial", Font.PLAIN, 16));
 		pwdMotDePasse.setText("Mot de passe");
 		pwdMotDePasse.setBounds(125, 313, 200, 35);
@@ -71,12 +76,7 @@ public class FenLogin extends JFrame
 
 		JButton btnConnexion = new JButton("Connexion");
 		btnConnexion.setFont(new Font("Arial", Font.PLAIN, 12));
-		btnConnexion.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent arg0)
-			{
-			}
-		});
+		btnConnexion.addActionListener(listener);
 		btnConnexion.setBounds(165, 404, 120, 34);
 		getContentPane().add(btnConnexion);
 
@@ -91,7 +91,9 @@ public class FenLogin extends JFrame
 		lblMotDePasse_1.setBounds(162, 359, 123, 14);
 		getContentPane().add(lblMotDePasse_1);
 
-		lblChampDerreur = new JLabel("champ d'erreur");
+		lblChampDerreur = new JLabel("");
+		lblChampDerreur.setForeground(Color.RED);
+		lblChampDerreur.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 11));
 		lblChampDerreur.setBounds(125, 265, 200, 14);
 		getContentPane().add(lblChampDerreur);
 	}
@@ -118,7 +120,7 @@ public class FenLogin extends JFrame
 
 	public void AfficheErreur(String string)
 	{
-		// TODO Auto-generated method stub
+		lblChampDerreur.setText(string);
 
 	}
 
