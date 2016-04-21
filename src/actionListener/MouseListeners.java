@@ -28,7 +28,7 @@ public class MouseListeners implements MouseListener
 			{ "Identifiant AFPA", "Nom", "Prenom", "Formation", "Email", "Numéro Téléphone" };
 		private Class[] columnTypes = new Class[]
 			{ String.class, String.class, String.class, Integer.class, String.class, String.class };
-		private Object[][] resultatRecherche = new Object[3][2];
+		private Object[][] resultatRecherche;
 
 		public MouseListeners(PanelCCompte panelCCompte)
 			{
@@ -68,7 +68,17 @@ public class MouseListeners implements MouseListener
 					{
 						setLblColor();
 						panelCCompte.getLblAdmin().setForeground(new Color(30, 144, 255));
+						panelCCompte.getLblAdmin().setBorder(new MatteBorder(0, 3, 0, 0, ThemeLIPPS.BLUE));
 						setBorder();
+						resultatRecherche = new Object [controleur.getListeAdmin().size()][6];
+						for (int i = 0 ; i< controleur.getListeAdmin().size() ; i++)
+							{
+								resultatRecherche [i][0] = controleur.getListeAdmin().get(i).getIdentifiantAFPA();
+								resultatRecherche [i][1] = controleur.getListeAdmin().get(i).getNom();
+								resultatRecherche [i][2] = controleur.getListeAdmin().get(i).getPrenom();
+								resultatRecherche [i][3] = controleur.getListeAdmin().get(i).getUtilisateurToFormation().get(i).getFormation();
+								
+							}
 
 					}
 				else if (source.equals(panelCCompte.getLblForm()))
@@ -76,8 +86,16 @@ public class MouseListeners implements MouseListener
 						setLblColor();
 						panelCCompte.getLblForm().setForeground(new Color(30, 144, 255));
 						panelCCompte.getLblForm().setBorder(new MatteBorder(0, 3, 0, 0, ThemeLIPPS.BLUE));
-						
 						setBorder();
+						resultatRecherche = new Object [controleur.getListeFormateur().size()][6];
+						for (int i = 0 ; i< controleur.getListeAdmin().size() ; i++)
+							{
+								resultatRecherche [i][0] = controleur.getListeFormateur().get(i).getIdentifiantAFPA();
+								resultatRecherche [i][1] = controleur.getListeFormateur().get(i).getNom();
+								resultatRecherche [i][2] = controleur.getListeFormateur().get(i).getPrenom();
+								resultatRecherche [i][3] = controleur.getListeFormateur().get(i).getUtilisateurToFormation().get(i).getFormation();
+								
+							}
 
 					}
 				else if (source.equals(panelCCompte.getLblSta()))
@@ -85,8 +103,16 @@ public class MouseListeners implements MouseListener
 						setLblColor();
 						panelCCompte.getLblSta().setForeground(new Color(30, 144, 255));
 						panelCCompte.getLblSta().setBorder(new MatteBorder(0, 3, 0, 0, ThemeLIPPS.BLUE));
-						
 						setBorder();
+						for (int i = 0 ; i< controleur.getListeStagiaire().size() ; i++)
+							{
+								resultatRecherche [i][0] = controleur.getListeStagiaire().get(i).getIdentifiantAFPA();
+								resultatRecherche [i][1] = controleur.getListeStagiaire().get(i).getNom();
+								resultatRecherche [i][2] = controleur.getListeStagiaire().get(i).getPrenom();
+								resultatRecherche [i][3] = controleur.getListeStagiaire().get(i).getUtilisateurToFormation().get(i).getFormation();
+								
+							}
+						
 
 					}
 				else
@@ -94,8 +120,16 @@ public class MouseListeners implements MouseListener
 						setLblColor();
 						panelCCompte.getLblTut().setForeground(new Color(30, 144, 255));
 						panelCCompte.getLblTut().setBorder(new MatteBorder(0, 3, 0, 0, ThemeLIPPS.BLUE));
-						
 						setBorder();
+						for (int i = 0 ; i< controleur.getListeTuteur().size() ; i++)
+							{
+								resultatRecherche [i][0] = controleur.getListeTuteur().get(i).getIdentifiantAFPA();
+								resultatRecherche [i][1] = controleur.getListeTuteur().get(i).getNom();
+								resultatRecherche [i][2] = controleur.getListeTuteur().get(i).getPrenom();
+								resultatRecherche [i][3] = controleur.getListeTuteur().get(i).getUtilisateurToFormation().get(i).getFormation();
+								
+							}
+						
 
 					}
 
@@ -119,28 +153,32 @@ public class MouseListeners implements MouseListener
 		@Override
 		public void mouseEntered(MouseEvent e)
 			{
-				JLabel source = (JLabel) e.getSource();
-
-				if (source.equals(panelCCompte.getLblAdmin()) && isSelected != 1)
-					{
-
-						panelCCompte.getLblAdmin().setBorder(new MatteBorder(0, 3, 0, 0, (Color) Color.WHITE));
-					}
-				else if (source.equals(panelCCompte.getLblForm()) && isSelected != 2)
-					{
-
-						panelCCompte.getLblForm().setBorder(new MatteBorder(0, 3, 0, 0, (Color) Color.WHITE));
-					}
-				else if (source.equals(panelCCompte.getLblSta()) && isSelected != 3)
-					{
-
-						panelCCompte.getLblSta().setBorder(new MatteBorder(0, 3, 0, 0, (Color) Color.WHITE));
-					}
-				else if (source.equals(panelCCompte.getLblTut()) && isSelected != 4)
-					{
-
-						panelCCompte.getLblTut().setBorder(new MatteBorder(0, 3, 0, 0, (Color) Color.WHITE));
-					}
+				JLabel source  = (JLabel) e.getSource() ; 
+				
+				if (source.equals(panelCCompte.getLblAdmin())&& isSelected != 1)
+				 {
+					 
+					 panelCCompte.getLblAdmin().setBorder(new MatteBorder(0, 3, 0, 0, (Color) Color.WHITE));
+				 }
+				 else if (source.equals(panelCCompte.getLblForm())&& isSelected != 2)
+				 {
+					 
+					
+					 panelCCompte.getLblForm().setBorder(new MatteBorder(0, 3, 0, 0, (Color) Color.WHITE));
+				 }
+				 else if (source.equals(panelCCompte.getLblSta())&& isSelected != 3)
+				 {
+					
+					 
+					 panelCCompte.getLblSta().setBorder(new MatteBorder(0, 3, 0, 0, (Color)Color.WHITE));
+				 }
+				 else if (source.equals(panelCCompte.getLblTut())&& isSelected != 4) 
+				 {
+					 
+					
+					 panelCCompte.getLblTut().setBorder(new MatteBorder(0, 3, 0, 0, (Color)Color.WHITE));
+				 }
+				
 
 			}
 
@@ -182,7 +220,8 @@ public class MouseListeners implements MouseListener
 		@Override
 		public void mousePressed(MouseEvent e)
 			{
-				// TODO Auto-generated method stub
+				JLabel source  = (JLabel) e.getSource() ;
+				afficheTableau(source);
 				
 			}
 

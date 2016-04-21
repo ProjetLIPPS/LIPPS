@@ -35,6 +35,15 @@ public class ControleurFMain
 
 						listeUtilisateur = (List<Utilisateur>) DaoFactory.getDaoUtilisateur().readAll(Utilisateur.class);
 
+						
+						for (Utilisateur utilisateur : listeUtilisateur)
+							{
+								List<UtilisateurToRole> utilisateurToRole = utilisateur.getUtilisateurToRole();
+								
+								
+								System.out.println();
+							}
+						
 
 						for (int i = 0; i < listeUtilisateur.size(); i++)
 							{

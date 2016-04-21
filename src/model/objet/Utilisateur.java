@@ -1,5 +1,6 @@
 package model.objet;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -47,10 +48,10 @@ public class Utilisateur extends DataParent {
 	private String password = null;
 
 	@OneToMany(mappedBy = "utilisateur", fetch = FetchType.LAZY)
-	private List<UtilisateurToFormation> utilisateurToFormation = null;
+	private List<UtilisateurToFormation> utilisateurToFormation = new ArrayList<UtilisateurToFormation>();
 
-	@OneToMany(mappedBy = "utilisateur", fetch = FetchType.LAZY)
-	private List<UtilisateurToRole> utilisateurToRole = null;
+	@OneToMany(mappedBy = "utilisateur", fetch = FetchType.EAGER)
+	private List<UtilisateurToRole> utilisateurToRole = new ArrayList<UtilisateurToRole>() ;
 
 	@OneToMany(mappedBy = "utilisateur", fetch = FetchType.LAZY)
 	private List<UtilisateurToSpecialisation> utilisateurToSpecialisation = null;
