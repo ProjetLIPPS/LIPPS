@@ -33,4 +33,44 @@ public class Role extends DataParent {
 		return id;
 	}
 
+
+	public Role() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public Role(Integer id, String type, List<UtilisateurToRole> utilisateurToRole) {
+		super();
+		this.id = id;
+		this.type = type;
+		this.utilisateurToRole = utilisateurToRole;
+	}
+
+
+	public String getType() {
+		return type;
+	}
+
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+
+	public List<UtilisateurToRole> getUtilisateurToRole() {
+		return utilisateurToRole;
+	}
+
+
+	public void setUtilisateurToRole(List<UtilisateurToRole> utilisateurToRole) {
+		this.utilisateurToRole = utilisateurToRole;
+	}
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	
 }

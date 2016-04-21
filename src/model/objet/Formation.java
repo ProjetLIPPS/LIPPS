@@ -72,4 +72,133 @@ public class Formation extends DataParent {
 	}
 
 
+	public Formation() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public Formation(Integer id, Integer grn, Integer offre, String intitule, Integer duree, String debouche,
+			Integer nombreCCP, Integer nombreStage, List<UtilisateurToFormation> utilisateurToFormation,
+			Specialisation specialisation, List<FormationToModule> formationToModule) {
+		super();
+		this.id = id;
+		this.grn = grn;
+		this.offre = offre;
+		this.intitule = intitule;
+		this.duree = duree;
+		this.debouche = debouche;
+		this.nombreCCP = nombreCCP;
+		this.nombreStage = nombreStage;
+		this.utilisateurToFormation = utilisateurToFormation;
+		this.specialisation = specialisation;
+		this.formationToModule = formationToModule;
+	}
+
+
+	public Integer getGrn() {
+		return grn;
+	}
+
+
+	public void setGrn(Integer grn) {
+		this.grn = grn;
+	}
+
+
+	public Integer getOffre() {
+		return offre;
+	}
+
+
+	public void setOffre(Integer offre) {
+		this.offre = offre;
+	}
+
+
+	public String getIntitule() {
+		return intitule;
+	}
+
+
+	public void setIntitule(String intitule) {
+		this.intitule = intitule;
+	}
+
+
+	public Integer getDuree() {
+		return duree;
+	}
+
+
+	public void setDuree(Integer duree) {
+		this.duree = duree;
+	}
+
+
+	public String getDebouche() {
+		return debouche;
+	}
+
+
+	public void setDebouche(String debouche) {
+		this.debouche = debouche;
+	}
+
+
+	public Integer getNombreCCP() {
+		return nombreCCP;
+	}
+
+
+	public void setNombreCCP(Integer nombreCCP) {
+		this.nombreCCP = nombreCCP;
+	}
+
+
+	public Integer getNombreStage() {
+		return nombreStage;
+	}
+
+
+	public void setNombreStage(Integer nombreStage) {
+		this.nombreStage = nombreStage;
+	}
+
+
+	public List<UtilisateurToFormation> getUtilisateurToFormation() {
+		return utilisateurToFormation;
+	}
+
+
+	public void setUtilisateurToFormation(List<UtilisateurToFormation> utilisateurToFormation) {
+		this.utilisateurToFormation = utilisateurToFormation;
+	}
+
+
+	public Specialisation getSpecialisation() {
+		return specialisation;
+	}
+
+
+	public void setSpecialisation(Specialisation specialisation) {
+		this.specialisation = specialisation;
+	}
+
+
+	public List<FormationToModule> getFormationToModule() {
+		return formationToModule;
+	}
+
+
+	public void setFormationToModule(List<FormationToModule> formationToModule) {
+		this.formationToModule = formationToModule;
+	}
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	
 }

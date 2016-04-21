@@ -33,6 +33,39 @@ public class FormationToModule implements Serializable {
 	@JoinColumn (name = "fmo_mod_id", referencedColumnName = "mod_id")
 	@NotNull
 	private Module module = null;
+
+
+	public FormationToModule() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public FormationToModule(Formation formation, Module module) {
+		super();
+		this.formation = formation;
+		this.module = module;
+	}
+
+
+	public Formation getFormation() {
+		return formation;
+	}
+
+
+	public void setFormation(Formation formation) {
+		this.formation = formation;
+	}
+
+
+	public Module getModule() {
+		return module;
+	}
+
+
+	public void setModule(Module module) {
+		this.module = module;
+	}
 	
 	
 	

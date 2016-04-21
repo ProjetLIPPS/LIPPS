@@ -34,5 +34,37 @@ public class Module extends DataParent {
 		return id;
 	}
 
+	public Module() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
+	public Module(Integer id, String intitule, List<FormationToModule> formationToModule) {
+		super();
+		this.id = id;
+		this.intitule = intitule;
+		this.formationToModule = formationToModule;
+	}
+
+	public String getIntitule() {
+		return intitule;
+	}
+
+	public void setIntitule(String intitule) {
+		this.intitule = intitule;
+	}
+
+	public List<FormationToModule> getFormationToModule() {
+		return formationToModule;
+	}
+
+	public void setFormationToModule(List<FormationToModule> formationToModule) {
+		this.formationToModule = formationToModule;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	
 }

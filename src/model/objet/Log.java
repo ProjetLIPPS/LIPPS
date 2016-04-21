@@ -40,5 +40,38 @@ public class Log extends DataParent {
 		return id;
 	}
 
+	public Log() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Log(Integer id, Date derniereConnexion, Utilisateur utilisateur) {
+		super();
+		this.id = id;
+		this.derniereConnexion = derniereConnexion;
+		this.utilisateur = utilisateur;
+	}
+
+	public Date getDerniereConnexion() {
+		return derniereConnexion;
+	}
+
+	public void setDerniereConnexion(Date derniereConnexion) {
+		this.derniereConnexion = derniereConnexion;
+	}
+
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
+	
 
 }// End Log

@@ -34,6 +34,45 @@ public class UtilisateurToRole implements Serializable {
 	@JoinColumn (name = "utr_rol_id", referencedColumnName = "rol_id")
 	@NotNull
 	private Role role = null;
+
+
+
+	public UtilisateurToRole() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+	public UtilisateurToRole(Utilisateur utilisateur, Role role) {
+		super();
+		this.utilisateur = utilisateur;
+		this.role = role;
+	}
+
+
+
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+
+
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
+
+
+
+	public Role getRole() {
+		return role;
+	}
+
+
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
 	
 	
 	

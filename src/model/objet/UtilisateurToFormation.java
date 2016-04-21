@@ -34,6 +34,45 @@ public class UtilisateurToFormation implements Serializable {
 	@JoinColumn (name = "utf_frm_id", referencedColumnName = "frm_id")
 	@NotNull
 	private Formation formation = null;
+
+
+
+	public UtilisateurToFormation() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+	public UtilisateurToFormation(Utilisateur utilisateur, Formation formation) {
+		super();
+		this.utilisateur = utilisateur;
+		this.formation = formation;
+	}
+
+
+
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+
+
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
+
+
+
+	public Formation getFormation() {
+		return formation;
+	}
+
+
+
+	public void setFormation(Formation formation) {
+		this.formation = formation;
+	}
 	
 	
 	

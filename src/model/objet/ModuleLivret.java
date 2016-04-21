@@ -48,6 +48,79 @@ public class ModuleLivret extends DataParent {
 	}
 
 
+	public ModuleLivret() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public ModuleLivret(Integer id, String intitule, boolean resultat, String observation,
+			String intituleSpecialisation, Livret livret) {
+		super();
+		this.id = id;
+		this.intitule = intitule;
+		this.resultat = resultat;
+		this.observation = observation;
+		this.intituleSpecialisation = intituleSpecialisation;
+		this.livret = livret;
+	}
+
+
+	public String getIntitule() {
+		return intitule;
+	}
+
+
+	public void setIntitule(String intitule) {
+		this.intitule = intitule;
+	}
+
+
+	public boolean isResultat() {
+		return resultat;
+	}
+
+
+	public void setResultat(boolean resultat) {
+		this.resultat = resultat;
+	}
+
+
+	public String getObservation() {
+		return observation;
+	}
+
+
+	public void setObservation(String observation) {
+		this.observation = observation;
+	}
+
+
+	public String getIntituleSpecialisation() {
+		return intituleSpecialisation;
+	}
+
+
+	public void setIntituleSpecialisation(String intituleSpecialisation) {
+		this.intituleSpecialisation = intituleSpecialisation;
+	}
+
+
+	public Livret getLivret() {
+		return livret;
+	}
+
+
+	public void setLivret(Livret livret) {
+		this.livret = livret;
+	}
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+
 	
 
 }

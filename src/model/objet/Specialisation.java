@@ -37,4 +37,44 @@ public class Specialisation extends DataParent {
 		return id;
 	}
 
+
+	public Specialisation() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public Specialisation(Integer id, String nom, List<UtilisateurToSpecialisation> utilisateurToSpecialisation) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.utilisateurToSpecialisation = utilisateurToSpecialisation;
+	}
+
+
+	public String getNom() {
+		return nom;
+	}
+
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+
+	public List<UtilisateurToSpecialisation> getUtilisateurToSpecialisation() {
+		return utilisateurToSpecialisation;
+	}
+
+
+	public void setUtilisateurToSpecialisation(List<UtilisateurToSpecialisation> utilisateurToSpecialisation) {
+		this.utilisateurToSpecialisation = utilisateurToSpecialisation;
+	}
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	
 }

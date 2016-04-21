@@ -51,5 +51,83 @@ public class Contact extends DataParent {
 		return id;
 	}
 
+	public Contact() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
+	public Contact(Integer id, String raisonSociale, String rue, Integer cp, String ville, String telephone,
+			String mail, Utilisateur utilisateur) {
+		super();
+		this.id = id;
+		this.raisonSociale = raisonSociale;
+		this.rue = rue;
+		this.cp = cp;
+		this.ville = ville;
+		this.telephone = telephone;
+		this.mail = mail;
+		this.utilisateur = utilisateur;
+	}
+
+	public String getRaisonSociale() {
+		return raisonSociale;
+	}
+
+	public void setRaisonSociale(String raisonSociale) {
+		this.raisonSociale = raisonSociale;
+	}
+
+	public String getRue() {
+		return rue;
+	}
+
+	public void setRue(String rue) {
+		this.rue = rue;
+	}
+
+	public Integer getCp() {
+		return cp;
+	}
+
+	public void setCp(Integer cp) {
+		this.cp = cp;
+	}
+
+	public String getVille() {
+		return ville;
+	}
+
+	public void setVille(String ville) {
+		this.ville = ville;
+	}
+
+	public String getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	
 }

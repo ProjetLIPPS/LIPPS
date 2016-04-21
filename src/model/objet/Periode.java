@@ -48,4 +48,55 @@ public class Periode extends DataParent {
 		return id;
 	}
 
+	public Periode() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Periode(Integer id, Date dateDebut, Date dateFin, Formation formation, TypePeriode typePeriode) {
+		super();
+		this.id = id;
+		this.dateDebut = dateDebut;
+		this.dateFin = dateFin;
+		this.formation = formation;
+		this.typePeriode = typePeriode;
+	}
+
+	public Date getDateDebut() {
+		return dateDebut;
+	}
+
+	public void setDateDebut(Date dateDebut) {
+		this.dateDebut = dateDebut;
+	}
+
+	public Date getDateFin() {
+		return dateFin;
+	}
+
+	public void setDateFin(Date dateFin) {
+		this.dateFin = dateFin;
+	}
+
+	public Formation getFormation() {
+		return formation;
+	}
+
+	public void setFormation(Formation formation) {
+		this.formation = formation;
+	}
+
+	public TypePeriode getTypePeriode() {
+		return typePeriode;
+	}
+
+	public void setTypePeriode(TypePeriode typePeriode) {
+		this.typePeriode = typePeriode;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
+	
 }

@@ -34,6 +34,39 @@ public class Livret extends DataParent {
 	@JoinColumn (name = "uti_id")
 	@NotNull
 	private Utilisateur utilisateur = null;
-	
 
+	public Livret() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Livret(Integer id, boolean cloture, Utilisateur utilisateur) {
+		super();
+		this.id = id;
+		this.cloture = cloture;
+		this.utilisateur = utilisateur;
+	}
+
+	public boolean isCloture() {
+		return cloture;
+	}
+
+	public void setCloture(boolean cloture) {
+		this.cloture = cloture;
+	}
+
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
+	
+	
 }// END LIVRET

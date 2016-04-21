@@ -34,6 +34,39 @@ public class UtilisateurToSpecialisation implements Serializable {
 	@JoinColumn (name = "uts_spe_id", referencedColumnName = "spe_id")
 	@NotNull
 	private Specialisation specialisation = null;
+
+
+	public UtilisateurToSpecialisation() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public UtilisateurToSpecialisation(Utilisateur utilisateur, Specialisation specialisation) {
+		super();
+		this.utilisateur = utilisateur;
+		this.specialisation = specialisation;
+	}
+
+
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
+
+
+	public Specialisation getSpecialisation() {
+		return specialisation;
+	}
+
+
+	public void setSpecialisation(Specialisation specialisation) {
+		this.specialisation = specialisation;
+	}
 	
 	
 	

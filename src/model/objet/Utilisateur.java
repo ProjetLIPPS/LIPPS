@@ -59,7 +59,95 @@ public class Utilisateur extends DataParent {
 		return id;
 	}
 
+	public Utilisateur() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
+	public Utilisateur(Integer id, String nom, String prenom, Date dateNaissance, Integer identifiantAFPA,
+			String password, List<UtilisateurToFormation> utilisateurToFormation,
+			List<UtilisateurToRole> utilisateurToRole, List<UtilisateurToSpecialisation> utilisateurToSpecialisation) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.dateNaissance = dateNaissance;
+		this.identifiantAFPA = identifiantAFPA;
+		this.password = password;
+		this.utilisateurToFormation = utilisateurToFormation;
+		this.utilisateurToRole = utilisateurToRole;
+		this.utilisateurToSpecialisation = utilisateurToSpecialisation;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	public Date getDateNaissance() {
+		return dateNaissance;
+	}
+
+	public void setDateNaissance(Date dateNaissance) {
+		this.dateNaissance = dateNaissance;
+	}
+
+	public Integer getIdentifiantAFPA() {
+		return identifiantAFPA;
+	}
+
+	public void setIdentifiantAFPA(Integer identifiantAFPA) {
+		this.identifiantAFPA = identifiantAFPA;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public List<UtilisateurToFormation> getUtilisateurToFormation() {
+		return utilisateurToFormation;
+	}
+
+	public void setUtilisateurToFormation(List<UtilisateurToFormation> utilisateurToFormation) {
+		this.utilisateurToFormation = utilisateurToFormation;
+	}
+
+	public List<UtilisateurToRole> getUtilisateurToRole() {
+		return utilisateurToRole;
+	}
+
+	public void setUtilisateurToRole(List<UtilisateurToRole> utilisateurToRole) {
+		this.utilisateurToRole = utilisateurToRole;
+	}
+
+	public List<UtilisateurToSpecialisation> getUtilisateurToSpecialisation() {
+		return utilisateurToSpecialisation;
+	}
+
+	public void setUtilisateurToSpecialisation(List<UtilisateurToSpecialisation> utilisateurToSpecialisation) {
+		this.utilisateurToSpecialisation = utilisateurToSpecialisation;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	
 	
 
 }

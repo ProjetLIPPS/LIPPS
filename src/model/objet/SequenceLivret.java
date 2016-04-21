@@ -68,4 +68,112 @@ public class SequenceLivret extends DataParent {
 	}
 
 
+	public SequenceLivret() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public SequenceLivret(Integer id, String intitule, Date dateMessage, Date dateAcquisition, String niveau,
+			String observationStagiaire, String observationFormateur, String observationTuteur,
+			ModuleLivret moduleLivret) {
+		super();
+		this.id = id;
+		this.intitule = intitule;
+		this.dateMessage = dateMessage;
+		this.dateAcquisition = dateAcquisition;
+		this.niveau = niveau;
+		this.observationStagiaire = observationStagiaire;
+		this.observationFormateur = observationFormateur;
+		this.observationTuteur = observationTuteur;
+		this.moduleLivret = moduleLivret;
+	}
+
+
+	public String getIntitule() {
+		return intitule;
+	}
+
+
+	public void setIntitule(String intitule) {
+		this.intitule = intitule;
+	}
+
+
+	public Date getDateMessage() {
+		return dateMessage;
+	}
+
+
+	public void setDateMessage(Date dateMessage) {
+		this.dateMessage = dateMessage;
+	}
+
+
+	public Date getDateAcquisition() {
+		return dateAcquisition;
+	}
+
+
+	public void setDateAcquisition(Date dateAcquisition) {
+		this.dateAcquisition = dateAcquisition;
+	}
+
+
+	public String getNiveau() {
+		return niveau;
+	}
+
+
+	public void setNiveau(String niveau) {
+		this.niveau = niveau;
+	}
+
+
+	public String getObservationStagiaire() {
+		return observationStagiaire;
+	}
+
+
+	public void setObservationStagiaire(String observationStagiaire) {
+		this.observationStagiaire = observationStagiaire;
+	}
+
+
+	public String getObservationFormateur() {
+		return observationFormateur;
+	}
+
+
+	public void setObservationFormateur(String observationFormateur) {
+		this.observationFormateur = observationFormateur;
+	}
+
+
+	public String getObservationTuteur() {
+		return observationTuteur;
+	}
+
+
+	public void setObservationTuteur(String observationTuteur) {
+		this.observationTuteur = observationTuteur;
+	}
+
+
+	public ModuleLivret getModuleLivret() {
+		return moduleLivret;
+	}
+
+
+	public void setModuleLivret(ModuleLivret moduleLivret) {
+		this.moduleLivret = moduleLivret;
+	}
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	
+
 }

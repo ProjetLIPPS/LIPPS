@@ -44,4 +44,55 @@ public class PeriodeLivret extends DataParent {
 		return id;
 	}
 
+	public PeriodeLivret() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public PeriodeLivret(Integer id, Date dateDebut, Date dateFin, TypePeriodeLivret typePeriodeLivret, Livret livret) {
+		super();
+		this.id = id;
+		this.dateDebut = dateDebut;
+		this.dateFin = dateFin;
+		this.typePeriodeLivret = typePeriodeLivret;
+		this.livret = livret;
+	}
+
+	public Date getDateDebut() {
+		return dateDebut;
+	}
+
+	public void setDateDebut(Date dateDebut) {
+		this.dateDebut = dateDebut;
+	}
+
+	public Date getDateFin() {
+		return dateFin;
+	}
+
+	public void setDateFin(Date dateFin) {
+		this.dateFin = dateFin;
+	}
+
+	public TypePeriodeLivret getTypePeriodeLivret() {
+		return typePeriodeLivret;
+	}
+
+	public void setTypePeriodeLivret(TypePeriodeLivret typePeriodeLivret) {
+		this.typePeriodeLivret = typePeriodeLivret;
+	}
+
+	public Livret getLivret() {
+		return livret;
+	}
+
+	public void setLivret(Livret livret) {
+		this.livret = livret;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	
 }

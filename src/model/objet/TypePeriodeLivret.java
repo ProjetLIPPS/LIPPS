@@ -30,4 +30,38 @@ public class TypePeriodeLivret extends DataParent {
 		return id;
 	}
 
+
+
+	public TypePeriodeLivret() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+	public TypePeriodeLivret(Integer id, Date nom) {
+		super();
+		this.id = id;
+		this.nom = nom;
+	}
+
+
+
+	public Date getNom() {
+		return nom;
+	}
+
+
+
+	public void setNom(Date nom) {
+		this.nom = nom;
+	}
+
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	
 }

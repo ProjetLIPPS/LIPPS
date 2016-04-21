@@ -30,4 +30,38 @@ public class TypePeriode extends DataParent {
 		return id;
 	}
 
+
+
+	public TypePeriode() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+	public TypePeriode(Integer id, Date nom) {
+		super();
+		this.id = id;
+		this.nom = nom;
+	}
+
+
+
+	public Date getNom() {
+		return nom;
+	}
+
+
+
+	public void setNom(Date nom) {
+		this.nom = nom;
+	}
+
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
+	
 }

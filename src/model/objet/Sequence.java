@@ -34,5 +34,37 @@ public class Sequence extends DataParent {
 		return id;
 	}
 
+	public Sequence() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
+	public Sequence(Integer id, String intitule, Module module) {
+		super();
+		this.id = id;
+		this.intitule = intitule;
+		this.module = module;
+	}
+
+	public String getIntitule() {
+		return intitule;
+	}
+
+	public void setIntitule(String intitule) {
+		this.intitule = intitule;
+	}
+
+	public Module getModule() {
+		return module;
+	}
+
+	public void setModule(Module module) {
+		this.module = module;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	
 }
