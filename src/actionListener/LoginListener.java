@@ -119,16 +119,7 @@ public class LoginListener implements FocusListener, MouseListener , ActionListe
 	@Override
 	public void keyTyped(KeyEvent e)
 	{
-		System.out.println("Key event in");
-		System.out.println(e.getKeyCode());
 		
-		
-		if (e.getKeyCode() == KeyEvent.VK_ENTER)
-		{
-			System.out.println("if in");
-			controleur.getFlogin().getBtnConnexion().doClick();
-		}
-		System.out.println("Key event out");
 	}
 
 
@@ -145,7 +136,10 @@ public class LoginListener implements FocusListener, MouseListener , ActionListe
 	@Override
 	public void keyReleased(KeyEvent e)
 	{
-		// TODO Auto-generated method stub
+		if (e.getKeyCode() == KeyEvent.VK_ENTER)
+		{
+			controleur.getFlogin().getBtnConnexion().doClick();
+		}
 		
 	}
 

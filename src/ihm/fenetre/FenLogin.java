@@ -39,7 +39,7 @@ public class FenLogin extends JFrame
 	public FenLogin(LoginListener listener)
 	{
 
-
+		
 		setTitle("LIPPS - Connexion");
 		getContentPane().setBackground(Color.WHITE);
 		setResizable(false);
@@ -51,6 +51,7 @@ public class FenLogin extends JFrame
 		txtEmail = new JTextField();
 		txtEmail.addMouseListener(listener);
 		txtEmail.addFocusListener(listener);
+		txtEmail.addKeyListener(listener);
 		txtEmail.setFont(new Font("Arial", Font.PLAIN, 16));
 		txtEmail.setText("Email");
 		txtEmail.setBounds(125, 230, 200, 35);
@@ -78,8 +79,8 @@ public class FenLogin extends JFrame
 
 		btnConnexion = new JButton("Connexion");
 		btnConnexion.addMouseListener(listener);
-		btnConnexion.setFont(new Font("Arial", Font.PLAIN, 12));
 		btnConnexion.addActionListener(listener);
+		btnConnexion.setFont(new Font("Arial", Font.PLAIN, 12));
 		btnConnexion.setBounds(165, 404, 120, 34);
 		getContentPane().add(btnConnexion);
 
