@@ -1,11 +1,14 @@
 package controleur;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+
+import org.hibernate.ScrollableResults;
 
 import ihm.LippsIhm;
 import model.baseDAO.DaoFactory;
-import model.objet.Role;
+import model.baseDAO.DaoUtilisateur;
 import model.objet.Utilisateur;
 import model.objet.UtilisateurToRole;
 
@@ -17,7 +20,7 @@ public class ControleurFMain
 		private List<Utilisateur> listeStagiaire = new ArrayList<Utilisateur>();
 		private List<Utilisateur> listeTuteur = new ArrayList<Utilisateur>();
 
-		public void init()
+		public void init() throws Exception
 			{
 
 				 recupUtilisateurDb();
@@ -26,25 +29,15 @@ public class ControleurFMain
 
 			}
 
-		public void recupUtilisateurDb()
+		public void recupUtilisateurDb() throws Exception
 
 			{
-				List<Utilisateur> listeUtilisateur;
-				try
-					{
-
-						listeUtilisateur = (List<Utilisateur>) DaoFactory.getDaoUtilisateur().readAll(Utilisateur.class);
-
+				Object [][] resultat = DaoFactory.getDaoUtilisateur().readAdmin();
+				
+				
+				
 						
-						for (Utilisateur utilisateur : listeUtilisateur)
-							{
-								List<UtilisateurToRole> utilisateurToRole = utilisateur.getUtilisateurToRole();
-								
-								
-								System.out.println();
-							}
-						
-
+/*
 						for (int i = 0; i < listeUtilisateur.size(); i++)
 							{
 								Utilisateur currentUser = listeUtilisateur.get(i);
@@ -74,17 +67,13 @@ public class ControleurFMain
 										}
 									}
 
-							}
+							}*/
 
 					}
 
-				catch (Exception e)
-					{
+				
 
-						e.printStackTrace();
-					}
-
-			}
+			
 
 		public List<Utilisateur> getListeAdmin()
 			{

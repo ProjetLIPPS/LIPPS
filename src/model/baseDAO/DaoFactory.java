@@ -23,7 +23,7 @@ public class DaoFactory {
 	private static DaoUtilisateur daoUtilisateur = null;
 	
 	
-	public static DaoParent getDaoAnnexeLivret()
+	public static DaoAnnexeLivret getDaoAnnexeLivret()
 	{
 		if (daoAnnexeLivret == null)
 		{
@@ -33,7 +33,7 @@ public class DaoFactory {
 		return daoAnnexeLivret;
 	}
 	
-	public static DaoParent getDaoContact()
+	public static DaoContact getDaoContact()
 	{
 		if (daoContact == null)
 		{
@@ -43,7 +43,7 @@ public class DaoFactory {
 		return daoContact;
 	}
 	
-	public static DaoParent getDaoFormation()
+	public static DaoFormation getDaoFormation()
 	{
 		if (daoFormation == null)
 		{
@@ -53,7 +53,7 @@ public class DaoFactory {
 		return daoFormation;
 	}
 	
-	public static DaoParent getDaoLivret()
+	public static DaoLivret getDaoLivret()
 	{
 		if (daoLivret == null)
 		{
@@ -63,7 +63,7 @@ public class DaoFactory {
 		return daoLivret;
 	}
 	
-	public static DaoParent getDaoLog()
+	public static DaoLog getDaoLog()
 	{
 		if (daoLog == null)
 		{
@@ -73,7 +73,7 @@ public class DaoFactory {
 		return daoLog;
 	}
 	
-	public static DaoParent getDaoModule()
+	public static DaoModule getDaoModule()
 	{
 		if (daoModule == null)
 		{
@@ -83,7 +83,7 @@ public class DaoFactory {
 		return daoModule;
 	}
 	
-	public static DaoParent getDaoModuleLivret()
+	public static DaoModuleLivret getDaoModuleLivret()
 	{
 		if (daoModuleLivret == null)
 		{
@@ -93,7 +93,7 @@ public class DaoFactory {
 		return daoModuleLivret;
 	}
 	
-	public static DaoParent getDaoPeriode()
+	public static DaoPeriode getDaoPeriode()
 	{
 		if (daoPeriode == null)
 		{
@@ -103,7 +103,7 @@ public class DaoFactory {
 		return daoPeriode;
 	}
 	
-	public static DaoParent getDaoPeriodeLivret()
+	public static DaoPeriodeLivret getDaoPeriodeLivret()
 	{
 		if (daoPeriodeLivret == null)
 		{
@@ -114,7 +114,7 @@ public class DaoFactory {
 	}
 	
 	
-	public static DaoParent getDaoProjetProLivret()
+	public static DaoProjetProLivret getDaoProjetProLivret()
 	{
 		if (daoProjetProLivret == null)
 		{
@@ -124,7 +124,7 @@ public class DaoFactory {
 		return daoProjetProLivret;
 	}
 	
-	public static DaoParent getDaoResultatParcoursLivret()
+	public static DaoResultatParcoursLivret getDaoResultatParcoursLivret()
 	{
 		if (daoResultatParcoursLivret == null)
 		{
@@ -134,7 +134,7 @@ public class DaoFactory {
 		return daoResultatParcoursLivret;
 	}
 	
-	public static DaoParent getDaoRole()
+	public static DaoRole getDaoRole()
 	{
 		if (daoRole == null)
 		{
@@ -144,7 +144,7 @@ public class DaoFactory {
 		return daoRole;
 	}
 	
-	public static DaoParent getDaoSequence()
+	public static DaoSequence getDaoSequence()
 	{
 		if (daoSequence == null)
 		{
@@ -154,7 +154,7 @@ public class DaoFactory {
 		return daoSequence;
 	}
 	
-	public static DaoParent getDaoSequenceLivret()
+	public static DaoSequenceLivret getDaoSequenceLivret()
 	{
 		if (daoSequenceLivret == null)
 		{
@@ -165,7 +165,7 @@ public class DaoFactory {
 	}
 	
 	
-	public static DaoParent getDaoSpecialisation()
+	public static DaoSpecialisation getDaoSpecialisation()
 	{
 		if (daoSpecialisation == null)
 		{
@@ -185,7 +185,7 @@ public class DaoFactory {
 		return daoSuiviLivret;
 	}
 	
-	public static DaoParent getDaoTypePeriode()
+	public static DaoTypePeriode getDaoTypePeriode()
 	{
 		if (daoTypePeriode == null)
 		{
@@ -195,7 +195,7 @@ public class DaoFactory {
 		return daoTypePeriode;
 	}
 	
-	public static DaoParent getDaoTypePeriodeLivret()
+	public static DaoTypePeriodeLivret getDaoTypePeriodeLivret()
 	{
 		if (daoTypePeriodeLivret == null)
 		{
@@ -205,7 +205,7 @@ public class DaoFactory {
 		return daoTypePeriodeLivret;
 	}
 	
-	public static DaoParent getDaoUtilisateur()
+	public static DaoUtilisateur getDaoUtilisateur()
 	{
 		if (daoUtilisateur == null)
 		{
