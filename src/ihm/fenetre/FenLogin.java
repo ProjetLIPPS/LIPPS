@@ -17,15 +17,18 @@ import javax.swing.JTextField;
 import actionListener.LoginListener;
 import controleur.ControleurLogin;
 import ihm.theme.ThemeLIPPS;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class FenLogin extends JFrame
 {
 
 	private JTextField txtEmail;
 	private JPasswordField pwdMotDePasse;
-	private ControleurLogin controleurLogin;
-	private LoginListener listener;
 	private JLabel lblChampDerreur;
+	JButton btnConnexion;
 
 	/**
 	 * Create the frame.
@@ -33,11 +36,9 @@ public class FenLogin extends JFrame
 	 * @param listener
 	 * @param controleurLogin
 	 */
-	public FenLogin(ControleurLogin controleurLogin, LoginListener listener)
+	public FenLogin(LoginListener listener)
 	{
 
-		this.controleurLogin = controleurLogin;
-		this.listener = listener;
 
 		setTitle("LIPPS - Connexion");
 		getContentPane().setBackground(Color.WHITE);
@@ -59,6 +60,7 @@ public class FenLogin extends JFrame
 		pwdMotDePasse = new JPasswordField();
 		pwdMotDePasse.addMouseListener(listener);
 		pwdMotDePasse.addFocusListener(listener);
+		pwdMotDePasse.addKeyListener(listener);
 		pwdMotDePasse.setFont(new Font("Arial", Font.PLAIN, 16));
 		pwdMotDePasse.setText("Mot de passe");
 		pwdMotDePasse.setBounds(125, 313, 200, 35);
@@ -74,7 +76,8 @@ public class FenLogin extends JFrame
 		lblMotDePasse.setBounds(125, 276, 110, 35);
 		getContentPane().add(lblMotDePasse);
 
-		JButton btnConnexion = new JButton("Connexion");
+		btnConnexion = new JButton("Connexion");
+		btnConnexion.addMouseListener(listener);
 		btnConnexion.setFont(new Font("Arial", Font.PLAIN, 12));
 		btnConnexion.addActionListener(listener);
 		btnConnexion.setBounds(165, 404, 120, 34);
@@ -129,4 +132,15 @@ public class FenLogin extends JFrame
 		return lblChampDerreur;
 	}
 
+	public JButton getBtnConnexion()
+	{
+		return btnConnexion;
+	}
+
+	public void setBtnConnexion(JButton btnConnexion)
+	{
+		this.btnConnexion = btnConnexion;
+	}
+
+	
 }
