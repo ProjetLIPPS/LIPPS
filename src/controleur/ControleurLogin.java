@@ -42,7 +42,9 @@ public class ControleurLogin
 		else
 		{
 			flogin.dispose();
-			ControleurFMain ctrl = new ControleurFMain();
+			Utilisateur user = DaoFactory.getDaoContact().getUserFromMail(flogin.getTxtEmail().getText());
+			
+			new ControleurFMain(/*user*/);
 		}
 		
 		

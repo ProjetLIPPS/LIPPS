@@ -79,8 +79,14 @@ public class LoginListener implements FocusListener, MouseListener , ActionListe
 	@Override
 	public void focusGained(FocusEvent e)
 	{
-		
-		
+		if (e.getSource().getClass().getSimpleName().equals("JPasswordField"))
+		{
+			JPasswordField source = (JPasswordField) e.getSource();
+			if(new String (source.getPassword()).equals("Mot de passe"))
+			{
+				source.setText("");
+			}
+		}
 
 	}
 
