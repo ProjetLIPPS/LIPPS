@@ -1,5 +1,7 @@
 package controleur;
 
+import javax.swing.SwingUtilities;
+
 import actionListener.LoginListener;
 import ihm.fenetre.FenLogin;
 import model.baseDAO.DaoFactory;
@@ -12,7 +14,7 @@ public class ControleurLogin
 	public void init()
 	{
 		LoginListener listener = new LoginListener(this);
-		flogin = new FenLogin(this, listener);
+		flogin = new FenLogin(listener);
 		flogin.setVisible(true);
 	}
 	
@@ -20,7 +22,6 @@ public class ControleurLogin
 	public void verifLogin()
 	{
 		Boolean resultat = true;
-		
 		
 		
 		if (flogin.getTxtEmail().getText().split("@").length != 2)
@@ -31,12 +32,13 @@ public class ControleurLogin
 		{
 			flogin.AfficheErreur("Entrez un email valide !");
 		}
-		else if (isPasswordCorrect(flogin.getTxtEmail().getText(), new String(flogin.getPwdMotDePasse().getPassword())))
+		else if (!DaoFactory.getDaoContact().isPasswordCorrect(flogin.getTxtEmail().getText(), new String(flogin.getPwdMotDePasse().getPassword())))
 		{
-			
+			flogin.AfficheErreur("Email ou mot de passe erroné !");
 		}
 		else
 		{
+			
 			flogin.dispose();
 		}
 		
@@ -47,7 +49,10 @@ public class ControleurLogin
 	private boolean isPasswordCorrect(String email, String password)
 	{
 		
-		//TODO DaoContact
+		if(DaoFactory.getDaoContact().isPasswordCorrect(email, password))
+		{
+			
+		}
 		
 		
 		return false;

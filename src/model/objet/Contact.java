@@ -42,7 +42,7 @@ public class Contact extends DataParent {
 	@NotNull
 	private String mail = null;
 
-	@OneToOne (fetch=FetchType.LAZY)
+	@OneToOne (fetch=FetchType.EAGER)
 	@JoinColumn (name = "uti_id")
 	@NotNull
 	private Utilisateur utilisateur = null;

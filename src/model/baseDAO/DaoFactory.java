@@ -33,7 +33,7 @@ public class DaoFactory {
 		return daoAnnexeLivret;
 	}
 	
-	public static DaoParent getDaoContact()
+	public static DaoContact getDaoContact()
 	{
 		if (daoContact == null)
 		{

@@ -48,14 +48,14 @@ public  abstract class DaoParent
 
 	
 
-	public <E extends DataParent> E findById(E objetBase, Integer id)
+	public <E extends DataParent> E findById(Class<E> objetBaseClass, Integer id)
 			throws Exception
 	{
 
 		Session session = BaseSession.getNewSession();
 
-		Criteria criteria = session.createCriteria(objetBase.getClass());
-		criteria.add(Restrictions.eq(objetBase.NOM_ID, id));
+		Criteria criteria = session.createCriteria(objetBaseClass);
+		criteria.add(Restrictions.eq("id", id));
 
 		@SuppressWarnings("unchecked")
 		E result = (E) criteria.uniqueResult();
