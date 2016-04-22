@@ -18,6 +18,7 @@ import javax.swing.border.EmptyBorder;
 
 import ihm.fenetre.PanelCCompte;
 import ihm.fenetre.PanelCFormation;
+import ihm.fenetre.PanelMngModel;
 import ihm.fenetre.PanelMngModule;
 import ihm.theme.ThemeLIPPS;
 
@@ -25,7 +26,7 @@ import ihm.theme.ThemeLIPPS;
 public class LippsIhm extends JFrame {
 	
 	private JPanel contentPane;
-	private JPanel panelCenterFormation = new PanelMngModule();
+	private JPanel panelCenterFormation = new PanelMngModel();
 	private JPanel panelCenterCompte = new PanelCCompte();
 	private JPanel panelCenterMain = new JPanel();
 	private JPanel contentPaneCenter;

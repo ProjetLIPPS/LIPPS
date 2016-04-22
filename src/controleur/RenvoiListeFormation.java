@@ -8,6 +8,7 @@ public class RenvoiListeFormation {
 		String[] listFormation = null;
 		
 		// methode recup formations depuis dao
+		// TODO condition if selon admin ou formateur 
 		
 		// >> test en dur:
 		

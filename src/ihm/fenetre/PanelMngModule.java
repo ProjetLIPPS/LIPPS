@@ -82,6 +82,7 @@ public class PanelMngModule extends JPanel {
 		listFormation.setModel(new AbstractListModel<String>() {
 	
 			private static final long serialVersionUID = 1L;
+			
 			String[] values = RenvoiListeFormation.renvoiListeFormation();
 			public int getSize() {
 				return values.length;

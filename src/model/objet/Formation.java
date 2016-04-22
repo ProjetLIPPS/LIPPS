@@ -53,7 +53,7 @@ public class Formation extends DataParent {
 	@Column(name = "frm_nb_ccp")
 	@NotNull
 	private Integer nbccp = null;
-
+	
 	@Column(name = "frm_nb_stage")
 	@NotNull
 	private Integer nbstage = null;

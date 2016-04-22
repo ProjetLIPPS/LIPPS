@@ -1,21 +1,23 @@
 package controleur;
 
-
-import javax.swing.JPanel;
-
-import ihm.fenetre.DeleteConf;
-
-
+import ihm.fenetre.PanelMngModel;
 
 public class SuppressionModele {
+	
+
+	private PanelMngModel panelMngModel;
+	
 
 	
-	public static void deleteModele(JPanel panelMngModel)	{
+	public void deleteModele()	{
 	
-		DeleteConf del = new DeleteConf(panelMngModel);
+		String modelSelected = panelMngModel.getList().getSelectedValue();
+		
+		
+		
 	}
 
-	
+
 
 
 

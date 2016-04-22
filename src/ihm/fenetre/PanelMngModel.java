@@ -31,19 +31,23 @@ import ihm.theme.ThemeLIPPS;
 public class PanelMngModel extends JPanel  {
 	
 	
-	
+
+	private static final long serialVersionUID = 1L;
 	private JTextField txtIntitule;
 	private JTextField txtDuree;
 	private JTextField txtSpe;
 	private JTextField txtGrn;
-	private JTextArea txtCcp;
 	private JTextArea txtDebouche;
-
+	private JList<String> list;
+	
+	private PanelMngModelListener mngModelListener, deleteActionListener;
 	
 	
-	public PanelMngModel()	{
+	
+	public PanelMngModel()	 {
 		
-		PanelMngModelListener deleteActionListener = new PanelMngModelListener(this);
+		mngModelListener = new PanelMngModelListener(this);
+		deleteActionListener = new PanelMngModelListener(this);
 		
 		setOpaque(false);
 		setMinimumSize(new Dimension(400, 10));
@@ -79,7 +83,7 @@ public class PanelMngModel extends JPanel  {
 		panelLeft.add(panelJlist, BorderLayout.CENTER);
 		panelJlist.setLayout(new BorderLayout(0, 0));
 		
-		JList<String> list = new JList<String>();
+		list = new JList<String>();
 		list.setBounds(new Rectangle(100, 0, 0, 0));
 		list.setSelectionForeground(Color.WHITE);
 		list.setSelectionBackground(ThemeLIPPS.BLUE);
@@ -90,6 +94,7 @@ public class PanelMngModel extends JPanel  {
 		list.setBackground(ThemeLIPPS.BLUE_DARK);
 		list.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, ThemeLIPPS.FONT_SIZE_BUTTON));
 		panelJlist.add(list, BorderLayout.NORTH);
+		list.addListSelectionListener(mngModelListener);
 		
 		String[] values = new String[] {"Test1", "Test2", "Test3"};
 		list.setListData(values); 
@@ -253,13 +258,6 @@ public class PanelMngModel extends JPanel  {
 		panelBox.add(panelCcpDebGridLbl);
 		panelCcpDebGridLbl.setLayout(new GridLayout(1, 2, 0, 0));
 		
-		JLabel lblCcp = new JLabel("CCP:");
-		lblCcp.setForeground(Color.BLACK);
-		lblCcp.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, ThemeLIPPS.FONT_SIZE_DEFAULT));
-		lblCcp.setPreferredSize(new Dimension(0, 0));
-		panelCcpDebGridLbl.add(lblCcp);
-		lblCcp.setHorizontalAlignment(SwingConstants.CENTER);
-		
 		JLabel lblDbouchs = new JLabel("Débouchés:");
 		lblDbouchs.setPreferredSize(new Dimension(0, 0));
 		lblDbouchs.setForeground(Color.BLACK);
@@ -270,22 +268,7 @@ public class PanelMngModel extends JPanel  {
 		JPanel panelCcpDebTxt = new JPanel();
 		panelCcpDebTxt.setBackground(Color.WHITE);
 		panelBox.add(panelCcpDebTxt);
-		panelCcpDebTxt.setLayout(new GridLayout(0, 2, 10, 0));
-		
-		JScrollPane scrollPaneCcp = new JScrollPane();
-		scrollPaneCcp.setOpaque(false);
-		panelCcpDebTxt.add(scrollPaneCcp);
-		
-		txtCcp = new JTextArea();
-		txtCcp.setTabSize(10);
-		txtCcp.setEditable(false);
-		txtCcp.setText("Sed ut tum ad senem senex de senectute, sic hoc libro ad amicum amicissimus scripsi de amicitia. Tum est Cato locutus, quo erat nemo fere senior temporibus illis, nemo prudentior; nunc Laelius et sapiens (sic enim est habitus) et amicitiae gloria excellens de amicitia loquetur. Tu velim a me animum parumper avertas, Laelium loqui ipsum putes. C. Fannius et Q. Mucius ad socerum veniunt post mortem Africani; ab his sermo oritur, respondet Laelius, cuius tota disputatio est de amicitia, quam legens te ipse cognosces.\r\n\r\nAc ne quis a nobis hoc ita dici forte miretur, quod alia quaedam in hoc facultas sit ingeni, neque haec dicendi ratio aut disciplina, ne nos quidem huic uni studio penitus umquam dediti fuimus. Etenim omnes artes, quae ad humanitatem pertinent, habent quoddam commune vinculum, et quasi cognatione quadam inter se continentur.\r\n\r\nSed si ille hac tam eximia fortuna propter utilitatem rei publicae frui non properat, ut omnia illa conficiat, quid ego, senator, facere debeo, quem, etiamsi ille aliud vellet, rei publicae consulere oporteret?\r\n\r\nEt quia Mesopotamiae tractus omnes crebro inquietari sueti praetenturis et stationibus servabantur agrariis, laevorsum flexo itinere Osdroenae subsederat extimas partes, novum parumque aliquando temptatum commentum adgressus. quod si impetrasset, fulminis modo cuncta vastarat. erat autem quod cogitabat huius modi.\r\n\r\nHoc inmaturo interitu ipse quoque sui pertaesus excessit e vita aetatis nono anno atque vicensimo cum quadriennio imperasset. natus apud Tuscos in Massa Veternensi, patre Constantio Constantini fratre imperatoris, matreque Galla sorore Rufini et Cerealis, quos trabeae consulares nobilitarunt et praefecturae.\r\nSed ut tum ad senem senex de senectute, sic hoc libro ad amicum amicissimus scripsi de amicitia. Tum est Cato locutus, quo erat nemo fere senior temporibus illis, nemo prudentior; nunc Laelius et sapiens (sic enim est habitus) et amicitiae gloria excellens de amicitia loquetur. Tu velim a me animum parumper avertas, Laelium loqui ipsum putes. C. Fannius et Q. Mucius ad socerum veniunt post mortem Africani; ab his sermo oritur, respondet Laelius, cuius tota disputatio est de amicitia, quam legens te ipse cognosces.\r\n\r\nAc ne quis a nobis hoc ita dici forte miretur, quod alia quaedam in hoc facultas sit ingeni, neque haec dicendi ratio aut disciplina, ne nos quidem huic uni studio penitus umquam dediti fuimus. Etenim omnes artes, quae ad humanitatem pertinent, habent quoddam commune vinculum, et quasi cognatione quadam inter se continentur.\r\n\r\nSed si ille hac tam eximia fortuna propter utilitatem rei publicae frui non properat, ut omnia illa conficiat, quid ego, senator, facere debeo, quem, etiamsi ille aliud vellet, rei publicae consulere oporteret?\r\n\r\nEt quia Mesopotamiae tractus omnes crebro inquietari sueti praetenturis et stationibus servabantur agrariis, laevorsum flexo itinere Osdroenae subsederat extimas partes, novum parumque aliquando temptatum commentum adgressus. quod si impetrasset, fulminis modo cuncta vastarat. erat autem quod cogitabat huius modi.\r\n\r\nHoc inmaturo interitu ipse quoque sui pertaesus excessit e vita aetatis nono anno atque vicensimo cum quadriennio imperasset. natus apud Tuscos in Massa Veternensi, patre Constantio Constantini fratre imperatoris, matreque Galla sorore Rufini et Cerealis, quos trabeae consulares nobilitarunt et praefecturae.");
-		txtCcp.setPreferredSize(new Dimension(0, 0));
-		txtCcp.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
-		scrollPaneCcp.setViewportView(txtCcp);
-		txtCcp.setRows(7);
-		txtCcp.setLineWrap(true);
-		txtCcp.setColumns(20);
+		panelCcpDebTxt.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JScrollPane scrollPaneDeb = new JScrollPane();
 		panelCcpDebTxt.add(scrollPaneDeb);
@@ -347,16 +330,13 @@ public class PanelMngModel extends JPanel  {
 
 
 
-	public JTextArea getTxtCcp() {
-		return txtCcp;
-	}
-
-
-
 	public JTextArea getTxtDebouche() {
 		return txtDebouche;
 	}
 
+	public JList<String> getList() {
+		return list;
+	}
 	
 	
 	
