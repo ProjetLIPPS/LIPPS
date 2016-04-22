@@ -100,11 +100,15 @@ public class CreationModule extends JDialog {
 		panelNorth.add(lblDescriptionDuModule, BorderLayout.WEST);
 		
 		JPanel panelBoutton = new JPanel();
+		panelBoutton.setPreferredSize(new Dimension(10, 50));
+		panelBoutton.setMinimumSize(new Dimension(10, 80));
 		panelBoutton.setOpaque(false);
 		panelBoutton.setBackground(Color.WHITE);
 		panelGlobal.add(panelBoutton, BorderLayout.SOUTH);
 		
 		JButton btnNewButton = new JButton("Ajouter Séquence");
+		btnNewButton.setBounds(152, 5, 173, 29);
+		btnNewButton.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_BUTTON));
 		btnNewButton.setBackground(Color.WHITE);
 		
 		btnNewButton.addActionListener(new ActionListener() {
@@ -113,12 +117,15 @@ public class CreationModule extends JDialog {
 				ajouterSequence();
 			}
 		});
+		panelBoutton.setLayout(null);
 		
 		
 		
 		panelBoutton.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("Valider le module");
+		JButton btnNewButton_1 = new JButton("Valider");
+		btnNewButton_1.setBounds(384, 5, 114, 29);
+		btnNewButton_1.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_BUTTON));
 		btnNewButton_1.setBackground(Color.WHITE);
 		panelBoutton.add(btnNewButton_1);
 		
