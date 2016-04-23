@@ -12,12 +12,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 
 import ihm.theme.ThemeLIPPS;
-import javax.swing.JScrollPane;
 
 public class RowSequence extends JPanel
 {
@@ -112,7 +112,7 @@ public class RowSequence extends JPanel
 				getJFrame().monterSequence(getRowSequence());
 			}
 		});
-		Move_up.setIcon(new ImageIcon("C:\\WorkEclipse\\LippsBeta\\img\\fleche_haut16x16.png"));
+		Move_up.setIcon(new ImageIcon("img/fleche_haut16x16.png"));
 		Move_up.setBounds(500, 11, 16, 14);
 		add(Move_up);
 		
@@ -124,7 +124,7 @@ public class RowSequence extends JPanel
 				getJFrame().descendreSequence(getRowSequence());
 			}
 		});
-		Move_down.setIcon(new ImageIcon("C:\\WorkEclipse\\LippsBeta\\img\\fleche_bas16x16.png"));
+		Move_down.setIcon(new ImageIcon("img/fleche_bas16x16.png"));
 		Move_down.setBounds(500, 60, 16, 14);
 		add(Move_down);
 	}

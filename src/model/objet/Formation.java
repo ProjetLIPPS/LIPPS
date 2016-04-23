@@ -1,5 +1,6 @@
 package model.objet;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -49,11 +50,25 @@ public class Formation extends DataParent {
 
 	@Column(name = "frm_nombre_ccp")
 	@NotNull
+<<<<<<< HEAD
 	private Integer nombreCCP = null;
 
 	@Column(name = "frm_nombre_stage")
+=======
+	private Integer nbccp = null;
+	
+	@Column(name = "frm_nb_stage")
+>>>>>>> refs/remotes/origin/Chris
 	@NotNull
+<<<<<<< HEAD
 	private Integer nombreStage = null;
+=======
+	private Integer nbstage = null;
+	
+	@Column(name = "frm_model")
+	@NotNull
+	private boolean isModel;
+>>>>>>> refs/remotes/origin/Chris
 
 	@OneToMany(mappedBy = "formation", fetch = FetchType.LAZY)
 	private List<UtilisateurToFormation> utilisateurToFormation = null;
@@ -63,16 +78,32 @@ public class Formation extends DataParent {
 	@NotNull
 	private Specialisation specialisation = null;
 
+<<<<<<< HEAD
 	@OneToMany(mappedBy = "formation", fetch = FetchType.LAZY)
 	private List<FormationToModule> formationToModule = null;
+=======
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinTable(name = "j_formation_module", joinColumns = @JoinColumn(name = "frm_id") , inverseJoinColumns = @JoinColumn(name = "mod_id") )
+	private List<Module> listModule = new ArrayList<Module>();
+>>>>>>> refs/remotes/origin/Chris
 
 	
 	public Integer getId() {
 		return id;
 	}
 
+<<<<<<< HEAD
 
 	public Formation() {
+=======
+	
+	public Formation() {
+		super();
+	}
+	
+	public Formation(Integer grn, Integer offre, String intitule, Integer duree, String debouche, Integer nbccp,
+			Integer nbstage, Specialisation spe_id) {
+>>>>>>> refs/remotes/origin/Chris
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -200,5 +231,28 @@ public class Formation extends DataParent {
 		this.id = id;
 	}
 
+<<<<<<< HEAD
 	
+=======
+	public List<Module> getListModule() {
+		return listModule;
+	}
+
+	public void setListModule(List<Module> listModule) {
+		this.listModule = listModule;
+	}
+	
+	public void addModule(Module module) {
+		this.listModule.add(module);
+	}
+
+	public List<Utilisateur> getListUtilisateur() {
+		return listUtilisateur;
+	}
+
+	public void setListUtilisateur(List<Utilisateur> listUtilisateur) {
+		this.listUtilisateur = listUtilisateur;
+	}
+
+>>>>>>> refs/remotes/origin/Chris
 }

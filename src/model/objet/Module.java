@@ -27,8 +27,29 @@ public class Module extends DataParent {
 	@NotNull
 	private String intitule = null;
 
+<<<<<<< HEAD
 	@OneToMany(mappedBy = "module", fetch = FetchType.LAZY)
 	private List<FormationToModule> formationToModule = null;
+=======
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name = "seq_id")
+	private List<Sequence> listSequence = null;
+
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinTable(name = "j_formation_module", joinColumns = @JoinColumn(name = "mod_id") , inverseJoinColumns = @JoinColumn(name = "frm_id") )
+	private List<Formation> listFormation = null;
+
+	
+	
+	public Module() {
+		super();
+	}
+	public Module(Integer id, String intitule) {
+		super();
+		this.id = id;
+		this.intitule = intitule;
+	}
+>>>>>>> refs/remotes/origin/Chris
 
 	public Integer getId() {
 		return id;

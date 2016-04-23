@@ -27,8 +27,19 @@ public class Sequence extends DataParent {
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "mod_id")
+<<<<<<< HEAD
 	@NotNull
 	private Module module = null;
+=======
+	private Module modId = null;
+
+	public Sequence(String intitule) {
+		super();
+		this.id = id;
+		this.intitule = intitule;
+		this.modId = modId;
+	}
+>>>>>>> refs/remotes/origin/Chris
 
 	public Integer getId() {
 		return id;

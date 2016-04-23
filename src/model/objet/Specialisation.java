@@ -28,13 +28,31 @@ public class Specialisation extends DataParent {
 	@NotNull
 	private String nom = null;
 
+<<<<<<< HEAD
 	
 	@OneToMany(mappedBy = "specialisation", fetch = FetchType.LAZY)
 	private List<UtilisateurToSpecialisation> utilisateurToSpecialisation = null;
+=======
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinColumn(name = "frm_id")
+	@NotNull
+	private List<Formation> listFormation = null;
+>>>>>>> refs/remotes/origin/Chris
 
+<<<<<<< HEAD
 	
 	public Integer getId() {
 		return id;
+=======
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinTable(name = "j_utilisateur_specialisation", joinColumns = @JoinColumn(name = "spe_id") , inverseJoinColumns = @JoinColumn(name = "uti_id") )
+	@NotNull
+	private List<Utilisateur> listUtilisateur = null;
+
+	public Specialisation(String nom) {
+		super();
+		this.nom = nom;
+>>>>>>> refs/remotes/origin/Chris
 	}
 
 

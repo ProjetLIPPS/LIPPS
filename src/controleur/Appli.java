@@ -2,8 +2,6 @@ package controleur;
 
 
 
-import javax.swing.JOptionPane;
-
 import org.hibernate.cfg.Configuration;         
 import ihm.LippsIhm;
 import model.baseDAO.DaoFactory;
