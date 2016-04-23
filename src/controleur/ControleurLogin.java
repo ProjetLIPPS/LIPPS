@@ -11,6 +11,11 @@ public class ControleurLogin
 {
 	private FenLogin flogin;
 	
+	public ControleurLogin()
+	{
+		init();
+	}
+	
 	public void init()
 	{
 		LoginListener listener = new LoginListener(this);
@@ -21,9 +26,7 @@ public class ControleurLogin
 	
 	public void verifLogin()
 	{
-		Boolean resultat = true;
-		
-		
+				
 		if (flogin.getTxtEmail().getText().split("@").length != 2)
 		{
 			flogin.AfficheErreur("Entrez un email valide !");
@@ -38,8 +41,10 @@ public class ControleurLogin
 		}
 		else
 		{
-			
 			flogin.dispose();
+			Utilisateur user = DaoFactory.getDaoContact().getUserFromMail(flogin.getTxtEmail().getText());
+			
+			new ControleurFMain(/*user*/);
 		}
 		
 		
