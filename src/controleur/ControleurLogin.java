@@ -1,7 +1,5 @@
 package controleur;
 
-import javax.swing.SwingUtilities;
-
 import actionListener.LoginListener;
 import ihm.fenetre.FenLogin;
 import model.baseDAO.DaoFactory;

@@ -2,12 +2,9 @@ package controleur;
 
 
 
-import org.hibernate.cfg.Configuration;         
-import ihm.LippsIhm;
-import model.baseDAO.DaoFactory;
-import model.objet.Contact;
-import model.objet.Log;
-import model.objet.Utilisateur;
+import javax.swing.JOptionPane;
+
+import org.hibernate.cfg.Configuration;
 
 
 public class Appli {

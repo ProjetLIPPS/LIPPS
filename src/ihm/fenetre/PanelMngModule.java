@@ -6,8 +6,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
+import javax.swing.AbstractListModel;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -18,12 +18,10 @@ import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.MatteBorder;
 
-import controleur.LoadModSeqList;
+import actionListener.MngModuleListener;
 import controleur.RenvoiListeFormation;
-import ihm.actionListener.MngModuleListener;
 import ihm.popup.CreationModule;
 import ihm.theme.ThemeLIPPS;
-import javax.swing.AbstractListModel;
 
 
 

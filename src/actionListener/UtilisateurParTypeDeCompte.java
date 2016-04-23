@@ -2,23 +2,19 @@ package actionListener;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.border.MatteBorder;
-import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 import controleur.ControleurFMain;
 import ihm.fenetre.PanelCCompte;
 import ihm.theme.ThemeLIPPS;
 
-public class MouseListeners implements MouseListener
+public class UtilisateurParTypeDeCompte implements MouseListener
 	{
 
 		private ControleurFMain controleur;
@@ -30,7 +26,7 @@ public class MouseListeners implements MouseListener
 			{ String.class, String.class, String.class, Integer.class, String.class, String.class };
 		private Object[][] resultatRecherche;
 
-		public MouseListeners(PanelCCompte panelCCompte)
+		public UtilisateurParTypeDeCompte(PanelCCompte panelCCompte)
 			{
 				this.panelCCompte = panelCCompte;
 			}

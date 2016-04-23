@@ -2,10 +2,12 @@ package ihm.popup;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
 
+import javax.swing.AbstractAction;
 import javax.swing.AbstractListModel;
+import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -22,9 +24,6 @@ import javax.swing.border.LineBorder;
 import com.toedter.calendar.JDateChooser;
 
 import ihm.theme.ThemeLIPPS;
-import javax.swing.AbstractAction;
-import java.awt.event.ActionEvent;
-import javax.swing.Action;
 
 public class CreaForm extends JDialog {
 

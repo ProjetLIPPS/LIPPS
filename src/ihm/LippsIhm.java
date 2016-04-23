@@ -8,7 +8,6 @@ import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -18,9 +17,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 
 import ihm.fenetre.PanelCCompte;
-import ihm.fenetre.PanelCFormation;
 import ihm.fenetre.PanelMngModel;
-import ihm.fenetre.PanelMngModule;
 import ihm.theme.ThemeLIPPS;
 
 

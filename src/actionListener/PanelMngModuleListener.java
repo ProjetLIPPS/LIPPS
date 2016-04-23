@@ -1,4 +1,4 @@
-package ihm.actionListener;
+package actionListener;
 
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;

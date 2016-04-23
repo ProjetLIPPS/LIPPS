@@ -1,4 +1,4 @@
-package ihm.actionListener;
+package actionListener;
 
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;

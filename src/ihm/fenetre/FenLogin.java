@@ -1,11 +1,8 @@
 package ihm.fenetre;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,12 +12,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import actionListener.LoginListener;
-import controleur.ControleurLogin;
 import ihm.theme.ThemeLIPPS;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
 public class FenLogin extends JFrame
 {

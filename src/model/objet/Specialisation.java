@@ -2,12 +2,16 @@ package model.objet;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -28,37 +32,23 @@ public class Specialisation extends DataParent {
 	@NotNull
 	private String nom = null;
 
-<<<<<<< HEAD
-	
 	@OneToMany(mappedBy = "specialisation", fetch = FetchType.LAZY)
 	private List<UtilisateurToSpecialisation> utilisateurToSpecialisation = null;
-=======
+
 	@OneToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name = "frm_id")
 	@NotNull
 	private List<Formation> listFormation = null;
->>>>>>> refs/remotes/origin/Chris
 
-<<<<<<< HEAD
-	
-	public Integer getId() {
-		return id;
-=======
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "j_utilisateur_specialisation", joinColumns = @JoinColumn(name = "spe_id") , inverseJoinColumns = @JoinColumn(name = "uti_id") )
 	@NotNull
 	private List<Utilisateur> listUtilisateur = null;
 
-	public Specialisation(String nom) {
-		super();
-		this.nom = nom;
->>>>>>> refs/remotes/origin/Chris
-	}
-
+	
 
 	public Specialisation() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 
@@ -70,6 +60,11 @@ public class Specialisation extends DataParent {
 	}
 
 
+
+	public Integer getId() {
+		return id;
+	}
+	
 	public String getNom() {
 		return nom;
 	}

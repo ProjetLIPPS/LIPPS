@@ -1,4 +1,4 @@
-package ihm.actionListener;
+package actionListener;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

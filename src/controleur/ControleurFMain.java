@@ -1,16 +1,11 @@
 package controleur;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-
-import org.hibernate.ScrollableResults;
 
 import ihm.LippsIhm;
 import model.baseDAO.DaoFactory;
-import model.baseDAO.DaoUtilisateur;
 import model.objet.Utilisateur;
-import model.objet.UtilisateurToRole;
 
 public class ControleurFMain
 

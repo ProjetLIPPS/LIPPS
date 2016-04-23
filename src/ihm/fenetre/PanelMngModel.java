@@ -23,7 +23,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import ihm.actionListener.PanelMngModelListener;
+import actionListener.PanelMngModelListener;
 import ihm.popup.CreationModele;
 import ihm.theme.ThemeLIPPS;
 

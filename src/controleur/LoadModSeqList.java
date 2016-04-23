@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ihm.fenetre.PanelMngModuleRowMod;
-import ihm.fenetre.PanelMngModuleRowSeq;
 import model.objet.Formation;
 import model.objet.Module;
 

@@ -3,6 +3,7 @@ package model.objet;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -50,25 +53,16 @@ public class Formation extends DataParent {
 
 	@Column(name = "frm_nombre_ccp")
 	@NotNull
-<<<<<<< HEAD
 	private Integer nombreCCP = null;
 
 	@Column(name = "frm_nombre_stage")
-=======
-	private Integer nbccp = null;
-	
-	@Column(name = "frm_nb_stage")
->>>>>>> refs/remotes/origin/Chris
 	@NotNull
-<<<<<<< HEAD
 	private Integer nombreStage = null;
-=======
-	private Integer nbstage = null;
+	
 	
 	@Column(name = "frm_model")
 	@NotNull
 	private boolean isModel;
->>>>>>> refs/remotes/origin/Chris
 
 	@OneToMany(mappedBy = "formation", fetch = FetchType.LAZY)
 	private List<UtilisateurToFormation> utilisateurToFormation = null;
@@ -78,24 +72,14 @@ public class Formation extends DataParent {
 	@NotNull
 	private Specialisation specialisation = null;
 
-<<<<<<< HEAD
 	@OneToMany(mappedBy = "formation", fetch = FetchType.LAZY)
 	private List<FormationToModule> formationToModule = null;
-=======
+
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinTable(name = "j_formation_module", joinColumns = @JoinColumn(name = "frm_id") , inverseJoinColumns = @JoinColumn(name = "mod_id") )
 	private List<Module> listModule = new ArrayList<Module>();
->>>>>>> refs/remotes/origin/Chris
 
 	
-	public Integer getId() {
-		return id;
-	}
-
-<<<<<<< HEAD
-
-	public Formation() {
-=======
 	
 	public Formation() {
 		super();
@@ -103,9 +87,8 @@ public class Formation extends DataParent {
 	
 	public Formation(Integer grn, Integer offre, String intitule, Integer duree, String debouche, Integer nbccp,
 			Integer nbstage, Specialisation spe_id) {
->>>>>>> refs/remotes/origin/Chris
+
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 
@@ -126,6 +109,10 @@ public class Formation extends DataParent {
 		this.formationToModule = formationToModule;
 	}
 
+
+	public Integer getId() {
+		return id;
+	}
 
 	public Integer getGrn() {
 		return grn;
@@ -231,9 +218,7 @@ public class Formation extends DataParent {
 		this.id = id;
 	}
 
-<<<<<<< HEAD
-	
-=======
+
 	public List<Module> getListModule() {
 		return listModule;
 	}
@@ -246,13 +231,7 @@ public class Formation extends DataParent {
 		this.listModule.add(module);
 	}
 
-	public List<Utilisateur> getListUtilisateur() {
-		return listUtilisateur;
-	}
 
-	public void setListUtilisateur(List<Utilisateur> listUtilisateur) {
-		this.listUtilisateur = listUtilisateur;
-	}
 
->>>>>>> refs/remotes/origin/Chris
+
 }

@@ -29,7 +29,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import actionListener.FocusListeners;
-import actionListener.MouseListeners;
+import actionListener.UtilisateurParTypeDeCompte;
 import ihm.theme.ThemeLIPPS;
 
 public class PanelCCompte extends JPanel {
@@ -44,7 +44,7 @@ public class PanelCCompte extends JPanel {
 	 */
 	public PanelCCompte() {
 		
-		MouseListeners mouseEvents =  new MouseListeners(this);
+		UtilisateurParTypeDeCompte mouseEvents =  new UtilisateurParTypeDeCompte(this);
 		FocusListeners rechercheListener = new FocusListeners(this);
 
 		this.setBorder(null);
