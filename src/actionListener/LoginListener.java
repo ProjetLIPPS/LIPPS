@@ -79,8 +79,14 @@ public class LoginListener implements FocusListener, MouseListener , ActionListe
 	@Override
 	public void focusGained(FocusEvent e)
 	{
-		
-		
+		if (e.getSource().getClass().getSimpleName().equals("JPasswordField"))
+		{
+			JPasswordField source = (JPasswordField) e.getSource();
+			if(new String (source.getPassword()).equals("Mot de passe"))
+			{
+				source.setText("");
+			}
+		}
 
 	}
 
@@ -119,16 +125,7 @@ public class LoginListener implements FocusListener, MouseListener , ActionListe
 	@Override
 	public void keyTyped(KeyEvent e)
 	{
-		System.out.println("Key event in");
-		System.out.println(e.getKeyCode());
 		
-		
-		if (e.getKeyCode() == KeyEvent.VK_ENTER)
-		{
-			System.out.println("if in");
-			controleur.getFlogin().getBtnConnexion().doClick();
-		}
-		System.out.println("Key event out");
 	}
 
 
@@ -145,7 +142,10 @@ public class LoginListener implements FocusListener, MouseListener , ActionListe
 	@Override
 	public void keyReleased(KeyEvent e)
 	{
-		// TODO Auto-generated method stub
+		if (e.getKeyCode() == KeyEvent.VK_ENTER)
+		{
+			controleur.getFlogin().getBtnConnexion().doClick();
+		}
 		
 	}
 
