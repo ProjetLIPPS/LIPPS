@@ -89,5 +89,15 @@ public class Specialisation extends DataParent {
 		this.id = id;
 	}
 
+
+	public List<Formation> getListFormation() {
+		return listFormation;
+	}
+
+
+	public List<Utilisateur> getListUtilisateur() {
+		return listUtilisateur;
+	}
+
 	
 }

@@ -3,6 +3,7 @@ package model.baseDAO;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
 
 /**
  * Contient des méthodes de gestion de persistence de données
@@ -33,7 +34,7 @@ public class BaseSession {
 			// Create the SessionFactory from hibernate.cfg.xml
 			Configuration configuration = new Configuration().configure(HIBERNATE_CONFIGURATION);
 			configuration.configure();
-
+			
 			sessionFactory = configuration.buildSessionFactory();
 
 			return sessionFactory;
