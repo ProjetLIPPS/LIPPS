@@ -6,6 +6,9 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -13,16 +16,23 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import actionListener.PopupListener;
+import model.baseDAO.DaoFactory;
+import model.objet.Utilisateur;
+
 public class LanceurDePopup extends JFrame
 {
 
 	private JPanel contentPane;
+	private PopupListener popuplistener = new PopupListener();
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args)
 	{
+		
+		
 		EventQueue.invokeLater(new Runnable()
 		{
 			public void run()
@@ -37,6 +47,7 @@ public class LanceurDePopup extends JFrame
 				}
 			}
 		});
+		
 		
 	}
 
@@ -59,7 +70,7 @@ public class LanceurDePopup extends JFrame
 		btnCrationFormation.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
-				JDialog pop = new CreaForm();
+				JDialog pop = new CreaForm(/*popuplistener*/);
 				pop.setVisible(true);
 			}
 		});
@@ -72,7 +83,7 @@ public class LanceurDePopup extends JFrame
 		btnCrationModleDe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				JDialog pop = new CreationModele();
+				JDialog pop = new CreationModele(/*popuplistener*/);
 				pop.setVisible(true);
 			}
 		});
@@ -85,7 +96,7 @@ public class LanceurDePopup extends JFrame
 		btnCrationCompte.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				JDialog pop = new CreationCompte();
+				JDialog pop = new CreationCompte(/*popuplistener*/);
 				pop.setVisible(true);
 			}
 		});
@@ -99,7 +110,7 @@ public class LanceurDePopup extends JFrame
 		btnCreationModule.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				JDialog pop = new CreationModule();
+				JDialog pop = new CreationModule(/*popuplistener*/);
 				pop.setVisible(true);
 			}
 		});

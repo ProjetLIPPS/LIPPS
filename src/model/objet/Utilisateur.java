@@ -44,7 +44,7 @@ public class Utilisateur extends DataParent {
 	private Integer identifiantAFPA = null;
 
 	@Column(name = "uti_password")
-	@NotNull
+	//@NotNull
 	private String password = null;
 
 	@OneToMany(mappedBy = "utilisateur", fetch = FetchType.LAZY)
