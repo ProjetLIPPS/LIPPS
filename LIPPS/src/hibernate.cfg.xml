@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM 
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	
+	<session-factory>
+	
+		<property name="hibernate.dialect">
+			org.hibernate.dialect.MySQL5InnoDBDialect
+		</property>
+		
+		<property name="hibernate.connection.driver_class">
+			com.mysql.jdbc.Driver
+		</property>
+
+		<!-- Assume test is the database name -->
+		<property name="hibernate.connection.url">jdbc:mysql://127.0.0.1:3306/lippsdb</property>
+		<property name="hibernate.connection.username">
+			root
+		</property>
+		
+		<property name="hibernate.connection.password">
+		</property>
+
+		<property name="show_sql">true</property>
+		<property name="hibernate.hbm2ddl.auto">create</property>
+		
+
+		<!-- List of XML mapping files -->
+		<mapping class = "model.objet.AnnexeLivret"/>
+		<mapping class = "model.objet.Contact"/>
+		<mapping class = "model.objet.Formation" />
+		<mapping class = "model.objet.FormationToModule" />
+		<mapping class = "model.objet.Livret"/>
+		<mapping class = "model.objet.Log"/>
+		<mapping class = "model.objet.Module"/>
+		<mapping class = "model.objet.ModuleLivret"/>
+		<mapping class = "model.objet.Periode"/>
+		<mapping class = "model.objet.PeriodeLivret"/>
+		<mapping class = "model.objet.ProjetProLivret"/>				
+		<mapping class = "model.objet.ResultatParcoursLivret"/>
+		<mapping class = "model.objet.Role"/>
+		<mapping class = "model.objet.Sequence"/>
+		<mapping class = "model.objet.SequenceLivret"/>
+		<mapping class = "model.objet.Specialisation" />
+		<mapping class = "model.objet.SuiviLivret"/>
+		<mapping class = "model.objet.TypePeriode" />
+		<mapping class = "model.objet.TypePeriodeLivret" />
+		<mapping class = "model.objet.Utilisateur"/>
+		<mapping class = "model.objet.UtilisateurToFormation"/>
+		<mapping class = "model.objet.UtilisateurToRole"/>
+		<mapping class = "model.objet.UtilisateurToSpecialisation"/>
+		
+
+			
+	</session-factory>
+	
+</hibernate-configuration>
