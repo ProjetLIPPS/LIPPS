@@ -23,13 +23,11 @@ public class RowSequence extends JPanel
 {
 
 	private CreationModule JFrame;
-	private JTextArea textAreaModuleDescription;
 	
 	
 	/**
 	 * Create the panel.
 	 */
-	
 	
 	public RowSequence()
 	{
@@ -68,22 +66,22 @@ public class RowSequence extends JPanel
 		scrollPane.setBounds(120, 11, 370, 63);
 		add(scrollPane);
 		
-		textAreaModuleDescription = new JTextArea();
-		scrollPane.setViewportView(textAreaModuleDescription);
-		textAreaModuleDescription.setWrapStyleWord(true);
-		textAreaModuleDescription.setText("Entrez ici la description de la séquence.");
-		textAreaModuleDescription.setRows(3);
-		textAreaModuleDescription.setLineWrap(true);
-		textAreaModuleDescription.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 13));
-		textAreaModuleDescription.setColumns(30);
-		textAreaModuleDescription.setBorder(new LineBorder(new Color(192, 192, 192), 1, true));
-		textAreaModuleDescription.addMouseListener(new MouseAdapter() {
+		JTextArea textArea = new JTextArea();
+		scrollPane.setViewportView(textArea);
+		textArea.setWrapStyleWord(true);
+		textArea.setText("Entrez ici la description de la séquence.");
+		textArea.setRows(3);
+		textArea.setLineWrap(true);
+		textArea.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 13));
+		textArea.setColumns(30);
+		textArea.setBorder(new LineBorder(new Color(192, 192, 192), 1, true));
+		textArea.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e)
 			{
-				if (textAreaModuleDescription.getText().equals("Entrez ici la description de la séquence."))
+				if (textArea.getText().equals("Entrez ici la description de la séquence."))
 				{
-					textAreaModuleDescription.setText("");
+					textArea.setText("");
 				}
 				
 			}
@@ -99,7 +97,7 @@ public class RowSequence extends JPanel
 		btnSupprimer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				getJFrame().supprimerSequence(getThis());
+				getJFrame().supprimerSequence(getRowSequence());
 			}
 		});
 		
@@ -111,7 +109,7 @@ public class RowSequence extends JPanel
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				getJFrame().monterSequence(getThis());
+				getJFrame().monterSequence(getRowSequence());
 			}
 		});
 		Move_up.setIcon(new ImageIcon("img/fleche_haut16x16.png"));
@@ -123,7 +121,7 @@ public class RowSequence extends JPanel
 			@Override
 			public void mouseClicked(MouseEvent e) 
 			{
-				getJFrame().descendreSequence(getThis());
+				getJFrame().descendreSequence(getRowSequence());
 			}
 		});
 		Move_down.setIcon(new ImageIcon("img/fleche_bas16x16.png"));
@@ -136,13 +134,8 @@ public class RowSequence extends JPanel
 		return this.JFrame;
 	}
 	
-	public RowSequence getThis()
+	public RowSequence getRowSequence()
 	{
 		return this;
-	}
-	
-	public JTextArea getTextAreaModuleDescription()
-	{
-		return textAreaModuleDescription;
 	}
 }

@@ -2,8 +2,6 @@ package ihm.popup;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -18,27 +16,22 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import actionListener.PopupListener;
 import ihm.theme.ThemeLIPPS;
 
 public class CreationModele extends JDialog {
 
 	private JPanel contentPane;
-	private JTextField textField_GRN;
-	private JTextField textField_Duree;
-	private JTextField textField_Intitule;
-	private JTextPane jtextEmploisAccessibles;
-	private JComboBox comboBoxSpecialite;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
 
-	private PopupListener listener = null;
+	
 	
 
 	/**
 	 * Create the frame.
 	 */
-	public CreationModele(/*PopupListener listener*/) 
-	{
-		this.listener = listener;
+	public CreationModele() {
 		setModal(true);
 		setResizable(false);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -80,27 +73,17 @@ public class CreationModele extends JDialog {
 		contentPane.add(scrollPane_3);
 		scrollPane_3.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		
-		jtextEmploisAccessibles = new JTextPane();
-		jtextEmploisAccessibles.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
-		scrollPane_3.setViewportView(jtextEmploisAccessibles);
+		JTextPane champ3 = new JTextPane();
+		champ3.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
+		scrollPane_3.setViewportView(champ3);
 		
 		JButton btnNewButton = new JButton("Valider");
-		
-		btnNewButton.addActionListener(listener);
-		btnNewButton.setName("modele");
-		
 		btnNewButton.setBackground(Color.WHITE);
 		btnNewButton.setBounds(210, 692, 117, 29);
 		contentPane.add(btnNewButton);
 		btnNewButton.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_BUTTON));
 		
 		JButton btnNewButton_1 = new JButton("Annuler");
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
-			{
-				getThis().dispose();
-			}
-		});
 		btnNewButton_1.setBackground(Color.WHITE);
 		btnNewButton_1.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_BUTTON));
 		btnNewButton_1.setBounds(381, 692, 117, 29);
@@ -112,18 +95,18 @@ public class CreationModele extends JDialog {
 		lblSpcialit.setBounds(311, 243, 91, 22);
 		contentPane.add(lblSpcialit);
 		
-		comboBoxSpecialite = new JComboBox();
-		comboBoxSpecialite.setBackground(Color.WHITE);
-		comboBoxSpecialite.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
-		comboBoxSpecialite.setBounds(424, 241, 174, 27);
-		contentPane.add(comboBoxSpecialite);
-		comboBoxSpecialite.setModel(new DefaultComboBoxModel(new String[] {"spe 1", "spe 2", "spe 3"}));
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBackground(Color.WHITE);
+		comboBox.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
+		comboBox.setBounds(424, 241, 174, 27);
+		contentPane.add(comboBox);
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"spe 1", "spe 2", "spe 3"}));
 		
-		textField_GRN = new JTextField();
-		textField_GRN.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
-		textField_GRN.setBounds(134, 268, 104, 25);
-		contentPane.add(textField_GRN);
-		textField_GRN.setColumns(10);
+		textField = new JTextField();
+		textField.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
+		textField.setBounds(134, 268, 104, 25);
+		contentPane.add(textField);
+		textField.setColumns(10);
 		
 		JLabel lblDure = new JLabel("Durée :");
 		lblDure.setForeground(Color.WHITE);
@@ -131,43 +114,16 @@ public class CreationModele extends JDialog {
 		lblDure.setBounds(47, 217, 67, 14);
 		contentPane.add(lblDure);
 		
-		textField_Duree = new JTextField();
-		textField_Duree.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
-		textField_Duree.setBounds(134, 213, 104, 25);
-		contentPane.add(textField_Duree);
-		textField_Duree.setColumns(10);
+		textField_1 = new JTextField();
+		textField_1.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
+		textField_1.setBounds(134, 213, 104, 25);
+		contentPane.add(textField_1);
+		textField_1.setColumns(10);
 		
-		textField_Intitule = new JTextField();
-		textField_Intitule.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
-		textField_Intitule.setBounds(131, 156, 467, 25);
-		contentPane.add(textField_Intitule);
-		textField_Intitule.setColumns(10);
-	}
-	
-	public CreationModele getThis()
-	{
-		return this;
-	}
-	
-	
-	public JTextField getTextField_GRN() 
-	{
-		return textField_GRN;
-	}
-	public JTextField getTextField_Intitule() 
-	{
-		return textField_Intitule;
-	}
-	public JTextPane getJtextEmploisAccessibles() 
-	{
-		return jtextEmploisAccessibles;
-	}
-	public JComboBox getComboBoxSpecialite()
-	{
-		return comboBoxSpecialite;
-	}
-	public JTextField getTextField_Duree()
-	{
-		return textField_Duree;
+		textField_2 = new JTextField();
+		textField_2.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
+		textField_2.setBounds(131, 156, 467, 25);
+		contentPane.add(textField_2);
+		textField_2.setColumns(10);
 	}
 }

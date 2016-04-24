@@ -25,21 +25,16 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 
-import actionListener.PopupListener;
 import ihm.theme.ThemeLIPPS;
 
 public class CreationModule extends JDialog {
 
 	private JPanel panelSequence;
-	private ArrayList<RowSequence> listeRowSequence = new ArrayList<RowSequence>();
-	private JTextArea textAreaDescription;
+	private ArrayList<RowSequence> listeSequence = new ArrayList<RowSequence>();
 	
-	private PopupListener listener = null;
 
 	
-	public CreationModule(/*PopupListener listener*/)
-	{
-		this.listener = listener;
+	public CreationModule() {
 		getContentPane().setBackground(ThemeLIPPS.BLUE);
 		setModal(true);
 		setResizable(false);
@@ -76,26 +71,26 @@ public class CreationModule extends JDialog {
 		lblModule.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 17));
 		panelNorth.add(lblModule, BorderLayout.NORTH);
 		
-		textAreaDescription = new JTextArea();
-		textAreaDescription.addMouseListener(new MouseAdapter() {
+		JTextArea labelDescription = new JTextArea();
+		labelDescription.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e)
 			{
-				if (textAreaDescription.getText().equals("Entrez ici la description du module."))
+				if (labelDescription.getText().equals("Entrez ici la description du module."))
 				{
-					textAreaDescription.setText("");
+					labelDescription.setText("");
 				}
 				
 			}
 		});
-		textAreaDescription.setLineWrap(true);
-		textAreaDescription.setRows(3);
-		textAreaDescription.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 13));
-		textAreaDescription.setBorder(new LineBorder(Color.LIGHT_GRAY, 1, true));
-		textAreaDescription.setMargin(new Insets(10, 10, 10, 10));
-		textAreaDescription.setText("Entrez ici la description du module.");
+		labelDescription.setLineWrap(true);
+		labelDescription.setRows(3);
+		labelDescription.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 13));
+		labelDescription.setBorder(new LineBorder(Color.LIGHT_GRAY, 1, true));
+		labelDescription.setMargin(new Insets(10, 10, 10, 10));
+		labelDescription.setText("Entrez ici la description du module.");
 		
-		panelNorth.add(textAreaDescription, BorderLayout.SOUTH);
+		panelNorth.add(labelDescription, BorderLayout.SOUTH);
 		
 		JLabel lblDescriptionDuModule = new JLabel("Description du module :");
 		lblDescriptionDuModule.setForeground(Color.WHITE);
@@ -128,10 +123,6 @@ public class CreationModule extends JDialog {
 		panelBoutton.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Valider");
-		
-		btnNewButton_1.addActionListener(listener);
-		btnNewButton_1.setName("module");
-		
 		btnNewButton_1.setBounds(384, 5, 114, 29);
 		btnNewButton_1.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_BUTTON));
 		btnNewButton_1.setBackground(Color.WHITE);
@@ -160,7 +151,7 @@ public class CreationModule extends JDialog {
 		
 		
 		
-		listeRowSequence.add(new RowSequence());
+		listeSequence.add(new RowSequence());
 		ajouterSequence();
 		
 		
@@ -172,9 +163,9 @@ public class CreationModule extends JDialog {
 		
 		panelSequence.removeAll();
 		
-		for (int i = 0; i < listeRowSequence.size(); i++)
+		for (int i = 0; i < listeSequence.size(); i++)
 		{
-			panelSequence.add(listeRowSequence.get(i));
+			panelSequence.add(listeSequence.get(i));
 		}
 		
 		SwingUtilities.updateComponentTreeUI(this);
@@ -183,50 +174,40 @@ public class CreationModule extends JDialog {
 	public void ajouterSequence()
 	{
 		
-		listeRowSequence.add(new RowSequence(this));
+		listeSequence.add(new RowSequence(this));
 		chargerSequence();
 	}
 	
 	
 	public void supprimerSequence(RowSequence seq)
 	{
-		listeRowSequence.remove(seq);
+		listeSequence.remove(seq);
 		chargerSequence();
 	}
 	
 	
 	public void monterSequence(RowSequence seq)
 	{
-		int position = listeRowSequence.indexOf(seq);
+		int position = listeSequence.indexOf(seq);
 		if (position > 1)
 		{
-			listeRowSequence.remove(seq);
-			listeRowSequence.add((position-1), seq);
+			listeSequence.remove(seq);
+			listeSequence.add((position-1), seq);
 			chargerSequence();
 		}
 	}
 	
 	public void descendreSequence(RowSequence seq)
 	{
-		int position = listeRowSequence.indexOf(seq);
-		if (position < listeRowSequence.size()-1)
+		int position = listeSequence.indexOf(seq);
+		if (position < listeSequence.size()-1)
 		{
-			listeRowSequence.remove(seq);
-			listeRowSequence.add((position+1), seq);
+			listeSequence.remove(seq);
+			listeSequence.add((position+1), seq);
 			chargerSequence();
 		}
 	}
 	
 	
 
-	public JTextArea getTextAreaDescription() 
-	{
-		return textAreaDescription;
-	}
-
-	public ArrayList<RowSequence> getListeSequence() {
-		return listeRowSequence;
-	}
-	
-	
 }

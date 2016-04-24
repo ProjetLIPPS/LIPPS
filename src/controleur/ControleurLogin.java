@@ -4,7 +4,6 @@ import actionListener.LoginListener;
 import ihm.fenetre.FenLogin;
 import model.baseDAO.DaoFactory;
 import model.objet.Utilisateur;
-import model.objet.UtilisateurToRole;
 
 public class ControleurLogin
 {
@@ -30,7 +29,7 @@ public class ControleurLogin
 		{
 			flogin.AfficheErreur("Entrez un email valide !");
 		}
-		else if (flogin.getTxtEmail().getText().split("@")[1].split("\\.").length < 2)
+		else if (flogin.getTxtEmail().getText().split("\\.").length != 2)
 		{
 			flogin.AfficheErreur("Entrez un email valide !");
 		}
@@ -40,32 +39,26 @@ public class ControleurLogin
 		}
 		else
 		{
+			flogin.dispose();
 			Utilisateur user = DaoFactory.getDaoContact().getUserFromMail(flogin.getTxtEmail().getText());
 			
-			
-			for (UtilisateurToRole utr : user.getUtilisateurToRole())
-			{
-				if (utr.getRole().getType().equals("Formateur") || utr.getRole().getType().equals("Administrateur"))
-				{
-					flogin.dispose();
-					ControleurFMain cfm = new ControleurFMain(/*user*/);
-					try {
-						cfm.init();
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-				else
-				{
-					flogin.AfficheErreur("Accès non autorisé.");
-				}
-			}
-			
+			new ControleurFMain(/*user*/);
+		}
+		
+		
+	}
+
+
+	private boolean isPasswordCorrect(String email, String password)
+	{
+		
+		if(DaoFactory.getDaoContact().isPasswordCorrect(email, password))
+		{
 			
 		}
 		
 		
+		return false;
 	}
 
 

@@ -18,7 +18,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.MatteBorder;
 
-import actionListener.MngModuleListener;
+import actionListener.PanelMngModuleListener;
 import controleur.RenvoiListeFormation;
 import ihm.popup.CreationModule;
 import ihm.theme.ThemeLIPPS;
@@ -30,14 +30,14 @@ public class PanelMngModule extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private MngModuleListener mngModuleListener;
+	private PanelMngModuleListener mngModuleListener;
 	private JPanel panelAllModList = new JPanel();
 	
 	
 
 	public PanelMngModule()	{
 		
-		mngModuleListener = new MngModuleListener(this);
+		mngModuleListener = new PanelMngModuleListener(this);
 		
 		setMinimumSize(new Dimension(400, 10));
 		

@@ -144,6 +144,7 @@ public class LippsIhm extends JFrame {
 		
 		panelCenterMain.add(contentPaneCenter);
 		
+		setVisible(true);
 		
 	}
 	

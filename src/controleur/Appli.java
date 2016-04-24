@@ -6,6 +6,12 @@ import javax.swing.JOptionPane;
 
 import org.hibernate.cfg.Configuration;
 
+import ihm.LippsIhm;
+import model.baseDAO.DaoFactory;
+import model.objet.Formation;
+import model.objet.Specialisation;
+import model.objet.Utilisateur;
+
 
 public class Appli {
 
@@ -21,9 +27,16 @@ public class Appli {
 			
 			
 			//Lance le controleur de la fenetre le Login
-			new ControleurLogin();
+			new LippsIhm();
 			
+			//Formation formation = DaoFactory.getDaoFormation().findFormationByIntitule("cdi");
+
+			//System.out.println(formation.getDebouche());
 			
+					
+			//Formation formation = DaoFactory.getDaoFormation().findById(Formation.class, 1);
+		
+			//DaoFactory.getDaoFormation().delete(formation);
 			
 			
 			

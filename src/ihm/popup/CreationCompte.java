@@ -4,11 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Enumeration;
 
-import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -17,26 +13,22 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import actionListener.PopupListener;
 import ihm.theme.ThemeLIPPS;
 
 public class CreationCompte extends JDialog {
-	private JTextField textField_Prenom;
-	private JTextField textField_Nom;
-	private JTextField textField_DteNaissance;
-	private JTextField textField_Email;
-	private JTextField textField_NoAFPA;
-	private ButtonGroup groupRadioType;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_3;
+	private JTextField textField_4;
+	private JTextField textField_7;
 	
-	private PopupListener listener = null;
+
 	
 
 	/**
 	 * Create the frame.
 	 */
-	public CreationCompte(/*PopupListener listener*/)
-	{
-		this.listener = listener;
+	public CreationCompte() {
 		setModal(true);
 		getContentPane().setBackground(ThemeLIPPS.BLUE);
 		setResizable(false);
@@ -46,7 +38,7 @@ public class CreationCompte extends JDialog {
 		setBounds(100, 100, 500, 450);
 		getContentPane().setLayout(null);
 		
-		groupRadioType = new ButtonGroup();
+		ButtonGroup groupRadio = new ButtonGroup();
 		
 		JLabel lblEditionDeCompte = new JLabel("Edition de compte");
 		lblEditionDeCompte.setBounds(164, 39, 361, 37);
@@ -61,11 +53,11 @@ public class CreationCompte extends JDialog {
 		lblNom.setForeground(Color.WHITE);
 		lblNom.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
 		
-		textField_Prenom = new JTextField();
-		textField_Prenom.setBounds(227, 382, 277, 27);
-		getContentPane().add(textField_Prenom);
-		textField_Prenom.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
-		textField_Prenom.setColumns(10);
+		textField = new JTextField();
+		textField.setBounds(227, 382, 277, 27);
+		getContentPane().add(textField);
+		textField.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
+		textField.setColumns(10);
 		
 		JLabel lblPrenom = new JLabel("Prénom :");
 		lblPrenom.setBounds(144, 385, 72, 21);
@@ -73,11 +65,11 @@ public class CreationCompte extends JDialog {
 		lblPrenom.setForeground(Color.WHITE);
 		lblPrenom.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
 		
-		textField_Nom = new JTextField();
-		textField_Nom.setBounds(227, 337, 277, 27);
-		getContentPane().add(textField_Nom);
-		textField_Nom.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
-		textField_Nom.setColumns(10);
+		textField_1 = new JTextField();
+		textField_1.setBounds(227, 337, 277, 27);
+		getContentPane().add(textField_1);
+		textField_1.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
+		textField_1.setColumns(10);
 		
 		JLabel lblDateDeNaissance = new JLabel("Date de naissance :");
 		lblDateDeNaissance.setBounds(47, 475, 169, 21);
@@ -97,23 +89,23 @@ public class CreationCompte extends JDialog {
 		lblEmail.setForeground(Color.WHITE);
 		lblEmail.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
 		
-		textField_DteNaissance = new JTextField();
-		textField_DteNaissance.setBounds(227, 472, 101, 27);
-		getContentPane().add(textField_DteNaissance);
-		textField_DteNaissance.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
-		textField_DteNaissance.setColumns(10);
+		textField_3 = new JTextField();
+		textField_3.setBounds(227, 472, 101, 27);
+		getContentPane().add(textField_3);
+		textField_3.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
+		textField_3.setColumns(10);
 		
-		textField_Email = new JTextField();
-		textField_Email.setBounds(227, 427, 277, 27);
-		getContentPane().add(textField_Email);
-		textField_Email.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
-		textField_Email.setColumns(10);
+		textField_4 = new JTextField();
+		textField_4.setBounds(227, 427, 277, 27);
+		getContentPane().add(textField_4);
+		textField_4.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
+		textField_4.setColumns(10);
 		
-		textField_NoAFPA = new JTextField();
-		textField_NoAFPA.setBounds(227, 292, 277, 27);
-		getContentPane().add(textField_NoAFPA);
-		textField_NoAFPA.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
-		textField_NoAFPA.setColumns(10);
+		textField_7 = new JTextField();
+		textField_7.setBounds(227, 292, 277, 27);
+		getContentPane().add(textField_7);
+		textField_7.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
+		textField_7.setColumns(10);
 		
 		JRadioButton rdbtnAdministrateur = new JRadioButton("Administrateur");
 		rdbtnAdministrateur.setBounds(90, 179, 153, 31);
@@ -122,8 +114,8 @@ public class CreationCompte extends JDialog {
 		rdbtnAdministrateur.setBackground(Color.decode("#3787C8"));
 		rdbtnAdministrateur.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
 		rdbtnAdministrateur.setFocusable(false);
-		groupRadioType.add(rdbtnAdministrateur);
-
+		groupRadio.add(rdbtnAdministrateur);
+		
 		JRadioButton rdbtnFormateur = new JRadioButton("Formateur");
 		rdbtnFormateur.setBounds(256, 179, 115, 31);
 		getContentPane().add(rdbtnFormateur);
@@ -131,16 +123,16 @@ public class CreationCompte extends JDialog {
 		rdbtnFormateur.setBackground(Color.decode("#3787C8"));
 		rdbtnFormateur.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
 		rdbtnFormateur.setFocusable(false);
-		groupRadioType.add(rdbtnFormateur);
+		groupRadio.add(rdbtnFormateur);
 		
-		JRadioButton rdbtnStagiaire = new JRadioButton("Stagiaire");
+		JRadioButton rdbtnStagiaire = new JRadioButton("Stagiaire\r\n");
 		rdbtnStagiaire.setBounds(386, 179, 101, 31);
 		getContentPane().add(rdbtnStagiaire);
 		rdbtnStagiaire.setForeground(Color.WHITE);
 		rdbtnStagiaire.setBackground(Color.decode("#3787C8"));
 		rdbtnStagiaire.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
 		rdbtnStagiaire.setFocusable(false);
-		groupRadioType.add(rdbtnStagiaire);
+		groupRadio.add(rdbtnStagiaire);
 		
 		JRadioButton rdbtnTuteur = new JRadioButton("Tuteur");
 		rdbtnTuteur.setBounds(508, 179, 79, 31);
@@ -149,13 +141,9 @@ public class CreationCompte extends JDialog {
 		rdbtnTuteur.setBackground(Color.decode("#3787C8"));
 		rdbtnTuteur.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
 		rdbtnTuteur.setFocusable(false);
-		groupRadioType.add(rdbtnTuteur);
+		groupRadio.add(rdbtnTuteur);
 		
-		JButton btnNewButton = new JButton("Valider");
-		
-		btnNewButton.addActionListener(listener);
-		btnNewButton.setName("compte");
-		
+		JButton btnNewButton = new JButton("Valider\r\n");
 		btnNewButton.setBounds(227, 598, 101, 33);
 		getContentPane().add(btnNewButton);
 		btnNewButton.setForeground(Color.DARK_GRAY);
@@ -165,12 +153,6 @@ public class CreationCompte extends JDialog {
 		btnNewButton.setBackground(Color.WHITE);
 		
 		JButton btnNewButton_1 = new JButton("Annuler");
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
-			{
-				getThis().dispose();
-			}
-		});
 		btnNewButton_1.setBounds(403, 598, 101, 33);
 		getContentPane().add(btnNewButton_1);
 		btnNewButton_1.setForeground(Color.DARK_GRAY);
@@ -180,58 +162,12 @@ public class CreationCompte extends JDialog {
 		
 		
 		
-	}
-	
-	public CreationCompte getThis()
-	{
-		return this;
-	}
-	
-	
-	
-	
-	public JTextField getTextField_Email() 
-	{
-		return textField_Email;
-	}
-	public JTextField getTextField_DteNaissance() 
-	{
-		return textField_DteNaissance;
-	}
-	public JTextField getTextField_NoAFPA()
-	{
-		return textField_NoAFPA;
-	}
-	public JTextField getTextField_Nom()
-	{
-		return textField_Nom;
-	}
-	public JTextField getTextField_Prenom()
-	{
-		return textField_Prenom;
-	}
+		
+		
+		
+		
 
-	public String getSelectionType() 
-	{
-		//groupRadioType
-		String type = null;
+		//SwingUtilities.updateComponentTreeUI(/*panelCenterMain*/ this);
 		
-		for (Enumeration<AbstractButton> buttons = groupRadioType.getElements(); buttons.hasMoreElements();)
-		{
-            AbstractButton button = buttons.nextElement();
-
-            if (button.isSelected()) 
-            {
-            	type = button.getText();
-            }
-        }
-
-       
-		
-		
-		
-		return type;
 	}
-	
-	
 }

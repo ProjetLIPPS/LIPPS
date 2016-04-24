@@ -31,24 +31,25 @@ public class PanelMngModelListener implements ActionListener, ListSelectionListe
 		
 		JButton delete = (JButton) e.getSource();
 		 
-			int answer = JOptionPane.showConfirmDialog(delete, "Etes-vous sûr?");
+			int answer = JOptionPane.showConfirmDialog(null, "Etes-vous sûr?");
 			
 			if (answer == JOptionPane.YES_OPTION) {
+			try {
 				
-				try {
-					SuppressionModele del = new SuppressionModele();
-					del.deleteModele();
-					
-				} catch (Exception e1) {
-					JOptionPane.showMessageDialog(delete, "Erreur lors de la suppression");
-				}
+				new SuppressionModele();
+				JOptionPane.showMessageDialog(null, "Modèle supprimé avec succès.");
 				
-				JOptionPane.showMessageDialog(delete, "Modèle supprimé avec succès");
-								
+			} catch (Exception e1) {
+				JOptionPane.showMessageDialog(null, "Erreur lors de la tentative de suppression.");
+				e1.printStackTrace();
+			}
+									
+			}
+			else if (answer == JOptionPane.NO_OPTION) {
+			
+			JOptionPane.showMessageDialog(null, "Aucune suppression n'a été effectuée.");
 			}
 			
-		
-		
 	}
 
 
