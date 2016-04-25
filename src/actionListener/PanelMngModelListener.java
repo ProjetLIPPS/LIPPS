@@ -35,7 +35,7 @@ public class PanelMngModelListener implements ActionListener, ListSelectionListe
 			if (answer == JOptionPane.YES_OPTION) {
 			try {
 				
-				MngModelReadWrite.suppressionModele(panelMngModel);
+				MngModelReadWrite.suppressionModele(this.panelMngModel);
 				JOptionPane.showMessageDialog(null, "Modèle supprimé avec succès.");
 				
 			} catch (Exception e1) {
@@ -58,10 +58,12 @@ public class PanelMngModelListener implements ActionListener, ListSelectionListe
 	public void valueChanged(ListSelectionEvent e) {
 		
 		JList selection = (JList) e.getSource();
+		
+		if (selection.getSelectedValue() != null)
+		{	
 		String selectedFormation = selection.getSelectedValue().toString();
-				
 		MngModelReadWrite.showModelInfo(panelMngModel, selectedFormation);
-	
+		}
 
 	}
 	

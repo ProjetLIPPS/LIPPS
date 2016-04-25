@@ -9,6 +9,7 @@ import java.awt.GridLayout;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.swing.Box;
@@ -86,45 +87,32 @@ public class PanelMngModel extends JPanel  {
 		
 		JPanel panelJlist = new JPanel();
 		panelJlist.setOpaque(false);
-		panelLeft.add(panelJlist, BorderLayout.CENTER);
+		panelLeft.add(panelJlist, BorderLayout.WEST);
 		panelJlist.setLayout(new BorderLayout(0, 0));
 		
 		list = new JList<String>();
 		list.setBounds(new Rectangle(100, 0, 0, 0));
 		list.setSelectionForeground(Color.WHITE);
 		list.setSelectionBackground(ThemeLIPPS.BLUE);
-		list.setOpaque(false);
+		list.setOpaque(true);
 		list.setFixedCellHeight(40);
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		list.setForeground(Color.WHITE);
 		list.setBackground(ThemeLIPPS.BLUE_DARK);
-		list.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, ThemeLIPPS.FONT_SIZE_BUTTON));
-		panelJlist.add(list, BorderLayout.NORTH);
+		list.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
+		//panelJlist.add(list, BorderLayout.NORTH);
 		list.addListSelectionListener(modelListener);
 		
+		initList();
 		
-		String[] values = null;
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBorder(null);
+		scrollPane.setViewportView(list);
+		scrollPane.setBackground(ThemeLIPPS.BLUE_DARK);
+		panelJlist.add(scrollPane, BorderLayout.CENTER);
 		
-		try {
-			
-			List<Formation> listFormation = (List) DaoFactory.getDaoFormation().readAll(Formation.class);
-			values = new String[listFormation.size()];
-						
-			for (int i = 0 ; i < listFormation.size() ; i++)
-				{
-							
-				values[i] = listFormation.get(i).getIntitule();
-				
-				}
-			
-			
-			
-			} catch (Exception e1) {
-			JOptionPane.showMessageDialog(null, "La liste des formations n'a pu être importée.", "Erreur connexion base de données", JOptionPane.WARNING_MESSAGE);
-			e1.printStackTrace();
-			}
 		
-		list.setListData(values);
+		
 		
 		
 		JPanel panelBtn = new JPanel();
@@ -198,7 +186,6 @@ public class PanelMngModel extends JPanel  {
 		
 		txtIntitule = new JTextField();
 		txtIntitule.setMinimumSize(new Dimension(6, 50));
-		txtIntitule.setText("Développeur Logiciel");
 		txtIntitule.setEditable(false);
 		txtIntitule.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
 		horizontalBox1.add(txtIntitule);
@@ -220,7 +207,6 @@ public class PanelMngModel extends JPanel  {
 		
 		txtSpe = new JTextField();
 		txtSpe.setMinimumSize(new Dimension(6, 50));
-		txtSpe.setText("Informatique");
 		txtSpe.setEditable(false);
 		txtSpe.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
 		horizontalBox1.add(txtSpe);
@@ -246,7 +232,6 @@ public class PanelMngModel extends JPanel  {
 		horizontalBox2.add(rigidArea_6);
 		
 		txtGrn = new JTextField();
-		txtGrn.setText("123456");
 		txtGrn.setEditable(false);
 		txtGrn.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
 		horizontalBox2.add(txtGrn);
@@ -266,7 +251,6 @@ public class PanelMngModel extends JPanel  {
 		rigidArea_2.setPreferredSize(new Dimension(5, 5));
 		
 		txtDuree = new JTextField();
-		txtDuree.setText("1295\r\n");
 		txtDuree.setEditable(false);
 		txtDuree.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
 		horizontalBox2.add(txtDuree);
@@ -303,7 +287,6 @@ public class PanelMngModel extends JPanel  {
 		
 		txtDebouche = new JTextArea();
 		txtDebouche.setTabSize(10);
-		txtDebouche.setText("Sed ut tum ad senem senex de senectute, sic hoc libro ad amicum amicissimus scripsi de amicitia. Tum est Cato locutus, quo erat nemo fere senior temporibus illis, nemo prudentior; nunc Laelius et sapiens (sic enim est habitus) et amicitiae gloria excellens de amicitia loquetur. Tu velim a me animum parumper avertas, Laelium loqui ipsum putes. C. Fannius et Q. Mucius ad socerum veniunt post mortem Africani; ab his sermo oritur, respondet Laelius, cuius tota disputatio est de amicitia, quam legens te ipse cognosces.\r\n\r\nAc ne quis a nobis hoc ita dici forte miretur, quod alia quaedam in hoc facultas sit ingeni, neque haec dicendi ratio aut disciplina, ne nos quidem huic uni studio penitus umquam dediti fuimus. Etenim omnes artes, quae ad humanitatem pertinent, habent quoddam commune vinculum, et quasi cognatione quadam inter se continentur.\r\n\r\nSed si ille hac tam eximia fortuna propter utilitatem rei publicae frui non properat, ut omnia illa conficiat, quid ego, senator, facere debeo, quem, etiamsi ille aliud vellet, rei publicae consulere oporteret?\r\n\r\nEt quia Mesopotamiae tractus omnes crebro inquietari sueti praetenturis et stationibus servabantur agrariis, laevorsum flexo itinere Osdroenae subsederat extimas partes, novum parumque aliquando temptatum commentum adgressus. quod si impetrasset, fulminis modo cuncta vastarat. erat autem quod cogitabat huius modi.\r\n\r\nHoc inmaturo interitu ipse quoque sui pertaesus excessit e vita aetatis nono anno atque vicensimo cum quadriennio imperasset. natus apud Tuscos in Massa Veternensi, patre Constantio Constantini fratre imperatoris, matreque Galla sorore Rufini et Cerealis, quos trabeae consulares nobilitarunt et praefecturae.");
 		txtDebouche.setLineWrap(true);
 		txtDebouche.setEditable(false);
 		txtDebouche.setPreferredSize(new Dimension(0, 0));
@@ -364,6 +347,34 @@ public class PanelMngModel extends JPanel  {
 
 	public JList<String> getList() {
 		return list;
+	}
+	
+	public void initList() {
+		
+		String[] values = null;
+		
+		try {
+			
+			List<Formation> listFormation = (List) DaoFactory.getDaoFormation().readAll(Formation.class);
+			values = new String[listFormation.size()];
+						
+			for (int i = 0 ; i < listFormation.size() ; i++)
+				{
+							
+				values[i] = listFormation.get(i).getIntitule();
+				
+				}
+			
+					
+			} catch (Exception e1) {
+			JOptionPane.showMessageDialog(null, "La liste des formations n'a pu être importée.", "Erreur connexion base de données", JOptionPane.WARNING_MESSAGE);
+			e1.printStackTrace();
+			}
+		
+		Arrays.sort(values);
+				
+		this.list.setListData(values);
+	
 	}
 	
 	
