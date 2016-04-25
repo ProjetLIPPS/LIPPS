@@ -217,18 +217,18 @@ public class RechercherListener implements MouseListener, KeyListener
 			} else if (panelCCompte.getComboOrdreAlpha().getSelectedItem().equals("E,F,G,H,I"))
 			{
 				ordreAlpha = " and u.uti_nom between 'e' and 'i' ";
-			} else if (panelCCompte.getComboOrdreAlpha().getSelectedItem().equals("J,K,L,M"))
+			} else if (panelCCompte.getComboOrdreAlpha().getSelectedItem().equals("J,K,L,M,N"))
 			{
-				ordreAlpha = " and u.uti_nom between 'j' and 'm' ";
-			} else if (panelCCompte.getComboOrdreAlpha().getSelectedItem().equals("N,O,P,Q"))
+				ordreAlpha = " and u.uti_nom between 'j' and 'n' ";
+			} else if (panelCCompte.getComboOrdreAlpha().getSelectedItem().equals("O,P,Q,R"))
 			{
-				ordreAlpha = " and u.uti_nom between 'n' and 'q' ";
-			} else if (panelCCompte.getComboOrdreAlpha().getSelectedItem().equals("R,S,T,U"))
+				ordreAlpha = " and u.uti_nom between 'o' and 'r' ";
+			} else if (panelCCompte.getComboOrdreAlpha().getSelectedItem().equals("S,T,U,V"))
 			{
-				ordreAlpha = " and u.uti_nom between 'r' and 'u' ";
-			} else if (panelCCompte.getComboOrdreAlpha().getSelectedItem().equals("V,W,X,Y,Z"))
+				ordreAlpha = " and u.uti_nom between 's' and 'v' ";
+			} else if (panelCCompte.getComboOrdreAlpha().getSelectedItem().equals("W,X,Y,Z"))
 			{
-				ordreAlpha = " and u.uti_nom between 'v' and 'z' ";
+				ordreAlpha = " and u.uti_nom between 'w' and 'z' ";
 			}
 		}
 

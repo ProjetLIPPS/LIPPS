@@ -10,6 +10,14 @@ import model.objet.Utilisateur;
 public class ControleurFMain
 
 	{
+	
+	private Utilisateur utilisateur ;
+	
+	public ControleurFMain()
+	
+	{
+		init();
+	}
 		
 		public void init() 
 			{

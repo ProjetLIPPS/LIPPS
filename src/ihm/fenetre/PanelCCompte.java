@@ -28,6 +28,7 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
+import actionListener.BoutonCreerCompte;
 import actionListener.FocusListeners;
 import actionListener.RechercherListener;
 import actionListener.UtilisateurParTypeDeCompte;
@@ -53,6 +54,21 @@ public class PanelCCompte extends JPanel
 	private JButton btnRecherche = new JButton();
 	private JComboBox<String> comboSecMetier = new JComboBox<String>();
 	private JComboBox<String> comboOrdreAlpha = new JComboBox<String>();
+	private JButton btnCreer = new JButton("Créer");
+
+	public JButton getBtnCreer()
+	{
+		return btnCreer;
+	}
+
+
+
+	public void setBtnCreer(JButton btnCreer)
+	{
+		this.btnCreer = btnCreer;
+	}
+
+
 
 	public JComboBox<String> getComboSecMetier()
 	{
@@ -93,6 +109,7 @@ public class PanelCCompte extends JPanel
 		UtilisateurParTypeDeCompte utilisateurParType = new UtilisateurParTypeDeCompte(this);
 		FocusListeners rechercheListener = new FocusListeners(this);
 		RechercherListener listenerBtnRecherche = new RechercherListener(this);
+		BoutonCreerCompte creerCompteListener = new  BoutonCreerCompte(this);
 
 		this.setBorder(null);
 		this.setBackground(Color.WHITE);
@@ -279,7 +296,7 @@ public class PanelCCompte extends JPanel
 		comboOrdreAlpha.setBackground(SystemColor.window);
 		comboOrdreAlpha.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 15));
 		comboOrdreAlpha.setModel(new DefaultComboBoxModel<String>(new String[]
-		{ "Filtre par ordre alphabétique", "A,B,C,D", "E,F,G,H,I", "J,K,L,M", "N,O,P,Q", "R,S,T,U", "V,W,X,Y,Z" }));
+		{ "Filtre par ordre alphabétique", "A,B,C,D", "E,F,G,H,I", "J,K,L,M,N", "O,P,Q,R", "S,T,U,V", "W,X,Y,Z" }));
 		comboOrdreAlpha.setName("Tri par ordre alphabétique");
 
 		JPanel panelResultatRecherche = new JPanel();
@@ -356,24 +373,18 @@ public class PanelCCompte extends JPanel
 		panelButtonSub.setBorder(new EmptyBorder(0, 20, 0, 20));
 		panelButtonSub.setLayout(new FlowLayout(FlowLayout.CENTER, 15, 5));
 
-		JButton btnSuivant = new JButton("Créer");
-		btnSuivant.setFocusable(false);
-		btnSuivant.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnSuivant.setPressedIcon(null);
-		btnSuivant.setSelectedIcon(null);
-		btnSuivant.setPreferredSize(new Dimension(100, 36));
-		btnSuivant.addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{
-
-			}
-		});
-		btnSuivant.setBackground(new Color(245, 245, 245));
-		btnSuivant.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 15));
-		btnSuivant.setActionCommand("Créer");
-		panelButtonSub.add(btnSuivant);
+		
+		btnCreer.setFocusable(false);
+		btnCreer.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnCreer.setPressedIcon(null);
+		btnCreer.setSelectedIcon(null);
+		btnCreer.setPreferredSize(new Dimension(100, 36));
+		btnCreer.addMouseListener(creerCompteListener);
+		
+		btnCreer.setBackground(new Color(245, 245, 245));
+		btnCreer.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 15));
+		btnCreer.setActionCommand("Créer");
+		panelButtonSub.add(btnCreer);
 
 		JButton btnModifier = new JButton("Modifier");
 		btnModifier.setFocusable(false);
