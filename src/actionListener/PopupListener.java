@@ -14,6 +14,7 @@ import ihm.popup.CreationCompte;
 import ihm.popup.CreationModele;
 import ihm.popup.CreationModule;
 import model.baseDAO.DaoFactory;
+import model.objet.Contact;
 import model.objet.Utilisateur;
 import model.objet.UtilisateurToRole;
 
@@ -80,6 +81,7 @@ public class PopupListener implements ActionListener {
 		{
 			DaoFactory.getDaoUtilisateur().save(user);
 			DaoFactory.getDaoUtilisateur().save(new UtilisateurToRole(user, DaoFactory.getDaoRole().findByName(type)));
+			DaoFactory.getDaoContact().save(new Contact(null, null, null, null, null, null, email, user));
 			creaComptePop.dispose();
 		} 
 		catch (Exception e) 
