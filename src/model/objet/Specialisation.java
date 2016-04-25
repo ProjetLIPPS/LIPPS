@@ -35,10 +35,6 @@ public class Specialisation extends DataParent {
 	@OneToMany(mappedBy = "specialisation", fetch = FetchType.LAZY)
 	private List<UtilisateurToSpecialisation> utilisateurToSpecialisation = null;
 
-	@OneToMany(fetch = FetchType.EAGER)
-	@JoinColumn(name = "frm_id")
-	@NotNull
-	private List<Formation> listFormation = null;
 
 	
 	
@@ -83,11 +79,6 @@ public class Specialisation extends DataParent {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-
-	public List<Formation> getListFormation() {
-		return listFormation;
 	}
 
 
