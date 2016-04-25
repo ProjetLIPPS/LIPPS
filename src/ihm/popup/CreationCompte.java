@@ -178,6 +178,9 @@ public class CreationCompte extends JDialog {
 		btnNewButton_1.setMargin(new Insets(6, 18, 6, 18));
 		btnNewButton_1.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_BUTTON));
 		btnNewButton_1.setBackground(Color.WHITE);
+		setLocationRelativeTo(null);
+		
+		setVisible(true);
 		
 		
 		
