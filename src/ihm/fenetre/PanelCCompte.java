@@ -29,23 +29,70 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import actionListener.FocusListeners;
+import actionListener.RechercherListener;
 import actionListener.UtilisateurParTypeDeCompte;
 import ihm.theme.ThemeLIPPS;
 
-public class PanelCCompte extends JPanel {
+public class PanelCCompte extends JPanel
+{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTextField barreRecherche;
 	private JTable tableau;
 	private JLabel lblAdministrateur = new JLabel(" Administrateur");
 	private JLabel lblFormateur = new JLabel(" Formateur");
 	private JLabel lblStagiaire = new JLabel(" Stagiaire");
 	private JLabel lblTuteur = new JLabel(" Tuteur");
+	private String[] enteteTableau = new String[]
+	{ "Identifiant AFPA", "Nom", "Prenom", "Formation", "Email", "Numéro Téléphone" };
+	private DefaultTableModel modeleTableau = new DefaultTableModel(new Object[][]
+	{}, enteteTableau);
+	private Integer isSelected = 0;
+	private JButton btnRecherche = new JButton();
+	private JComboBox<String> comboSecMetier = new JComboBox<String>();
+	private JComboBox<String> comboOrdreAlpha = new JComboBox<String>();
+
+	public JComboBox<String> getComboSecMetier()
+	{
+		return comboSecMetier;
+	}
+
+
+
+	public void setComboSecMetier(JComboBox<String> comboSecMetier)
+	{
+		this.comboSecMetier = comboSecMetier;
+	}
+
+
+
+	public JComboBox<String> getComboOrdreAlpha()
+	{
+		return comboOrdreAlpha;
+	}
+
+
+
+	public void setComboOrdreAlpha(JComboBox<String> comboOrdreAlpha)
+	{
+		this.comboOrdreAlpha = comboOrdreAlpha;
+	}
+
+
+
 	/**
 	 * Create the panel.
 	 */
-	public PanelCCompte() {
-		
-		UtilisateurParTypeDeCompte mouseEvents =  new UtilisateurParTypeDeCompte(this);
+	@SuppressWarnings(
+	{ "unchecked", "rawtypes" })
+	public PanelCCompte()
+	{
+
+		UtilisateurParTypeDeCompte utilisateurParType = new UtilisateurParTypeDeCompte(this);
 		FocusListeners rechercheListener = new FocusListeners(this);
+		RechercherListener listenerBtnRecherche = new RechercherListener(this);
 
 		this.setBorder(null);
 		this.setBackground(Color.WHITE);
@@ -80,9 +127,8 @@ public class PanelCCompte extends JPanel {
 		panelTypeCompte.add(panel_Administrateur);
 		lblAdministrateur.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblAdministrateur.setHorizontalAlignment(SwingConstants.CENTER);
-		
 
-		lblAdministrateur.addMouseListener(mouseEvents);
+		lblAdministrateur.addMouseListener(utilisateurParType);
 		lblAdministrateur.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblAdministrateur.setMaximumSize(new Dimension(70, 20));
 		lblAdministrateur.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, 25));
@@ -95,9 +141,8 @@ public class PanelCCompte extends JPanel {
 		fl_panelFormateur.setAlignment(FlowLayout.LEFT);
 		panelFormateur.setOpaque(false);
 		panelTypeCompte.add(panelFormateur);
-		
 
-		lblFormateur.addMouseListener(mouseEvents);
+		lblFormateur.addMouseListener(utilisateurParType);
 		lblFormateur.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblFormateur.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, 25));
 		lblFormateur.setForeground(Color.WHITE);
@@ -109,9 +154,8 @@ public class PanelCCompte extends JPanel {
 		fl_panelStagiaire.setHgap(25);
 		panelStagiaire.setOpaque(false);
 		panelTypeCompte.add(panelStagiaire);
-		
 
-		lblStagiaire.addMouseListener(mouseEvents);
+		lblStagiaire.addMouseListener(utilisateurParType);
 		lblStagiaire.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblStagiaire.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, 25));
 		lblStagiaire.setForeground(Color.WHITE);
@@ -123,8 +167,8 @@ public class PanelCCompte extends JPanel {
 		fl_panelTuteur.setAlignment(FlowLayout.LEFT);
 		panelTuteur.setOpaque(false);
 		panelTypeCompte.add(panelTuteur);
-		
-		lblTuteur.addMouseListener(mouseEvents);
+
+		lblTuteur.addMouseListener(utilisateurParType);
 		lblTuteur.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblTuteur.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, 25));
 		lblTuteur.setForeground(Color.WHITE);
@@ -178,8 +222,9 @@ public class PanelCCompte extends JPanel {
 		barreRecherche.setText("Nom ou n°AFPA");
 		barreRecherche.setColumns(15);
 		barreRecherche.addFocusListener(rechercheListener);
+		barreRecherche.addKeyListener(listenerBtnRecherche);
 
-		JButton btnRecherche = new JButton();
+		
 		btnRecherche.setFocusable(false);
 		btnRecherche.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnRecherche.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
@@ -189,13 +234,9 @@ public class PanelCCompte extends JPanel {
 		btnRecherche.setPreferredSize(new Dimension(40, 30));
 		btnRecherche.setMargin(new Insets(3, 14, 4, 14));
 		panelRecherche.add(btnRecherche);
-		btnRecherche.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
 		panelBouttons.setLayout(new BorderLayout(0, 0));
 		btnRecherche.setIcon(new ImageIcon("./img/search 16.png"));
+		btnRecherche.addMouseListener(listenerBtnRecherche);
 		panelBouttons.add(panelRecherche, BorderLayout.WEST);
 
 		JPanel panelSecMetier = new JPanel();
@@ -206,18 +247,19 @@ public class PanelCCompte extends JPanel {
 		fl_panelSecMetier.setHgap(0);
 		fl_panelSecMetier.setVgap(15);
 
-		JComboBox<?> comboSecMetier = new JComboBox();
-		((JLabel)comboSecMetier.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+		
+		((JLabel) comboSecMetier.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
 		comboSecMetier.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		panelSecMetier.add(comboSecMetier);
 		comboSecMetier.setMinimumSize(new Dimension(28, 25));
 		comboSecMetier.setPreferredSize(new Dimension(180, 30));
 		comboSecMetier.setBackground(SystemColor.window);
 		comboSecMetier.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 15));
-		comboSecMetier.setModel(new DefaultComboBoxModel(new String[] { "Secteur de métier", "Audiovisuel", "Automobile",
-				"Autre", "Assurance", "Bâtiment", "Commerce", "Communication", "Droit", "Enseignement", "Environnement",
-				"Hôtellerie", "Immobilier", "Informatique", "Langues", "Marketing", "Propreté", "Ressources Humaines",
-				"Restauration", "Sciences Humaines", "Secrétariat", "Social", "Tourisme", "Transport , Logistique" }));
+		comboSecMetier.setModel(new DefaultComboBoxModel(new String[]
+		{ "Secteur de métier", "Audiovisuel", "Automobile", "Autre", "Assurance", "Bâtiment", "Commerce",
+				"Communication", "Droit", "Enseignement", "Environnement", "Hôtellerie", "Immobilier", "Informatique",
+				"Langues", "Marketing", "Propreté", "Ressources Humaines", "Restauration", "Sciences Humaines",
+				"Secrétariat", "Social", "Tourisme", "Transport , Logistique" }));
 
 		JPanel panelOrdAlpha = new JPanel();
 		panelBouttons.add(panelOrdAlpha, BorderLayout.EAST);
@@ -228,16 +270,16 @@ public class PanelCCompte extends JPanel {
 		fl_panelOrdAlpha.setAlignment(FlowLayout.RIGHT);
 		fl_panelOrdAlpha.setVgap(15);
 
-		JComboBox<Object> comboOrdreAlpha = new JComboBox<Object>();
-		((JLabel)comboOrdreAlpha.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+		
+		((JLabel) comboOrdreAlpha.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
 		comboOrdreAlpha.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		comboOrdreAlpha.setPreferredSize(new Dimension(235, 30));
 		panelOrdAlpha.add(comboOrdreAlpha);
 		comboOrdreAlpha.setMinimumSize(new Dimension(28, 25));
 		comboOrdreAlpha.setBackground(SystemColor.window);
 		comboOrdreAlpha.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 15));
-		comboOrdreAlpha.setModel(new DefaultComboBoxModel(new String[] { "Filtre par ordre alphabétique", "A...D", "E...I",
-				"J...M", "N...Q", "R...U ", "V...Z" }));
+		comboOrdreAlpha.setModel(new DefaultComboBoxModel<String>(new String[]
+		{ "Filtre par ordre alphabétique", "A,B,C,D", "E,F,G,H,I", "J,K,L,M", "N,O,P,Q", "R,S,T,U", "V,W,X,Y,Z" }));
 		comboOrdreAlpha.setName("Tri par ordre alphabétique");
 
 		JPanel panelResultatRecherche = new JPanel();
@@ -253,6 +295,7 @@ public class PanelCCompte extends JPanel {
 		panelTableau.setLayout(new BorderLayout(0, 0));
 
 		tableau = new JTable();
+		tableau.setForeground(Color.DARK_GRAY);
 		tableau.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		tableau.setShowHorizontalLines(false);
 		tableau.setShowGrid(false);
@@ -264,40 +307,31 @@ public class PanelCCompte extends JPanel {
 				new Color(192, 192, 192), new Color(192, 192, 192)));
 		tableau.setBackground(SystemColor.textHighlightText);
 		tableau.setFocusable(false);
-		tableau.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		
-		
-		tableau.setModel(new DefaultTableModel(
-			new Object[][] {},new String[] {"Identifiant AFPA", "Nom", "Prenom", "Formation", "Email", "Numéro Téléphone"}) 
-			{/**
-				 * 
-				 */
-				private static final long serialVersionUID = 1L;
-			Class[] columnTypes = new Class[] {String.class, String.class, String.class, String.class, String.class, String.class};
-			
-			@Override
-			public Class<?> getColumnClass(int columnIndex) 
-			{
-				return columnTypes[columnIndex];
-			}
-		});
-		
-		tableau.getTableHeader().setFont(new Font(ThemeLIPPS.FONT_DEFAULT,Font.PLAIN, ThemeLIPPS.FONT_SIZE_BUTTON));
+		tableau.setFont(new Font("Tahoma", Font.PLAIN, 14));
+
+		tableau.setModel(modeleTableau);
+
+		tableau.getTableHeader().setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_BUTTON));
 		tableau.setDefaultEditor(Object.class, null);
 		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-		centerRenderer.setHorizontalAlignment( SwingConstants.CENTER );
-		
-		for (int i = 0 ; i < 6 ; i++)
+		centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+
+		for (int i = 0; i < 6; i++)
 		{
 			tableau.getColumnModel().getColumn(i).setResizable(false);
-			tableau.getColumnModel().getColumn(i).setCellRenderer( centerRenderer );
-			
+			tableau.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+
 		}
-		
-		
-		
-		
-		
+
+		DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+		renderer.setHorizontalAlignment(JLabel.LEFT);
+
+		for (int i = 0; i < 6; i++)
+		{
+			tableau.getColumnModel().getColumn(i).setResizable(false);
+			tableau.getColumnModel().getColumn(i).setCellRenderer(renderer);
+
+		}
 
 		panelTableau.add(tableau, BorderLayout.CENTER);
 		panelTableau.add(tableau.getTableHeader(), BorderLayout.NORTH);
@@ -322,15 +356,17 @@ public class PanelCCompte extends JPanel {
 		panelButtonSub.setBorder(new EmptyBorder(0, 20, 0, 20));
 		panelButtonSub.setLayout(new FlowLayout(FlowLayout.CENTER, 15, 5));
 
-		JButton btnSuivant = new JButton("Créer\r\n");
+		JButton btnSuivant = new JButton("Créer");
 		btnSuivant.setFocusable(false);
 		btnSuivant.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnSuivant.setPressedIcon(null);
 		btnSuivant.setSelectedIcon(null);
 		btnSuivant.setPreferredSize(new Dimension(100, 36));
-		btnSuivant.addActionListener(new ActionListener() {
+		btnSuivant.addActionListener(new ActionListener()
+		{
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e)
+			{
 
 			}
 		});
@@ -353,7 +389,7 @@ public class PanelCCompte extends JPanel {
 		btnSupprimer.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnSupprimer.setPreferredSize(new Dimension(115, 36));
 		btnSupprimer.setBackground(new Color(245, 245, 245));
-		btnSupprimer.setFont(new Font( ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 15));
+		btnSupprimer.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 15));
 		btnSupprimer.setActionCommand("Supprimer");
 		panelButtonSub.add(btnSupprimer);
 
@@ -362,43 +398,131 @@ public class PanelCCompte extends JPanel {
 		panelEast.setBackground(ThemeLIPPS.BLUE_DARK);
 		add(panelEast, BorderLayout.EAST);
 
-		
 	}
 	
 	
-	
-	public JTextField getBarreRecherche()
+
+	public JButton getBtnRecherche()
 	{
-		return this.barreRecherche ;
+		return btnRecherche;
 	}
 
-	public JLabel getLblAdmin() 
+	public void setBtnRecherche(JButton btnRecherche)
 	{
-		
-		return this.lblAdministrateur;  
+		this.btnRecherche = btnRecherche;
 	}
-	
-	public JLabel getLblForm() 
+
+	public JTable getTableau()
 	{
-		
-		return this.lblFormateur;  
+		return tableau;
 	}
-	
-	public JLabel getLblSta() 
+
+	public void setTableau(JTable tableau)
 	{
-		
-		return this.lblStagiaire;  
+		this.tableau = tableau;
 	}
-	
-	public JLabel getLblTut() 
+
+	public JLabel getLblAdministrateur()
 	{
-		
-		return this.lblTuteur;  
+		return lblAdministrateur;
 	}
-	
-	public JTable getTable()
-	
+
+	public void setLblAdministrateur(JLabel lblAdministrateur)
 	{
-		return this.tableau;
+		this.lblAdministrateur = lblAdministrateur;
+	}
+
+	public JLabel getLblFormateur()
+	{
+		return lblFormateur;
+	}
+
+	public void setLblFormateur(JLabel lblFormateur)
+	{
+		this.lblFormateur = lblFormateur;
+	}
+
+	public JLabel getLblStagiaire()
+	{
+		return lblStagiaire;
+	}
+
+	public void setLblStagiaire(JLabel lblStagiaire)
+	{
+		this.lblStagiaire = lblStagiaire;
+	}
+
+	public JLabel getLblTuteur()
+	{
+		return lblTuteur;
+	}
+
+	public void setLblTuteur(JLabel lblTuteur)
+	{
+		this.lblTuteur = lblTuteur;
+	}
+
+	public String[] getEnteteTableau()
+	{
+		return enteteTableau;
+	}
+
+	public void setEnteteTableau(String[] enteteTableau)
+	{
+		this.enteteTableau = enteteTableau;
+	}
+
+	public DefaultTableModel getModeleTableau()
+	{
+		return modeleTableau;
+	}
+
+	public void setModeleTableau(DefaultTableModel modeleTableau)
+	{
+		this.modeleTableau = modeleTableau;
+	}
+
+	public void setBarreRecherche(JTextField barreRecherche)
+	{
+		this.barreRecherche = barreRecherche;
+	}
+
+	public JTextField getBarreRecherche()
+	{
+		return this.barreRecherche;
+	}
+
+	public JLabel getLblAdmin()
+	{
+
+		return this.lblAdministrateur;
+	}
+
+	public JLabel getLblForm()
+	{
+
+		return this.lblFormateur;
+	}
+
+	public JLabel getLblSta()
+	{
+
+		return this.lblStagiaire;
+	}
+
+	public JLabel getLblTut()
+	{
+
+		return this.lblTuteur;
+	}
+
+	public Integer getIsSelected()
+	{
+		return isSelected;
+	}
+
+	public void setIsSelected(Integer isSelected)
+	{
+		this.isSelected = isSelected;
 	}
 }
