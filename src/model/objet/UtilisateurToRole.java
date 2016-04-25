@@ -16,7 +16,7 @@ import javax.validation.constraints.NotNull;
 @Table (name = "utilisateur_role", uniqueConstraints = {
 	    @UniqueConstraint(columnNames={"utr_uti_id", "utr_rol_id"})
 	})
-public class UtilisateurToRole implements Serializable {
+public class UtilisateurToRole extends DataParent implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
@@ -30,7 +30,7 @@ public class UtilisateurToRole implements Serializable {
 	
 	
 	@Id
-	@ManyToOne (fetch = FetchType.LAZY)
+	@ManyToOne (fetch = FetchType.EAGER)
 	@JoinColumn (name = "utr_rol_id", referencedColumnName = "rol_id")
 	@NotNull
 	private Role role = null;
