@@ -30,15 +30,15 @@ public class CreationModele extends JDialog {
 	private JTextPane jtextEmploisAccessibles;
 	private JComboBox comboBoxSpecialite;
 
-	private PopupListener listener = null;
 	
 
 	/**
 	 * Create the frame.
 	 */
-	public CreationModele(/*PopupListener listener*/) 
+	public CreationModele() 
 	{
-		this.listener = listener;
+		PopupListener listener = new PopupListener();
+		
 		setModal(true);
 		setResizable(false);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);

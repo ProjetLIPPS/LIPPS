@@ -41,7 +41,6 @@ public class CreaForm extends JDialog {
 	private JDateChooser dateChooserAu;
 	private JDateChooser dateChooserDu;
 
-	private PopupListener listener = null;
 	
 	/**
 	 * Launch the application.
@@ -51,9 +50,10 @@ public class CreaForm extends JDialog {
 	/**
 	 * Create the frame.
 	 */
-	public CreaForm(/*PopupListener listener*/)
+	public CreaForm()
 	{
-		this.listener = listener;
+		PopupListener listener = new PopupListener();
+		
 		setModal(true);
 		setResizable(false);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);

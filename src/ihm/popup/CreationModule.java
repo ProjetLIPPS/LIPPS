@@ -34,12 +34,12 @@ public class CreationModule extends JDialog {
 	private ArrayList<RowSequence> listeRowSequence = new ArrayList<RowSequence>();
 	private JTextArea textAreaDescription;
 	
-	private PopupListener listener = null;
 
 	
-	public CreationModule(/*PopupListener listener*/)
+	public CreationModule()
 	{
-		this.listener = listener;
+		PopupListener listener = new PopupListener();
+		
 		getContentPane().setBackground(ThemeLIPPS.BLUE);
 		setModal(true);
 		setResizable(false);

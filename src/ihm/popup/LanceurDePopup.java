@@ -24,8 +24,7 @@ public class LanceurDePopup extends JFrame
 {
 
 	private JPanel contentPane;
-	private PopupListener popuplistener = new PopupListener();
-
+	
 	/**
 	 * Launch the application.
 	 */
@@ -70,7 +69,7 @@ public class LanceurDePopup extends JFrame
 		btnCrationFormation.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
-				JDialog pop = new CreaForm(/*popuplistener*/);
+				JDialog pop = new CreaForm();
 				pop.setVisible(true);
 			}
 		});
@@ -83,7 +82,7 @@ public class LanceurDePopup extends JFrame
 		btnCrationModleDe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				JDialog pop = new CreationModele(/*popuplistener*/);
+				JDialog pop = new CreationModele();
 				pop.setVisible(true);
 			}
 		});
@@ -96,7 +95,7 @@ public class LanceurDePopup extends JFrame
 		btnCrationCompte.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				JDialog pop = new CreationCompte(/*popuplistener*/);
+				JDialog pop = new CreationCompte();
 				pop.setVisible(true);
 			}
 		});
@@ -110,7 +109,7 @@ public class LanceurDePopup extends JFrame
 		btnCreationModule.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				JDialog pop = new CreationModule(/*popuplistener*/);
+				JDialog pop = new CreationModule();
 				pop.setVisible(true);
 			}
 		});

@@ -28,15 +28,16 @@ public class CreationCompte extends JDialog {
 	private JTextField textField_NoAFPA;
 	private ButtonGroup groupRadioType;
 	
-	private PopupListener listener = null;
+
 	
 
 	/**
 	 * Create the frame.
 	 */
-	public CreationCompte(/*PopupListener listener*/)
+	public CreationCompte(/**/)
 	{
-		this.listener = listener;
+		PopupListener listener = new PopupListener();
+		
 		setModal(true);
 		getContentPane().setBackground(ThemeLIPPS.BLUE);
 		setResizable(false);
