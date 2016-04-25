@@ -80,6 +80,7 @@ public class PopupListener implements ActionListener {
 		{
 			DaoFactory.getDaoUtilisateur().save(user);
 			DaoFactory.getDaoUtilisateur().save(new UtilisateurToRole(user, DaoFactory.getDaoRole().findByName(type)));
+			creaComptePop.dispose();
 		} 
 		catch (Exception e) 
 		{
