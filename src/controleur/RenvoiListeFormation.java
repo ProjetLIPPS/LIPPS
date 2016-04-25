@@ -1,5 +1,7 @@
 package controleur;
 
+import model.baseDAO.DaoFactory;
+
 public class RenvoiListeFormation {
 
 	
@@ -7,12 +9,10 @@ public class RenvoiListeFormation {
 		
 		String[] listFormation = null;
 		
-		// methode recup formations depuis dao
-		// TODO condition if selon admin ou formateur 
+				
+		//listFormation = DaoFactory.getDaoFormation().readAllFromUser();
 		
-		// >> test en dur:
 		
-		listFormation = new String[ ]{"formation 1", "formation 2", "formation 3"};
 		
 		return listFormation;
 		

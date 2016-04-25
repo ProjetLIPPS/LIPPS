@@ -31,7 +31,6 @@ public class FenLogin extends JFrame
 	public FenLogin(LoginListener listener)
 	{
 
-		
 		setTitle("LIPPS - Connexion");
 		getContentPane().setBackground(Color.WHITE);
 		setResizable(false);

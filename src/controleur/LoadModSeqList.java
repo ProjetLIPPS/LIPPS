@@ -15,11 +15,11 @@ public class LoadModSeqList {
 		
 		ArrayList<PanelMngModuleRowMod> listMod = new ArrayList<PanelMngModuleRowMod>();
 		
-		for (Module mod : formation.getListModule())
-		{
-			PanelMngModuleRowMod rowmod = new PanelMngModuleRowMod(mod);
-			listMod.add(rowmod);
-		}
+//		for (Module mod : formation.getListModule())
+//		{
+//			PanelMngModuleRowMod rowmod = new PanelMngModuleRowMod(mod);
+//			listMod.add(rowmod);
+//		}
 			
 		return listMod;
 		

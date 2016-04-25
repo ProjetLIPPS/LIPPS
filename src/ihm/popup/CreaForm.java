@@ -25,9 +25,12 @@ import com.toedter.calendar.JDateChooser;
 
 import actionListener.PopupListener;
 import ihm.theme.ThemeLIPPS;
+import model.baseDAO.DaoFactory;
+
 import java.awt.event.ActionListener;
 
-public class CreaForm extends JDialog {
+public class CreaForm extends JDialog 
+{
 
 	private JPanel contentPane;
 	private JTextField textField_specialite;
@@ -35,7 +38,7 @@ public class CreaForm extends JDialog {
 	private JTextField textField_duree;
 	private JTextField textField_grn;
 	private final Action action = new SwingAction();
-	private JList listModele;
+	private JList<String> listModele;
 	private JTextPane textPaneCCP;
 	private JTextPane champEmploisAccessibles;
 	private JDateChooser dateChooserAu;
@@ -75,19 +78,12 @@ public class CreaForm extends JDialog {
 		scrollPane.setBounds(53, 115, 584, 125);
 		contentPane.add(scrollPane);
 		
-		listModele = new JList();
+		listModele = new JList<String>();
 		listModele.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
 		scrollPane.setViewportView(listModele);
 		listModele.setBorder(new LineBorder(Color.LIGHT_GRAY, 1, true));
-		listModele.setModel(new AbstractListModel() {
-			String[] values = new String[] {"- modèle 1", "- modèle 2", "- modèle 3", "- modèle 4", "- modèle 1", "- modèle 2", "- modèle 3", "- modèle 4", "- modèle 1", "- modèle 2", "- modèle 3", "- modèle 4"};
-			public int getSize() {
-				return values.length;
-			}
-			public Object getElementAt(int index) {
-				return values[index];
-			}
-		});
+		remplirListeModele();
+		listModele.addListSelectionListener(listener);
 		
 		JLabel lblDure = new JLabel("Durée :");
 		lblDure.setBounds(201, 257, 66, 16);
@@ -96,19 +92,20 @@ public class CreaForm extends JDialog {
 		lblDure.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
 		
 		textField_specialite = new JTextField();
+		textField_specialite.setEditable(false);
 		textField_specialite.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
-		textField_specialite.setBounds(534, 254, 103, 22);
+		textField_specialite.setBounds(508, 254, 129, 22);
 		contentPane.add(textField_specialite);
 		textField_specialite.setColumns(5);
 		
 		JLabel lblHeures = new JLabel("heures");
-		lblHeures.setBounds(359, 257, 64, 16);
+		lblHeures.setBounds(339, 257, 64, 16);
 		contentPane.add(lblHeures);
 		lblHeures.setForeground(Color.WHITE);
 		lblHeures.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
 		
 		JLabel lblSpcialit_1 = new JLabel("Spécialité :");
-		lblSpcialit_1.setBounds(433, 255, 91, 21);
+		lblSpcialit_1.setBounds(413, 255, 91, 21);
 		contentPane.add(lblSpcialit_1);
 		lblSpcialit_1.setForeground(Color.WHITE);
 		lblSpcialit_1.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
@@ -126,8 +123,9 @@ public class CreaForm extends JDialog {
 		lblGrn.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
 		
 		textField_duree = new JTextField();
+		textField_duree.setEditable(false);
 		textField_duree.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
-		textField_duree.setBounds(267, 254, 82, 22);
+		textField_duree.setBounds(267, 254, 66, 22);
 		contentPane.add(textField_duree);
 		textField_duree.setColumns(10);
 		
@@ -143,6 +141,7 @@ public class CreaForm extends JDialog {
 		scrollPane_3.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		
 		champEmploisAccessibles = new JTextPane();
+		champEmploisAccessibles.setEditable(false);
 		champEmploisAccessibles.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
 		scrollPane_3.setViewportView(champEmploisAccessibles);
 		
@@ -194,6 +193,7 @@ public class CreaForm extends JDialog {
 		lblNbStages.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
 		
 		textField_grn = new JTextField();
+		textField_grn.setEditable(false);
 		textField_grn.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
 		textField_grn.setBounds(134, 255, 50, 22);
 		contentPane.add(textField_grn);
@@ -223,9 +223,20 @@ public class CreaForm extends JDialog {
 		contentPane.add(btnNewButton_1);
 		btnNewButton_1.setBackground(Color.WHITE);
 		btnNewButton_1.setAlignmentX(Component.CENTER_ALIGNMENT);
+		
+		setVisible(true);
 	}
 	
 	
+	private void remplirListeModele()
+	{
+		String [] nomSpe = DaoFactory.getDaoFormation().getListeNomModeles();
+		
+		listModele.setListData(nomSpe);
+		
+	}
+
+
 	private class SwingAction extends AbstractAction {
 		public SwingAction() {
 			putValue(NAME, "Annuler");
@@ -277,4 +288,6 @@ public class CreaForm extends JDialog {
 	{
 		return textField_specialite;
 	}
+	
+	
 }

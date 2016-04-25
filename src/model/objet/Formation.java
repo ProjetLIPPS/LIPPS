@@ -36,7 +36,6 @@ public class Formation extends DataParent {
 	private Integer grn = null;
 
 	@Column(name = "frm_offre")
-	@NotNull
 	private Integer offre = null;
 
 	@Column(name = "frm_intitule")
@@ -52,11 +51,9 @@ public class Formation extends DataParent {
 	private String debouche = null;
 
 	@Column(name = "frm_nombre_ccp")
-	@NotNull
 	private Integer nombreCCP = null;
 
 	@Column(name = "frm_nombre_stage")
-	@NotNull
 	private Integer nombreStage = null;
 	
 	
@@ -82,16 +79,13 @@ public class Formation extends DataParent {
 		super();
 	}
 	
-	public Formation(Integer grn, Integer offre, String intitule, Integer duree, String debouche, Integer nbccp,
-			Integer nbstage, Specialisation spe_id) {
-
-		super();
-	}
+	
 
 
 	public Formation(Integer id, Integer grn, Integer offre, String intitule, Integer duree, String debouche,
 			Integer nombreCCP, Integer nombreStage, List<UtilisateurToFormation> utilisateurToFormation,
-			Specialisation specialisation, List<FormationToModule> formationToModule) {
+			Specialisation specialisation, List<FormationToModule> formationToModule, boolean isModel) 
+	{
 		super();
 		this.id = id;
 		this.grn = grn;
@@ -104,6 +98,7 @@ public class Formation extends DataParent {
 		this.utilisateurToFormation = utilisateurToFormation;
 		this.specialisation = specialisation;
 		this.formationToModule = formationToModule;
+		this.isModel = isModel;
 	}
 
 
@@ -213,6 +208,20 @@ public class Formation extends DataParent {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+
+
+
+	public boolean isModel() {
+		return isModel;
+	}
+
+
+
+
+	public void setModel(boolean isModel) {
+		this.isModel = isModel;
 	}
 
 
