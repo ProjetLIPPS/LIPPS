@@ -24,6 +24,7 @@ public class MngModelReadWrite {
 	}
 	
 	
+	
 	public static void showModelInfo(PanelMngModel panel, String intituleFormation) {
 		
 		Formation formation = null;

@@ -11,13 +11,13 @@ import javax.swing.event.ListSelectionListener;
 import controleur.MngModelReadWrite;
 import ihm.fenetre.PanelMngModel;
 
-public class PanelMngModelListener implements ActionListener, ListSelectionListener  {
+public class MngModeleListener implements ActionListener, ListSelectionListener  {
 
 	
 	private PanelMngModel panelMngModel;
 	
 
-		public  PanelMngModelListener (PanelMngModel panelMngModel) 
+		public  MngModeleListener (PanelMngModel panelMngModel) 
 		{
 			
 			this.panelMngModel = panelMngModel;

@@ -26,7 +26,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import actionListener.PanelMngModelListener;
+import actionListener.MngModeleListener;
 import ihm.popup.CreationModele;
 import ihm.theme.ThemeLIPPS;
 import model.baseDAO.DaoFactory;
@@ -47,13 +47,13 @@ public class PanelMngModel extends JPanel  {
 	private JList<String> list;
 	private Utilisateur user;
 	
-	private PanelMngModelListener modelListener;
+	private MngModeleListener modelListener;
 	
 	
 	
 	public PanelMngModel()	 {
 		
-		modelListener = new PanelMngModelListener(this);
+		modelListener = new MngModeleListener(this);
 		
 		
 		setOpaque(false);
