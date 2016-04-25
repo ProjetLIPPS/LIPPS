@@ -40,7 +40,8 @@ public class LanceurDePopup extends JFrame
 				{
 					LanceurDePopup frame = new LanceurDePopup();
 					frame.setVisible(true);
-				} catch (Exception e)
+				} 
+				catch (Exception e)
 				{
 					e.printStackTrace();
 				}
@@ -70,7 +71,6 @@ public class LanceurDePopup extends JFrame
 			public void actionPerformed(ActionEvent e)
 			{
 				JDialog pop = new CreaForm();
-				pop.setVisible(true);
 			}
 		});
 		panel_3.add(btnCrationFormation);
@@ -83,7 +83,6 @@ public class LanceurDePopup extends JFrame
 			public void actionPerformed(ActionEvent e) 
 			{
 				JDialog pop = new CreationModele();
-				pop.setVisible(true);
 			}
 		});
 		panel_2.add(btnCrationModleDe);
@@ -110,7 +109,6 @@ public class LanceurDePopup extends JFrame
 			public void actionPerformed(ActionEvent e) 
 			{
 				JDialog pop = new CreationModule();
-				pop.setVisible(true);
 			}
 		});
 		btnCreationModule.setAlignmentX(Component.CENTER_ALIGNMENT);

@@ -7,7 +7,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.swing.JButton;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import ihm.popup.CreaForm;
 import ihm.popup.CreationCompte;
@@ -15,10 +18,17 @@ import ihm.popup.CreationModele;
 import ihm.popup.CreationModule;
 import model.baseDAO.DaoFactory;
 import model.objet.Contact;
+import model.objet.Formation;
+import model.objet.Specialisation;
 import model.objet.Utilisateur;
 import model.objet.UtilisateurToRole;
 
-public class PopupListener implements ActionListener {
+
+//TODO controle de saisie
+//TODO creationModele : verifier intitulé unique et premiere lettre en majuscule
+
+public class PopupListener implements ActionListener, ListSelectionListener 
+{
 
 	@Override
 	public void actionPerformed(ActionEvent e) 
@@ -51,10 +61,52 @@ public class PopupListener implements ActionListener {
 		
 	}
 	
+	
+	@Override
+	public void valueChanged(ListSelectionEvent e) 
+	{
+		@SuppressWarnings("unchecked")
+		JList<String> jliste = (JList<String>) e.getSource();
+		
+		CreaForm popup = (CreaForm) jliste.getRootPane().getParent();
+		
+		
+		Formation currentFrm = new Formation();
+		
+		try 
+		{
+			currentFrm = DaoFactory.getDaoFormation().findFormationByIntitule(jliste.getSelectedValue());
+		} 
+		catch (Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		
+		
+		
+		popup.getTextField_specialite().setText(currentFrm.getSpecialisation().getNom());
+		popup.getTextField_duree().setText(""+currentFrm.getDuree());
+		popup.getTextField_grn().setText(""+currentFrm.getGrn());
+		popup.getChampEmploisAccessibles().setText(currentFrm.getDebouche());
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	private void creerFormation (CreaForm creaFormPop)
 	{
 		creaFormPop.dispose();
 	}
+	
+	
+	
 	
 	private void creerCompte (CreationCompte creaComptePop)
 	{
@@ -92,17 +144,39 @@ public class PopupListener implements ActionListener {
 		
 		
 		
-		//creaComptePop.dispose();
+		
 	}
 	
 	private void creerModele (CreationModele creaModelePop)
 	{
-		creaModelePop.dispose();
+		String intitule = creaModelePop.getTextField_Intitule().getText();
+		Integer noGRN = Integer.parseInt(creaModelePop.getTextField_GRN().getText());
+		String specialite = (String) creaModelePop.getComboBoxSpecialite().getSelectedItem();
+		String emploisAccessibles = creaModelePop.getJtextEmploisAccessibles().getText();
+		Integer duree = Integer.parseInt(creaModelePop.getTextField_Duree().getText());
+		Specialisation specialisation = new Specialisation();
+		try 
+		{
+			specialisation = DaoFactory.getDaoSpecialisation().findByName(specialite);
+			Formation frm = new Formation(null, noGRN, null, intitule, duree, emploisAccessibles, null, null, null, specialisation, null, true);
+			DaoFactory.getDaoFormation().save(frm);
+			creaModelePop.dispose();
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+		
+		
+		
+		
 	}
 	
 	private void creerModule (CreationModule creaModulePop)
 	{
 		creaModulePop.dispose();
 	}
+
+	
 
 }

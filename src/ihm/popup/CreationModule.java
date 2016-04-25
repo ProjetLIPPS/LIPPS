@@ -163,7 +163,7 @@ public class CreationModule extends JDialog {
 		listeRowSequence.add(new RowSequence());
 		ajouterSequence();
 		
-		
+		setVisible(true);
 		
 	}
 	

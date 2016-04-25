@@ -20,6 +20,7 @@ import javax.swing.border.EmptyBorder;
 
 import actionListener.PopupListener;
 import ihm.theme.ThemeLIPPS;
+import model.baseDAO.DaoFactory;
 
 public class CreationModele extends JDialog {
 
@@ -28,7 +29,7 @@ public class CreationModele extends JDialog {
 	private JTextField textField_Duree;
 	private JTextField textField_Intitule;
 	private JTextPane jtextEmploisAccessibles;
-	private JComboBox comboBoxSpecialite;
+	private JComboBox<String> comboBoxSpecialite;
 
 	
 
@@ -112,12 +113,12 @@ public class CreationModele extends JDialog {
 		lblSpcialit.setBounds(311, 243, 91, 22);
 		contentPane.add(lblSpcialit);
 		
-		comboBoxSpecialite = new JComboBox();
+		comboBoxSpecialite = new JComboBox<String>();
 		comboBoxSpecialite.setBackground(Color.WHITE);
 		comboBoxSpecialite.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
 		comboBoxSpecialite.setBounds(424, 241, 174, 27);
+		remplirComboSpe();
 		contentPane.add(comboBoxSpecialite);
-		comboBoxSpecialite.setModel(new DefaultComboBoxModel(new String[] {"spe 1", "spe 2", "spe 3"}));
 		
 		textField_GRN = new JTextField();
 		textField_GRN.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
@@ -142,8 +143,22 @@ public class CreationModele extends JDialog {
 		textField_Intitule.setBounds(131, 156, 467, 25);
 		contentPane.add(textField_Intitule);
 		textField_Intitule.setColumns(10);
+		
+		setVisible(true);
 	}
 	
+	private void remplirComboSpe() 
+	{
+		String [] nomSpe = DaoFactory.getDaoSpecialisation().getNomSpecialisation();
+		
+		for (int i = 0; i < nomSpe.length; i++)
+		{
+			comboBoxSpecialite.addItem(nomSpe[i]);
+		}
+		
+		
+	}
+
 	public CreationModele getThis()
 	{
 		return this;
@@ -162,7 +177,7 @@ public class CreationModele extends JDialog {
 	{
 		return jtextEmploisAccessibles;
 	}
-	public JComboBox getComboBoxSpecialite()
+	public JComboBox<String> getComboBoxSpecialite()
 	{
 		return comboBoxSpecialite;
 	}

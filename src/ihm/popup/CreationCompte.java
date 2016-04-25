@@ -29,12 +29,13 @@ public class CreationCompte extends JDialog {
 	private ButtonGroup groupRadioType;
 	
 
-	
+	//TODO : creer 2 combobox (specialisation + formation)
+	//TODO : no telephonne
 
 	/**
 	 * Create the frame.
 	 */
-	public CreationCompte(/**/)
+	public CreationCompte()
 	{
 		PopupListener listener = new PopupListener();
 		
