@@ -38,9 +38,6 @@ public class Module extends DataParent {
 	@JoinColumn(name = "seq_id")
 	private List<Sequence> listSequence = null;
 
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinTable(name = "j_formation_module", joinColumns = @JoinColumn(name = "mod_id") , inverseJoinColumns = @JoinColumn(name = "frm_id") )
-	private List<Formation> listFormation = null;
 
 	
 	

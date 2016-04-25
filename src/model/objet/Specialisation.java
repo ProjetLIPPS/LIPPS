@@ -40,11 +40,7 @@ public class Specialisation extends DataParent {
 	@NotNull
 	private List<Formation> listFormation = null;
 
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinTable(name = "j_utilisateur_specialisation", joinColumns = @JoinColumn(name = "spe_id") , inverseJoinColumns = @JoinColumn(name = "uti_id") )
-	@NotNull
-	private List<Utilisateur> listUtilisateur = null;
-
+	
 	
 
 	public Specialisation() {
@@ -95,9 +91,6 @@ public class Specialisation extends DataParent {
 	}
 
 
-	public List<Utilisateur> getListUtilisateur() {
-		return listUtilisateur;
-	}
-
+	
 	
 }

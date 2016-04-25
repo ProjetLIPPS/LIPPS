@@ -75,10 +75,7 @@ public class Formation extends DataParent {
 	@OneToMany(mappedBy = "formation", fetch = FetchType.LAZY)
 	private List<FormationToModule> formationToModule = null;
 
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinTable(name = "j_formation_module", joinColumns = @JoinColumn(name = "frm_id") , inverseJoinColumns = @JoinColumn(name = "mod_id") )
-	private List<Module> listModule = new ArrayList<Module>();
-
+	
 	
 	
 	public Formation() {
@@ -219,19 +216,7 @@ public class Formation extends DataParent {
 	}
 
 
-	public List<Module> getListModule() {
-		return listModule;
-	}
-
-	public void setListModule(List<Module> listModule) {
-		this.listModule = listModule;
-	}
 	
-	public void addModule(Module module) {
-		this.listModule.add(module);
-	}
-
-
 
 
 }
