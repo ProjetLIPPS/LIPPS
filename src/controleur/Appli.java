@@ -27,17 +27,7 @@ public class Appli {
 			
 			
 			//Lance le controleur de la fenetre le Login
-			new LippsIhm();
-			
-			//Formation formation = DaoFactory.getDaoFormation().findFormationByIntitule("cdi");
-
-			//System.out.println(formation.getDebouche());
-			
-					
-			//Formation formation = DaoFactory.getDaoFormation().findById(Formation.class, 1);
-		
-			//DaoFactory.getDaoFormation().delete(formation);
-			
+			new ControleurLogin();
 			
 			
 			result = true;
