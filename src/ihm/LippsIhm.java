@@ -148,6 +148,10 @@ public class LippsIhm extends JFrame {
 		
 	}
 	
+	public JPanel getPanelCenterFormation() {
+		return panelCenterFormation;
+	}
+	
 	public void refresh()
 	{
 		SwingUtilities.updateComponentTreeUI(panelCenterMain);

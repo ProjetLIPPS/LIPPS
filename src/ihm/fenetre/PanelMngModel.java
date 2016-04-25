@@ -9,12 +9,14 @@ import java.awt.GridLayout;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -26,6 +28,9 @@ import javax.swing.border.EmptyBorder;
 import actionListener.PanelMngModelListener;
 import ihm.popup.CreationModele;
 import ihm.theme.ThemeLIPPS;
+import model.baseDAO.DaoFactory;
+import model.objet.Formation;
+import model.objet.Utilisateur;
 
 
 public class PanelMngModel extends JPanel  {
@@ -39,15 +44,16 @@ public class PanelMngModel extends JPanel  {
 	private JTextField txtGrn;
 	private JTextArea txtDebouche;
 	private JList<String> list;
+	private Utilisateur user;
 	
-	private PanelMngModelListener mngModelListener, deleteActionListener;
+	private PanelMngModelListener modelListener;
 	
 	
 	
 	public PanelMngModel()	 {
 		
-		mngModelListener = new PanelMngModelListener(this);
-		deleteActionListener = new PanelMngModelListener(this);
+		modelListener = new PanelMngModelListener(this);
+		
 		
 		setOpaque(false);
 		setMinimumSize(new Dimension(400, 10));
@@ -94,10 +100,32 @@ public class PanelMngModel extends JPanel  {
 		list.setBackground(ThemeLIPPS.BLUE_DARK);
 		list.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, ThemeLIPPS.FONT_SIZE_BUTTON));
 		panelJlist.add(list, BorderLayout.NORTH);
-		list.addListSelectionListener(mngModelListener);
+		list.addListSelectionListener(modelListener);
 		
-		String[] values = new String[] {"Test1", "Test2", "Test3"};
-		list.setListData(values); 
+		
+		String[] values = null;
+		
+		try {
+			
+			List<Formation> listFormation = (List) DaoFactory.getDaoFormation().readAll(Formation.class);
+			values = new String[listFormation.size()];
+						
+			for (int i = 0 ; i < listFormation.size() ; i++)
+				{
+							
+				values[i] = listFormation.get(i).getIntitule();
+				
+				}
+			
+			
+			
+			} catch (Exception e1) {
+			JOptionPane.showMessageDialog(null, "La liste des formations n'a pu être importée.", "Erreur connexion base de données", JOptionPane.WARNING_MESSAGE);
+			e1.printStackTrace();
+			}
+		
+		list.setListData(values);
+		
 		
 		JPanel panelBtn = new JPanel();
 		panelBtn.setOpaque(false);
@@ -298,7 +326,7 @@ public class PanelMngModel extends JPanel  {
 		delModel.setMnemonic('f');
 		delModel.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_BUTTON));
 		
-		delModel.addActionListener(deleteActionListener);
+		delModel.addActionListener(modelListener);
 		
 		panelButton.add(delModel);
 		

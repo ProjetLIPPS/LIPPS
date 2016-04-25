@@ -35,7 +35,6 @@ public class Specialisation extends DataParent {
 	@OneToMany(mappedBy = "specialisation", fetch = FetchType.LAZY)
 	private List<UtilisateurToSpecialisation> utilisateurToSpecialisation = null;
 
-
 	
 	
 
