@@ -6,12 +6,15 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.swing.AbstractListModel;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
@@ -22,6 +25,8 @@ import actionListener.MngModuleListener;
 import controleur.RenvoiListeFormation;
 import ihm.popup.CreationModule;
 import ihm.theme.ThemeLIPPS;
+import model.baseDAO.DaoFactory;
+import model.objet.Formation;
 
 
 
@@ -32,6 +37,7 @@ public class PanelMngModule extends JPanel {
 	
 	private MngModuleListener mngModuleListener;
 	private JPanel panelAllModList = new JPanel();
+	private JList<String> listFormation = new JList<String>();
 	
 	
 
@@ -76,26 +82,15 @@ public class PanelMngModule extends JPanel {
 		panelListForm.add(panelMyForm, BorderLayout.CENTER);
 		panelMyForm.setLayout(new BorderLayout(0, 0));
 		
-		JList<String> listFormation = new JList<String>();
-		listFormation.setModel(new AbstractListModel<String>() {
-	
-			private static final long serialVersionUID = 1L;
-			
-			String[] values = RenvoiListeFormation.renvoiListeFormation();
-			public int getSize() {
-				return values.length;
-			}
-			public String getElementAt(int index) {
-				return values[index];
-			}
-		});
-			
+		listFormation = new JList<String>();			
 		listFormation.setOpaque(false);		
 		listFormation.setForeground(Color.WHITE);
 		listFormation.setBackground(ThemeLIPPS.BLUE_DARK);
 		listFormation.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listFormation.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, ThemeLIPPS.FONT_SIZE_BUTTON));
 		listFormation.addListSelectionListener(mngModuleListener);
+		
+		initListFormation();
 		
 		panelMyForm.add(listFormation, BorderLayout.CENTER);
 		
@@ -251,5 +246,35 @@ public class PanelMngModule extends JPanel {
 		return panelAllModList;
 	}
 
+	public void initListFormation() {
+		
+		String[] values = null;
+	
+//		try {
+			
+			
+//			List<Formation> listFormation = DaoFactory.getDaoFormation().readAllFromUser(user);
+//			
+//			values = new String[listFormation.size()];
+//						
+//			for (int i = 0 ; i < listFormation.size() ; i++)
+//				{
+//							
+//				values[i] = listFormation.get(i).getIntitule();
+//				
+//				}
+//			
+//					
+//			} catch (Exception e1) {
+//			JOptionPane.showMessageDialog(null, "La liste des formations n'a pu être importée.", "Erreur connexion base de données", JOptionPane.WARNING_MESSAGE);
+//			e1.printStackTrace();
+//			}
+		
+		Arrays.sort(values);
+				
+		this.listFormation.setListData(values);
+		
+	
+	}
 	
 }

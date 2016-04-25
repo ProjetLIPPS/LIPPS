@@ -39,20 +39,20 @@ public class MngModuleListener implements ListSelectionListener {
 		Module mod1 = new  Module();
 		mod1.setIntitule("test intitulew");
 		Formation formation =  new  Formation();
-		formation.addModule(mod1);
+		//formation.addModule(mod1);
 		
 		
 		// fin test en dur
 		
-		if (formation.getListModule() != null)
-			{
-			List<PanelMngModuleRowMod> listMod = LoadModSeqList.listeAllModule(formation);
-			
-				for (PanelMngModuleRowMod mod : listMod)  
-				{
-					panelMngModule.getPanelAllModList().add(mod);
-				}
-			}
+//		if (formation.getListModule() != null)
+//			{
+//			List<PanelMngModuleRowMod> listMod = LoadModSeqList.listeAllModule(formation);
+//			
+//				for (PanelMngModuleRowMod mod : listMod)  
+//				{
+//					panelMngModule.getPanelAllModList().add(mod);
+//				}
+//			}
 		
 		
 		

@@ -19,6 +19,7 @@ public class ControleurLogin
 	{
 		LoginListener listener = new LoginListener(this);
 		flogin = new FenLogin(listener);
+		flogin.setLocationRelativeTo(null);
 		flogin.setVisible(true);
 	}
 	
