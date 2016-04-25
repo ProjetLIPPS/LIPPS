@@ -34,12 +34,7 @@ public class Module extends DataParent {
 	@OneToMany(mappedBy = "module", fetch = FetchType.LAZY)
 	private List<FormationToModule> formationToModule = null;
 
-	@OneToMany(fetch = FetchType.LAZY)
-	@JoinColumn(name = "seq_id")
-	private List<Sequence> listSequence = null;
-
-
-	
+		
 	
 	public Module() {
 		super();
