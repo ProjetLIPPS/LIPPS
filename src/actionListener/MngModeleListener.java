@@ -9,15 +9,15 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import controleur.MngModelReadWrite;
-import ihm.fenetre.PanelMngModel;
+import ihm.fenetre.PanelMngModele;
 
 public class MngModeleListener implements ActionListener, ListSelectionListener  {
 
 	
-	private PanelMngModel panelMngModel;
+	private PanelMngModele panelMngModel;
 	
 
-		public  MngModeleListener (PanelMngModel panelMngModel) 
+		public  MngModeleListener (PanelMngModele panelMngModel) 
 		{
 			
 			this.panelMngModel = panelMngModel;

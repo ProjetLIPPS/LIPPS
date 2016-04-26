@@ -5,7 +5,7 @@ import java.awt.Container;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import ihm.fenetre.PanelMngModel;
+import ihm.fenetre.PanelMngModele;
 import model.baseDAO.DaoFactory;
 import model.objet.Formation;
 
@@ -13,7 +13,7 @@ public class MngModelReadWrite {
 
 	
 		
-	public static void suppressionModele(PanelMngModel panelMngModel) throws Exception	{
+	public static void suppressionModele(PanelMngModele panelMngModel) throws Exception	{
 					
 		String modelSelected = panelMngModel.getList().getSelectedValue();
 		
@@ -25,7 +25,7 @@ public class MngModelReadWrite {
 	
 	
 	
-	public static void showModelInfo(PanelMngModel panel, String intituleFormation) {
+	public static void showModelInfo(PanelMngModele panel, String intituleFormation) {
 		
 		Formation formation = null;
 		
