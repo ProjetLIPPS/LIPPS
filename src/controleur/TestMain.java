@@ -7,6 +7,8 @@ import javax.swing.JOptionPane;
 import org.hibernate.cfg.Configuration;
 
 import ihm.LippsIhm;
+import model.baseDAO.DaoFactory;
+import model.objet.Utilisateur;
 
 
 public class TestMain {
@@ -20,6 +22,13 @@ public class TestMain {
 		{
 			// configure hibernate
 			//new Configuration().configure().buildSessionFactory();
+			
+//			Utilisateur user = new Utilisateur(null, "Bennourine", "Christophe", null, 1326545, "123", null, null, null);
+//			Utilisateur user2 = new Utilisateur(null, "Bauer", "Yannick", null, 1326545, "123", null, null, null);
+//			Utilisateur user3 = new Utilisateur(null, "Planchon", "Philippe", null, 1326545, "123", null, null, null);
+//			DaoFactory.getDaoUtilisateur().save(user);
+//			DaoFactory.getDaoUtilisateur().save(user2);
+//			DaoFactory.getDaoUtilisateur().save(user3);
 			
 			
 			new LippsIhm();

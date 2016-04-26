@@ -98,13 +98,6 @@ public class PanelCNoFormation extends JPanel
 	});
 		panel.add(btnCrrNouvelleFormation);
 		
-//		JButton btnCrerNouvelleFormation = new JButton("Créer nouvelle formation");
-//		btnCrerNouvelleFormation.setHorizontalTextPosition(SwingConstants.CENTER);
-//		panel.add(btnCrerNouvelleFormation);
-//		btnCrerNouvelleFormation.setBorderPainted(false);
-//		btnCrerNouvelleFormation.setBorder(null);
-//		btnCrerNouvelleFormation.setPreferredSize(new Dimension(200, 40));
-
 		
 		JPanel panelRight = new JPanel();
 		panelRight.setPreferredSize(new Dimension(40, 30));

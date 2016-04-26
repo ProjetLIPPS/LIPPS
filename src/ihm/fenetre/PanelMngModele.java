@@ -253,23 +253,19 @@ public class PanelMngModele extends JPanel  {
 		lblHeures.setForeground(Color.BLACK);
 		lblHeures.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, ThemeLIPPS.FONT_SIZE_DEFAULT));
 		
-		JPanel panelCcpDebGridLbl = new JPanel();
-		panelCcpDebGridLbl.setBorder(null);
-		panelCcpDebGridLbl.setFont(new Font("Sylfaen", Font.PLAIN, 11));
-		panelCcpDebGridLbl.setBackground(Color.WHITE);
-		panelBox.add(panelCcpDebGridLbl);
-		panelCcpDebGridLbl.setLayout(new BoxLayout(panelCcpDebGridLbl, BoxLayout.Y_AXIS));
+		JPanel panelLblDeb = new JPanel();
+		panelLblDeb.setOpaque(false);
+		panelBox.add(panelLblDeb);
+		panelLblDeb.setLayout(new BoxLayout(panelLblDeb, BoxLayout.X_AXIS));
 		
 		JLabel lblDbouchs = new JLabel("Débouchés:");
-		lblDbouchs.setHorizontalTextPosition(SwingConstants.CENTER);
+		panelLblDeb.add(lblDbouchs);
 		lblDbouchs.setPreferredSize(new Dimension(0, 30));
 		lblDbouchs.setForeground(Color.BLACK);
 		lblDbouchs.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, ThemeLIPPS.FONT_SIZE_DEFAULT));
-		panelCcpDebGridLbl.add(lblDbouchs);
-		lblDbouchs.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		JScrollPane scrollPaneDeb = new JScrollPane();
-		panelCcpDebGridLbl.add(scrollPaneDeb);
+		panelBox.add(scrollPaneDeb);
 		scrollPaneDeb.setPreferredSize(new Dimension(200, 100));
 		
 		txtDebouche = new JTextArea();

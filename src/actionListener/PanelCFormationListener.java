@@ -1,5 +1,6 @@
 package actionListener;
 
+import javax.swing.JList;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -18,7 +19,9 @@ public class PanelCFormationListener implements ListSelectionListener {
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
 		
-		String formSelected = e.getSource().toString();
+		JList selectList = (JList) e.getSource();
+		
+		String formSelected = selectList.getSelectedValue().toString();
 		
 		// TODO recup String selectionné dans la list et va chercher objet formation dans BDD
 		

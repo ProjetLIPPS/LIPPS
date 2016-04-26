@@ -3,6 +3,7 @@ package model.baseDAO;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -10,8 +11,11 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
+import model.objet.DataParent;
 import model.objet.Formation;
 import model.objet.Specialisation;
+import model.objet.Utilisateur;
+import model.objet.UtilisateurToFormation;
 
 public class DaoFormation extends DaoParent {
 
@@ -80,6 +84,7 @@ public class DaoFormation extends DaoParent {
 	}
 
 	
+	
 	public Collection<Formation> readAllModele() throws Exception
 	{
 
@@ -94,6 +99,29 @@ public class DaoFormation extends DaoParent {
 		session.close();
 
 		return list;
+	}
+	
+	
+	public List<Formation> readAllFormationFromUser(Integer id) throws Exception
+	{
+		List<Formation> listFrm = null;
+		
+		Session session = BaseSession.getNewSession();
+
+		Criteria criteria = session.createCriteria(UtilisateurToFormation.class);
+		criteria.add(Restrictions.eq("utilisateur", id));
+
+		@SuppressWarnings("unchecked")
+		List list = criteria.list();
+		
+		 for (Iterator iterator = list.iterator(); iterator.hasNext();)
+		 {
+			 UtilisateurToFormation userForm = (UtilisateurToFormation) iterator.next();
+			 listFrm.add(userForm.getFormation());
+		 }
+		
+	
+		return listFrm;
 	}
 	
 }
