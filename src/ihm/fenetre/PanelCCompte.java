@@ -33,6 +33,7 @@ import actionListener.FocusListeners;
 import actionListener.RechercherListener;
 import actionListener.UtilisateurParTypeDeCompte;
 import ihm.theme.ThemeLIPPS;
+import java.awt.Component;
 
 public class PanelCCompte extends JPanel
 {
@@ -46,14 +47,14 @@ public class PanelCCompte extends JPanel
 	private JLabel lblFormateur = new JLabel(" Formateur");
 	private JLabel lblStagiaire = new JLabel(" Stagiaire");
 	private JLabel lblTuteur = new JLabel(" Tuteur");
+	private JLabel lblTous = new JLabel("Tous");
 	private String[] enteteTableau = new String[]
 	{ "Identifiant AFPA", "Nom", "Prenom", "Formation", "Email", "Numéro Téléphone" };
 	private DefaultTableModel modeleTableau = new DefaultTableModel(new Object[][]
 	{}, enteteTableau);
-	private Integer isSelected = 0;
+	private Integer isSelected = 5;
 	private JButton btnRecherche = new JButton();
 	private JComboBox<String> comboSecMetier = new JComboBox<String>();
-	private JComboBox<String> comboOrdreAlpha = new JComboBox<String>();
 	private JButton btnCreer = new JButton("Créer");
 
 	public JButton getBtnCreer()
@@ -84,18 +85,10 @@ public class PanelCCompte extends JPanel
 
 
 
-	public JComboBox<String> getComboOrdreAlpha()
-	{
-		return comboOrdreAlpha;
-	}
+	
 
 
-
-	public void setComboOrdreAlpha(JComboBox<String> comboOrdreAlpha)
-	{
-		this.comboOrdreAlpha = comboOrdreAlpha;
-	}
-
+	
 
 
 	/**
@@ -125,19 +118,24 @@ public class PanelCCompte extends JPanel
 		JPanel panelTypeCompte = new JPanel();
 		panelTypeCompte.setOpaque(false);
 		panelWest.add(panelTypeCompte, BorderLayout.CENTER);
-		panelTypeCompte.setLayout(new GridLayout(8, 1, 0, 0));
-
-		JPanel panelVide1 = new JPanel();
-		panelVide1.setOpaque(false);
-		panelTypeCompte.add(panelVide1);
-
-		JPanel panelVide2 = new JPanel();
-		panelVide2.setOpaque(false);
-		panelTypeCompte.add(panelVide2);
+		panelTypeCompte.setLayout(new GridLayout(11, 1, 0, 0));
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setOpaque(false);
+		panelTypeCompte.add(panel_2);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setOpaque(false);
+		panelTypeCompte.add(panel_1);
+		
+		JPanel panel_5 = new JPanel();
+		panel_5.setOpaque(false);
+		panelTypeCompte.add(panel_5);
 
 		JPanel panel_Administrateur = new JPanel();
 		panel_Administrateur.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, 20));
 		FlowLayout fl_panel_Administrateur = (FlowLayout) panel_Administrateur.getLayout();
+		fl_panel_Administrateur.setVgap(0);
 		fl_panel_Administrateur.setHgap(25);
 		fl_panel_Administrateur.setAlignment(FlowLayout.LEFT);
 		panel_Administrateur.setOpaque(false);
@@ -154,6 +152,7 @@ public class PanelCCompte extends JPanel
 
 		JPanel panelFormateur = new JPanel();
 		FlowLayout fl_panelFormateur = (FlowLayout) panelFormateur.getLayout();
+		fl_panelFormateur.setVgap(0);
 		fl_panelFormateur.setHgap(25);
 		fl_panelFormateur.setAlignment(FlowLayout.LEFT);
 		panelFormateur.setOpaque(false);
@@ -164,40 +163,57 @@ public class PanelCCompte extends JPanel
 		lblFormateur.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, 25));
 		lblFormateur.setForeground(Color.WHITE);
 		panelFormateur.add(lblFormateur);
-
-		JPanel panelStagiaire = new JPanel();
-		FlowLayout fl_panelStagiaire = (FlowLayout) panelStagiaire.getLayout();
-		fl_panelStagiaire.setAlignment(FlowLayout.LEFT);
-		fl_panelStagiaire.setHgap(25);
-		panelStagiaire.setOpaque(false);
-		panelTypeCompte.add(panelStagiaire);
-
-		lblStagiaire.addMouseListener(utilisateurParType);
-		lblStagiaire.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		lblStagiaire.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, 25));
-		lblStagiaire.setForeground(Color.WHITE);
-		panelStagiaire.add(lblStagiaire);
-
-		JPanel panelTuteur = new JPanel();
-		FlowLayout fl_panelTuteur = (FlowLayout) panelTuteur.getLayout();
-		fl_panelTuteur.setHgap(25);
-		fl_panelTuteur.setAlignment(FlowLayout.LEFT);
-		panelTuteur.setOpaque(false);
-		panelTypeCompte.add(panelTuteur);
-
-		lblTuteur.addMouseListener(utilisateurParType);
-		lblTuteur.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		lblTuteur.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, 25));
-		lblTuteur.setForeground(Color.WHITE);
-		panelTuteur.add(lblTuteur);
-
-		JPanel panelVide3 = new JPanel();
-		panelVide3.setOpaque(false);
-		panelTypeCompte.add(panelVide3);
-
-		JPanel panelVide4 = new JPanel();
-		panelVide4.setOpaque(false);
-		panelTypeCompte.add(panelVide4);
+		
+				JPanel panelStagiaire = new JPanel();
+				FlowLayout fl_panelStagiaire = (FlowLayout) panelStagiaire.getLayout();
+				fl_panelStagiaire.setVgap(0);
+				fl_panelStagiaire.setAlignment(FlowLayout.LEFT);
+				fl_panelStagiaire.setHgap(25);
+				panelStagiaire.setOpaque(false);
+				panelTypeCompte.add(panelStagiaire);
+				
+						lblStagiaire.addMouseListener(utilisateurParType);
+						lblStagiaire.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+						lblStagiaire.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, 25));
+						lblStagiaire.setForeground(Color.WHITE);
+						panelStagiaire.add(lblStagiaire);
+		
+				JPanel panelTuteur = new JPanel();
+				FlowLayout fl_panelTuteur = (FlowLayout) panelTuteur.getLayout();
+				fl_panelTuteur.setVgap(0);
+				fl_panelTuteur.setHgap(25);
+				fl_panelTuteur.setAlignment(FlowLayout.LEFT);
+				panelTuteur.setOpaque(false);
+				panelTypeCompte.add(panelTuteur);
+				
+						lblTuteur.addMouseListener(utilisateurParType);
+						lblTuteur.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+						lblTuteur.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, 25));
+						lblTuteur.setForeground(Color.WHITE);
+						panelTuteur.add(lblTuteur);
+		
+				JPanel panelTous = new JPanel();
+				FlowLayout fl_panelTous = (FlowLayout) panelTous.getLayout();
+				fl_panelTous.setVgap(0);
+				fl_panelTous.setHgap(33);
+				fl_panelTous.setAlignment(FlowLayout.LEFT);
+				panelTous.setOpaque(false);
+				panelTypeCompte.add(panelTous);
+				
+				
+				lblTous.setHorizontalAlignment(SwingConstants.CENTER);
+				lblTous.setHorizontalTextPosition(SwingConstants.CENTER);
+				lblTous.setForeground(Color.WHITE);
+				lblTous.setFont(new Font("Century Gothic", Font.BOLD, 25));
+				lblTous.addMouseListener(utilisateurParType);
+				
+		JPanel panel_6 = new JPanel();
+		panel_6.setOpaque(false);
+		panelTypeCompte.add(panel_6);
+		
+		JPanel panel_3 = new JPanel();
+		panel_3.setOpaque(false);
+		panelTypeCompte.add(panel_3);
 
 		JPanel panelCentre = new JPanel();
 		panelCentre.setBackground(Color.WHITE);
@@ -217,60 +233,22 @@ public class PanelCCompte extends JPanel
 		panelBouttons.setBorder(UIManager.getBorder("Menu.border"));
 		panelBouttons.setBackground(Color.WHITE);
 		panelSupTri.add(panelBouttons);
-
-		JPanel panelRecherche = new JPanel();
-		panelRecherche.setOpaque(false);
-		panelRecherche.setBorder(new EmptyBorder(0, 0, 0, 0));
-		panelRecherche.setBackground(ThemeLIPPS.BLUE_DARK);
-		FlowLayout flowLayout_1 = (FlowLayout) panelRecherche.getLayout();
-		flowLayout_1.setHgap(0);
-		flowLayout_1.setVgap(15);
-		flowLayout_1.setAlignment(FlowLayout.LEFT);
-
-		barreRecherche = new JTextField();
-		barreRecherche.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		barreRecherche.setPreferredSize(new Dimension(150, 30));
-		barreRecherche.setMargin(new Insets(4, 4, 5, 6));
-		barreRecherche.setBackground(Color.WHITE);
-		barreRecherche.setHorizontalAlignment(SwingConstants.CENTER);
-		panelRecherche.add(barreRecherche);
-		barreRecherche.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 15));
-		barreRecherche.setToolTipText("");
-		barreRecherche.setText("Nom ou n°AFPA");
-		barreRecherche.setColumns(15);
-		barreRecherche.addFocusListener(rechercheListener);
-		barreRecherche.addKeyListener(listenerBtnRecherche);
-		
-
-		
-		btnRecherche.setFocusable(false);
-		btnRecherche.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnRecherche.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		btnRecherche.setIconTextGap(0);
-		btnRecherche.setHorizontalTextPosition(SwingConstants.CENTER);
-		btnRecherche.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btnRecherche.setPreferredSize(new Dimension(40, 30));
-		btnRecherche.setMargin(new Insets(3, 14, 4, 14));
-		panelRecherche.add(btnRecherche);
 		panelBouttons.setLayout(new BorderLayout(0, 0));
-		btnRecherche.setIcon(new ImageIcon("./img/search 16.png"));
-		btnRecherche.addMouseListener(listenerBtnRecherche);
-		panelBouttons.add(panelRecherche, BorderLayout.WEST);
 
 		JPanel panelSecMetier = new JPanel();
+		panelSecMetier.setBorder(new EmptyBorder(15, 0, 20, 0));
 		panelBouttons.add(panelSecMetier, BorderLayout.CENTER);
 		panelSecMetier.setOpaque(false);
 		panelSecMetier.setBackground(new Color(211, 211, 211));
-		FlowLayout fl_panelSecMetier = (FlowLayout) panelSecMetier.getLayout();
-		fl_panelSecMetier.setHgap(0);
-		fl_panelSecMetier.setVgap(15);
 
 		
 		((JLabel) comboSecMetier.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+		panelSecMetier.setLayout(new BorderLayout(0, 0));
+		comboSecMetier.setAlignmentX(Component.RIGHT_ALIGNMENT);
 		comboSecMetier.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		panelSecMetier.add(comboSecMetier);
+		panelSecMetier.add(comboSecMetier, BorderLayout.WEST);
 		comboSecMetier.setMinimumSize(new Dimension(28, 25));
-		comboSecMetier.setPreferredSize(new Dimension(180, 30));
+		comboSecMetier.setPreferredSize(new Dimension(250, 30));
 		comboSecMetier.setBackground(SystemColor.window);
 		comboSecMetier.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 15));
 		comboSecMetier.setModel(new DefaultComboBoxModel(new String[]
@@ -278,27 +256,44 @@ public class PanelCCompte extends JPanel
 				"Communication", "Droit", "Enseignement", "Environnement", "Hôtellerie", "Immobilier", "Informatique",
 				"Langues", "Marketing", "Propreté", "Ressources Humaines", "Restauration", "Sciences Humaines",
 				"Secrétariat", "Social", "Tourisme", "Transport , Logistique" }));
-
-		JPanel panelOrdAlpha = new JPanel();
-		panelBouttons.add(panelOrdAlpha, BorderLayout.EAST);
-		panelOrdAlpha.setOpaque(false);
-		panelOrdAlpha.setBackground(new Color(211, 211, 211));
-		FlowLayout fl_panelOrdAlpha = (FlowLayout) panelOrdAlpha.getLayout();
-		fl_panelOrdAlpha.setHgap(0);
-		fl_panelOrdAlpha.setAlignment(FlowLayout.RIGHT);
-		fl_panelOrdAlpha.setVgap(15);
-
 		
-		((JLabel) comboOrdreAlpha.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
-		comboOrdreAlpha.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		comboOrdreAlpha.setPreferredSize(new Dimension(235, 30));
-		panelOrdAlpha.add(comboOrdreAlpha);
-		comboOrdreAlpha.setMinimumSize(new Dimension(28, 25));
-		comboOrdreAlpha.setBackground(SystemColor.window);
-		comboOrdreAlpha.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 15));
-		comboOrdreAlpha.setModel(new DefaultComboBoxModel<String>(new String[]
-		{ "Filtre par ordre alphabétique", "A,B,C,D", "E,F,G,H,I", "J,K,L,M,N", "O,P,Q,R", "S,T,U,V", "W,X,Y,Z" }));
-		comboOrdreAlpha.setName("Tri par ordre alphabétique");
+				JPanel panelRecherche = new JPanel();
+				panelBouttons.add(panelRecherche, BorderLayout.EAST);
+				panelRecherche.setOpaque(false);
+				panelRecherche.setBorder(new EmptyBorder(0, 0, 0, 0));
+				panelRecherche.setBackground(ThemeLIPPS.BLUE_DARK);
+				FlowLayout flowLayout_1 = (FlowLayout) panelRecherche.getLayout();
+				flowLayout_1.setHgap(0);
+				flowLayout_1.setVgap(15);
+				flowLayout_1.setAlignment(FlowLayout.LEFT);
+				
+						barreRecherche = new JTextField();
+						barreRecherche.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+						barreRecherche.setPreferredSize(new Dimension(150, 30));
+						barreRecherche.setMargin(new Insets(4, 4, 5, 6));
+						barreRecherche.setBackground(Color.WHITE);
+						barreRecherche.setHorizontalAlignment(SwingConstants.CENTER);
+						panelRecherche.add(barreRecherche);
+						barreRecherche.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 15));
+						barreRecherche.setToolTipText("");
+						barreRecherche.setText("Nom ou n°AFPA");
+						barreRecherche.setColumns(15);
+						barreRecherche.addFocusListener(rechercheListener);
+						barreRecherche.addKeyListener(listenerBtnRecherche);
+						
+
+						
+						btnRecherche.setFocusable(false);
+						btnRecherche.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+						btnRecherche.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+						btnRecherche.setIconTextGap(0);
+						btnRecherche.setHorizontalTextPosition(SwingConstants.CENTER);
+						btnRecherche.setFont(new Font("Tahoma", Font.PLAIN, 13));
+						btnRecherche.setPreferredSize(new Dimension(40, 30));
+						btnRecherche.setMargin(new Insets(3, 14, 4, 14));
+						panelRecherche.add(btnRecherche);
+						btnRecherche.setIcon(new ImageIcon("./img/search 16.png"));
+						btnRecherche.addMouseListener(listenerBtnRecherche);
 
 		JPanel panelResultatRecherche = new JPanel();
 		panelResultatRecherche.setBackground(Color.WHITE);
@@ -409,10 +404,35 @@ public class PanelCCompte extends JPanel
 		panelEast.setPreferredSize(new Dimension(90, 10));
 		panelEast.setBackground(ThemeLIPPS.BLUE_DARK);
 		add(panelEast, BorderLayout.EAST);
+		
+		try
+		{
+			utilisateurParType.afficheTableau(lblTous);
+		} catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		panelTous.add(lblTous);
+
 
 	}
 	
 	
+
+	public JLabel getLblTous()
+	{
+		return lblTous;
+	}
+
+
+
+	public void setLblTous(JLabel lblTous)
+	{
+		this.lblTous = lblTous;
+	}
+
+
 
 	public JButton getBtnRecherche()
 	{

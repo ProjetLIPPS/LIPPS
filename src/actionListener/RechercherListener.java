@@ -84,30 +84,25 @@ public class RechercherListener implements MouseListener, KeyListener
 			String texteBarreRecherche = panelCCompte.getBarreRecherche().getText();
 			panelCCompte.getBtnRecherche().doClick();
 
-			if (Character.isDigit(testIsNumeroOuString) && panelCCompte.getIsSelected().intValue() == 0)
+			if (Character.isDigit(testIsNumeroOuString) && panelCCompte.getIsSelected().intValue() == 5)
 			{
-				if (!panelCCompte.getComboSecMetier().getSelectedItem().equals("Secteur de métier")
-						|| !panelCCompte.getComboOrdreAlpha().getSelectedItem().equals("Filtre par ordre alphabétique"))
+				if (!panelCCompte.getComboSecMetier().getSelectedItem().equals("Secteur de métier"))
 				{
 					String specialite = filtreSpecialisation();
-					String ordreAlpha = ordreAlpha();
 					resultatRecherche = DaoFactory.getDaoUtilisateur().readRechercheToutCompteFiltre(null,
-							Integer.parseInt(texteBarreRecherche), specialite, ordreAlpha);
+							Integer.parseInt(texteBarreRecherche), specialite);
 				} else
 				{
 					resultatRecherche = DaoFactory.getDaoUtilisateur().readRechercheToutCompte(null,
 							Integer.parseInt(texteBarreRecherche));
 				}
 
-			} else if (panelCCompte.getIsSelected().intValue() == 0)
+			} else if (panelCCompte.getIsSelected().intValue() == 5)
 			{
-				if (!panelCCompte.getComboSecMetier().getSelectedItem().equals("Secteur de métier")
-						|| !panelCCompte.getComboOrdreAlpha().getSelectedItem().equals("Filtre par ordre alphabétique"))
+				if (!panelCCompte.getComboSecMetier().getSelectedItem().equals("Secteur de métier"))
 				{
 					String specialite = filtreSpecialisation();
-					String ordreAlpha = ordreAlpha();
-					resultatRecherche = DaoFactory.getDaoUtilisateur()
-							.readRechercheToutCompteFiltre(texteBarreRecherche, null, specialite, ordreAlpha);
+					resultatRecherche = DaoFactory.getDaoUtilisateur().readRechercheToutCompteFiltre(texteBarreRecherche, null, specialite);
 				} else
 				{
 					resultatRecherche = DaoFactory.getDaoUtilisateur().readRechercheToutCompte(texteBarreRecherche,
@@ -116,46 +111,35 @@ public class RechercherListener implements MouseListener, KeyListener
 
 			} else if (Character.isDigit(testIsNumeroOuString))
 			{
-				if (!panelCCompte.getComboSecMetier().getSelectedItem().equals("Secteur de métier")
-						|| !panelCCompte.getComboOrdreAlpha().getSelectedItem().equals("Filtre par ordre alphabétique"))
+				if (!panelCCompte.getComboSecMetier().getSelectedItem().equals("Secteur de métier"))
 				{
 					String specialite = filtreSpecialisation();
-					String ordreAlpha = ordreAlpha();
-					resultatRecherche = DaoFactory.getDaoUtilisateur().readRechercheFiltre(null,
-							Integer.parseInt(texteBarreRecherche), panelCCompte.getIsSelected(), specialite,
-							ordreAlpha);
+					resultatRecherche = DaoFactory.getDaoUtilisateur().readRechercheFiltre(null,Integer.parseInt(texteBarreRecherche), panelCCompte.getIsSelected(), specialite);
 				} else
 				{
-					resultatRecherche = DaoFactory.getDaoUtilisateur().readRecherche(null,
-							Integer.parseInt(texteBarreRecherche), panelCCompte.getIsSelected());
+					resultatRecherche = DaoFactory.getDaoUtilisateur().readRecherche(null,Integer.parseInt(texteBarreRecherche), panelCCompte.getIsSelected());
 				}
 			}
 
 			else
 			{
-				if (!panelCCompte.getComboSecMetier().getSelectedItem().equals("Secteur de métier")
-						|| !panelCCompte.getComboOrdreAlpha().getSelectedItem().equals("Filtre par ordre alphabétique"))
+				if (!panelCCompte.getComboSecMetier().getSelectedItem().equals("Secteur de métier"))
 				{
 					String specialite = filtreSpecialisation();
-					String ordreAlpha = ordreAlpha();
-					resultatRecherche = DaoFactory.getDaoUtilisateur().readRechercheFiltre(texteBarreRecherche, null,
-							panelCCompte.getIsSelected(), specialite, ordreAlpha);
+					resultatRecherche = DaoFactory.getDaoUtilisateur().readRechercheFiltre(texteBarreRecherche, null,panelCCompte.getIsSelected(), specialite);
 				} else
 				{
 
-					resultatRecherche = DaoFactory.getDaoUtilisateur().readRecherche(texteBarreRecherche, null,
-							panelCCompte.getIsSelected());
+					resultatRecherche = DaoFactory.getDaoUtilisateur().readRecherche(texteBarreRecherche, null,panelCCompte.getIsSelected());
 				}
 			}
-			panelCCompte.getTableau()
-					.setModel(new DefaultTableModel(resultatRecherche, panelCCompte.getEnteteTableau()));
-		} else if (panelCCompte.getBarreRecherche().getText().equals(""))
+			panelCCompte.getTableau().setModel(new DefaultTableModel(resultatRecherche, panelCCompte.getEnteteTableau()));
+		} /*else if (panelCCompte.getBarreRecherche().getText().equals(""))
 		{
 			Toolkit.getDefaultToolkit().beep();
 			resultatRecherche = DaoFactory.getDaoUtilisateur().readUtilisateur(panelCCompte.getIsSelected());
-			panelCCompte.getTableau()
-					.setModel(new DefaultTableModel(resultatRecherche, panelCCompte.getEnteteTableau()));
-		}
+			panelCCompte.getTableau().setModel(new DefaultTableModel(resultatRecherche, panelCCompte.getEnteteTableau()));
+		}*/
 		panelCCompte.getBarreRecherche().setText("Nom ou n°AFPA");
 		
 	}
@@ -207,32 +191,7 @@ public class RechercherListener implements MouseListener, KeyListener
 		return specialisation;
 	}
 
-	public String ordreAlpha()
-	{
-		String ordreAlpha = "";
-		if (!panelCCompte.getComboOrdreAlpha().getSelectedItem().equals("Filtre par ordre alphabétique"))
-		{
-			if (panelCCompte.getComboOrdreAlpha().getSelectedItem().equals("A,B,C,D"))
-			{
-				ordreAlpha = " and u.uti_nom between 'a' and 'd' ";
-			} else if (panelCCompte.getComboOrdreAlpha().getSelectedItem().equals("E,F,G,H,I"))
-			{
-				ordreAlpha = " and u.uti_nom between 'e' and 'i' ";
-			} else if (panelCCompte.getComboOrdreAlpha().getSelectedItem().equals("J,K,L,M,N"))
-			{
-				ordreAlpha = " and u.uti_nom between 'j' and 'n' ";
-			} else if (panelCCompte.getComboOrdreAlpha().getSelectedItem().equals("O,P,Q,R"))
-			{
-				ordreAlpha = " and u.uti_nom between 'o' and 'r' ";
-			} else if (panelCCompte.getComboOrdreAlpha().getSelectedItem().equals("S,T,U,V"))
-			{
-				ordreAlpha = " and u.uti_nom between 's' and 'v' ";
-			} else if (panelCCompte.getComboOrdreAlpha().getSelectedItem().equals("W,X,Y,Z"))
-			{
-				ordreAlpha = " and u.uti_nom between 'w' and 'z' ";
-			}
-		}
+	
 
-		return ordreAlpha;
-	}
+		
 }

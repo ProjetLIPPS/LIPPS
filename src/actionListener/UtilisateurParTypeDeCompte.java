@@ -42,7 +42,7 @@ public class UtilisateurParTypeDeCompte implements MouseListener
 		panelCCompte.getLblForm().setForeground(Color.WHITE);
 		panelCCompte.getLblSta().setForeground(Color.WHITE);
 		panelCCompte.getLblTut().setForeground(Color.WHITE);
-
+		panelCCompte.getLblTous().setForeground(Color.WHITE);
 	}
 
 	public void setBorder()
@@ -53,7 +53,7 @@ public class UtilisateurParTypeDeCompte implements MouseListener
 		panelCCompte.getLblForm().setBorder(null);
 		panelCCompte.getLblSta().setBorder(null);
 		panelCCompte.getLblTut().setBorder(null);
-
+		panelCCompte.getLblTous().setBorder(null);
 	}
 
 	public void afficheTableau(JLabel source) throws Exception
@@ -66,7 +66,7 @@ public class UtilisateurParTypeDeCompte implements MouseListener
 			panelCCompte.getLblAdmin().setBorder(new MatteBorder(0, 3, 0, 0, ThemeLIPPS.BLUE));
 			setBorder();
 			panelCCompte.setIsSelected(1);
-			resultatRecherche = DaoFactory.getDaoUtilisateur().readUtilisateur(panelCCompte.getIsSelected());
+			resultatRecherche = DaoFactory.getDaoUtilisateur().readUtilisateurTypeCompte(panelCCompte.getIsSelected());
 			panelCCompte.getBarreRecherche().setText("Nom ou n°AFPA");
 
 		} else if (source.equals(panelCCompte.getLblForm())&& panelCCompte.getIsSelected() != 2)
@@ -76,7 +76,7 @@ public class UtilisateurParTypeDeCompte implements MouseListener
 			panelCCompte.getLblForm().setBorder(new MatteBorder(0, 3, 0, 0, ThemeLIPPS.BLUE));
 			setBorder();
 			panelCCompte.setIsSelected(2);
-			resultatRecherche = DaoFactory.getDaoUtilisateur().readUtilisateur(panelCCompte.getIsSelected());
+			resultatRecherche = DaoFactory.getDaoUtilisateur().readUtilisateurTypeCompte(panelCCompte.getIsSelected());
 			panelCCompte.getBarreRecherche().setText("Nom ou n°AFPA");
 
 
@@ -87,7 +87,7 @@ public class UtilisateurParTypeDeCompte implements MouseListener
 			panelCCompte.getLblSta().setBorder(new MatteBorder(0, 3, 0, 0, ThemeLIPPS.BLUE));
 			setBorder();
 			panelCCompte.setIsSelected(3);
-			resultatRecherche = DaoFactory.getDaoUtilisateur().readUtilisateur(panelCCompte.getIsSelected());
+			resultatRecherche = DaoFactory.getDaoUtilisateur().readUtilisateurTypeCompte(panelCCompte.getIsSelected());
 			panelCCompte.getBarreRecherche().setText("Nom ou n°AFPA");
 
 
@@ -98,7 +98,20 @@ public class UtilisateurParTypeDeCompte implements MouseListener
 			panelCCompte.getLblTut().setBorder(new MatteBorder(0, 3, 0, 0, ThemeLIPPS.BLUE));
 			setBorder();
 			panelCCompte.setIsSelected(4);
-			resultatRecherche = DaoFactory.getDaoUtilisateur().readUtilisateur(panelCCompte.getIsSelected());
+			resultatRecherche = DaoFactory.getDaoUtilisateur().readUtilisateurTypeCompte(panelCCompte.getIsSelected());
+			panelCCompte.getBarreRecherche().setText("Nom ou n°AFPA");
+			
+
+
+		}
+		else if ((source.equals(panelCCompte.getLblTous())&& panelCCompte.getIsSelected() != 5) || (panelCCompte.getIsSelected() == 5)  )
+		{
+			setLblColor();
+			panelCCompte.getLblTous().setForeground(new Color(30, 144, 255));
+			panelCCompte.getLblTous().setBorder(new MatteBorder(0, 3, 0, 0, ThemeLIPPS.BLUE));
+			setBorder();
+			panelCCompte.setIsSelected(5);
+			resultatRecherche = DaoFactory.getDaoUtilisateur().readUtilisateurAll();
 			panelCCompte.getBarreRecherche().setText("Nom ou n°AFPA");
 			
 
@@ -131,6 +144,10 @@ public class UtilisateurParTypeDeCompte implements MouseListener
 
 			panelCCompte.getLblTut().setBorder(new MatteBorder(0, 3, 0, 0, (Color) Color.WHITE));
 		}
+		else if (source.equals(panelCCompte.getLblTous()) && panelCCompte.getIsSelected() != 5) 
+		{
+			panelCCompte.getLblTous().setBorder(new MatteBorder(0, 3, 0, 0, (Color) Color.WHITE));
+		}
 
 	}
 
@@ -151,7 +168,12 @@ public class UtilisateurParTypeDeCompte implements MouseListener
 		{
 
 			setBorder();
-		} else
+		}else if (source.equals(panelCCompte.getLblTut()))
+		{
+
+			setBorder();
+		}
+		else
 		{
 
 			setBorder();
