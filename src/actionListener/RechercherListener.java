@@ -157,6 +157,7 @@ public class RechercherListener implements MouseListener, KeyListener
 					.setModel(new DefaultTableModel(resultatRecherche, panelCCompte.getEnteteTableau()));
 		}
 		panelCCompte.getBarreRecherche().setText("Nom ou n°AFPA");
+		
 	}
 
 	@Override

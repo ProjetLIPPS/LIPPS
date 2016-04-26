@@ -240,6 +240,7 @@ public class PanelCCompte extends JPanel
 		barreRecherche.setColumns(15);
 		barreRecherche.addFocusListener(rechercheListener);
 		barreRecherche.addKeyListener(listenerBtnRecherche);
+		
 
 		
 		btnRecherche.setFocusable(false);

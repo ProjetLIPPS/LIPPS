@@ -131,6 +131,7 @@ public class PanelMngModel extends JPanel  {
 		btnCrerNouvelleFormation.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				CreationModele newModele = new CreationModele();
+				newModele.setLocationRelativeTo(null);
 				initList();
 			}
 		});
