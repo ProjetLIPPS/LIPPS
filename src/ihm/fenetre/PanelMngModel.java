@@ -65,6 +65,7 @@ public class PanelMngModel extends JPanel  {
 		this.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panelLeft = new JPanel();
+		panelLeft.setBorder(new EmptyBorder(0, 15, 0, 0));
 		panelLeft.setBackground(ThemeLIPPS.BLUE_DARK);
 		panelLeft.setPreferredSize(new Dimension(350, 10));
 		add(panelLeft, BorderLayout.WEST);
@@ -106,7 +107,7 @@ public class PanelMngModel extends JPanel  {
 		initList();
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBorder(null);
+		scrollPane.setBorder(new EmptyBorder(0, 0, 0, 0));
 		scrollPane.setViewportView(list);
 		scrollPane.setBackground(ThemeLIPPS.BLUE_DARK);
 		panelJlist.add(scrollPane, BorderLayout.CENTER);
@@ -130,7 +131,7 @@ public class PanelMngModel extends JPanel  {
 		btnCrerNouvelleFormation.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				CreationModele newModele = new CreationModele();
-				newModele.setVisible(true);
+				initList();
 			}
 		});
 		

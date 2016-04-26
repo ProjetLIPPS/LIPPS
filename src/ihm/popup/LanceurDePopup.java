@@ -95,7 +95,6 @@ public class LanceurDePopup extends JFrame
 			public void actionPerformed(ActionEvent e) 
 			{
 				JDialog pop = new CreationCompte();
-				pop.setVisible(true);
 			}
 		});
 		panel_4.add(btnCrationCompte);
