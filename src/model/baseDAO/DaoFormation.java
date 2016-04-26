@@ -11,6 +11,7 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
 import model.objet.Formation;
+import model.objet.Specialisation;
 
 public class DaoFormation extends DaoParent {
 
@@ -30,7 +31,27 @@ public class DaoFormation extends DaoParent {
 
 		return result;
 	}
+	
+	
+	public Collection<Formation> findFormationBySpecialisation (Specialisation spe) throws Exception
+	{
+		Session session = BaseSession.getNewSession();
 
+		Criteria criteria = session.createCriteria(Formation.class);
+		criteria.add(Restrictions.eq("specialisation", spe));
+
+		@SuppressWarnings("unchecked")
+		List<Formation> list = criteria.list();
+
+		session.close();
+
+		
+		
+		return list;
+	}
+
+	
+	
 	public String[] getListeNomModeles()
 	{
 		

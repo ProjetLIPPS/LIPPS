@@ -27,7 +27,7 @@ public class Appli {
 			
 			
 			//Lance le controleur de la fenetre le Login
-			new ControleurLogin();
+			new LippsIhm();
 			
 			
 			result = true;
