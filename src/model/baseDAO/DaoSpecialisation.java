@@ -1,6 +1,7 @@
 package model.baseDAO;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -54,6 +55,8 @@ public class DaoSpecialisation extends DaoParent {
 		{
 			result[i] = listespe.get(i).getNom();
 		}
+		
+		Arrays.sort(result);
 		
 		return result;
 	}
