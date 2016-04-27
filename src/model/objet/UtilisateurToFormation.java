@@ -16,7 +16,7 @@ import javax.validation.constraints.NotNull;
 @Table (name = "utilisateur_formation", uniqueConstraints = {
 	    @UniqueConstraint(columnNames={"utf_uti_id", "utf_frm_id"})
 	})
-public class UtilisateurToFormation implements Serializable {
+public class UtilisateurToFormation extends DataParent implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 

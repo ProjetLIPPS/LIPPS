@@ -1,7 +1,6 @@
 package ihm.popup;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Insets;
@@ -13,11 +12,12 @@ import java.util.List;
 
 import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
-import javax.swing.ImageIcon;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -28,6 +28,8 @@ import ihm.theme.ThemeLIPPS;
 import model.baseDAO.DaoFactory;
 import model.objet.Formation;
 import model.objet.Specialisation;
+import javax.swing.JScrollPane;
+import javax.swing.border.EmptyBorder;
 
 public class CreationCompte extends JDialog {
 	private JTextField textField_Prenom;
@@ -38,11 +40,10 @@ public class CreationCompte extends JDialog {
 	private ButtonGroup groupRadioType;
 	private JComboBox<String> comboBoxForm;
 	private JComboBox<String> comboBoxSpe;
-	private JTextArea textAreaForma;
-	
+	private JList<String> jListForma;
+	private JButton btnAjouter;
+	private String[] listeFormData = new String[0];
 
-	//TODO : creer 2 combobox (specialisation + formation)
-	//TODO : no telephonne
 
 	/**
 	 * Create the frame.
@@ -70,99 +71,107 @@ public class CreationCompte extends JDialog {
 		lblEditionDeCompte.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		JLabel lblNom = new JLabel("Nom :");
-		lblNom.setBounds(169, 401, 49, 21);
+		lblNom.setBounds(169, 411, 49, 21);
 		getContentPane().add(lblNom);
 		lblNom.setForeground(Color.WHITE);
 		lblNom.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
 		
 		textField_Prenom = new JTextField();
-		textField_Prenom.setBounds(229, 443, 277, 27);
+		textField_Prenom.setBounds(229, 453, 277, 27);
 		getContentPane().add(textField_Prenom);
 		textField_Prenom.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
 		textField_Prenom.setColumns(10);
 		
 		JLabel lblPrenom = new JLabel("Prénom :");
-		lblPrenom.setBounds(146, 446, 72, 21);
+		lblPrenom.setBounds(146, 456, 72, 21);
 		getContentPane().add(lblPrenom);
 		lblPrenom.setForeground(Color.WHITE);
 		lblPrenom.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
 		
 		textField_Nom = new JTextField();
-		textField_Nom.setBounds(229, 398, 277, 27);
+		textField_Nom.setBounds(229, 408, 277, 27);
 		getContentPane().add(textField_Nom);
 		textField_Nom.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
 		textField_Nom.setColumns(10);
 		
 		JLabel lblDateDeNaissance = new JLabel("Date de naissance :");
-		lblDateDeNaissance.setBounds(49, 536, 169, 21);
+		lblDateDeNaissance.setBounds(49, 546, 169, 21);
 		getContentPane().add(lblDateDeNaissance);
 		lblDateDeNaissance.setForeground(Color.WHITE);
 		lblDateDeNaissance.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
 		
 		JLabel lblNumroAfpa = new JLabel("Numéro AFPA :");
-		lblNumroAfpa.setBounds(94, 356, 124, 21);
+		lblNumroAfpa.setBounds(94, 366, 124, 21);
 		getContentPane().add(lblNumroAfpa);
 		lblNumroAfpa.setForeground(Color.WHITE);
 		lblNumroAfpa.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
 		
 		JLabel lblEmail = new JLabel("Email :");
-		lblEmail.setBounds(166, 491, 52, 21);
+		lblEmail.setBounds(166, 501, 52, 21);
 		getContentPane().add(lblEmail);
 		lblEmail.setForeground(Color.WHITE);
 		lblEmail.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
 		
 		textField_DteNaissance = new JTextField();
-		textField_DteNaissance.setBounds(229, 533, 101, 27);
+		textField_DteNaissance.setBounds(229, 543, 101, 27);
 		getContentPane().add(textField_DteNaissance);
 		textField_DteNaissance.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
 		textField_DteNaissance.setColumns(10);
 		
 		textField_Email = new JTextField();
-		textField_Email.setBounds(229, 488, 277, 27);
+		textField_Email.setBounds(229, 498, 277, 27);
 		getContentPane().add(textField_Email);
 		textField_Email.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
 		textField_Email.setColumns(10);
 		
 		textField_NoAFPA = new JTextField();
-		textField_NoAFPA.setBounds(229, 353, 277, 27);
+		textField_NoAFPA.setBounds(229, 363, 277, 27);
 		getContentPane().add(textField_NoAFPA);
 		textField_NoAFPA.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
 		textField_NoAFPA.setColumns(10);
 		
 		JRadioButton rdbtnAdministrateur = new JRadioButton("Administrateur");
+		rdbtnAdministrateur.setName("admin");
+		rdbtnAdministrateur.addFocusListener(listener);
+		rdbtnAdministrateur.setFocusPainted(false);
 		rdbtnAdministrateur.setBounds(94, 113, 153, 31);
 		getContentPane().add(rdbtnAdministrateur);
 		rdbtnAdministrateur.setForeground(Color.WHITE);
 		rdbtnAdministrateur.setBackground(Color.decode("#3787C8"));
 		rdbtnAdministrateur.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
-		rdbtnAdministrateur.setFocusable(false);
 		groupRadioType.add(rdbtnAdministrateur);
 
 		JRadioButton rdbtnFormateur = new JRadioButton("Formateur");
+		rdbtnFormateur.setName("form");
+		rdbtnFormateur.addFocusListener(listener);
+		rdbtnFormateur.setFocusPainted(false);
 		rdbtnFormateur.setBounds(260, 113, 115, 31);
 		getContentPane().add(rdbtnFormateur);
 		rdbtnFormateur.setForeground(Color.WHITE);
 		rdbtnFormateur.setBackground(Color.decode("#3787C8"));
 		rdbtnFormateur.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
-		rdbtnFormateur.setFocusable(false);
 		groupRadioType.add(rdbtnFormateur);
 		
 		JRadioButton rdbtnStagiaire = new JRadioButton("Stagiaire");
+		rdbtnStagiaire.setName("sta");
+		rdbtnStagiaire.addFocusListener(listener);
+		rdbtnStagiaire.setFocusPainted(false);
 		rdbtnStagiaire.setBounds(390, 113, 101, 31);
 		getContentPane().add(rdbtnStagiaire);
 		rdbtnStagiaire.setForeground(Color.WHITE);
 		rdbtnStagiaire.setBackground(Color.decode("#3787C8"));
 		rdbtnStagiaire.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
-		rdbtnStagiaire.setFocusable(false);
 		groupRadioType.add(rdbtnStagiaire);
 		
 		JRadioButton rdbtnTuteur = new JRadioButton("Tuteur");
+		rdbtnTuteur.setName("tut");
+		rdbtnTuteur.addFocusListener(listener);
+		rdbtnTuteur.setFocusPainted(false);
 		rdbtnTuteur.setBounds(512, 113, 79, 31);
 		getContentPane().add(rdbtnTuteur);
 		rdbtnTuteur.setForeground(Color.WHITE);
 		rdbtnTuteur.setBackground(Color.decode("#3787C8"));
 		rdbtnTuteur.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
-		rdbtnTuteur.setFocusable(false);
 		groupRadioType.add(rdbtnTuteur);
 		
 		JButton btnNewButton = new JButton("Valider");
@@ -170,7 +179,7 @@ public class CreationCompte extends JDialog {
 		btnNewButton.addActionListener(listener);
 		btnNewButton.setName("compte");
 		
-		btnNewButton.setBounds(227, 606, 101, 33);
+		btnNewButton.setBounds(229, 616, 101, 33);
 		getContentPane().add(btnNewButton);
 		btnNewButton.setForeground(Color.DARK_GRAY);
 		btnNewButton.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_BUTTON));
@@ -185,7 +194,7 @@ public class CreationCompte extends JDialog {
 				getThis().dispose();
 			}
 		});
-		btnNewButton_1.setBounds(403, 606, 101, 33);
+		btnNewButton_1.setBounds(405, 616, 101, 33);
 		getContentPane().add(btnNewButton_1);
 		btnNewButton_1.setForeground(Color.DARK_GRAY);
 		btnNewButton_1.setMargin(new Insets(6, 18, 6, 18));
@@ -227,19 +236,56 @@ public class CreationCompte extends JDialog {
 		lblFormation.setBounds(126, 204, 92, 21);
 		getContentPane().add(lblFormation);
 		
-		textAreaForma = new JTextArea();
-		textAreaForma.setBackground(Color.WHITE);
-		textAreaForma.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
-		textAreaForma.setBounds(229, 272, 277, 66);
-		getContentPane().add(textAreaForma);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBorder(new EmptyBorder(0, 0, 0, 0));
+		scrollPane.setBounds(229, 272, 277, 76);
+		getContentPane().add(scrollPane);
 		
-		JButton btnNewButton_2 = new JButton("↓  Ajouter  ↓");
-		btnNewButton_2.setFocusPainted(false);
-		btnNewButton_2.setBackground(Color.WHITE);
-		btnNewButton_2.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_BUTTON));
-		btnNewButton_2.setBounds(281, 238, 158, 23);
-		getContentPane().add(btnNewButton_2);
+		jListForma = new JList<String>();
+		scrollPane.setViewportView(jListForma);
+		jListForma.setFocusable(false);
+		jListForma.setBackground(Color.WHITE);
+		jListForma.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
+		
+		btnAjouter = new JButton("↓  Ajouter  ↓");
+		btnAjouter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				ajouterFormation();
+			}
+		});
+		btnAjouter.setFocusPainted(false);
+		btnAjouter.setBackground(Color.WHITE);
+		btnAjouter.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_BUTTON));
+		btnAjouter.setBounds(281, 238, 158, 23);
+		getContentPane().add(btnAjouter);
+		
+		JLabel lblFormationSelectionne = new JLabel("Formation(s)");
+		lblFormationSelectionne.setForeground(Color.WHITE);
+		lblFormationSelectionne.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
+		lblFormationSelectionne.setBounds(83, 275, 101, 21);
+		getContentPane().add(lblFormationSelectionne);
+		
+		JLabel lblSelectionnes = new JLabel("sélectionnée(s) :");
+		lblSelectionnes.setForeground(Color.WHITE);
+		lblSelectionnes.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
+		lblSelectionnes.setBounds(83, 301, 135, 21);
+		getContentPane().add(lblSelectionnes);
+		
+		JButton btnSupprimer = new JButton("Supprimer");
+		btnSupprimer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				supprimerFormation();
+			}
+		});
+		btnSupprimer.setFocusPainted(false);
+		btnSupprimer.setBackground(Color.WHITE);
+		btnSupprimer.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_BUTTON));
+		btnSupprimer.setBounds(512, 276, 115, 27);
+		getContentPane().add(btnSupprimer);
 		setLocationRelativeTo(null);
+		
 		
 		setVisible(true);
 		
@@ -248,6 +294,8 @@ public class CreationCompte extends JDialog {
 	}
 	
 	
+
+
 
 	public CreationCompte getThis()
 	{
@@ -259,14 +307,7 @@ public class CreationCompte extends JDialog {
 	
 	private void remplirComboSpe() 
 	{
-		String [] nomSpe = DaoFactory.getDaoSpecialisation().getNomSpecialisation();
-		
-		for (int i = 0; i < nomSpe.length; i++)
-		{
-			comboBoxSpe.addItem(nomSpe[i]);
-		}
-		
-		
+		comboBoxSpe.setModel(new DefaultComboBoxModel<String>(DaoFactory.getDaoSpecialisation().getNomSpecialisation()));	
 	}
 	
 	
@@ -297,6 +338,61 @@ public class CreationCompte extends JDialog {
 		
 	}
 	
+
+
+	protected void ajouterFormation() 
+	{
+		boolean contains = false;
+		
+		for (int i = 0; !contains && i < listeFormData.length; i++)
+		{
+			if (listeFormData[i] == comboBoxForm.getSelectedItem())
+				contains = true;
+		}
+		
+		if(!contains)
+		{
+			String[] dataTemp = new String [listeFormData.length+1];
+			
+			for (int i = 0; i < listeFormData.length; i++)
+			{
+				dataTemp[i] = listeFormData[i];
+			}
+			
+			dataTemp[dataTemp.length-1] = (String) comboBoxForm.getSelectedItem();
+			listeFormData = dataTemp;
+			
+			jListForma.setListData(listeFormData);
+		}
+		
+		
+	}
+	
+	
+	
+	protected void supprimerFormation()
+	{	
+		if (listeFormData.length > 0 && jListForma.getSelectedIndex() > -1)
+		{
+			listeFormData[jListForma.getSelectedIndex()] = null;
+			String[] dataTemp = new String [listeFormData.length-1];
+			
+			int j = 0;
+			for (int i = 0; i < listeFormData.length; i++)
+			{
+				if (listeFormData[i] != null)
+				{
+					dataTemp[j] = listeFormData[i];
+					j++;
+				}
+			}
+			
+			listeFormData = dataTemp;
+			
+			jListForma.setListData(listeFormData);
+		}
+	}
+	
 	
 	
 	public JTextField getTextField_Email() 
@@ -319,7 +415,38 @@ public class CreationCompte extends JDialog {
 	{
 		return textField_Prenom;
 	}
+	
+	public JComboBox<String> getComboBoxForm() 
+	{
+		return comboBoxForm;
+	}
 
+	public JComboBox<String> getComboBoxSpe() 
+	{
+		return comboBoxSpe;
+	}
+
+
+	public JButton getBtnAjouter() 
+	{
+		return btnAjouter;
+	}
+
+	
+	public String[] getFormations()
+	{
+		String [] tab = new String[jListForma.getModel().getSize()];
+		
+		for (int i = 0; i < tab.length; i++)
+		{
+			tab[i] = jListForma.getModel().getElementAt(i);
+		}
+		
+		
+		return tab;
+	}
+
+	
 	public String getSelectionType() 
 	{
 		//groupRadioType
@@ -341,6 +468,4 @@ public class CreationCompte extends JDialog {
 		
 		return type;
 	}
-	
-	
 }

@@ -43,6 +43,7 @@ public class DaoFormation extends DaoParent {
 
 		Criteria criteria = session.createCriteria(Formation.class);
 		criteria.add(Restrictions.eq("specialisation", spe));
+		criteria.add(Restrictions.eq("isModel", false));
 
 		@SuppressWarnings("unchecked")
 		List<Formation> list = criteria.list();

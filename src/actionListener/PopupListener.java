@@ -2,6 +2,8 @@ package actionListener;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -9,6 +11,8 @@ import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
+import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
@@ -23,13 +27,14 @@ import model.objet.Contact;
 import model.objet.Formation;
 import model.objet.Specialisation;
 import model.objet.Utilisateur;
+import model.objet.UtilisateurToFormation;
 import model.objet.UtilisateurToRole;
 
 
 //TODO controle de saisie
 //TODO creationModele : verifier intitulé unique et premiere lettre en majuscule
 
-public class PopupListener implements ActionListener, ListSelectionListener 
+public class PopupListener implements ActionListener, ListSelectionListener, FocusListener 
 {
 
 	private PanelCCompte panelCcompte ;
@@ -119,6 +124,8 @@ public class PopupListener implements ActionListener, ListSelectionListener
 		String nom = creaComptePop.getTextField_Nom().getText();
 		String prenom = creaComptePop.getTextField_Prenom().getText();
 		String email = creaComptePop.getTextField_Email().getText();
+		String [] formations = creaComptePop.getFormations();
+		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
 		try 
@@ -133,18 +140,24 @@ public class PopupListener implements ActionListener, ListSelectionListener
 		
 		Utilisateur user = new Utilisateur(null, nom, prenom, date, NoAFPA, null, null, null, null) ;
 		
+		
 		try 
 		{
 			DaoFactory.getDaoUtilisateur().save(user);
 			DaoFactory.getDaoUtilisateur().save(new UtilisateurToRole(user, DaoFactory.getDaoRole().findByName(type)));
 			DaoFactory.getDaoContact().save(new Contact(null, null, null, null, null, null, email, user));
+			for (int i = 0; i < formations.length; i++)
+			{
+				Formation form = DaoFactory.getDaoFormation().findFormationByIntitule(formations[i]);
+				UtilisateurToFormation utf = new UtilisateurToFormation(user, form);
+				DaoFactory.getDaoFormation().save(utf);
+			}
 			creaComptePop.dispose();
 			Object [][] refreshModel = DaoFactory.getDaoUtilisateur().executeLastQuery();
 			PanelCCompte.getTableau().setModel(new DefaultTableModel( refreshModel,PanelCCompte.getEnteteTableau()));
 		} 
 		catch (Exception e) 
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -181,6 +194,37 @@ public class PopupListener implements ActionListener, ListSelectionListener
 	private void creerModule (CreationModule creaModulePop)
 	{
 		creaModulePop.dispose();
+	}
+
+
+	@Override
+	public void focusGained(FocusEvent e) 
+	{
+		JRadioButton radbut = (JRadioButton) e.getSource();
+		CreationCompte creaComptePop = (CreationCompte) radbut.getRootPane().getParent();
+		
+		if (radbut.getName().equals("admin"))
+		{
+			creaComptePop.getComboBoxSpe().setEnabled(false);
+			creaComptePop.getComboBoxForm().setEnabled(false);
+			creaComptePop.getBtnAjouter().setEnabled(false);
+		}
+		else
+		{
+			creaComptePop.getComboBoxSpe().setEnabled(true);
+			creaComptePop.getComboBoxForm().setEnabled(true);
+			creaComptePop.getBtnAjouter().setEnabled(true);
+		}
+		
+		
+	}
+
+
+	@Override
+	public void focusLost(FocusEvent e) 
+	{
+		// TODO Auto-generated method stub
+		
 	}
 
 	
