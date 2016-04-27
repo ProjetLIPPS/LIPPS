@@ -12,7 +12,6 @@ import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
-import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
@@ -25,6 +24,7 @@ import ihm.popup.CreationModule;
 import model.baseDAO.DaoFactory;
 import model.objet.Contact;
 import model.objet.Formation;
+import model.objet.Role;
 import model.objet.Specialisation;
 import model.objet.Utilisateur;
 import model.objet.UtilisateurToFormation;
@@ -125,6 +125,7 @@ public class PopupListener implements ActionListener, ListSelectionListener, Foc
 		String prenom = creaComptePop.getTextField_Prenom().getText();
 		String email = creaComptePop.getTextField_Email().getText();
 		String [] formations = creaComptePop.getFormations();
+		Role role = DaoFactory.getDaoRole().findByName(type);
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
@@ -144,13 +145,16 @@ public class PopupListener implements ActionListener, ListSelectionListener, Foc
 		try 
 		{
 			DaoFactory.getDaoUtilisateur().save(user);
-			DaoFactory.getDaoUtilisateur().save(new UtilisateurToRole(user, DaoFactory.getDaoRole().findByName(type)));
+			DaoFactory.getDaoUtilisateur().save(new UtilisateurToRole(user, role));
 			DaoFactory.getDaoContact().save(new Contact(null, null, null, null, null, null, email, user));
-			for (int i = 0; i < formations.length; i++)
+			if (!role.getType().equals("Administrateur"))
 			{
-				Formation form = DaoFactory.getDaoFormation().findFormationByIntitule(formations[i]);
-				UtilisateurToFormation utf = new UtilisateurToFormation(user, form);
-				DaoFactory.getDaoFormation().save(utf);
+				for (int i = 0; i < formations.length; i++)
+				{
+					Formation form = DaoFactory.getDaoFormation().findFormationByIntitule(formations[i]);
+					UtilisateurToFormation utf = new UtilisateurToFormation(user, form);
+					DaoFactory.getDaoFormation().save(utf);
+				}
 			}
 			creaComptePop.dispose();
 			Object [][] refreshModel = DaoFactory.getDaoUtilisateur().executeLastQuery();
