@@ -97,7 +97,7 @@ public class PanelCFormation extends JPanel
 		list.setForeground(Color.WHITE);
 		list.setBackground(ThemeLIPPS.BLUE_DARK);
 		list.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, ThemeLIPPS.FONT_SIZE_DEFAULT));
-		initList();
+		//initList();
 				
 				
 		list.addListSelectionListener(panelCFormationListSelectionListener);
@@ -344,7 +344,7 @@ public class PanelCFormation extends JPanel
 
 	}
 	
-public void initList() {
+/*public void initList() {
 		
 		String[] values = null;
 		
@@ -374,7 +374,7 @@ public void initList() {
 				
 		this.list.setListData(values);
 	
-	}
+	}*/
 
 
 	public JTextField getTxtIntitule() {

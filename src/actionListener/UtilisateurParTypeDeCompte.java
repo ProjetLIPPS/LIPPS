@@ -38,10 +38,10 @@ public class UtilisateurParTypeDeCompte implements MouseListener
 
 	public void setLblColor()
 	{
-		panelCCompte.getLblAdmin().setForeground(Color.WHITE);
-		panelCCompte.getLblForm().setForeground(Color.WHITE);
-		panelCCompte.getLblSta().setForeground(Color.WHITE);
-		panelCCompte.getLblTut().setForeground(Color.WHITE);
+		panelCCompte.getLblAdministrateur().setForeground(Color.WHITE);
+		panelCCompte.getLblFormateur().setForeground(Color.WHITE);
+		panelCCompte.getLblStagiaire().setForeground(Color.WHITE);
+		panelCCompte.getLblTuteur().setForeground(Color.WHITE);
 		panelCCompte.getLblTous().setForeground(Color.WHITE);
 	}
 
@@ -49,61 +49,34 @@ public class UtilisateurParTypeDeCompte implements MouseListener
 
 	{
 
-		panelCCompte.getLblAdmin().setBorder(null);
-		panelCCompte.getLblForm().setBorder(null);
-		panelCCompte.getLblSta().setBorder(null);
-		panelCCompte.getLblTut().setBorder(null);
+		panelCCompte.getLblAdministrateur().setBorder(null);
+		panelCCompte.getLblFormateur().setBorder(null);
+		panelCCompte.getLblStagiaire().setBorder(null);
+		panelCCompte.getLblTuteur().setBorder(null);
 		panelCCompte.getLblTous().setBorder(null);
 	}
 
 	public void afficheTableau(JLabel source) throws Exception
 
 	{
-		if (source.equals(panelCCompte.getLblAdmin())&& panelCCompte.getIsSelected() != 1 )
+		if (source.equals(panelCCompte.getLblAdministrateur())|| source.equals(panelCCompte.getLblFormateur())||source.equals(panelCCompte.getLblStagiaire())||source.equals(panelCCompte.getLblTuteur()))
 		{
 			setLblColor();
-			panelCCompte.getLblAdmin().setForeground(new Color(30, 144, 255));
-			panelCCompte.getLblAdmin().setBorder(new MatteBorder(0, 3, 0, 0, ThemeLIPPS.BLUE));
+			panelCCompte.getLblAdministrateur().setForeground(new Color(30, 144, 255));
+			panelCCompte.getLblAdministrateur().setBorder(new MatteBorder(0, 3, 0, 0, ThemeLIPPS.BLUE));
 			setBorder();
 			panelCCompte.setIsSelected(1);
-			resultatRecherche = DaoFactory.getDaoUtilisateur().readUtilisateurTypeCompte(panelCCompte.getIsSelected());
 			panelCCompte.getBarreRecherche().setText("Nom ou n°AFPA");
+			if (panelCCompte.getComboSecMetier().getSelectedItem().equals("Secteur de métier"))
+			{
+				resultatRecherche = DaoFactory.getDaoUtilisateur().readUtilisateurTypeCompte(panelCCompte.getIsSelected());
+			}
+			else 
+			{
+				resultatRecherche = DaoFactory.getDaoUtilisateur().readUtilisateurTypeCompteFiltre(panelCCompte.getIsSelected(),panelCCompte.getComboSecMetier().getSelectedItem().toString());
+			}
 
-		} else if (source.equals(panelCCompte.getLblForm())&& panelCCompte.getIsSelected() != 2)
-		{
-			setLblColor();
-			panelCCompte.getLblForm().setForeground(new Color(30, 144, 255));
-			panelCCompte.getLblForm().setBorder(new MatteBorder(0, 3, 0, 0, ThemeLIPPS.BLUE));
-			setBorder();
-			panelCCompte.setIsSelected(2);
-			resultatRecherche = DaoFactory.getDaoUtilisateur().readUtilisateurTypeCompte(panelCCompte.getIsSelected());
-			panelCCompte.getBarreRecherche().setText("Nom ou n°AFPA");
-
-
-		} else if (source.equals(panelCCompte.getLblSta())&& panelCCompte.getIsSelected() != 3)
-		{
-			setLblColor();
-			panelCCompte.getLblSta().setForeground(new Color(30, 144, 255));
-			panelCCompte.getLblSta().setBorder(new MatteBorder(0, 3, 0, 0, ThemeLIPPS.BLUE));
-			setBorder();
-			panelCCompte.setIsSelected(3);
-			resultatRecherche = DaoFactory.getDaoUtilisateur().readUtilisateurTypeCompte(panelCCompte.getIsSelected());
-			panelCCompte.getBarreRecherche().setText("Nom ou n°AFPA");
-
-
-		} else if (source.equals(panelCCompte.getLblTuteur())&& panelCCompte.getIsSelected() != 4)
-		{
-			setLblColor();
-			panelCCompte.getLblTut().setForeground(new Color(30, 144, 255));
-			panelCCompte.getLblTut().setBorder(new MatteBorder(0, 3, 0, 0, ThemeLIPPS.BLUE));
-			setBorder();
-			panelCCompte.setIsSelected(4);
-			resultatRecherche = DaoFactory.getDaoUtilisateur().readUtilisateurTypeCompte(panelCCompte.getIsSelected());
-			panelCCompte.getBarreRecherche().setText("Nom ou n°AFPA");
-			
-
-
-		}
+		} 
 		else if ((source.equals(panelCCompte.getLblTous())&& panelCCompte.getIsSelected() != 5) || (panelCCompte.getIsSelected() == 5)  )
 		{
 			setLblColor();
@@ -111,9 +84,11 @@ public class UtilisateurParTypeDeCompte implements MouseListener
 			panelCCompte.getLblTous().setBorder(new MatteBorder(0, 3, 0, 0, ThemeLIPPS.BLUE));
 			setBorder();
 			panelCCompte.setIsSelected(5);
-			resultatRecherche = DaoFactory.getDaoUtilisateur().readUtilisateurAll();
 			panelCCompte.getBarreRecherche().setText("Nom ou n°AFPA");
-			
+			if (panelCCompte.getComboSecMetier().getSelectedItem().equals("Secteur de métier"))
+			{
+				resultatRecherche = DaoFactory.getDaoUtilisateur().readUtilisateurAll();
+			}
 
 
 		}
@@ -127,22 +102,22 @@ public class UtilisateurParTypeDeCompte implements MouseListener
 	{
 		JLabel source = (JLabel) e.getSource();
 
-		if (source.equals(panelCCompte.getLblAdmin()) &&  panelCCompte.getIsSelected()!= 1)
+		if (source.equals(panelCCompte.getLblAdministrateur()) &&  panelCCompte.getIsSelected()!= 1)
 		{
 
-			panelCCompte.getLblAdmin().setBorder(new MatteBorder(0, 3, 0, 0, (Color) Color.WHITE));
-		} else if (source.equals(panelCCompte.getLblForm()) && panelCCompte.getIsSelected() != 2)
+			panelCCompte.getLblAdministrateur().setBorder(new MatteBorder(0, 3, 0, 0, (Color) Color.WHITE));
+		} else if (source.equals(panelCCompte.getLblFormateur()) && panelCCompte.getIsSelected() != 2)
 		{
 
-			panelCCompte.getLblForm().setBorder(new MatteBorder(0, 3, 0, 0, (Color) Color.WHITE));
-		} else if (source.equals(panelCCompte.getLblSta()) && panelCCompte.getIsSelected() != 3)
+			panelCCompte.getLblFormateur().setBorder(new MatteBorder(0, 3, 0, 0, (Color) Color.WHITE));
+		} else if (source.equals(panelCCompte.getLblStagiaire()) && panelCCompte.getIsSelected() != 3)
 		{
 
-			panelCCompte.getLblSta().setBorder(new MatteBorder(0, 3, 0, 0, (Color) Color.WHITE));
-		} else if (source.equals(panelCCompte.getLblTut()) && panelCCompte.getIsSelected() != 4)
+			panelCCompte.getLblStagiaire().setBorder(new MatteBorder(0, 3, 0, 0, (Color) Color.WHITE));
+		} else if (source.equals(panelCCompte.getLblTuteur()) && panelCCompte.getIsSelected() != 4)
 		{
 
-			panelCCompte.getLblTut().setBorder(new MatteBorder(0, 3, 0, 0, (Color) Color.WHITE));
+			panelCCompte.getLblTuteur().setBorder(new MatteBorder(0, 3, 0, 0, (Color) Color.WHITE));
 		}
 		else if (source.equals(panelCCompte.getLblTous()) && panelCCompte.getIsSelected() != 5) 
 		{
@@ -156,19 +131,19 @@ public class UtilisateurParTypeDeCompte implements MouseListener
 	{
 
 		JLabel source = (JLabel) e.getSource();
-		if (source.equals(panelCCompte.getLblAdmin()))
+		if (source.equals(panelCCompte.getLblAdministrateur()))
 		{
 
 			setBorder();
-		} else if (source.equals(panelCCompte.getLblForm()))
+		} else if (source.equals(panelCCompte.getLblFormateur()))
 		{
 
 			setBorder();
-		} else if (source.equals(panelCCompte.getLblSta()))
+		} else if (source.equals(panelCCompte.getLblStagiaire()))
 		{
 
 			setBorder();
-		}else if (source.equals(panelCCompte.getLblTut()))
+		}else if (source.equals(panelCCompte.getLblTuteur()))
 		{
 
 			setBorder();

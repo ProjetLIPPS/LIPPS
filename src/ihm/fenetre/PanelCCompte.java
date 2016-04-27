@@ -42,13 +42,13 @@ public class PanelCCompte extends JPanel
 	 */
 	private static final long serialVersionUID = 1L;
 	private JTextField barreRecherche;
-	private JTable tableau;
+	private static JTable tableau;
 	private JLabel lblAdministrateur = new JLabel(" Administrateur");
 	private JLabel lblFormateur = new JLabel(" Formateur");
 	private JLabel lblStagiaire = new JLabel(" Stagiaire");
 	private JLabel lblTuteur = new JLabel(" Tuteur");
 	private JLabel lblTous = new JLabel("Tous");
-	private String[] enteteTableau = new String[]
+	private static String[] enteteTableau = new String[]
 	{ "Identifiant AFPA", "Nom", "Prenom", "Formation", "Email", "Numéro Téléphone" };
 	private DefaultTableModel modeleTableau = new DefaultTableModel(new Object[][]
 	{}, enteteTableau);
@@ -57,40 +57,7 @@ public class PanelCCompte extends JPanel
 	private JComboBox<String> comboSecMetier = new JComboBox<String>();
 	private JButton btnCreer = new JButton("Créer");
 
-	public JButton getBtnCreer()
-	{
-		return btnCreer;
-	}
-
-
-
-	public void setBtnCreer(JButton btnCreer)
-	{
-		this.btnCreer = btnCreer;
-	}
-
-
-
-	public JComboBox<String> getComboSecMetier()
-	{
-		return comboSecMetier;
-	}
-
-
-
-	public void setComboSecMetier(JComboBox<String> comboSecMetier)
-	{
-		this.comboSecMetier = comboSecMetier;
-	}
-
-
-
 	
-
-
-	
-
-
 	/**
 	 * Create the panel.
 	 */
@@ -444,7 +411,7 @@ public class PanelCCompte extends JPanel
 		this.btnRecherche = btnRecherche;
 	}
 
-	public JTable getTableau()
+	public static JTable getTableau()
 	{
 		return tableau;
 	}
@@ -494,7 +461,7 @@ public class PanelCCompte extends JPanel
 		this.lblTuteur = lblTuteur;
 	}
 
-	public String[] getEnteteTableau()
+	public static String[] getEnteteTableau()
 	{
 		return enteteTableau;
 	}
@@ -524,29 +491,6 @@ public class PanelCCompte extends JPanel
 		return this.barreRecherche;
 	}
 
-	public JLabel getLblAdmin()
-	{
-
-		return this.lblAdministrateur;
-	}
-
-	public JLabel getLblForm()
-	{
-
-		return this.lblFormateur;
-	}
-
-	public JLabel getLblSta()
-	{
-
-		return this.lblStagiaire;
-	}
-
-	public JLabel getLblTut()
-	{
-
-		return this.lblTuteur;
-	}
 
 	public Integer getIsSelected()
 	{
@@ -557,4 +501,38 @@ public class PanelCCompte extends JPanel
 	{
 		this.isSelected = isSelected;
 	}
+	public JButton getBtnCreer()
+	{
+		return btnCreer;
+	}
+
+
+
+	public void setBtnCreer(JButton btnCreer)
+	{
+		this.btnCreer = btnCreer;
+	}
+
+
+
+	public JComboBox<String> getComboSecMetier()
+	{
+		return comboSecMetier;
+	}
+
+
+
+	public void setComboSecMetier(JComboBox<String> comboSecMetier)
+	{
+		this.comboSecMetier = comboSecMetier;
+	}
+
+
+
+	
+
+
+	
+
+
 }
