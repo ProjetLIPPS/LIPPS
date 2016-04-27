@@ -29,6 +29,7 @@ import model.objet.Specialisation;
 import model.objet.Utilisateur;
 import model.objet.UtilisateurToFormation;
 import model.objet.UtilisateurToRole;
+import model.objet.UtilisateurToSpecialisation;
 
 
 //TODO controle de saisie
@@ -154,6 +155,8 @@ public class PopupListener implements ActionListener, ListSelectionListener, Foc
 					Formation form = DaoFactory.getDaoFormation().findFormationByIntitule(formations[i]);
 					UtilisateurToFormation utf = new UtilisateurToFormation(user, form);
 					DaoFactory.getDaoFormation().save(utf);
+					Specialisation spe = form.getSpecialisation();
+					DaoFactory.getDaoUtilisateur().saveOrUpdate(new UtilisateurToSpecialisation(user, spe));
 				}
 			}
 			creaComptePop.dispose();
