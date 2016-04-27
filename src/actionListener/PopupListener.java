@@ -11,7 +11,9 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
 
+import ihm.fenetre.PanelCCompte;
 import ihm.popup.CreaForm;
 import ihm.popup.CreationCompte;
 import ihm.popup.CreationModele;
@@ -30,6 +32,7 @@ import model.objet.UtilisateurToRole;
 public class PopupListener implements ActionListener, ListSelectionListener 
 {
 
+	private PanelCCompte panelCcompte ;
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
@@ -47,6 +50,7 @@ public class PopupListener implements ActionListener, ListSelectionListener
 			else if (source.getName().equals("compte"))
 			{
 				creerCompte((CreationCompte) source.getRootPane().getParent());
+				
 			}
 			else if (source.getName().equals("modele"))
 			{
@@ -135,6 +139,8 @@ public class PopupListener implements ActionListener, ListSelectionListener
 			DaoFactory.getDaoUtilisateur().save(new UtilisateurToRole(user, DaoFactory.getDaoRole().findByName(type)));
 			DaoFactory.getDaoContact().save(new Contact(null, null, null, null, null, null, email, user));
 			creaComptePop.dispose();
+			Object [][] refreshModel = DaoFactory.getDaoUtilisateur().executeLastQuery();
+			PanelCCompte.getTableau().setModel(new DefaultTableModel( refreshModel,PanelCCompte.getEnteteTableau()));
 		} 
 		catch (Exception e) 
 		{
