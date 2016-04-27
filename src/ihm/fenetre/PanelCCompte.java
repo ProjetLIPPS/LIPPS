@@ -33,7 +33,10 @@ import actionListener.FocusListeners;
 import actionListener.RechercherListener;
 import actionListener.UtilisateurParTypeDeCompte;
 import ihm.theme.ThemeLIPPS;
+import model.baseDAO.DaoFactory;
+
 import java.awt.Component;
+import javax.swing.JScrollPane;
 
 public class PanelCCompte extends JPanel
 {
@@ -218,11 +221,15 @@ public class PanelCCompte extends JPanel
 		comboSecMetier.setPreferredSize(new Dimension(250, 30));
 		comboSecMetier.setBackground(SystemColor.window);
 		comboSecMetier.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 15));
-		comboSecMetier.setModel(new DefaultComboBoxModel(new String[]
+		/*comboSecMetier.setModel(new DefaultComboBoxModel(new String[]
 		{ "Secteur de métier", "Audiovisuel", "Automobile", "Autre", "Assurance", "Bâtiment", "Commerce",
 				"Communication", "Droit", "Enseignement", "Environnement", "Hôtellerie", "Immobilier", "Informatique",
 				"Langues", "Marketing", "Propreté", "Ressources Humaines", "Restauration", "Sciences Humaines",
-				"Secrétariat", "Social", "Tourisme", "Transport , Logistique" }));
+				"Secrétariat", "Social", "Tourisme", "Transport , Logistique" }));*/
+		comboSecMetier.setModel(new DefaultComboBoxModel(DaoFactory.getDaoSpecialisation().getNomSpecialisation()));
+		comboSecMetier.insertItemAt("Secteur de métier",0);
+		comboSecMetier.setSelectedIndex(0);
+		comboSecMetier.addActionListener(utilisateurParType);
 		
 				JPanel panelRecherche = new JPanel();
 				panelBouttons.add(panelRecherche, BorderLayout.EAST);
@@ -315,6 +322,9 @@ public class PanelCCompte extends JPanel
 
 		panelTableau.add(tableau, BorderLayout.CENTER);
 		panelTableau.add(tableau.getTableHeader(), BorderLayout.NORTH);
+		JScrollPane scrollPane = new JScrollPane(panelTableau);
+		panelResultatRecherche.add(scrollPane, BorderLayout.CENTER);
+		
 
 		JPanel panelSudBoutons = new JPanel();
 		FlowLayout fl_panelSudBoutons = (FlowLayout) panelSudBoutons.getLayout();

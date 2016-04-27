@@ -49,7 +49,7 @@ public class DaoUtilisateur extends DaoParent
 	{
 
 		Session session = BaseSession.getNewSession();
-		String stringQuery = "SELECT distinct u.uti_identifiant_afpa ,u.uti_nom, u.uti_prenom , frm_intitule , c.con_mail , c.con_telephone from utilisateur u left join  contact c on u.uti_id = c.uti_id left join utilisateur_formation l on u.uti_id = l.utf_uti_id left join formation on l.utf_frm_id = formation.frm_id left join utilisateur_specialisation k on u.uti_id = k.uts_uti_id left join specialisation s on s.spe_id = k.uts_spe_id where s.spe_nom = "+secMetier+" order by u.uti_nom ";
+		String stringQuery = "SELECT distinct u.uti_identifiant_afpa ,u.uti_nom, u.uti_prenom , frm_intitule , c.con_mail , c.con_telephone from utilisateur u left join  contact c on u.uti_id = c.uti_id left join utilisateur_formation l on u.uti_id = l.utf_uti_id left join formation on l.utf_frm_id = formation.frm_id left join utilisateur_specialisation k on u.uti_id = k.uts_uti_id left join specialisation s on s.spe_id = k.uts_spe_id where s.spe_nom = '"+secMetier+"' order by u.uti_nom ";
         this.lastQuery = stringQuery;
 		SQLQuery query = session.createSQLQuery(stringQuery);
 		ScrollableResults resultat = query.scroll();
@@ -106,7 +106,7 @@ public class DaoUtilisateur extends DaoParent
 	{
 
 		Session session = BaseSession.getNewSession();
-		String stringQuery = "SELECT distinct u.uti_identifiant_afpa ,u.uti_nom, u.uti_prenom , frm_intitule , c.con_mail , c.con_telephone from utilisateur u left join  contact c on u.uti_id = c.uti_id left join utilisateur_formation l on u.uti_id = l.utf_uti_id left join formation on l.utf_frm_id = formation.frm_id left join utilisateur_specialisation k on u.uti_id = k.uts_uti_id left join specialisation s on s.spe_id = k.uts_spe_id , role r, utilisateur_role j where u.uti_id = j.utr_uti_id and r.rol_id = j.utr_rol_id and rol_id = " +isSelected+ " and s.spe_nom = "+secMetier+" order by u.uti_nom ";
+		String stringQuery = "SELECT distinct u.uti_identifiant_afpa ,u.uti_nom, u.uti_prenom , frm_intitule , c.con_mail , c.con_telephone from utilisateur u left join  contact c on u.uti_id = c.uti_id left join utilisateur_formation l on u.uti_id = l.utf_uti_id left join formation on l.utf_frm_id = formation.frm_id left join utilisateur_specialisation k on u.uti_id = k.uts_uti_id left join specialisation s on s.spe_id = k.uts_spe_id , role r, utilisateur_role j where u.uti_id = j.utr_uti_id and r.rol_id = j.utr_rol_id and rol_id = " +isSelected+ " and s.spe_nom = '"+secMetier+"' order by u.uti_nom ";
 		this.lastQuery = stringQuery;
 		SQLQuery query = session.createSQLQuery(stringQuery);
 		ScrollableResults resultat = query.scroll();

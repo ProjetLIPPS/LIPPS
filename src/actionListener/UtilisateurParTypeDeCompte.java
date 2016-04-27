@@ -6,20 +6,18 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.border.MatteBorder;
-import javax.swing.event.TableModelListener;
-import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
-import controleur.ControleurFMain;
 import ihm.fenetre.PanelCCompte;
 import ihm.theme.ThemeLIPPS;
 import model.baseDAO.DaoFactory;
 
-public class UtilisateurParTypeDeCompte implements MouseListener
+public class UtilisateurParTypeDeCompte implements MouseListener , ActionListener
 {
 
 	private PanelCCompte panelCCompte;
@@ -33,7 +31,49 @@ public class UtilisateurParTypeDeCompte implements MouseListener
 	public void actionPerformed(ActionEvent e)
 
 	{
-
+		JComboBox source = (JComboBox) e.getSource();
+		{
+			if (source.equals(panelCCompte.getComboSecMetier())&& panelCCompte.getIsSelected() != 5 && ! panelCCompte.getComboSecMetier().getSelectedItem().toString().equals("Secteur de métier") )
+			{
+				try
+				{
+					resultatRecherche = DaoFactory.getDaoUtilisateur().readUtilisateurTypeCompteFiltre(panelCCompte.getIsSelected(), panelCCompte.getComboSecMetier().getSelectedItem().toString());
+					PanelCCompte.getTableau().setModel(new DefaultTableModel(resultatRecherche,PanelCCompte.getEnteteTableau()));
+				} catch (Exception e1)
+				{
+					
+					e1.printStackTrace();
+				}
+				
+			}
+			else if (source.equals(panelCCompte.getComboSecMetier()) && !panelCCompte.getComboSecMetier().getSelectedItem().toString().equals("Secteur de métier"))
+			{
+				try
+				{
+					resultatRecherche = DaoFactory.getDaoUtilisateur().readUtilisateurAllFiltre(panelCCompte.getComboSecMetier().getSelectedItem().toString());
+					PanelCCompte.getTableau().setModel(new DefaultTableModel(resultatRecherche,PanelCCompte.getEnteteTableau()));
+				} catch (Exception e1)
+				{
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+				
+			else
+			{
+				try
+				{
+					resultatRecherche = DaoFactory.getDaoUtilisateur().readUtilisateurAll();
+					PanelCCompte.getTableau().setModel(new DefaultTableModel(resultatRecherche,PanelCCompte.getEnteteTableau()));
+				} catch (Exception e1)
+				{
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+		}
 	}
 
 	public void setLblColor()
@@ -62,11 +102,36 @@ public class UtilisateurParTypeDeCompte implements MouseListener
 		if (source.equals(panelCCompte.getLblAdministrateur())|| source.equals(panelCCompte.getLblFormateur())||source.equals(panelCCompte.getLblStagiaire())||source.equals(panelCCompte.getLblTuteur()))
 		{
 			setLblColor();
-			panelCCompte.getLblAdministrateur().setForeground(new Color(30, 144, 255));
-			panelCCompte.getLblAdministrateur().setBorder(new MatteBorder(0, 3, 0, 0, ThemeLIPPS.BLUE));
-			setBorder();
-			panelCCompte.setIsSelected(1);
+			if (source.equals(panelCCompte.getLblAdministrateur()))
+			{
+				panelCCompte.getLblAdministrateur().setForeground(new Color(30, 144, 255));
+				panelCCompte.getLblAdministrateur().setBorder(new MatteBorder(0, 3, 0, 0, ThemeLIPPS.BLUE));
+				setBorder();
+				panelCCompte.setIsSelected(1);
+			}
+			else if (source.equals(panelCCompte.getLblFormateur()))
+			{
+				panelCCompte.getLblFormateur().setForeground(new Color(30, 144, 255));
+				panelCCompte.getLblFormateur().setBorder(new MatteBorder(0, 3, 0, 0, ThemeLIPPS.BLUE));
+				setBorder();
+				panelCCompte.setIsSelected(2);
+			}
+			else if (source.equals(panelCCompte.getLblStagiaire()))
+			{
+				panelCCompte.getLblStagiaire().setForeground(new Color(30, 144, 255));
+				panelCCompte.getLblStagiaire().setBorder(new MatteBorder(0, 3, 0, 0, ThemeLIPPS.BLUE));
+				setBorder();
+				panelCCompte.setIsSelected(3);
+			}
+			else if (source.equals(panelCCompte.getLblTuteur()))
+			{
+				panelCCompte.getLblTuteur().setForeground(new Color(30, 144, 255));
+				panelCCompte.getLblTuteur().setBorder(new MatteBorder(0, 3, 0, 0, ThemeLIPPS.BLUE));
+				setBorder();
+				panelCCompte.setIsSelected(4);
+			}
 			panelCCompte.getBarreRecherche().setText("Nom ou n°AFPA");
+			
 			if (panelCCompte.getComboSecMetier().getSelectedItem().equals("Secteur de métier"))
 			{
 				resultatRecherche = DaoFactory.getDaoUtilisateur().readUtilisateurTypeCompte(panelCCompte.getIsSelected());
@@ -77,7 +142,7 @@ public class UtilisateurParTypeDeCompte implements MouseListener
 			}
 
 		} 
-		else if ((source.equals(panelCCompte.getLblTous())&& panelCCompte.getIsSelected() != 5) || (panelCCompte.getIsSelected() == 5)  )
+		else if ((source.equals(panelCCompte.getLblTous()) || panelCCompte.getIsSelected() == 5))  
 		{
 			setLblColor();
 			panelCCompte.getLblTous().setForeground(new Color(30, 144, 255));
@@ -88,6 +153,10 @@ public class UtilisateurParTypeDeCompte implements MouseListener
 			if (panelCCompte.getComboSecMetier().getSelectedItem().equals("Secteur de métier"))
 			{
 				resultatRecherche = DaoFactory.getDaoUtilisateur().readUtilisateurAll();
+			}
+			else
+			{
+				resultatRecherche = DaoFactory.getDaoUtilisateur().readUtilisateurAllFiltre(panelCCompte.getComboSecMetier().getSelectedItem().toString());
 			}
 
 
@@ -183,5 +252,7 @@ public class UtilisateurParTypeDeCompte implements MouseListener
 		// TODO Auto-generated method stub
 
 	}
+
+	
 
 }
