@@ -103,14 +103,15 @@ public class DaoFormation extends DaoParent {
 	}
 	
 	
-	public List<Formation> readAllFormationFromUser(Integer id) throws Exception
+	public List<Formation> readAllFormationFromUser(Utilisateur utilisateur) throws Exception
 	{
-		List<Formation> listFrm = null;
+		List<Formation> listFrm = new ArrayList<Formation>();
 		
 		Session session = BaseSession.getNewSession();
 
 		Criteria criteria = session.createCriteria(UtilisateurToFormation.class);
-		criteria.add(Restrictions.eq("utilisateur", id));
+		criteria.add(Restrictions.eq("utilisateur", utilisateur));
+		
 
 		@SuppressWarnings("unchecked")
 		List list = criteria.list();

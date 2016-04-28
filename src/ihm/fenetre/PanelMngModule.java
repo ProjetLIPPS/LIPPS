@@ -27,6 +27,7 @@ import ihm.popup.CreationModule;
 import ihm.theme.ThemeLIPPS;
 import model.baseDAO.DaoFactory;
 import model.objet.Formation;
+import model.objet.Utilisateur;
 
 
 
@@ -250,29 +251,36 @@ public class PanelMngModule extends JPanel {
 		
 		String[] values = null;
 	
-//		try {
+		try {
 			
+			Utilisateur user = DaoFactory.getDaoUtilisateur().findById(Utilisateur.class, 6);
 			
-//			List<Formation> listFormation = DaoFactory.getDaoFormation().readAllFromUser(user);
-//			
-//			values = new String[listFormation.size()];
-//						
-//			for (int i = 0 ; i < listFormation.size() ; i++)
-//				{
-//							
-//				values[i] = listFormation.get(i).getIntitule();
-//				
-//				}
-//			
-//					
-//			} catch (Exception e1) {
-//			JOptionPane.showMessageDialog(null, "La liste des formations n'a pu être importée.", "Erreur connexion base de données", JOptionPane.WARNING_MESSAGE);
-//			e1.printStackTrace();
-//			}
+			List<Formation> listFormation = DaoFactory.getDaoFormation().readAllFormationFromUser(user);
+			
+			values = new String[listFormation.size()];
+						
+			for (int i = 0 ; i < listFormation.size() ; i++)
+				{
+							
+				values[i] = listFormation.get(i).getIntitule();
+				
+				}
+			
+					
+			} catch (Exception e1) {
+			JOptionPane.showMessageDialog(null, "La liste des formations n'a pu être importée.", "Erreur connexion base de données", JOptionPane.WARNING_MESSAGE);
+			e1.printStackTrace();
+			}
 		
 		Arrays.sort(values);
 				
 		this.listFormation.setListData(values);
+		
+		System.out.println("debut for");
+		for (int i=0; i<values.length; i++)
+		{
+			System.out.println(values[i]);
+		}
 		
 	
 	}
