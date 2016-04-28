@@ -37,6 +37,7 @@ import model.baseDAO.DaoFactory;
 
 import java.awt.Component;
 import javax.swing.JScrollPane;
+import javax.swing.ListSelectionModel;
 
 public class PanelCCompte extends JPanel
 {
@@ -282,6 +283,7 @@ public class PanelCCompte extends JPanel
 		panelTableau.setLayout(new BorderLayout(0, 0));
 
 		tableau = new JTable();
+		tableau.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tableau.setForeground(Color.DARK_GRAY);
 		tableau.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		tableau.setShowHorizontalLines(false);
