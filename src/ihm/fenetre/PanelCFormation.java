@@ -46,7 +46,7 @@ public class PanelCFormation extends JPanel
 	private JTextArea textDebouche;
 	private JList<String> list = new JList<String>(); 
 	
-	private PanelCFormationListener panelCFormationListSelectionListener = new PanelCFormationListener(this);
+	private PanelCFormationListener panelCFormationListener = new PanelCFormationListener(this);
 
 	
 	/**
@@ -97,12 +97,12 @@ public class PanelCFormation extends JPanel
 		list.setForeground(Color.WHITE);
 		list.setBackground(ThemeLIPPS.BLUE_DARK);
 		list.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, ThemeLIPPS.FONT_SIZE_DEFAULT));
-		//initList();
-				
-				
-		list.addListSelectionListener(panelCFormationListSelectionListener);
-		panelJlist.add(list, BorderLayout.CENTER);
 		
+		initList();
+				
+				
+		list.addListSelectionListener(panelCFormationListener);
+				
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(null);
 		scrollPane.setOpaque(false);
@@ -321,7 +321,7 @@ public class PanelCFormation extends JPanel
 		scrollPaneDeb.setViewportView(textDebouche);
 		
 		Component verticalStrut = Box.createVerticalStrut(20);
-		verticalStrut.setPreferredSize(new Dimension(0, 15));
+		verticalStrut.setPreferredSize(new Dimension(0, 25));
 		panelBox.add(verticalStrut);
 		
 		JPanel panelBtn_1 = new JPanel();
@@ -344,37 +344,37 @@ public class PanelCFormation extends JPanel
 
 	}
 	
-/*public void initList() {
+public void initList() {
 		
-		String[] values = null;
+	String[] values = null;
+	
+	try {
 		
-		try {
-			
-			// simulation objet user actuellement loggé
-			Utilisateur user = DaoFactory.getDaoUtilisateur().findById(Utilisateur.class, 1);
-			
-			List<Formation> listFormation = (List) DaoFactory.getDaoFormation().readAllFormationFromUser(user.getId());
-			
-			values = new String[listFormation.size()];
-						
-			for (int i = 0 ; i < listFormation.size() ; i++)
-				{
-				
-				values[i] = listFormation.get(i).getIntitule();
-				
-				}
-			
+		Utilisateur user = DaoFactory.getDaoUtilisateur().findById(Utilisateur.class, 3);
+		
+		List<Formation> listFormation = DaoFactory.getDaoFormation().readAllFormationFromUser(user);
+		
+		values = new String[listFormation.size()];
 					
-			} catch (Exception e1) {
-			JOptionPane.showMessageDialog(null, "La liste des formations n'a pu être importée.", "Erreur connexion base de données", JOptionPane.WARNING_MESSAGE);
-			e1.printStackTrace();
+		for (int i = 0 ; i < listFormation.size() ; i++)
+			{
+					
+			System.out.println(listFormation.get(i).getIntitule());
+			values[i] = listFormation.get(i).getIntitule();
+			
 			}
 		
-		Arrays.sort(values);
 				
-		this.list.setListData(values);
+		} catch (Exception e1) {
+		JOptionPane.showMessageDialog(null, "La liste des formations n'a pu être importée.", "Erreur connexion base de données", JOptionPane.WARNING_MESSAGE);
+		e1.printStackTrace();
+		}
 	
-	}*/
+	Arrays.sort(values);
+			
+	this.list.setListData(values);
+	
+	}
 
 
 	public JTextField getTxtIntitule() {

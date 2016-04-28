@@ -8,8 +8,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.List;
-
-import javax.swing.AbstractListModel;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -237,11 +235,11 @@ public class PanelMngModule extends JPanel {
 		btnCrerNouveauModule.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				CreationModule newModule = new CreationModule();	
-				newModule.setVisible(true);
-			}
+				}
 		});
 		
 	}
+	
 	
 	public JPanel getPanelAllModList() {
 		return panelAllModList;
@@ -253,7 +251,7 @@ public class PanelMngModule extends JPanel {
 	
 		try {
 			
-			Utilisateur user = DaoFactory.getDaoUtilisateur().findById(Utilisateur.class, 6);
+			Utilisateur user = DaoFactory.getDaoUtilisateur().findById(Utilisateur.class, 3);
 			
 			List<Formation> listFormation = DaoFactory.getDaoFormation().readAllFormationFromUser(user);
 			
@@ -261,7 +259,7 @@ public class PanelMngModule extends JPanel {
 						
 			for (int i = 0 ; i < listFormation.size() ; i++)
 				{
-							
+				System.out.println(listFormation.get(i).getIntitule());			
 				values[i] = listFormation.get(i).getIntitule();
 				
 				}
@@ -275,14 +273,14 @@ public class PanelMngModule extends JPanel {
 		Arrays.sort(values);
 				
 		this.listFormation.setListData(values);
-		
-		System.out.println("debut for");
-		for (int i=0; i<values.length; i++)
-		{
-			System.out.println(values[i]);
-		}
-		
+				
 	
+	}
+	
+	public void replaceAllModList(JPanel newList) {
+	
+		this.panelAllModList = newList;	
+		
 	}
 	
 }

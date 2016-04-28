@@ -1,15 +1,11 @@
 package controleur;
 
-import java.awt.Container;
-
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
-
+import ihm.fenetre.PanelCFormation;
 import ihm.fenetre.PanelMngModele;
 import model.baseDAO.DaoFactory;
 import model.objet.Formation;
 
-public class MngModelReadWrite {
+public class MngFormationRewriteInfo {
 
 	
 		
@@ -27,7 +23,7 @@ public class MngModelReadWrite {
 	
 	public static void showModelInfo(PanelMngModele panel, String intituleFormation) {
 		
-		Formation formation = null;
+		Formation formation = new Formation();
 		
 		
 			
@@ -47,6 +43,28 @@ public class MngModelReadWrite {
 			panel.getTxtDebouche().setText(formation.getDebouche());
 		}
 	
+public static void showFormationInfo(PanelCFormation panelCFormation, String intituleFormation) {
+		
+		Formation formation = new Formation();
+		
+				try {
+				
+				formation= (Formation) DaoFactory.getDaoFormation().findFormationByIntitule(intituleFormation);
+				
+				} catch (Exception e) {
+					
+					e.printStackTrace();
+				}
+			
+				panelCFormation.getTxtIntitule().setText(formation.getIntitule());
+				panelCFormation.getTxtDuree().setText(formation.getDuree().toString());
+				panelCFormation.getTxtGrn().setText(formation.getGrn().toString());
+				panelCFormation.getTxtNbStage().setText(formation.getNombreStage().toString());
+				panelCFormation.getTxtOffre().setText(formation.getOffre().toString());
+				panelCFormation.getTxtSpe().setText(formation.getSpecialisation().getNom());
+				//panelCFormation.getTextCcp().setText(formation.getCcp);
+				panelCFormation.getTextDebouche().setText(formation.getDebouche());
+		}
 	
 	
 }

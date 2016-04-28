@@ -4,6 +4,7 @@ import javax.swing.JList;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import controleur.MngFormationRewriteInfo;
 import ihm.fenetre.PanelCFormation;
 
 public class PanelCFormationListener implements ListSelectionListener {
@@ -19,20 +20,16 @@ public class PanelCFormationListener implements ListSelectionListener {
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
 		
-		JList selectList = (JList) e.getSource();
+		JList selection = (JList) e.getSource();
+		String selectedFormation = selection.getSelectedValue().toString();
 		
-		String formSelected = selectList.getSelectedValue().toString();
+		if (selection.getSelectedValue() != null)
+		{	
 		
-		// TODO recup String selectionné dans la list et va chercher objet formation dans BDD
+			MngFormationRewriteInfo.showFormationInfo(panelCFormation, selectedFormation);
+		}
 		
-		panelCFormation.getTxtIntitule().setText(null);
-		panelCFormation.getTxtDuree().setText(null);
-		panelCFormation.getTxtGrn().setText(null);
-		panelCFormation.getTxtNbStage().setText(null);
-		panelCFormation.getTxtOffre().setText(null);
-		panelCFormation.getTxtSpe().setText(null);
-		panelCFormation.getTextCcp().setText(null);
-		panelCFormation.getTextDebouche().setText(null);
+
 
 		
 		

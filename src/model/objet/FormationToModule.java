@@ -29,7 +29,7 @@ public class FormationToModule implements Serializable {
 	
 	
 	@Id
-	@ManyToOne (fetch = FetchType.LAZY)
+	@ManyToOne (fetch = FetchType.EAGER)
 	@JoinColumn (name = "fmo_mod_id", referencedColumnName = "mod_id")
 	@NotNull
 	private Module module = null;

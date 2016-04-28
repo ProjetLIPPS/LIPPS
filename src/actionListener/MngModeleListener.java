@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import controleur.MngModelReadWrite;
+import controleur.MngFormationRewriteInfo;
 import ihm.fenetre.PanelMngModele;
 
 public class MngModeleListener implements ActionListener, ListSelectionListener  {
@@ -28,14 +28,13 @@ public class MngModeleListener implements ActionListener, ListSelectionListener 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		//JButton delete = (JButton) e.getSource();
-		 
+				 
 			int answer = JOptionPane.showConfirmDialog(null, "Etes-vous sûr?");
 			
 			if (answer == JOptionPane.YES_OPTION) {
 			try {
 				
-				MngModelReadWrite.suppressionModele(this.panelMngModel);
+				MngFormationRewriteInfo.suppressionModele(this.panelMngModel);
 				JOptionPane.showMessageDialog(null, "Modèle supprimé avec succès.");
 				
 			} catch (Exception e1) {
@@ -62,7 +61,7 @@ public class MngModeleListener implements ActionListener, ListSelectionListener 
 		if (selection.getSelectedValue() != null)
 		{	
 		String selectedFormation = selection.getSelectedValue().toString();
-		MngModelReadWrite.showModelInfo(panelMngModel, selectedFormation);
+		MngFormationRewriteInfo.showModelInfo(panelMngModel, selectedFormation);
 		}
 
 	}

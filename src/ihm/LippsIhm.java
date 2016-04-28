@@ -27,7 +27,7 @@ import ihm.theme.ThemeLIPPS;
 public class LippsIhm extends JFrame {
 	
 	private JPanel contentPane;
-	private JPanel panelCenterFormation = new PanelCFormation();
+	private JPanel panelCenterFormation = new PanelMngModule();
 	private JPanel panelCenterCompte = new PanelCCompte();
 	private JPanel panelCenterMain = new JPanel();
 	private JPanel contentPaneCenter;

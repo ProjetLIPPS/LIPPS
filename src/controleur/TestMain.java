@@ -8,6 +8,7 @@ import org.hibernate.cfg.Configuration;
 
 import ihm.LippsIhm;
 import model.baseDAO.DaoFactory;
+import model.objet.Formation;
 import model.objet.Utilisateur;
 
 
@@ -31,6 +32,7 @@ public class TestMain {
 //			DaoFactory.getDaoUtilisateur().save(user3);
 			
 			
+					
 			new LippsIhm();
 			
 			
