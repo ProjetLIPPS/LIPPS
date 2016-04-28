@@ -22,7 +22,7 @@ public class Role extends DataParent {
 	@Column(name = NOM_ID)
 	private Integer id = null;
 
-	@Column(name = "role_type")
+	@Column(name = "rol_type")
 	private String type = null;
 
 	@OneToMany(mappedBy = "role", fetch = FetchType.LAZY)

@@ -24,6 +24,7 @@ public class FocusListeners implements FocusListener
 		if (source.getText().equals("Nom ou n°AFPA") )
 				{
 					panelCCompte.getBarreRecherche().setText("");
+					
 				}
 		
 	}
@@ -36,6 +37,7 @@ public class FocusListeners implements FocusListener
 		if (source.getText().equals("") )
 				{
 					panelCCompte.getBarreRecherche().setText("Nom ou n°AFPA");
+					
 				}
 		
 	}

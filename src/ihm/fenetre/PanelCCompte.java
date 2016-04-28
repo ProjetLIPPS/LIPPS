@@ -53,7 +53,7 @@ public class PanelCCompte extends JPanel
 	private JLabel lblTuteur = new JLabel(" Tuteur");
 	private JLabel lblTous = new JLabel("Tous");
 	private static String[] enteteTableau = new String[]
-	{ "Identifiant AFPA", "Nom", "Prenom", "Formation", "Email", "Numéro Téléphone" };
+	{ "Identifiant AFPA", "Nom", "Prenom","Rôle", "Formation", "Email", "Numéro Téléphone" };
 	private DefaultTableModel modeleTableau = new DefaultTableModel(new Object[][]
 	{}, enteteTableau);
 	private Integer isSelected = 5;
@@ -285,7 +285,6 @@ public class PanelCCompte extends JPanel
 		tableau = new JTable();
 		tableau.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tableau.setForeground(Color.DARK_GRAY);
-		tableau.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		tableau.setShowHorizontalLines(false);
 		tableau.setShowGrid(false);
 		tableau.setRowHeight(23);
@@ -305,7 +304,7 @@ public class PanelCCompte extends JPanel
 		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
 		centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
 
-		for (int i = 0; i < 6; i++)
+		for (int i = 0; i < 7; i++)
 		{
 			tableau.getColumnModel().getColumn(i).setResizable(false);
 			tableau.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
@@ -315,7 +314,7 @@ public class PanelCCompte extends JPanel
 		DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
 		renderer.setHorizontalAlignment(JLabel.LEFT);
 
-		for (int i = 0; i < 6; i++)
+		for (int i = 0; i < 7; i++)
 		{
 			tableau.getColumnModel().getColumn(i).setResizable(false);
 			tableau.getColumnModel().getColumn(i).setCellRenderer(renderer);

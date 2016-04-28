@@ -1,6 +1,6 @@
 package actionListener;
 
-import java.awt.Toolkit;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -35,7 +35,10 @@ public class RechercherListener implements MouseListener, KeyListener
 			Boolean enterKeyFalse = false;
 			try
 			{
+				panelCCompte.getBarreRecherche().setFocusable(false);
 				afficheResultatRecherche(btnPressed, enterKeyFalse);
+				panelCCompte.getBarreRecherche().setFocusable(true);
+				
 			} catch (Exception e1)
 			{
 				// TODO Auto-generated catch block
@@ -79,7 +82,7 @@ public class RechercherListener implements MouseListener, KeyListener
 		if ((isButtonPressed || isEnterKey) && (!panelCCompte.getBarreRecherche().getText().equals("")
 				&& !panelCCompte.getBarreRecherche().getText().equals("Nom ou n°AFPA")))
 		{
-			Toolkit.getDefaultToolkit().beep();
+			
 			Character testIsNumeroOuString = panelCCompte.getBarreRecherche().getText().charAt(0);
 			String texteBarreRecherche = panelCCompte.getBarreRecherche().getText();
 			panelCCompte.getBtnRecherche().doClick();
@@ -134,12 +137,7 @@ public class RechercherListener implements MouseListener, KeyListener
 				}
 			}
 			panelCCompte.getTableau().setModel(new DefaultTableModel(resultatRecherche, panelCCompte.getEnteteTableau()));
-		} /*else if (panelCCompte.getBarreRecherche().getText().equals(""))
-		{
-			Toolkit.getDefaultToolkit().beep();
-			resultatRecherche = DaoFactory.getDaoUtilisateur().readUtilisateur(panelCCompte.getIsSelected());
-			panelCCompte.getTableau().setModel(new DefaultTableModel(resultatRecherche, panelCCompte.getEnteteTableau()));
-		}*/
+		}
 		panelCCompte.getBarreRecherche().setText("Nom ou n°AFPA");
 		
 	}
@@ -153,8 +151,11 @@ public class RechercherListener implements MouseListener, KeyListener
 			Boolean btnRechercheFalse = false;
 			try
 			{
-
+				panelCCompte.getBarreRecherche().setFocusable(false);
+				
 				afficheResultatRecherche(btnRechercheFalse, enterKey);
+				panelCCompte.getBarreRecherche().setFocusable(true);
+				
 			} catch (Exception e1)
 			{
 				// TODO Auto-generated catch block
