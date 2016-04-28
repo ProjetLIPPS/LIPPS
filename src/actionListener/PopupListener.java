@@ -4,8 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.swing.JButton;
@@ -38,13 +36,12 @@ import model.objet.UtilisateurToSpecialisation;
 public class PopupListener implements ActionListener, ListSelectionListener, FocusListener 
 {
 
-	private PanelCCompte panelCcompte ;
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
 		JButton source = (JButton)e.getSource();
 		
-		int confirmation = JOptionPane.showConfirmDialog(source.getRootPane(), "Verifiez bien tout les champs avant de valider, vous ne pourrez plus les modifier ensuite.\rContinuer ?", "Confirmation", JOptionPane.YES_NO_OPTION);
+		int confirmation = JOptionPane.showConfirmDialog(source.getRootPane(), "Verifiez bien tout les champs avant de valider, vous ne pourrez plus les modifier ensuite. Continuer ?", "Confirmation", JOptionPane.YES_NO_OPTION);
 
 		if (confirmation == JOptionPane.YES_OPTION)
 		{
@@ -112,7 +109,38 @@ public class PopupListener implements ActionListener, ListSelectionListener, Foc
 	
 	private void creerFormation (CreaForm creaFormPop)
 	{
-		creaFormPop.dispose();
+		Formation modelF = new Formation();
+		
+		try 
+		{
+			modelF = DaoFactory.getDaoFormation().findFormationByIntitule(creaFormPop.getListModele().getSelectedValue());
+		} 
+		catch (Exception e)
+		{
+			
+			e.printStackTrace();
+		}
+		
+		Specialisation spe = modelF.getSpecialisation();
+		String ccp = creaFormPop.getTextPaneCCP().getText();
+		Integer noOffre = Integer.parseInt(creaFormPop.getTextFieldNoOffre().getText());
+		Integer nbStage = Integer.parseInt(creaFormPop.getTextField_nb_stage().getText());
+		Date dateDu = creaFormPop.getDateChooserDu().getDate();
+		Date dateAu = creaFormPop.getDateChooserAu().getDate();
+		
+		Formation form = new Formation(null, modelF.getGrn(), noOffre, modelF.getIntitule(), modelF.getDuree(), modelF.getDebouche(), ccp, nbStage, dateDu, dateAu, spe, false);
+		
+		try 
+		{
+			DaoFactory.getDaoFormation().save(form);
+			creaFormPop.dispose();
+		} 
+		catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	
 	
@@ -128,18 +156,8 @@ public class PopupListener implements ActionListener, ListSelectionListener, Foc
 		String [] formations = creaComptePop.getFormations();
 		Role role = DaoFactory.getDaoRole().findByName(type);
 		
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		Date date = new Date();
-		try 
-		{
-			date = dateFormat.parse(creaComptePop.getTextField_DteNaissance().getText());
-		} 
-		catch (ParseException e) 
-		{
-			
-			e.printStackTrace();
-		}
 		
+		Date date = creaComptePop.getTextField_DteNaissance().getDate();
 		Utilisateur user = new Utilisateur(null, nom, prenom, date, NoAFPA, null, null, null, null) ;
 		
 		
@@ -184,7 +202,7 @@ public class PopupListener implements ActionListener, ListSelectionListener, Foc
 		try 
 		{
 			specialisation = DaoFactory.getDaoSpecialisation().findByName(specialite);
-			Formation frm = new Formation(null, noGRN, null, intitule, duree, emploisAccessibles, null, null, null, specialisation, null, true);
+			Formation frm = new Formation(null, noGRN, null, intitule, duree, emploisAccessibles, null, null, null, null, specialisation, true);
 			DaoFactory.getDaoFormation().save(frm);
 			creaModelePop.dispose();
 		} 
@@ -200,6 +218,7 @@ public class PopupListener implements ActionListener, ListSelectionListener, Foc
 	
 	private void creerModule (CreationModule creaModulePop)
 	{
+		// TODO : la methode
 		creaModulePop.dispose();
 	}
 

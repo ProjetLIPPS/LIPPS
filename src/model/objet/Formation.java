@@ -1,6 +1,7 @@
 package model.objet;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -17,6 +18,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
+import org.hibernate.annotations.Type;
 
 
 
@@ -51,7 +54,7 @@ public class Formation extends DataParent {
 	private String debouche = null;
 
 	@Column(name = "frm_nombre_ccp")
-	private Integer nombreCCP = null;
+	private String ccp = null;
 
 	@Column(name = "frm_nombre_stage")
 	private Integer nombreStage = null;
@@ -60,6 +63,14 @@ public class Formation extends DataParent {
 	@Column(name = "frm_model")
 	@NotNull
 	private boolean isModel;
+	
+	@Type(type = "date")
+	@Column(name = "frm_date_debut")
+	private Date dateDebut = null;
+	
+	@Type(type = "date")
+	@Column(name = "frm_date_fin")
+	private Date dateFin = null;
 
 	@OneToMany(mappedBy = "formation", fetch = FetchType.LAZY)
 	private List<UtilisateurToFormation> utilisateurToFormation = null;
@@ -83,8 +94,8 @@ public class Formation extends DataParent {
 
 
 	public Formation(Integer id, Integer grn, Integer offre, String intitule, Integer duree, String debouche,
-			Integer nombreCCP, Integer nombreStage, List<UtilisateurToFormation> utilisateurToFormation,
-			Specialisation specialisation, List<FormationToModule> formationToModule, boolean isModel) 
+			String ccp, Integer nombreStage, Date dateDebut, Date dateFin,
+			Specialisation specialisation, boolean isModel) 
 	{
 		super();
 		this.id = id;
@@ -93,11 +104,11 @@ public class Formation extends DataParent {
 		this.intitule = intitule;
 		this.duree = duree;
 		this.debouche = debouche;
-		this.nombreCCP = nombreCCP;
+		this.ccp = ccp;
 		this.nombreStage = nombreStage;
-		this.utilisateurToFormation = utilisateurToFormation;
+		this.dateDebut = dateDebut;
+		this.dateFin = dateFin;
 		this.specialisation = specialisation;
-		this.formationToModule = formationToModule;
 		this.isModel = isModel;
 	}
 
@@ -156,15 +167,6 @@ public class Formation extends DataParent {
 	}
 
 
-	public Integer getNombreCCP() {
-		return nombreCCP;
-	}
-
-
-	public void setNombreCCP(Integer nombreCCP) {
-		this.nombreCCP = nombreCCP;
-	}
-
 
 	public Integer getNombreStage() {
 		return nombreStage;
@@ -212,12 +214,9 @@ public class Formation extends DataParent {
 
 
 
-
 	public boolean isModel() {
 		return isModel;
 	}
-
-
 
 
 	public void setModel(boolean isModel) {
@@ -225,7 +224,36 @@ public class Formation extends DataParent {
 	}
 
 
-	
+	public String getCcp() {
+		return ccp;
+	}
+
+
+	public void setCcp(String ccp) {
+		this.ccp = ccp;
+	}
+
+
+	public Date getDateDebut() {
+		return dateDebut;
+	}
+
+
+	public void setDateDebut(Date dateDebut) {
+		this.dateDebut = dateDebut;
+	}
+
+
+	public Date getDateFin() {
+		return dateFin;
+	}
+
+
+	public void setDateFin(Date dateFin) {
+		this.dateFin = dateFin;
+	}
+
+
 
 
 }

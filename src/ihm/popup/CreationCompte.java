@@ -19,22 +19,23 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JRadioButton;
-import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
+import com.toedter.calendar.JDateChooser;
 
 import actionListener.PopupListener;
 import ihm.theme.ThemeLIPPS;
 import model.baseDAO.DaoFactory;
 import model.objet.Formation;
 import model.objet.Specialisation;
-import javax.swing.JScrollPane;
-import javax.swing.border.EmptyBorder;
 
 public class CreationCompte extends JDialog {
 	private JTextField textField_Prenom;
 	private JTextField textField_Nom;
-	private JTextField textField_DteNaissance;
+	private JDateChooser textField_DteNaissance;
 	private JTextField textField_Email;
 	private JTextField textField_NoAFPA;
 	private ButtonGroup groupRadioType;
@@ -112,11 +113,11 @@ public class CreationCompte extends JDialog {
 		lblEmail.setForeground(Color.WHITE);
 		lblEmail.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
 		
-		textField_DteNaissance = new JTextField();
-		textField_DteNaissance.setBounds(229, 543, 101, 27);
+		textField_DteNaissance = new JDateChooser();
+		textField_DteNaissance.setBounds(229, 543, 135, 27);
 		getContentPane().add(textField_DteNaissance);
 		textField_DteNaissance.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
-		textField_DteNaissance.setColumns(10);
+		//textField_DteNaissance.setColumns(10);
 		
 		textField_Email = new JTextField();
 		textField_Email.setBounds(229, 498, 277, 27);
@@ -247,7 +248,7 @@ public class CreationCompte extends JDialog {
 		jListForma.setBackground(Color.WHITE);
 		jListForma.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
 		
-		btnAjouter = new JButton("↓  Ajouter  ↓");
+		btnAjouter = new JButton("↓  Ajouter");
 		btnAjouter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
@@ -257,7 +258,7 @@ public class CreationCompte extends JDialog {
 		btnAjouter.setFocusPainted(false);
 		btnAjouter.setBackground(Color.WHITE);
 		btnAjouter.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_BUTTON));
-		btnAjouter.setBounds(281, 238, 158, 23);
+		btnAjouter.setBounds(229, 238, 124, 23);
 		getContentPane().add(btnAjouter);
 		
 		JLabel lblFormationSelectionne = new JLabel("Formation(s)");
@@ -272,7 +273,7 @@ public class CreationCompte extends JDialog {
 		lblSelectionnes.setBounds(83, 301, 135, 21);
 		getContentPane().add(lblSelectionnes);
 		
-		JButton btnSupprimer = new JButton("Supprimer");
+		JButton btnSupprimer = new JButton("Supprimer  ↑");
 		btnSupprimer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
@@ -282,7 +283,7 @@ public class CreationCompte extends JDialog {
 		btnSupprimer.setFocusPainted(false);
 		btnSupprimer.setBackground(Color.WHITE);
 		btnSupprimer.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_BUTTON));
-		btnSupprimer.setBounds(512, 276, 115, 27);
+		btnSupprimer.setBounds(381, 238, 124, 23);
 		getContentPane().add(btnSupprimer);
 		setLocationRelativeTo(null);
 		
@@ -399,7 +400,7 @@ public class CreationCompte extends JDialog {
 	{
 		return textField_Email;
 	}
-	public JTextField getTextField_DteNaissance() 
+	public JDateChooser getTextField_DteNaissance() 
 	{
 		return textField_DteNaissance;
 	}
