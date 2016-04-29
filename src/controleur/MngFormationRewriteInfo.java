@@ -13,10 +13,11 @@ public class MngFormationRewriteInfo {
 					
 		String modelSelected = panelMngModel.getList().getSelectedValue();
 		
-		DaoFactory.getDaoFormation().delete((Formation) DaoFactory.getDaoFormation().findFormationByIntitule(modelSelected));
+		DaoFactory.getDaoFormation().delete((Formation) DaoFactory.getDaoFormation().findModeleByIntitule(modelSelected));
 		
 		panelMngModel.initList();
 		panelMngModel.getList().clearSelection();		
+		
 	}
 	
 	

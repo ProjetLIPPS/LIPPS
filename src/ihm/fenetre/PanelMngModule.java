@@ -36,6 +36,7 @@ public class PanelMngModule extends JPanel {
 	
 	private MngModuleListener mngModuleListener;
 	private JPanel panelAllModList = new JPanel();
+	private JPanel panelLeft = new JPanel();
 	private JList<String> listFormation = new JList<String>();
 	
 	
@@ -88,14 +89,13 @@ public class PanelMngModule extends JPanel {
 		listFormation.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listFormation.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, ThemeLIPPS.FONT_SIZE_BUTTON));
 		listFormation.addListSelectionListener(mngModuleListener);
-		
 		initListFormation();
 		
 		panelMyForm.add(listFormation, BorderLayout.CENTER);
 		
 		// PANELLEFT en borderlayout contient panels existingmod  pour le label (north) et allmodlist (center) pour afficher les modules (via des panelmngmodulerowmod)
 		
-		JPanel panelLeft = new JPanel();
+		panelLeft = new JPanel();
 		panelLeft.setOpaque(false);
 		panelLeft.setBackground(ThemeLIPPS.BLUE_DARK);
 		panelBoxTrio.add(panelLeft);
@@ -251,7 +251,7 @@ public class PanelMngModule extends JPanel {
 	
 		try {
 			
-			Utilisateur user = DaoFactory.getDaoUtilisateur().findById(Utilisateur.class, 3);
+			Utilisateur user = DaoFactory.getDaoUtilisateur().findById(Utilisateur.class, 2);
 			
 			List<Formation> listFormation = DaoFactory.getDaoFormation().readAllFormationFromUser(user);
 			
@@ -282,5 +282,18 @@ public class PanelMngModule extends JPanel {
 		this.panelAllModList = newList;	
 		
 	}
+
+
+	public JPanel getPanelLeft() {
+		return panelLeft;
+	}
+	
+	public void setPanelLeft(JPanel panelAllModList) {
+		this.panelAllModList = panelAllModList;
+	}
+	
+	
+	
+	
 	
 }

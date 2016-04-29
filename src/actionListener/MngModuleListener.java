@@ -24,7 +24,7 @@ public class MngModuleListener implements ListSelectionListener {
 		JList selection = (JList) e.getSource();
 		String selectedFormation = selection.getSelectedValue().toString();
 		
-		MngModuleCtrl.moduleRowDisplay(selectedFormation, panelMngModule);
+		MngModuleCtrl.myModuleRowDisplay(selectedFormation, panelMngModule);
 		
 
 	
