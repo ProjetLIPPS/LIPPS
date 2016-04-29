@@ -23,13 +23,12 @@ public class DaoFormation extends DaoParent {
 	{
 
 		Session session = BaseSession.getNewSession();
-		
-		Query q = session.createQuery("from Formation where intitule= :intitule");
-		
-		q.setString("intitule", intitule);
-		
-		
-		Formation result = (Formation) q.uniqueResult();
+
+		Criteria criteria = session.createCriteria(Formation.class);
+		criteria.add(Restrictions.eq("intitule", intitule));
+		criteria.add(Restrictions.eq("isModel", false));
+
+		Formation result = (Formation) criteria.uniqueResult();
 
 		session.close();
 

@@ -53,7 +53,7 @@ public class Formation extends DataParent {
 	@NotNull
 	private String debouche = null;
 
-	@Column(name = "frm_nombre_ccp")
+	@Column(name = "frm_ccp")
 	private String ccp = null;
 
 	@Column(name = "frm_nombre_stage")
