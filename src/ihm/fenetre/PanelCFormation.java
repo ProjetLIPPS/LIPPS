@@ -104,7 +104,7 @@ public class PanelCFormation extends JPanel
 		list.addListSelectionListener(panelCFormationListener);
 				
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBorder(null);
+		scrollPane.setBorder(new EmptyBorder(0, 0, 0, 0));
 		scrollPane.setOpaque(false);
 		scrollPane.setViewportView(list);
 		panelJlist.add(scrollPane, BorderLayout.NORTH);
@@ -350,7 +350,7 @@ public void initList() {
 	
 	try {
 		
-		Utilisateur user = DaoFactory.getDaoUtilisateur().findById(Utilisateur.class, 3);
+		Utilisateur user = DaoFactory.getDaoUtilisateur().findById(Utilisateur.class, 1);
 		
 		List<Formation> listFormation = DaoFactory.getDaoFormation().readAllFormationFromUser(user);
 		

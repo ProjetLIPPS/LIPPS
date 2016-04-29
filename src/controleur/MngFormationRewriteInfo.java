@@ -29,8 +29,9 @@ public class MngFormationRewriteInfo {
 			
 			try {
 				
-				formation= (Formation) DaoFactory.getDaoFormation().findFormationByIntitule(intituleFormation);
+				formation= (Formation) DaoFactory.getDaoFormation().findModeleByIntitule(intituleFormation);
 				
+				System.out.println(formation.getIntitule());
 				} catch (Exception e) {
 					
 					e.printStackTrace();
@@ -62,7 +63,7 @@ public static void showFormationInfo(PanelCFormation panelCFormation, String int
 				panelCFormation.getTxtNbStage().setText(formation.getNombreStage().toString());
 				panelCFormation.getTxtOffre().setText(formation.getOffre().toString());
 				panelCFormation.getTxtSpe().setText(formation.getSpecialisation().getNom());
-				//panelCFormation.getTextCcp().setText(formation.getCcp);
+				panelCFormation.getTextCcp().setText(formation.getCcp());
 				panelCFormation.getTextDebouche().setText(formation.getDebouche());
 		}
 	

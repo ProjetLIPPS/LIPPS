@@ -35,6 +35,22 @@ public class DaoFormation extends DaoParent {
 		return result;
 	}
 	
+	public Formation findModeleByIntitule (String intitule) throws Exception
+	{
+
+		Session session = BaseSession.getNewSession();
+
+		Criteria criteria = session.createCriteria(Formation.class);
+		criteria.add(Restrictions.eq("intitule", intitule));
+		criteria.add(Restrictions.eq("isModel", true));
+
+		Formation result = (Formation) criteria.uniqueResult();
+
+		session.close();
+
+		return result;
+	}
+	
 	
 	public Collection<Formation> findFormationBySpecialisation (Specialisation spe) throws Exception
 	{

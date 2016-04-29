@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.List;
+
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -20,7 +21,6 @@ import javax.swing.SwingConstants;
 import javax.swing.border.MatteBorder;
 
 import actionListener.MngModuleListener;
-import controleur.RenvoiListeFormation;
 import ihm.popup.CreationModule;
 import ihm.theme.ThemeLIPPS;
 import model.baseDAO.DaoFactory;
@@ -234,7 +234,7 @@ public class PanelMngModule extends JPanel {
 		
 		btnCrerNouveauModule.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CreationModule newModule = new CreationModule();	
+				 new CreationModule();	
 				}
 		});
 		

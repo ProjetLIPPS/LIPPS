@@ -82,7 +82,7 @@ public class PopupListener implements ActionListener, ListSelectionListener, Foc
 		
 		try 
 		{
-			currentFrm = DaoFactory.getDaoFormation().findFormationByIntitule(jliste.getSelectedValue());
+			currentFrm = DaoFactory.getDaoFormation().findModeleByIntitule(jliste.getSelectedValue());
 		} 
 		catch (Exception ex)
 		{
@@ -113,7 +113,7 @@ public class PopupListener implements ActionListener, ListSelectionListener, Foc
 		
 		try 
 		{
-			modelF = DaoFactory.getDaoFormation().findFormationByIntitule(creaFormPop.getListModele().getSelectedValue());
+			modelF = DaoFactory.getDaoFormation().findModeleByIntitule(creaFormPop.getListModele().getSelectedValue());
 		} 
 		catch (Exception e)
 		{
