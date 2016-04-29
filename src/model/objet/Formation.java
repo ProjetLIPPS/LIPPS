@@ -80,7 +80,7 @@ public class Formation extends DataParent {
 	@NotNull
 	private Specialisation specialisation = null;
 
-	@OneToMany(mappedBy = "formation", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "formation", fetch = FetchType.EAGER)
 	private List<FormationToModule> formationToModule = null;
 
 	
