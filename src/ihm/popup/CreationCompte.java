@@ -64,7 +64,7 @@ public class CreationCompte extends JDialog {
 		
 		groupRadioType = new ButtonGroup();
 		
-		JLabel lblEditionDeCompte = new JLabel("Edition de compte");
+		JLabel lblEditionDeCompte = new JLabel("Création d'un compte");
 		lblEditionDeCompte.setBounds(163, 28, 361, 37);
 		getContentPane().add(lblEditionDeCompte);
 		lblEditionDeCompte.setForeground(Color.WHITE);
