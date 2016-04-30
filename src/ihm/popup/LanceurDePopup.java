@@ -18,6 +18,7 @@ import javax.swing.border.EmptyBorder;
 
 import actionListener.PopupListener;
 import model.baseDAO.DaoFactory;
+import model.objet.Formation;
 import model.objet.Utilisateur;
 
 public class LanceurDePopup extends JFrame
@@ -107,7 +108,16 @@ public class LanceurDePopup extends JFrame
 		btnCreationModule.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				JDialog pop = new CreationModule();
+				Formation formation = new Formation();
+				try
+				{
+					formation = DaoFactory.getDaoFormation().findById(Formation.class, 2);
+				}
+				catch (Exception e1)
+				{
+					e1.printStackTrace();
+				}
+				JDialog pop = new CreationModule(formation);
 			}
 		});
 		btnCreationModule.setAlignmentX(Component.CENTER_ALIGNMENT);

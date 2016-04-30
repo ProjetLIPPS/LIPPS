@@ -21,12 +21,18 @@ import ihm.popup.CreationModele;
 import ihm.popup.CreationModule;
 import ihm.popup.RowSequence;
 import model.baseDAO.DaoFactory;
+import model.objet.AnnexeLivret;
 import model.objet.Contact;
 import model.objet.Formation;
+import model.objet.FormationToModule;
+import model.objet.Livret;
 import model.objet.Module;
+import model.objet.ProjetProLivret;
+import model.objet.ResultatParcoursLivret;
 import model.objet.Role;
 import model.objet.Sequence;
 import model.objet.Specialisation;
+import model.objet.SuiviLivret;
 import model.objet.Utilisateur;
 import model.objet.UtilisateurToFormation;
 import model.objet.UtilisateurToRole;
@@ -189,7 +195,34 @@ public class PopupListener implements ActionListener, ListSelectionListener, Foc
 			e.printStackTrace();
 		}
 		
+		/*
+		if (role.getType().equals("Stagiaire"))
+		{
+			Livret livret = new Livret(null, false, user);
+			try 
+			{
+				DaoFactory.getDaoLivret().save(livret);
+				
+				DaoFactory.getDaoProjetProLivret().save(
+						new ProjetProLivret(null, null, null, null, null, null, livret));
+				
+				DaoFactory.getDaoSuiviLivret().save(
+						new SuiviLivret(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, livret));
+				
+				DaoFactory.getDaoResultatParcoursLivret().save(
+						new ResultatParcoursLivret(null, null, null, null, null, null, null, null, null, null, livret));
+				
+				DaoFactory.getDaoAnnexeLivret().save(
+						new AnnexeLivret(null, null, null, null, null, null, null, livret));
+				
+				// TODO : terminer avec periodeLivret / type periodeLivret et moduleLivret / sequencesLivret
+			}
+			catch (Exception e)
+			{e.printStackTrace();}
+			
+		}
 		
+		*/
 		
 		
 	}
@@ -249,7 +282,14 @@ public class PopupListener implements ActionListener, ListSelectionListener, Foc
 			{e.printStackTrace();}
 		}
 		
-		
+		try
+		{
+			DaoFactory.getDaoModule().save(new FormationToModule(creaModulePop.getFormation(), module, null));
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
 		
 		
 		creaModulePop.dispose();

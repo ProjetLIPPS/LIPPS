@@ -233,9 +233,18 @@ public class PanelMngModule extends JPanel {
 		
 		
 		btnCrerNouveauModule.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				 new CreationModule();	
+			public void actionPerformed(ActionEvent e) 
+			{
+				// Edited by Michmich to include the selected formation in order to create module and sequences for it
+				Formation formationSelectionnee = new Formation();
+				try {
+					formationSelectionnee = DaoFactory.getDaoFormation().findFormationByIntitule(listFormation.getSelectedValue());
+				} catch (Exception e1) {
+					
+					e1.printStackTrace();
 				}
+				new CreationModule(formationSelectionnee);	
+			}
 		});
 		
 	}

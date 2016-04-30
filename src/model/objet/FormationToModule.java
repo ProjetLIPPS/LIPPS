@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
 @Table (name = "formation_module", uniqueConstraints = {
 	    @UniqueConstraint(columnNames={"fmo_frm_id", "fmo_mod_id"})
 	})
-public class FormationToModule implements Serializable {
+public class FormationToModule extends DataParent implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
@@ -36,7 +36,6 @@ public class FormationToModule implements Serializable {
 	private Module module = null;
 	
 	@Column(name = "fmo_position_module")
-	@NotNull
 	private Integer positionModule = null;
 
 

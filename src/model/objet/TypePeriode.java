@@ -22,7 +22,7 @@ public class TypePeriode extends DataParent {
 
 	@Column(name = "tpe_nom")
 	@NotNull
-	private Date nom = null;
+	private String nom = null;
 
 	
 	
@@ -39,7 +39,7 @@ public class TypePeriode extends DataParent {
 
 
 
-	public TypePeriode(Integer id, Date nom) {
+	public TypePeriode(Integer id, String nom) {
 		super();
 		this.id = id;
 		this.nom = nom;
@@ -47,13 +47,13 @@ public class TypePeriode extends DataParent {
 
 
 
-	public Date getNom() {
+	public String getNom() {
 		return nom;
 	}
 
 
 
-	public void setNom(Date nom) {
+	public void setNom(String nom) {
 		this.nom = nom;
 	}
 

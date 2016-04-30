@@ -1,8 +1,12 @@
 package controleur;
 
+import java.sql.Date;
+import java.time.Instant;
+
 import actionListener.LoginListener;
 import ihm.fenetre.FenLogin;
 import model.baseDAO.DaoFactory;
+import model.objet.Log;
 import model.objet.Utilisateur;
 import model.objet.UtilisateurToRole;
 
@@ -49,16 +53,16 @@ public class ControleurLogin
 				if (utr.getRole().getType().equals("Formateur") || utr.getRole().getType().equals("Administrateur"))
 				{
 					flogin.dispose();
-					ControleurFMain cfm = new ControleurFMain(/*user*/);
+					
 					try 
 					{
-						cfm.init();
-					} 
-					catch (Exception e) 
-					{
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+						DaoFactory.getDaoLog().save(new Log(null, Date.from(Instant.now()), user));
 					}
+					catch (Exception e)
+					{e.printStackTrace();}
+					
+					ControleurFMain cfm = new ControleurFMain(/*user*/);
+					
 				}
 				else
 				{

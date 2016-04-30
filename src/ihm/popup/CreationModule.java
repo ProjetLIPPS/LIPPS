@@ -27,17 +27,19 @@ import javax.swing.border.MatteBorder;
 
 import actionListener.PopupListener;
 import ihm.theme.ThemeLIPPS;
+import model.objet.Formation;
 
 public class CreationModule extends JDialog {
 
 	private JPanel panelSequence;
 	private ArrayList<RowSequence> listeRowSequence = new ArrayList<RowSequence>();
 	private JTextArea textAreaDescription;
-	
+	private Formation formation;
 
 	
-	public CreationModule()
+	public CreationModule(Formation formation)
 	{
+		this.formation = formation;
 		PopupListener listener = new PopupListener();
 		
 		getContentPane().setBackground(ThemeLIPPS.BLUE);
@@ -226,6 +228,10 @@ public class CreationModule extends JDialog {
 
 	public ArrayList<RowSequence> getListeSequence() {
 		return listeRowSequence;
+	}
+
+	public Formation getFormation() {
+		return formation;
 	}
 	
 	
