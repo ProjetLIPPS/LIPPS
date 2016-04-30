@@ -31,6 +31,7 @@ import javax.swing.table.DefaultTableModel;
 import actionListener.BoutonCreerCompte;
 import actionListener.FocusListeners;
 import actionListener.RechercherListener;
+import actionListener.SuppressionCompteListener;
 import actionListener.UtilisateurParTypeDeCompte;
 import ihm.theme.ThemeLIPPS;
 import model.baseDAO.DaoFactory;
@@ -60,6 +61,7 @@ public class PanelCCompte extends JPanel
 	private JButton btnRecherche = new JButton();
 	private JComboBox<String> comboSecMetier = new JComboBox<String>();
 	private JButton btnCreer = new JButton("Créer");
+	private JButton btnSupprimer = new JButton("Supprimer");
 
 	
 	/**
@@ -74,6 +76,7 @@ public class PanelCCompte extends JPanel
 		FocusListeners rechercheListener = new FocusListeners(this);
 		RechercherListener listenerBtnRecherche = new RechercherListener(this);
 		BoutonCreerCompte creerCompteListener = new  BoutonCreerCompte(this);
+		SuppressionCompteListener suppressionCompteListener = new SuppressionCompteListener(this) ;
 
 		this.setBorder(null);
 		this.setBackground(Color.WHITE);
@@ -369,7 +372,7 @@ public class PanelCCompte extends JPanel
 		btnModifier.setActionCommand("Modifier");
 		panelButtonSub.add(btnModifier);
 
-		JButton btnSupprimer = new JButton("Supprimer");
+		btnSupprimer.addMouseListener(suppressionCompteListener);
 		btnSupprimer.setFocusable(false);
 		btnSupprimer.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnSupprimer.setPreferredSize(new Dimension(115, 36));
@@ -397,6 +400,20 @@ public class PanelCCompte extends JPanel
 	}
 	
 	
+
+	public JButton getBtnSupprimer()
+	{
+		return btnSupprimer;
+	}
+
+
+
+	public void setBtnSupprimer(JButton btnSupprimer)
+	{
+		this.btnSupprimer = btnSupprimer;
+	}
+
+
 
 	public JLabel getLblTous()
 	{

@@ -334,9 +334,6 @@ public class DaoUtilisateur extends DaoParent
 		Utilisateur result = (Utilisateur) criteria.uniqueResult();
 
 		session.close();
-	
-		System.out.println(result.getNom());
-
 		return result;
 	}
 
