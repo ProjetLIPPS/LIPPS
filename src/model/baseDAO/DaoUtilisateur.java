@@ -1,10 +1,6 @@
 package model.baseDAO;
 
-import java.util.Iterator;
-import java.util.List;
-
 import org.hibernate.Criteria;
-import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.ScrollableResults;
 import org.hibernate.Session;
@@ -40,6 +36,7 @@ public class DaoUtilisateur extends DaoParent
 			resultAdmin[i][3] = resultat.get()[3];
 			resultAdmin[i][4] = resultat.get()[4];
 			resultAdmin[i][5] = resultat.get()[5];
+			resultAdmin[i][6] = resultat.get()[6];
 			i++;
 
 		}
@@ -69,6 +66,7 @@ public class DaoUtilisateur extends DaoParent
 			resultAdmin[i][3] = resultat.get()[3];
 			resultAdmin[i][4] = resultat.get()[4];
 			resultAdmin[i][5] = resultat.get()[5];
+			resultAdmin[i][6] = resultat.get()[6];
 			i++;
 
 		}
@@ -98,6 +96,7 @@ public class DaoUtilisateur extends DaoParent
 			resultAdmin[i][3] = resultat.get()[3];
 			resultAdmin[i][4] = resultat.get()[4];
 			resultAdmin[i][5] = resultat.get()[5];
+			resultAdmin[i][6] = resultat.get()[6];
 			i++;
 
 		}
@@ -126,6 +125,7 @@ public class DaoUtilisateur extends DaoParent
 			resultAdmin[i][3] = resultat.get()[3];
 			resultAdmin[i][4] = resultat.get()[4];
 			resultAdmin[i][5] = resultat.get()[5];
+			resultAdmin[i][6] = resultat.get()[6];
 			i++;
 
 		}
@@ -156,6 +156,7 @@ public class DaoUtilisateur extends DaoParent
 			resultRecherche[i][3] = resultat.get()[3];
 			resultRecherche[i][4] = resultat.get()[4];
 			resultRecherche[i][5] = resultat.get()[5];
+			resultRecherche[i][6] = resultat.get()[6];
 			i++;
 
 		}
@@ -185,6 +186,7 @@ public class DaoUtilisateur extends DaoParent
 			resultRecherche[i][3] = resultat.get()[3];
 			resultRecherche[i][4] = resultat.get()[4];
 			resultRecherche[i][5] = resultat.get()[5];
+			resultRecherche[i][6] = resultat.get()[6];
 			i++;
 
 		}
@@ -214,6 +216,7 @@ public class DaoUtilisateur extends DaoParent
 			resultRecherche[i][3] = resultat.get()[3];
 			resultRecherche[i][4] = resultat.get()[4];
 			resultRecherche[i][5] = resultat.get()[5];
+			resultRecherche[i][6] = resultat.get()[6];
 			i++;
 
 		}
@@ -243,6 +246,7 @@ public class DaoUtilisateur extends DaoParent
 			resultAdmin[i][3] = resultat.get()[3];
 			resultAdmin[i][4] = resultat.get()[4];
 			resultAdmin[i][5] = resultat.get()[5];
+			resultAdmin[i][6] = resultat.get()[6];
 			i++;
 
 		}
@@ -271,6 +275,7 @@ public class DaoUtilisateur extends DaoParent
 			resultRecherche[i][3] = resultat.get()[3];
 			resultRecherche[i][4] = resultat.get()[4];
 			resultRecherche[i][5] = resultat.get()[5];
+			resultRecherche[i][6] = resultat.get()[6];
 			i++;
 
 		}
@@ -308,12 +313,31 @@ public class DaoUtilisateur extends DaoParent
 			resultRecherche[i][3] = resultat.get()[3];
 			resultRecherche[i][4] = resultat.get()[4];
 			resultRecherche[i][5] = resultat.get()[5];
+			resultRecherche[i][6] = resultat.get()[6];
 			i++;
 
 		}
 		session.close();
 
 		return resultRecherche;
+	}
+	
+	public Utilisateur  findByIdAfpa( Integer idAfpa)
+			throws Exception
+	{
+
+		Session session = BaseSession.getNewSession();
+
+		Criteria criteria = session.createCriteria(Utilisateur.class);
+		criteria.add(Restrictions.eq("identifiantAFPA", idAfpa));
+		@SuppressWarnings("unchecked")
+		Utilisateur result = (Utilisateur) criteria.uniqueResult();
+
+		session.close();
+	
+		System.out.println(result.getNom());
+
+		return result;
 	}
 
 	
