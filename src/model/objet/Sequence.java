@@ -41,7 +41,8 @@ public class Sequence extends DataParent {
 		super();
  	}
 
-	public Sequence(Integer id, String intitule, Module module, Integer position) {
+	public Sequence(Integer id, String intitule, Module module, Integer position) 
+	{
 		super();
 		this.id = id;
 		this.intitule = intitule;
@@ -73,6 +74,14 @@ public class Sequence extends DataParent {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public Integer getPosition() {
+		return position;
+	}
+
+	public void setPosition(Integer position) {
+		this.position = position;
 	}
 
 	

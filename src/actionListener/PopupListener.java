@@ -19,10 +19,13 @@ import ihm.popup.CreaForm;
 import ihm.popup.CreationCompte;
 import ihm.popup.CreationModele;
 import ihm.popup.CreationModule;
+import ihm.popup.RowSequence;
 import model.baseDAO.DaoFactory;
 import model.objet.Contact;
 import model.objet.Formation;
+import model.objet.Module;
 import model.objet.Role;
+import model.objet.Sequence;
 import model.objet.Specialisation;
 import model.objet.Utilisateur;
 import model.objet.UtilisateurToFormation;
@@ -216,12 +219,45 @@ public class PopupListener implements ActionListener, ListSelectionListener, Foc
 		
 	}
 	
+	
+	
 	private void creerModule (CreationModule creaModulePop)
 	{
-		// TODO : la methode
+		
+		String descriptionModule = creaModulePop.getTextAreaDescription().getText();
+		Module module = new Module(null, descriptionModule);
+		
+		try
+		{
+			DaoFactory.getDaoModule().save(module);
+		}
+		catch (Exception e)
+		{e.printStackTrace();}
+		
+		
+		for (int i = 1; i < creaModulePop.getListeSequence().size() ; i++)
+		{
+			RowSequence currentRow = creaModulePop.getListeSequence().get(i);
+			String descriptionSeq = currentRow.getTextAreaSequenceDescription().getText();
+			Sequence seq = new Sequence(null, descriptionSeq, module, i);
+			
+			try 
+			{
+				DaoFactory.getDaoSequence().save(seq);
+			} 
+			catch (Exception e)
+			{e.printStackTrace();}
+		}
+		
+		
+		
+		
 		creaModulePop.dispose();
 	}
 
+	
+	
+	
 
 	@Override
 	public void focusGained(FocusEvent e) 

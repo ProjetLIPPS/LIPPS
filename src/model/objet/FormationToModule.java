@@ -72,6 +72,16 @@ public class FormationToModule implements Serializable {
 	public void setModule(Module module) {
 		this.module = module;
 	}
+
+
+	public Integer getPositionModule() {
+		return positionModule;
+	}
+
+
+	public void setPositionModule(Integer positionModule) {
+		this.positionModule = positionModule;
+	}
 	
 	
 	

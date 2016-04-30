@@ -23,7 +23,7 @@ public class RowSequence extends JPanel
 {
 
 	private CreationModule JFrame;
-	private JTextArea textAreaModuleDescription;
+	private JTextArea textAreaSequenceDescription;
 	
 	
 	/**
@@ -68,22 +68,22 @@ public class RowSequence extends JPanel
 		scrollPane.setBounds(120, 11, 370, 63);
 		add(scrollPane);
 		
-		textAreaModuleDescription = new JTextArea();
-		scrollPane.setViewportView(textAreaModuleDescription);
-		textAreaModuleDescription.setWrapStyleWord(true);
-		textAreaModuleDescription.setText("Entrez ici la description de la séquence.");
-		textAreaModuleDescription.setRows(3);
-		textAreaModuleDescription.setLineWrap(true);
-		textAreaModuleDescription.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 13));
-		textAreaModuleDescription.setColumns(30);
-		textAreaModuleDescription.setBorder(new LineBorder(new Color(192, 192, 192), 1, true));
-		textAreaModuleDescription.addMouseListener(new MouseAdapter() {
+		textAreaSequenceDescription = new JTextArea();
+		scrollPane.setViewportView(textAreaSequenceDescription);
+		textAreaSequenceDescription.setWrapStyleWord(true);
+		textAreaSequenceDescription.setText("Entrez ici la description de la séquence.");
+		textAreaSequenceDescription.setRows(3);
+		textAreaSequenceDescription.setLineWrap(true);
+		textAreaSequenceDescription.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 13));
+		textAreaSequenceDescription.setColumns(30);
+		textAreaSequenceDescription.setBorder(new LineBorder(new Color(192, 192, 192), 1, true));
+		textAreaSequenceDescription.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e)
 			{
-				if (textAreaModuleDescription.getText().equals("Entrez ici la description de la séquence."))
+				if (textAreaSequenceDescription.getText().equals("Entrez ici la description de la séquence."))
 				{
-					textAreaModuleDescription.setText("");
+					textAreaSequenceDescription.setText("");
 				}
 				
 			}
@@ -141,8 +141,8 @@ public class RowSequence extends JPanel
 		return this;
 	}
 	
-	public JTextArea getTextAreaModuleDescription()
+	public JTextArea getTextAreaSequenceDescription()
 	{
-		return textAreaModuleDescription;
+		return textAreaSequenceDescription;
 	}
 }
