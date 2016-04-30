@@ -25,6 +25,10 @@ public class Sequence extends DataParent {
 	@Column(name = "seq_intitule")
 	@NotNull
 	private String intitule = null;
+	
+	@Column(name = "seq_position")
+	@NotNull
+	private Integer position = null;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "mod_id")
@@ -37,10 +41,11 @@ public class Sequence extends DataParent {
 		super();
  	}
 
-	public Sequence(Integer id, String intitule, Module module) {
+	public Sequence(Integer id, String intitule, Module module, Integer position) {
 		super();
 		this.id = id;
 		this.intitule = intitule;
+		this.position = position;
 		this.module = module;
 	}
 	

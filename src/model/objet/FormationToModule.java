@@ -2,6 +2,7 @@ package model.objet;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -33,6 +34,10 @@ public class FormationToModule implements Serializable {
 	@JoinColumn (name = "fmo_mod_id", referencedColumnName = "mod_id")
 	@NotNull
 	private Module module = null;
+	
+	@Column(name = "fmo_position_module")
+	@NotNull
+	private Integer positionModule = null;
 
 
 	public FormationToModule() {
@@ -41,10 +46,11 @@ public class FormationToModule implements Serializable {
 	}
 
 
-	public FormationToModule(Formation formation, Module module) {
+	public FormationToModule(Formation formation, Module module, Integer positionModule) {
 		super();
 		this.formation = formation;
 		this.module = module;
+		this.positionModule = positionModule;
 	}
 
 

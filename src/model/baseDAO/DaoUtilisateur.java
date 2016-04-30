@@ -3,11 +3,14 @@ package model.baseDAO;
 import java.util.Iterator;
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.ScrollableResults;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
+import model.objet.Contact;
 import model.objet.Utilisateur;
 
 public class DaoUtilisateur extends DaoParent
@@ -313,5 +316,31 @@ public class DaoUtilisateur extends DaoParent
 		return resultRecherche;
 	}
 
+	
+	public Utilisateur getUserFromMail(String mail)
+	{
+		Utilisateur user = null;
+		
+		Session session = BaseSession.getNewSession();
+
+		try
+		{
+			Criteria criteria = session.createCriteria(Contact.class);
+			criteria.add(Restrictions.eq("mail", mail));
+
+			Contact result = (Contact) criteria.uniqueResult();
+			
+			user = result.getUtilisateur();
+		}
+		catch (Exception e)
+		{
+			
+		}
+		
+		
+		
+		return user;
+		
+	}
 
 }

@@ -41,7 +41,7 @@ public class ControleurLogin
 		}
 		else
 		{
-			Utilisateur user = DaoFactory.getDaoContact().getUserFromMail(flogin.getTxtEmail().getText());
+			Utilisateur user = DaoFactory.getDaoUtilisateur().getUserFromMail(flogin.getTxtEmail().getText());
 			
 			
 			for (UtilisateurToRole utr : user.getUtilisateurToRole())

@@ -42,21 +42,22 @@ public class DaoContact extends DaoParent
 		return reponse;
 	}
 	
-	public Utilisateur getUserFromMail(String mail)
+	
+	
+	
+	public Contact getContactFromUser(Utilisateur user)
 	{
-		Utilisateur user = null;
+		Contact result = new Contact();
 		
 		Session session = BaseSession.getNewSession();
 
 		try
 		{
 			Criteria criteria = session.createCriteria(Contact.class);
-			criteria.add(Restrictions.eq("mail", mail));
+			criteria.add(Restrictions.eq("utilisateur", user));
 
-			@SuppressWarnings("unchecked")
-			Contact result = (Contact) criteria.uniqueResult();
-			
-			user = result.getUtilisateur();
+
+			result = (Contact) criteria.uniqueResult();
 		}
 		catch (Exception e)
 		{
@@ -64,11 +65,8 @@ public class DaoContact extends DaoParent
 		}
 		
 		
-		
-		return user;
-		
+		return result;
 	}
-	
 	
 	
 }

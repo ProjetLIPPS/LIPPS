@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -47,13 +48,13 @@ public class Utilisateur extends DataParent {
 	//@NotNull
 	private String password = null;
 
-	@OneToMany(mappedBy = "utilisateur", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "utilisateur", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<UtilisateurToFormation> utilisateurToFormation = new ArrayList<UtilisateurToFormation>();
 
-	@OneToMany(mappedBy = "utilisateur", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "utilisateur", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<UtilisateurToRole> utilisateurToRole = new ArrayList<UtilisateurToRole>() ;
 
-	@OneToMany(mappedBy = "utilisateur", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "utilisateur", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<UtilisateurToSpecialisation> utilisateurToSpecialisation = null;
 
 	public Integer getId() {
