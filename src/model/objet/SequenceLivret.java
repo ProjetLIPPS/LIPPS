@@ -69,9 +69,7 @@ public class SequenceLivret extends DataParent {
 	private ModuleLivret moduleLivret = null;
 
 	
-	public Integer getId() {
-		return id;
-	}
+	
 
 
 	public SequenceLivret() {
@@ -82,7 +80,8 @@ public class SequenceLivret extends DataParent {
 
 	public SequenceLivret(Integer id, String intitule, Date dateMessage, Date dateAcquisition, String niveau,
 			String observationStagiaire, String observationFormateur, String observationTuteur,
-			ModuleLivret moduleLivret) {
+			ModuleLivret moduleLivret)
+	{
 		super();
 		this.id = id;
 		this.intitule = intitule;
@@ -180,6 +179,19 @@ public class SequenceLivret extends DataParent {
 		this.id = id;
 	}
 
+	public Integer getId() {
+		return id;
+	}
+
+
+	public Integer getPosition() {
+		return position;
+	}
+
+
+	public void setPosition(Integer position) {
+		this.position = position;
+	}
 	
 
 }

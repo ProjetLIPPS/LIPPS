@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.util.Date;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JList;
@@ -28,6 +29,7 @@ import model.objet.Formation;
 import model.objet.FormationToModule;
 import model.objet.Livret;
 import model.objet.Module;
+import model.objet.PlanningPrevisionnelLivret;
 import model.objet.ProjetProLivret;
 import model.objet.ResultatParcoursLivret;
 import model.objet.Role;
@@ -151,6 +153,13 @@ public class PopupListener implements ActionListener, ListSelectionListener, Foc
 			e.printStackTrace();
 		}
 		
+		/*
+		if (utilisateurconnecte.getRole.equals("Formateur"))
+		{
+			DaoFactory.getDaoFormation().save(new UtilisateurToFormation(utilisateur connecté, form));
+		}
+		*/
+		
 	}
 	
 	
@@ -170,6 +179,7 @@ public class PopupListener implements ActionListener, ListSelectionListener, Foc
 		Date date = creaComptePop.getTextField_DteNaissance().getDate();
 		Utilisateur user = new Utilisateur(null, nom, prenom, date, NoAFPA, null, null, null, null) ;
 		
+		Formation form = new Formation();
 		
 		try 
 		{
@@ -180,7 +190,7 @@ public class PopupListener implements ActionListener, ListSelectionListener, Foc
 			{
 				for (int i = 0; i < formations.length; i++)
 				{
-					Formation form = DaoFactory.getDaoFormation().findFormationByIntitule(formations[i]);
+					form = DaoFactory.getDaoFormation().findFormationByIntitule(formations[i]);
 					UtilisateurToFormation utf = new UtilisateurToFormation(user, form);
 					DaoFactory.getDaoFormation().save(utf);
 					Specialisation spe = form.getSpecialisation();
@@ -196,7 +206,7 @@ public class PopupListener implements ActionListener, ListSelectionListener, Foc
 			e.printStackTrace();
 		}
 		
-		/*
+		
 		if (role.getType().equals("Stagiaire"))
 		{
 			Livret livret = new Livret(null, false, user);
@@ -216,6 +226,17 @@ public class PopupListener implements ActionListener, ListSelectionListener, Foc
 				DaoFactory.getDaoAnnexeLivret().save(
 						new AnnexeLivret(null, null, null, null, null, null, null, livret));
 				
+				DaoFactory.getDaoLivret().save(new PlanningPrevisionnelLivret(null, null, null, livret));
+				
+				List<FormationToModule> listeFTM= (List<FormationToModule>) DaoFactory.getDaoFormationToModule().getAllFormationToModuleFromFormation(form);
+				
+				for (FormationToModule ftm : listeFTM)
+				{
+					
+				}
+				
+				
+				
 				// TODO : terminer avec periodeLivret / type periodeLivret et moduleLivret / sequencesLivret
 			}
 			catch (Exception e)
@@ -223,7 +244,7 @@ public class PopupListener implements ActionListener, ListSelectionListener, Foc
 			
 		}
 		
-		*/
+		
 		
 		
 	}

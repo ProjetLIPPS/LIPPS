@@ -51,29 +51,37 @@ public class Module extends DataParent {
 	}
 	
 
-	public Integer getId() {
+	public Integer getId()
+	{
 		return id;
 	}
+	
+	public void setId(Integer id)
+	{
+		this.id = id;
+	}
 
-	public String getIntitule() {
+	public String getIntitule()
+	{
 		return intitule;
 	}
 
-	public void setIntitule(String intitule) {
+	public void setIntitule(String intitule)
+	{
 		this.intitule = intitule;
 	}
 
-	public List<FormationToModule> getFormationToModule() {
+	public List<FormationToModule> getFormationToModule()
+	{
 		return formationToModule;
 	}
 
-	public void setFormationToModule(List<FormationToModule> formationToModule) {
+	public void setFormationToModule(List<FormationToModule> formationToModule)
+	{
 		this.formationToModule = formationToModule;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+	
 
 	
 }
