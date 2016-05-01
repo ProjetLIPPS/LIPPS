@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
@@ -35,21 +36,31 @@ public class FormationToModule extends DataParent implements Serializable {
 	@NotNull
 	private Module module = null;
 	
-	@Column(name = "fmo_position_module")
-	private Integer positionModule = null;
+	
+	@OneToOne (fetch=FetchType.EAGER)
+	@JoinColumn (name = "fmo_prd_id", referencedColumnName = "prd_id")
+	private Periode periode = null;
+	
+	
+	@Column(name = "fmo_position_module_dans_periode")
+	private Integer positionModuleDansPeriode = null;
+	
+	@Column(name = "fmo_position_periode_dans_formation")
+	private Integer positionPeriodeDansFormation = null;
 
 
-	public FormationToModule() {
+	public FormationToModule()
+	{
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 
-	public FormationToModule(Formation formation, Module module, Integer positionModule) {
+	public FormationToModule(Formation formation, Module module,Periode periode, Integer positionModuleDansPeriode) {
 		super();
 		this.formation = formation;
 		this.module = module;
-		this.positionModule = positionModule;
+		this.periode = periode;
+		this.positionModuleDansPeriode = positionModuleDansPeriode;
 	}
 
 
@@ -74,12 +85,12 @@ public class FormationToModule extends DataParent implements Serializable {
 
 
 	public Integer getPositionModule() {
-		return positionModule;
+		return positionModuleDansPeriode;
 	}
 
 
-	public void setPositionModule(Integer positionModule) {
-		this.positionModule = positionModule;
+	public void setPositionModule(Integer positionModuleDansPeriode) {
+		this.positionModuleDansPeriode = positionModuleDansPeriode;
 	}
 	
 	

@@ -284,7 +284,7 @@ public class PopupListener implements ActionListener, ListSelectionListener, Foc
 		
 		try
 		{
-			DaoFactory.getDaoModule().save(new FormationToModule(creaModulePop.getFormation(), module, null));
+			DaoFactory.getDaoModule().save(new FormationToModule(creaModulePop.getFormation(), module, null, null));
 		}
 		catch (Exception e)
 		{
