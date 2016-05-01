@@ -1,10 +1,14 @@
 package model.baseDAO;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
@@ -27,11 +31,55 @@ public class DaoFormation extends DaoParent {
 		Criteria criteria = session.createCriteria(Formation.class);
 		criteria.add(Restrictions.eq("intitule", intitule));
 		criteria.add(Restrictions.eq("isModel", false));
-
+		
 		Formation result = (Formation) criteria.uniqueResult();
 
 		session.close();
 
+		return result;
+	}
+	
+	
+	public Collection<Formation> readAllFormationFromUser(Utilisateur utilisateur) throws Exception
+	{
+		List<Formation> listFrm = new ArrayList<Formation>();
+		
+		Session session = BaseSession.getNewSession();
+
+		Criteria criteria = session.createCriteria(UtilisateurToFormation.class);
+		criteria.add(Restrictions.eq("utilisateur", utilisateur));
+		
+
+		@SuppressWarnings("unchecked")
+		List<Formation> list = criteria.list();
+		
+		 for (@SuppressWarnings("rawtypes")	Iterator iterator = list.iterator(); iterator.hasNext();)
+		 {
+			 UtilisateurToFormation userForm = (UtilisateurToFormation) iterator.next();
+			 listFrm.add(userForm.getFormation());
+		 }
+		
+	
+		return listFrm;
+	}
+	
+	public Formation findFormationByIntituleAndDate (String intitule, String dateString) throws Exception
+	{
+
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = formatter.parse(dateString);
+	
+		Session session = BaseSession.getNewSession();
+
+		Criteria criteria = session.createCriteria(Formation.class);
+		criteria.add(Restrictions.eq("intitule", intitule));
+		criteria.add(Restrictions.eq("dateDebut", date));
+		
+		Formation result = (Formation) criteria.uniqueResult();
+
+		session.close();
+		
+				
 		return result;
 	}
 	
@@ -118,27 +166,6 @@ public class DaoFormation extends DaoParent {
 	}
 	
 	
-	public List<Formation> readAllFormationFromUser(Utilisateur utilisateur) throws Exception
-	{
-		List<Formation> listFrm = new ArrayList<Formation>();
-		
-		Session session = BaseSession.getNewSession();
 
-		Criteria criteria = session.createCriteria(UtilisateurToFormation.class);
-		criteria.add(Restrictions.eq("utilisateur", utilisateur));
-		
-
-		@SuppressWarnings("unchecked")
-		List list = criteria.list();
-		
-		 for (Iterator iterator = list.iterator(); iterator.hasNext();)
-		 {
-			 UtilisateurToFormation userForm = (UtilisateurToFormation) iterator.next();
-			 listFrm.add(userForm.getFormation());
-		 }
-		
-	
-		return listFrm;
-	}
 	
 }

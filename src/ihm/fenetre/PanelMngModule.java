@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 import javax.swing.border.MatteBorder;
 
 import actionListener.MngModuleListener;
@@ -26,6 +27,7 @@ import ihm.theme.ThemeLIPPS;
 import model.baseDAO.DaoFactory;
 import model.objet.Formation;
 import model.objet.Utilisateur;
+import javax.swing.border.EmptyBorder;
 
 
 
@@ -35,8 +37,8 @@ public class PanelMngModule extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	private MngModuleListener mngModuleListener;
-	private JPanel panelAllModList = new JPanel();
 	private JPanel panelLeft = new JPanel();
+	private JPanel panelLoadMod = new JPanel();
 	private JList<String> listFormation = new JList<String>();
 	
 	
@@ -59,7 +61,7 @@ public class PanelMngModule extends JPanel {
 		
 		JPanel panelListForm = new JPanel();
 		panelListForm.setBorder(new MatteBorder(2, 2, 2, 1, (Color) new Color(0, 0, 0)));
-		panelListForm.setPreferredSize(new Dimension(200, 10));
+		panelListForm.setPreferredSize(new Dimension(250, 10));
 		panelListForm.setOpaque(false);
 		panelBoxTrio.add(panelListForm);
 		panelListForm.setLayout(new BorderLayout(0, 0));
@@ -92,39 +94,6 @@ public class PanelMngModule extends JPanel {
 		initListFormation();
 		
 		panelMyForm.add(listFormation, BorderLayout.CENTER);
-		
-		// PANELLEFT en borderlayout contient panels existingmod  pour le label (north) et allmodlist (center) pour afficher les modules (via des panelmngmodulerowmod)
-		
-		panelLeft = new JPanel();
-		panelLeft.setOpaque(false);
-		panelLeft.setBackground(ThemeLIPPS.BLUE_DARK);
-		panelBoxTrio.add(panelLeft);
-		panelLeft.setBorder(new MatteBorder(2, 0, 2, 1, (Color) new Color(0, 0, 0)));
-		panelLeft.setPreferredSize(new Dimension(250, 10));
-		panelLeft.setLayout(new BorderLayout(0, 0));
-		
-		JPanel panelExistingMod = new JPanel();
-		panelExistingMod.setOpaque(false);
-		panelLeft.add(panelExistingMod, BorderLayout.NORTH);
-		panelExistingMod.setLayout(new BorderLayout(0, 0));
-		
-		JLabel lblMesFormations = new JLabel("Modules existants");
-		lblMesFormations.setBorder(new MatteBorder(0, 0, 1, 0, (Color) Color.WHITE));
-		lblMesFormations.setForeground(Color.WHITE);
-		panelExistingMod.add(lblMesFormations, BorderLayout.NORTH);
-		lblMesFormations.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, ThemeLIPPS.FONT_SIZE_BUTTON));
-		lblMesFormations.setHorizontalAlignment(SwingConstants.CENTER);
-		lblMesFormations.setPreferredSize(new Dimension(75, 40));
-		
-		
-		panelAllModList.setOpaque(true);
-		panelAllModList.setBackground(ThemeLIPPS.BLUE_DARK);
-		panelAllModList.setMinimumSize(new Dimension(0, 10));
-		panelAllModList.setPreferredSize(new Dimension(50, 10));
-		panelAllModList.setLayout(new BoxLayout(panelAllModList, BoxLayout.Y_AXIS));
-		
-		
-		panelLeft.add(panelAllModList, BorderLayout.CENTER);
 		/*JScrollPane scrollAllModList = new JScrollPane();
 		scrollAllModList.setBorder(null);
 		scrollAllModList.setBackground(ThemeLIPPS.BLUE_DARK);
@@ -158,9 +127,9 @@ public class PanelMngModule extends JPanel {
 		lblMesModules.setForeground(Color.WHITE);
 		lblMesModules.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, ThemeLIPPS.FONT_SIZE_BUTTON));
 		panelMyMod.add(lblMesModules, BorderLayout.NORTH);
+		panelLoadMod.setBorder(new EmptyBorder(10, 0, 10, 0));
 		
 		
-		JPanel panelLoadMod = new JPanel();
 		panelLoadMod.setOpaque(false);
 		panelMid.add(panelLoadMod, BorderLayout.CENTER);
 		panelLoadMod.setLayout(new BoxLayout(panelLoadMod, BoxLayout.Y_AXIS));
@@ -250,10 +219,7 @@ public class PanelMngModule extends JPanel {
 	}
 	
 	
-	public JPanel getPanelAllModList() {
-		return panelAllModList;
-	}
-
+	
 	public void initListFormation() {
 		
 		String[] values = null;
@@ -262,19 +228,19 @@ public class PanelMngModule extends JPanel {
 			
 			Utilisateur user = DaoFactory.getDaoUtilisateur().findById(Utilisateur.class, 2);
 			
-			List<Formation> listFormation = DaoFactory.getDaoFormation().readAllFormationFromUser(user);
+			List<Formation> listFormation = (List<Formation>)DaoFactory.getDaoFormation().readAllFormationFromUser(user);
 			
 			values = new String[listFormation.size()];
 						
-			for (int i = 0 ; i < listFormation.size() ; i++)
-				{
-				System.out.println(listFormation.get(i).getIntitule());			
-				values[i] = listFormation.get(i).getIntitule();
+			for (int i = 0 ; i < listFormation.size() ; i++)  {
+				
+				values[i] = listFormation.get(i).getIntitule() + " " +  listFormation.get(i).getDateDebut().toString();
 				
 				}
 			
 					
 			} catch (Exception e1) {
+				
 			JOptionPane.showMessageDialog(null, "La liste des formations n'a pu être importée.", "Erreur connexion base de données", JOptionPane.WARNING_MESSAGE);
 			e1.printStackTrace();
 			}
@@ -286,19 +252,29 @@ public class PanelMngModule extends JPanel {
 	
 	}
 	
-	public void replaceAllModList(JPanel newList) {
+	public void refresh()
+	{
+		SwingUtilities.updateComponentTreeUI(this);
+	}
 	
-		this.panelAllModList = newList;	
+	
+	public JPanel getPanelLoadMod() {
+		return panelLoadMod;
+	}
+	
+	
+	public void replaceLoadMod(JPanel newList) {
+	
+		this.panelLoadMod = newList;	
 		
 	}
-
-
-	public JPanel getPanelLeft() {
-		return panelLeft;
+	
+	public void removePanelLoadMod() {
+		this.remove(panelLoadMod);
 	}
 	
-	public void setPanelLeft(JPanel panelAllModList) {
-		this.panelAllModList = panelAllModList;
+	public void setPanelLoadMod(JPanel panelLoadMod) {
+		this.panelLoadMod = panelLoadMod;
 	}
 	
 	

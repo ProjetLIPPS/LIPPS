@@ -14,6 +14,7 @@ import java.util.List;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -55,7 +56,11 @@ public class PanelCFormation extends JPanel
 	
 	public PanelCFormation()
 	{
-				
+		
+		String values[] = initList();
+		
+		if (values.length > 0)  {	
+		
 		setMinimumSize(new Dimension(400, 10));
 		
 		
@@ -97,9 +102,7 @@ public class PanelCFormation extends JPanel
 		list.setForeground(Color.WHITE);
 		list.setBackground(ThemeLIPPS.BLUE_DARK);
 		list.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, ThemeLIPPS.FONT_SIZE_DEFAULT));
-		
-		initList();
-				
+		list.setListData(values);
 				
 		list.addListSelectionListener(panelCFormationListener);
 				
@@ -334,10 +337,94 @@ public class PanelCFormation extends JPanel
 
 		panelBtn_1.add(btnCrerOuvelleFormation);
 		
+		}
+		else {
+			
+			setMinimumSize(new Dimension(400, 10));
+			
+			
+			this.setBorder(null);
+			this.setBackground(ThemeLIPPS.BLUE_DARK);
+			this.setLayout(new BorderLayout(0, 0));
+			
+			JPanel panelLeft = new JPanel();
+			panelLeft.setOpaque(false);
+			panelLeft.setBackground(ThemeLIPPS.BLUE_DARK);
+			panelLeft.setPreferredSize(new Dimension(300, 10));
+			add(panelLeft, BorderLayout.WEST);
+			panelLeft.setLayout(new BorderLayout(0, 0));
+			
+			JPanel panelLabel = new JPanel();
+			panelLabel.setOpaque(false);
+			panelLeft.add(panelLabel, BorderLayout.NORTH);
+			panelLabel.setBackground(ThemeLIPPS.BLUE);
+			panelLabel.setLayout(new BorderLayout(0, 0));
+			
+			JLabel lblMesFormations = new JLabel("Mes Formations");
+			lblMesFormations.setVerticalAlignment(SwingConstants.TOP);
+			lblMesFormations.setForeground(Color.WHITE);
+			panelLabel.add(lblMesFormations, BorderLayout.NORTH);
+			lblMesFormations.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_TITLE));
+			lblMesFormations.setHorizontalAlignment(SwingConstants.CENTER);
+			lblMesFormations.setPreferredSize(new Dimension(75, 150));
+			
+			JPanel panelCenterLbl = new JPanel();
+			panelCenterLbl.setOpaque(false);
+			panelCenterLbl.setMinimumSize(new Dimension(0, 10));
+			panelCenterLbl.setBackground(ThemeLIPPS.BLUE);
+			panelLeft.add(panelCenterLbl, BorderLayout.CENTER);
+			panelCenterLbl.setPreferredSize(new Dimension(50, 900));
+			panelCenterLbl.setLayout(new BorderLayout(0, 0));
+			
+			JLabel lblVousNavezAucune = new JLabel("Aucune formation existante");
+			lblVousNavezAucune.setVerticalAlignment(SwingConstants.TOP);
+			lblVousNavezAucune.setVerticalTextPosition(SwingConstants.TOP);
+			lblVousNavezAucune.setBorder(new EmptyBorder(0, 0, 0, 0));
+			lblVousNavezAucune.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, ThemeLIPPS.FONT_SIZE_DEFAULT));
+			lblVousNavezAucune.setForeground(Color.WHITE);
+			lblVousNavezAucune.setHorizontalTextPosition(SwingConstants.CENTER);
+			lblVousNavezAucune.setHorizontalAlignment(SwingConstants.CENTER);
+			panelCenterLbl.add(lblVousNavezAucune, BorderLayout.NORTH);
+			
+			JPanel panelBtn = new JPanel();
+			panelBtn.setOpaque(false);
+			panelBtn.setBorder(new EmptyBorder(0, 0, 15, 0));
+			panelLeft.add(panelBtn, BorderLayout.SOUTH);
+			
+			JPanel panel = new JPanel();
+			FlowLayout flowLayout = (FlowLayout) panel.getLayout();
+			flowLayout.setVgap(0);
+			panel.setPreferredSize(new Dimension(250, 40));
+			panelBtn.add(panel);
+			
+			JButton btnCrrNouvelleFormation = new JButton("Créér nouvelle formation");
+			btnCrrNouvelleFormation.setPreferredSize(new Dimension(250, 40));
+			btnCrrNouvelleFormation.setMnemonic('n');
+			btnCrrNouvelleFormation.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_BUTTON));
+			btnCrrNouvelleFormation.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CreaForm newFormation = new CreaForm();
+			}
+		});
+			panel.add(btnCrrNouvelleFormation);
+			
+			
+			JPanel panelRight = new JPanel();
+			panelRight.setPreferredSize(new Dimension(40, 30));
+			panelRight.setBorder(null);
+			panelRight.setBackground(Color.WHITE);
+			add(panelRight, BorderLayout.CENTER);
+			panelRight.setLayout(new BorderLayout(0, 0));
+			
+			JLabel lblLogo = new JLabel(new ImageIcon("./img/afpa.jpg"));
+			
+			panelRight.add(lblLogo, BorderLayout.CENTER);
+			
+		}
 
 	}
 	
-public void initList() {
+public String[]  initList() {
 		
 	String[] values = null;
 	
@@ -345,7 +432,7 @@ public void initList() {
 		
 		Utilisateur user = DaoFactory.getDaoUtilisateur().findById(Utilisateur.class, 1);
 		
-		List<Formation> listFormation = DaoFactory.getDaoFormation().readAllFormationFromUser(user);
+		List<Formation> listFormation = (List<Formation>) DaoFactory.getDaoFormation().readAllFormationFromUser(user);
 		
 		values = new String[listFormation.size()];
 					
@@ -365,7 +452,7 @@ public void initList() {
 	
 	Arrays.sort(values);
 			
-	this.list.setListData(values);
+	return values;
 	
 	}
 

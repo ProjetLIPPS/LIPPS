@@ -21,15 +21,34 @@ public class MngModuleListener implements ListSelectionListener {
 	
 	public void valueChanged(ListSelectionEvent e) {
 		
+				
 		JList selection = (JList) e.getSource();
-		String selectedFormation = selection.getSelectedValue().toString();
 		
-		MngModuleCtrl.myModuleRowDisplay(selectedFormation, panelMngModule);
+			if (selection.getSelectedValue() !=null)
 		
-
+			{
+					
+					String selectedFormation = selection.getSelectedValue().toString();
+						
+					String[] split = selectedFormation.split(" ");
+					String intitule = split[0];
+					String date = split[1];
+							
+									
+					MngModuleCtrl.myModuleRowDisplay(intitule, date, panelMngModule);
+							
+			}
+			
+			
+	}
+		
+	
+	
+}
+	
+	
 	
 		
-		
-	}
+	
 
-}
+

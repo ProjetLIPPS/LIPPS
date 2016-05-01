@@ -20,27 +20,29 @@ public class MngModuleCtrl {
 	private PanelMngModule panelMngModule;
 	
 	
-	public static void allModuleRowDisplay(String selectedFormation, PanelMngModule panelMngModule)
+	
+	
+	public static void myModuleRowDisplay(String intitule, String date, PanelMngModule panelMngModule)
 	{
 	
-	JPanel panelAllModList = panelMngModule.getPanelAllModList();
-	panelAllModList.removeAll();
+	JPanel panelLoadMod = panelMngModule.getPanelLoadMod();
+	panelLoadMod.removeAll();
 	
-	panelMngModule.getPanelLeft().remove(panelAllModList);
+	panelMngModule.removePanelLoadMod();
 	
 	Formation formation = new Formation();
-	List<FormationToModule> allModule = new ArrayList<FormationToModule>();		
-	
+		
 	try {
 		
-		formation= (Formation) DaoFactory.getDaoFormation().findFormationByIntitule(selectedFormation);
-		allModule = formation.getFormationToModule();
+		formation= (Formation) DaoFactory.getDaoFormation().findFormationByIntituleAndDate(intitule, date);
 		
 		} 
 	catch (Exception e1) {
 			
 			e1.printStackTrace();
 		}
+	
+	List<FormationToModule> allModule = formation.getFormationToModule();
 	
 	String[] listModule = new String[allModule.size()];
 	
@@ -49,74 +51,22 @@ public class MngModuleCtrl {
 		listModule[i] = allModule.get(i).getModule().getIntitule();
 	}
 	
-	Arrays.sort(listModule);
+	//Arrays.sort(listModule);
 	
 	for (String intitModule : listModule)
 	{
 		PanelMngModuleRowMod ModuleRowMod = new PanelMngModuleRowMod(intitModule);
 		//ModuleRowMod.addFocusListener(l);
 		
-		panelAllModList.add(ModuleRowMod);
+		panelLoadMod.add(ModuleRowMod);
 					
 	}
 	
 	
-	panelMngModule.setPanelLeft(panelAllModList);
+	panelMngModule.setPanelLoadMod(panelLoadMod);
 	
+	panelMngModule.refresh();
 	
-	
-
-	
-	
- }
-
-	
-	public static void myModuleRowDisplay(String selectedFormation, PanelMngModule panelMngModule)
-	{
-	
-	JPanel panelAllModList = panelMngModule.getPanelAllModList();
-	panelAllModList.removeAll();
-	
-	panelMngModule.getPanelLeft().remove(panelAllModList);
-	
-	Formation formation = new Formation();
-	List<FormationToModule> allModule = new ArrayList<FormationToModule>();		
-	
-	try {
-		
-		formation= (Formation) DaoFactory.getDaoFormation().findFormationByIntitule(selectedFormation);
-		allModule = formation.getFormationToModule();
-		
-		} 
-	catch (Exception e1) {
-			
-			e1.printStackTrace();
-		}
-	
-	String[] listModule = new String[allModule.size()];
-	
-	for (int i = 0 ; i < listModule.length ; i++)
-	{
-		listModule[i] = allModule.get(i).getModule().getIntitule();
-	}
-	
-	Arrays.sort(listModule);
-	
-	for (String intitModule : listModule)
-	{
-		PanelMngModuleRowMod ModuleRowMod = new PanelMngModuleRowMod(intitModule);
-		//ModuleRowMod.addFocusListener(l);
-		
-		panelAllModList.add(ModuleRowMod);
-					
-	}
-	
-	
-	panelMngModule.setPanelLeft(panelAllModList);
-	
-	
-	
-
 	
 	
  }
