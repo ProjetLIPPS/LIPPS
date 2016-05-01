@@ -55,18 +55,15 @@ public class MngModuleCtrl {
 	for (String intitModule : listModule)
 	{
 		PanelMngRowMod moduleRowMod = new PanelMngRowMod(intitModule);
-		//moduleRowMod.addFocusListener(new MngModuleListener(panelMngModule));
+//		//moduleRowMod.addFocusListener(new MngModuleListener(panelMngModule));
 		panelLoadMod.add(moduleRowMod);
 					
 	}
 	
-	
+	panelMngModule.remove(panelMngModule.getPanelLoadMod());
 	panelMngModule.setPanelLoadMod(panelLoadMod);
-	
-	panelMngModule.refresh();
-	
-	
-	
+	panelMngModule.revalidate();
+		
  }
 	
 	

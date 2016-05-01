@@ -90,7 +90,7 @@ public class PanelMngModule extends JPanel {
 		listFormation.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listFormation.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, ThemeLIPPS.FONT_SIZE_BUTTON));
 		listFormation.addListSelectionListener(mngModuleListener);
-		//initListFormation();
+		initListFormation();
 		
 		JScrollPane scrollAllFormation = new JScrollPane();
 		scrollAllFormation.setBorder(new EmptyBorder(0, 0, 0, 0));

@@ -47,7 +47,7 @@ public class MngModuleListener implements ListSelectionListener , FocusListener 
 					
 					String selectedFormation = selection.getSelectedValue();
 					
-					String[] split = selectedFormation.split(" ");
+     				String[] split = selectedFormation.split(" ");
 					String intitule = split[0];
 					String date = split[1];
 								
