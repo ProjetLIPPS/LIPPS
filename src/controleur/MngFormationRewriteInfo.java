@@ -45,13 +45,14 @@ public class MngFormationRewriteInfo {
 			panel.getTxtDebouche().setText(formation.getDebouche());
 		}
 	
-public static void showFormationInfo(PanelCFormation panelCFormation, String intituleFormation) {
+public static void showFormationInfo(PanelCFormation panelCFormation, String intitule, String date) {
 		
 		Formation formation = new Formation();
 		
+		
 				try {
 				
-				formation= (Formation) DaoFactory.getDaoFormation().findFormationByIntitule(intituleFormation);
+				formation= (Formation) DaoFactory.getDaoFormation().findFormationByIntituleAndDate(intitule, date);
 				
 				} catch (Exception e) {
 					
@@ -66,6 +67,7 @@ public static void showFormationInfo(PanelCFormation panelCFormation, String int
 				panelCFormation.getTxtSpe().setText(formation.getSpecialisation().getNom());
 				panelCFormation.getTextCcp().setText(formation.getCcp());
 				panelCFormation.getTextDebouche().setText(formation.getDebouche());
+				
 		}
 	
 	

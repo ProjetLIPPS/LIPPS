@@ -20,13 +20,20 @@ public class PanelCFormationListener implements ListSelectionListener {
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
 		
-		JList selection = (JList) e.getSource();
-		String selectedFormation = selection.getSelectedValue().toString();
+		@SuppressWarnings("unchecked")
+		JList<String> selection = (JList<String>) e.getSource();
+		String selectedFormation = selection.getSelectedValue();
 		
+		String[] split = selectedFormation.split(" ");
+		String intitule = split[0];
+		String date = split[1];
+		System.out.println(intitule);
+		System.out.println(date);
+
 		if (selection.getSelectedValue() != null)
 		{	
 		
-			MngFormationRewriteInfo.showFormationInfo(panelCFormation, selectedFormation);
+			MngFormationRewriteInfo.showFormationInfo(panelCFormation, intitule, date);
 		}
 		
 
