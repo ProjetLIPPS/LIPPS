@@ -31,16 +31,18 @@ public class ModuleLivret extends DataParent {
 	private boolean resultat;
 
 	@Column(name = "mdl_observation")
-	@NotNull
 	private String observation = null;
 
-	@Column(name = "mdl_intitule_specialisation")
-	private String intituleSpecialisation = null;
+	@Column(name = "mdl_position")
+	private Integer position = null;
+	
+	
+	
 	
 	@OneToOne (fetch=FetchType.LAZY)
-	@JoinColumn (name = "liv_id")
+	@JoinColumn (name = "prl_id")
 	@NotNull
-	private Livret livret = null;
+	private PeriodeLivret periodeLivret = null;
 	
 
 	public Integer getId() {
@@ -55,14 +57,14 @@ public class ModuleLivret extends DataParent {
 
 
 	public ModuleLivret(Integer id, String intitule, boolean resultat, String observation,
-			String intituleSpecialisation, Livret livret) {
+			Integer position) 
+	{
 		super();
 		this.id = id;
 		this.intitule = intitule;
 		this.resultat = resultat;
 		this.observation = observation;
-		this.intituleSpecialisation = intituleSpecialisation;
-		this.livret = livret;
+		this.position = position;
 	}
 
 
@@ -96,25 +98,9 @@ public class ModuleLivret extends DataParent {
 	}
 
 
-	public String getIntituleSpecialisation() {
-		return intituleSpecialisation;
-	}
+	
 
-
-	public void setIntituleSpecialisation(String intituleSpecialisation) {
-		this.intituleSpecialisation = intituleSpecialisation;
-	}
-
-
-	public Livret getLivret() {
-		return livret;
-	}
-
-
-	public void setLivret(Livret livret) {
-		this.livret = livret;
-	}
-
+	
 
 	public void setId(Integer id) {
 		this.id = id;

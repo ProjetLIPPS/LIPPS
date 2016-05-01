@@ -38,6 +38,7 @@
 		<mapping class = "model.objet.ModuleLivret"/>
 		<mapping class = "model.objet.Periode"/>
 		<mapping class = "model.objet.PeriodeLivret"/>
+		<mapping class = "model.objet.PlanningPrevisionnelLivret"/>
 		<mapping class = "model.objet.ProjetProLivret"/>				
 		<mapping class = "model.objet.ResultatParcoursLivret"/>
 		<mapping class = "model.objet.Role"/>
@@ -45,8 +46,6 @@
 		<mapping class = "model.objet.SequenceLivret"/>
 		<mapping class = "model.objet.Specialisation" />
 		<mapping class = "model.objet.SuiviLivret"/>
-		<mapping class = "model.objet.TypePeriode" />
-		<mapping class = "model.objet.TypePeriodeLivret" />
 		<mapping class = "model.objet.Utilisateur"/>
 		<mapping class = "model.objet.UtilisateurToFormation"/>
 		<mapping class = "model.objet.UtilisateurToRole"/>

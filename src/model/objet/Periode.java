@@ -25,78 +25,164 @@ public class Periode extends DataParent {
 	@Column(name = NOM_ID)
 	private Integer id = null;
 
-	@Column(name = "prd_date_debut")
+	
+	
+	@Column(name = "prd_date_centre")
 	@Type(type = "date")
-	@NotNull
-	private Date dateDebut = null;
-
-	@Column(name = "prd_date_fin")
+	private Date dateCentre = null;
+	
+	@Column(name = "prd_description_centre")
+	private String descriptionPeriodeCentre = null;
+	
+	
+	
+	@Column(name = "prd_date_entreprise")
 	@Type(type = "date")
-	private Date dateFin = null;
+	private Date dateEntreprise = null;
+	
+	
+	@Column(name = "prd_description_entreprise")
+	private String descriptionPeriodeEntreprise = null;
+	
+	
+	
+	
+	@Column(name = "prd_date_ecf")
+	@Type(type = "date")
+	private Date dateEcf = null;
+	
+	
+	@Column(name = "prd_texte_ecf")
+	private String texteEcf = null;
+	
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "frm_id")
-	@NotNull
-	private Formation formation = null;
+	
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "tpe_id")
-	@NotNull
-	private TypePeriode typePeriode = null;
+	
 
-	public Integer getId() {
+	public Periode() 
+	{
+		super();
+		
+	}
+
+	
+	
+	
+	public Periode(Integer id, Date dateCentre, String descriptionPeriodeCentre, Date dateEntreprise,
+			String descriptionPeriodeEntreprise, Date dateEcf, String texteEcf) {
+		super();
+		this.id = id;
+		this.dateCentre = dateCentre;
+		this.descriptionPeriodeCentre = descriptionPeriodeCentre;
+		this.dateEntreprise = dateEntreprise;
+		this.descriptionPeriodeEntreprise = descriptionPeriodeEntreprise;
+		this.dateEcf = dateEcf;
+		this.texteEcf = texteEcf;
+	}
+
+
+
+
+
+
+
+	public Integer getId() 
+	{
 		return id;
 	}
-
-	public Periode() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public Periode(Integer id, Date dateDebut, Date dateFin, Formation formation, TypePeriode typePeriode) {
-		super();
-		this.id = id;
-		this.dateDebut = dateDebut;
-		this.dateFin = dateFin;
-		this.formation = formation;
-		this.typePeriode = typePeriode;
-	}
-
-	public Date getDateDebut() {
-		return dateDebut;
-	}
-
-	public void setDateDebut(Date dateDebut) {
-		this.dateDebut = dateDebut;
-	}
-
-	public Date getDateFin() {
-		return dateFin;
-	}
-
-	public void setDateFin(Date dateFin) {
-		this.dateFin = dateFin;
-	}
-
-	public Formation getFormation() {
-		return formation;
-	}
-
-	public void setFormation(Formation formation) {
-		this.formation = formation;
-	}
-
-	public TypePeriode getTypePeriode() {
-		return typePeriode;
-	}
-
-	public void setTypePeriode(TypePeriode typePeriode) {
-		this.typePeriode = typePeriode;
-	}
-
-	public void setId(Integer id) {
+	
+	public void setId(Integer id)
+	{
 		this.id = id;
 	}
+
+
+
+
+	public Date getDateCentre() {
+		return dateCentre;
+	}
+
+
+
+
+	public void setDateCentre(Date dateCentre) {
+		this.dateCentre = dateCentre;
+	}
+
+
+
+
+	public String getDescriptionPeriodeCentre() {
+		return descriptionPeriodeCentre;
+	}
+
+
+
+
+	public void setDescriptionPeriodeCentre(String descriptionPeriodeCentre) {
+		this.descriptionPeriodeCentre = descriptionPeriodeCentre;
+	}
+
+
+
+
+	public Date getDateEntreprise() {
+		return dateEntreprise;
+	}
+
+
+
+
+	public void setDateEntreprise(Date dateEntreprise) {
+		this.dateEntreprise = dateEntreprise;
+	}
+
+
+
+
+	public String getDescriptionPeriodeEntreprise() {
+		return descriptionPeriodeEntreprise;
+	}
+
+
+
+
+	public void setDescriptionPeriodeEntreprise(String descriptionPeriodeEntreprise) {
+		this.descriptionPeriodeEntreprise = descriptionPeriodeEntreprise;
+	}
+
+
+
+
+	public Date getDateEcf() {
+		return dateEcf;
+	}
+
+
+
+
+	public void setDateEcf(Date dateEcf) {
+		this.dateEcf = dateEcf;
+	}
+
+
+
+
+	public String getTexteEcf() {
+		return texteEcf;
+	}
+
+
+
+
+	public void setTexteEcf(String texteEcf) {
+		this.texteEcf = texteEcf;
+	}
+
+	
+	
 	
 	
 }

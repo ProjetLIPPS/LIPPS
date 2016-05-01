@@ -56,6 +56,12 @@ public class SequenceLivret extends DataParent {
 	@Column(name = "sel_t_observation_tuteur")
 	@NotNull
 	private String observationTuteur = null;
+	
+	@Column(name = "sel_position")
+	@NotNull
+	private Integer position = null;
+	
+	
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "mdl_id")
