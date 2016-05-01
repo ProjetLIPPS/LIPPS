@@ -52,15 +52,16 @@ public class MngModeleListener implements ActionListener, ListSelectionListener 
 
 
 
-	// réagit à une selection de formation et affiche modules correspondants
+	// réagit à une selection de formation et affiche infos correspondantes
 	
 	public void valueChanged(ListSelectionEvent e) {
 		
-		JList selection = (JList) e.getSource();
+		@SuppressWarnings("unchecked")
+		JList<String> selection = (JList<String>) e.getSource();
 		
 		if (selection.getSelectedValue() != null)
 		{	
-		String selectedFormation = selection.getSelectedValue().toString();
+		String selectedFormation = selection.getSelectedValue();
 		MngFormationRewriteInfo.showModelInfo(panelMngModel, selectedFormation);
 		}
 

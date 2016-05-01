@@ -93,6 +93,7 @@ public class PanelMngModule extends JPanel {
 		listFormation.addListSelectionListener(mngModuleListener);
 		initListFormation();
 		
+		
 		panelMyForm.add(listFormation, BorderLayout.CENTER);
 		/*JScrollPane scrollAllModList = new JScrollPane();
 		scrollAllModList.setBorder(null);
@@ -206,8 +207,14 @@ public class PanelMngModule extends JPanel {
 			{
 				// Edited by Michmich to include the selected formation in order to create module and sequences for it
 				Formation formationSelectionnee = new Formation();
+				String selectedFormation = formationSelectionnee.getIntitule();
+				
+				String[] split = selectedFormation.split(" ");
+				String intitule = split[0];
+				String date = split[1];
+				
 				try {
-					formationSelectionnee = DaoFactory.getDaoFormation().findFormationByIntitule(listFormation.getSelectedValue());
+					formationSelectionnee = DaoFactory.getDaoFormation().findFormationByIntituleAndDate(intitule, date);
 				} catch (Exception e1) {
 					
 					e1.printStackTrace();
@@ -241,7 +248,7 @@ public class PanelMngModule extends JPanel {
 					
 			} catch (Exception e1) {
 				
-			JOptionPane.showMessageDialog(null, "La liste des formations n'a pu être importée.", "Erreur connexion base de données", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "La liste des formations n'a pu être importée.", "Erreur importation données", JOptionPane.WARNING_MESSAGE);
 			e1.printStackTrace();
 			}
 		

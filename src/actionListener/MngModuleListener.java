@@ -22,17 +22,18 @@ public class MngModuleListener implements ListSelectionListener {
 	public void valueChanged(ListSelectionEvent e) {
 		
 				
-		JList selection = (JList) e.getSource();
-		
-			if (selection.getSelectedValue() !=null)
+				
+			if (!e.getValueIsAdjusting() == true)
 		
 			{
 					
-					String selectedFormation = selection.getSelectedValue().toString();
+				@SuppressWarnings("unchecked")
+				JList<String> selection = (JList<String>) e.getSource();
+				String selectedFormation = selection.getSelectedValue();
 						
-					String[] split = selectedFormation.split(" ");
-					String intitule = split[0];
-					String date = split[1];
+				String[] split = selectedFormation.split(" ");
+				String intitule = split[0];
+				String date = split[1];
 							
 									
 					MngModuleCtrl.myModuleRowDisplay(intitule, date, panelMngModule);

@@ -347,7 +347,7 @@ public class PanelMngModele extends JPanel  {
 			
 					
 			} catch (Exception e1) {
-			JOptionPane.showMessageDialog(null, "La liste des formations n'a pu être importée.", "Erreur connexion base de données", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "La liste des formations n'a pu être importée.", "Erreur importation données", JOptionPane.WARNING_MESSAGE);
 			e1.printStackTrace();
 			}
 		
