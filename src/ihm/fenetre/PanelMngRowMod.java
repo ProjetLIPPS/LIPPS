@@ -16,25 +16,30 @@ import actionListener.MngModuleListener;
 import ihm.theme.ThemeLIPPS;
 
 
-public class PanelMngModuleRowMod extends JPanel {
+public class PanelMngRowMod extends JPanel {
 
 	
 	private static final long serialVersionUID = 1L;
 	
-	//private PanelMngModule panelMngModule = null;
+	private PanelMngModule panelMngModule;
 	
-	 
+	private JTextArea textArea = new JTextArea();
 	
-	public PanelMngModuleRowMod(String intitModule) 	{
+	public JTextArea getTextArea() {
+		return textArea;
+	}
+
+	public PanelMngRowMod(String intitModule) 	{
 		
-		//MngModuleListener mngModuleListener = new MngModuleListener(panelMngModule.getPanelMngModule());
+		MngModuleListener mngModuleListener = new MngModuleListener(panelMngModule);
+		
 		
 		setOpaque(false);
 		setMinimumSize(new Dimension(10, 70));
 		setMaximumSize(new Dimension(32767, 100));
 		setBackground(ThemeLIPPS.BLUE_DARK);
 		
-		JTextArea textArea = new JTextArea();
+		
 		textArea.setBackground(ThemeLIPPS.BLUE_DARK);
 		textArea.setForeground(Color.WHITE);
 		textArea.setEditable(false);
@@ -45,7 +50,8 @@ public class PanelMngModuleRowMod extends JPanel {
 		textArea.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, ThemeLIPPS.FONT_SIZE_DEFAULT));
 		textArea.setColumns(30);
 		textArea.setBorder(new LineBorder(new Color(255, 255, 255), 2, true));
-		//textArea.addMouseListener(mngModuleListener);
+		textArea.setFocusable(true);
+		textArea.addFocusListener(mngModuleListener);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(new EmptyBorder(0, 0, 0, 0));

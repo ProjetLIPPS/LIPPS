@@ -8,8 +8,8 @@ import javax.swing.JPanel;
 
 import actionListener.MngModuleListener;
 import ihm.fenetre.PanelMngModule;
-import ihm.fenetre.PanelMngModuleRowMod;
-import ihm.fenetre.PanelMngModuleRowSeq;
+import ihm.fenetre.PanelMngRowMod;
+import ihm.fenetre.PanelMngRowSeq;
 import model.baseDAO.DaoFactory;
 import model.objet.Formation;
 import model.objet.FormationToModule;
@@ -41,11 +41,12 @@ public class MngModuleCtrl {
 			e1.printStackTrace();
 		}
 	
+		
 	List<FormationToModule> allModule = formation.getFormationToModule();
 	
 	String[] listModule = new String[allModule.size()];
 	
-	for (int i = 0 ; i < listModule.length ; i++)
+	for (int i = 0 ; i < allModule.size() ; i++)
 	{
 		listModule[i] = allModule.get(i).getModule().getIntitule();
 	}
@@ -53,8 +54,8 @@ public class MngModuleCtrl {
 
 	for (String intitModule : listModule)
 	{
-		PanelMngModuleRowMod moduleRowMod = new PanelMngModuleRowMod(intitModule);
-		moduleRowMod.addMouseListener(new MngModuleListener(panelMngModule));
+		PanelMngRowMod moduleRowMod = new PanelMngRowMod(intitModule);
+		//moduleRowMod.addFocusListener(new MngModuleListener(panelMngModule));
 		panelLoadMod.add(moduleRowMod);
 					
 	}
@@ -71,12 +72,13 @@ public class MngModuleCtrl {
 	
 	public static void mySequenceRowDisplay(String intituleModule, PanelMngModule panelMngModule)  {
 	
-	JPanel panelLoadSeq = panelMngModule.getPanelLoadSeq();
+	PanelMngModule panelMngModullll	= panelMngModule;
+	JPanel panelLoadSeq = panelMngModullll.getPanelLoadSeq();
 	panelLoadSeq.removeAll();	
-	panelMngModule.removePanelLoadSeq();
+	panelMngModullll.removePanelLoadSeq();
 	
-	String intitFormation = panelMngModule.getListFormation().getSelectedValue().toString();
-	System.out.println(intitFormation);
+	String intitFormation = panelMngModullll.getListFormation().getSelectedValue();
+	System.out.println(intitFormation + "intitformation devrait etre la");
 	String[] split = intitFormation.split(" ");
 	String intituleFormation = split[0];
 	String dateFormation = split[1];
@@ -138,7 +140,7 @@ public class MngModuleCtrl {
 	
 	for (String intitSequence : listSequence)
 	{
-		PanelMngModuleRowSeq moduleRowSeq = new PanelMngModuleRowSeq(intitSequence);
+		PanelMngRowSeq moduleRowSeq = new PanelMngRowSeq(intitSequence);
 		panelLoadSeq.add(moduleRowSeq);
 					
 	}

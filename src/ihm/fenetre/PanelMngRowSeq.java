@@ -13,12 +13,12 @@ import javax.swing.border.LineBorder;
 import ihm.theme.ThemeLIPPS;
 
 
-public class PanelMngModuleRowSeq extends JPanel {
+public class PanelMngRowSeq extends JPanel {
 
 	
 	private static final long serialVersionUID = 1L;
 
-	public PanelMngModuleRowSeq(String intitSequence) 
+	public PanelMngRowSeq(String intitSequence) 
 	{
 		setOpaque(false);
 		setMinimumSize(new Dimension(10, 70));

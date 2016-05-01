@@ -279,9 +279,7 @@ public class PanelMngModule extends JPanel {
 		this.panelLoadMod = panelLoadMod;
 	}
 	
-	public PanelMngModule getPanelMngModule() {
-		return this;
-	}
+	
 	
 	
 	

@@ -3,17 +3,17 @@ package controleur;
 import java.util.ArrayList;
 import java.util.List;
 
-import ihm.fenetre.PanelMngModuleRowMod;
+import ihm.fenetre.PanelMngRowMod;
 import model.objet.Formation;
 import model.objet.Module;
 
 public class LoadModSeqList {
 	
 	 
-	public static List<PanelMngModuleRowMod> listeAllModule(Formation formation)   
+	public static List<PanelMngRowMod> listeAllModule(Formation formation)   
 	{
 		
-		ArrayList<PanelMngModuleRowMod> listMod = new ArrayList<PanelMngModuleRowMod>();
+		ArrayList<PanelMngRowMod> listMod = new ArrayList<PanelMngRowMod>();
 		
 //		for (Module mod : formation.getListModule())
 //		{

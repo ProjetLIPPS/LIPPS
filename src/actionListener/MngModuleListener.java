@@ -14,13 +14,14 @@ import javax.swing.event.ListSelectionListener;
 
 import controleur.MngModuleCtrl;
 import ihm.fenetre.PanelMngModule;
-import ihm.fenetre.PanelMngModuleRowMod;
+import ihm.fenetre.PanelMngRowMod;
 
-public class MngModuleListener implements ListSelectionListener, MouseListener {
+public class MngModuleListener implements ListSelectionListener , FocusListener {
 
 	
-	private PanelMngModule panelMngModule = null;
-	private PanelMngModuleRowMod panelMngModuleRowMod = null;
+	private PanelMngModule panelMngModule;
+	//private PanelMngModuleRowMod panelMngModuleRowMod = null;
+	
 	
 	
 	public  MngModuleListener(PanelMngModule panelListened) 
@@ -28,79 +29,42 @@ public class MngModuleListener implements ListSelectionListener, MouseListener {
 		this.panelMngModule = panelListened;
 	}
 	
-	public  MngModuleListener(PanelMngModuleRowMod panelListened) 
+	/*public  MngModuleListener(PanelMngModuleRowMod panelListened) 
 	{
 		this.panelMngModuleRowMod = panelListened;
-	}
+	}*/
+	
 	
 	
 	// réagit à une selection de formation et affiche modules correspondants
 	
 	public void valueChanged(ListSelectionEvent e) {
 		
-				
-				
-			if (e.getValueIsAdjusting())
-		
-			{
-					
 				@SuppressWarnings("unchecked")
 				JList<String> selection = (JList<String>) e.getSource();
-				String selectedFormation = selection.getSelectedValue();
-						
-				String[] split = selectedFormation.split(" ");
-				String intitule = split[0];
-				String date = split[1];
-							
-									
-				MngModuleCtrl.myModuleRowDisplay(intitule, date, panelMngModule);
-							
-			}
-			
-			
+				
+				if (selection.getSelectedValue() != null)  {
+					
+					String selectedFormation = selection.getSelectedValue();
+					
+					String[] split = selectedFormation.split(" ");
+					String intitule = split[0];
+					String date = split[1];
+								
+										
+					MngModuleCtrl.myModuleRowDisplay(intitule, date, panelMngModule);
+								
+				}
+											
 	}
 	
+	
 	@Override
-	public void mouseClicked(MouseEvent e) {
-
-		JTextArea text = (JTextArea) e.getSource();	
-		String moduleName = text.getText();
-		System.out.println(moduleName);
-		
-		MngModuleCtrl.mySequenceRowDisplay(moduleName, panelMngModule);			
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-/*	@Override
 	public void focusGained(FocusEvent e) {
 		
-		JTextArea text = (JTextArea) e.getSource();	
+		JTextArea text = (JTextArea)e.getSource();
 		String moduleName = text.getText();
-		System.out.println(moduleName);
+		System.out.println(moduleName + "mouseclick should be here");
 		
 		MngModuleCtrl.mySequenceRowDisplay(moduleName, panelMngModule);
 		
@@ -110,7 +74,7 @@ public class MngModuleListener implements ListSelectionListener, MouseListener {
 	public void focusLost(FocusEvent e) {
 		// TODO Auto-generated method stub
 		
-	}*/
+	}
 
 /*	@Override
 	public void actionPerformed(ActionEvent e) {
