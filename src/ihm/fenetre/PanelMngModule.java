@@ -37,8 +37,8 @@ public class PanelMngModule extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	private MngModuleListener mngModuleListener;
-	private JPanel panelLeft = new JPanel();
 	private JPanel panelLoadMod = new JPanel();
+	private JPanel panelLoadSeq = new JPanel();
 	private JList<String> listFormation = new JList<String>();
 	
 	
@@ -84,8 +84,7 @@ public class PanelMngModule extends JPanel {
 		panelListForm.add(panelMyForm, BorderLayout.CENTER);
 		panelMyForm.setLayout(new BorderLayout(0, 0));
 		
-		listFormation = new JList<String>();			
-		listFormation.setOpaque(false);		
+		listFormation = new JList<String>();
 		listFormation.setForeground(Color.WHITE);
 		listFormation.setBackground(ThemeLIPPS.BLUE_DARK);
 		listFormation.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -93,14 +92,14 @@ public class PanelMngModule extends JPanel {
 		listFormation.addListSelectionListener(mngModuleListener);
 		initListFormation();
 		
+		JScrollPane scrollAllFormation = new JScrollPane();
+		scrollAllFormation.setBorder(new EmptyBorder(0, 0, 0, 0));
+		scrollAllFormation.setBackground(ThemeLIPPS.BLUE_DARK);
+		scrollAllFormation.setOpaque(true);
+		scrollAllFormation.setViewportView(listFormation);
 		
-		panelMyForm.add(listFormation, BorderLayout.CENTER);
-		/*JScrollPane scrollAllModList = new JScrollPane();
-		scrollAllModList.setBorder(null);
-		scrollAllModList.setBackground(ThemeLIPPS.BLUE_DARK);
-		scrollAllModList.setOpaque(true);
-		scrollAllModList.setViewportView(panelAllModList);*/
-		//panelLeft.add(scrollAllModList, BorderLayout.CENTER);
+		panelMyForm.add(scrollAllFormation, BorderLayout.CENTER);
+		
 		
 	
 		
@@ -128,29 +127,21 @@ public class PanelMngModule extends JPanel {
 		lblMesModules.setForeground(Color.WHITE);
 		lblMesModules.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, ThemeLIPPS.FONT_SIZE_BUTTON));
 		panelMyMod.add(lblMesModules, BorderLayout.NORTH);
+		
+		
 		panelLoadMod.setBorder(new EmptyBorder(10, 0, 10, 0));
-		
-		
-		panelLoadMod.setOpaque(false);
-		panelMid.add(panelLoadMod, BorderLayout.CENTER);
 		panelLoadMod.setLayout(new BoxLayout(panelLoadMod, BoxLayout.Y_AXIS));
+		panelLoadMod.setBackground(ThemeLIPPS.BLUE_DARK);
 		
 
-	/*	JScrollPane scrollPaneLoadMod = new JScrollPane();
+		JScrollPane scrollPaneLoadMod = new JScrollPane();
+		scrollPaneLoadMod.setBorder(new EmptyBorder(0, 0, 0, 0));
 		scrollPaneLoadMod.setViewportView(panelLoadMod);
-		*/
-		/*// ICI ON RECUPERE VIA LE CONTROLLER LES MODULES QU'ON INTEGRE A DES PANELROWMODS AVANT DE LES ENVOYER DANS LE PANEL (BOXLAYOUT)
-		List<PanelMngModuleRowMod> listMod = LoadModSeqList.listeModule();
+		scrollPaneLoadMod.setBackground(ThemeLIPPS.BLUE_DARK);
 		
-		for (PanelMngModuleRowMod mod : listMod)  {
+		panelMid.add(scrollPaneLoadMod, BorderLayout.CENTER);
+	
 			
-			panelLoadMod.add(mod);
-		}
-		*/
-		//	panelMid.add(scrollPaneLoadMod, BorderLayout.CENTER);
-		
-		panelMid.add(panelLoadMod, BorderLayout.CENTER);
-		
 	
 		
 		// PARTIE SEQUENCES
@@ -178,19 +169,18 @@ public class PanelMngModule extends JPanel {
 		panelMySeq.add(lblSodules, BorderLayout.NORTH);
 		
 			
-		JPanel panelLoadSeq = new JPanel();
-		panelLoadSeq.setOpaque(false);
-		panelLoadSeq.setPreferredSize(new Dimension(50, 10));
-		panelLoadSeq.setMinimumSize(new Dimension(0, 10));
-		panelLoadSeq.setBackground(new Color(0, 60, 110));
-		panelRight.add(panelLoadSeq, BorderLayout.CENTER);
-		panelLoadSeq.setLayout(new BoxLayout(panelLoadSeq, BoxLayout.X_AXIS));
+		
+		panelLoadSeq.setBorder(new EmptyBorder(10, 0, 10, 0));
+		panelLoadSeq.setBackground(ThemeLIPPS.BLUE_DARK);
+		panelLoadSeq.setLayout(new BoxLayout(panelLoadSeq, BoxLayout.Y_AXIS));
 		
 		JScrollPane scrollPaneLoadSeq = new JScrollPane();
-		scrollPaneLoadSeq.setBorder(null);
-		//scrollPaneLoadSeq.add(panelLoadSeq);
+		scrollPaneLoadSeq.setBorder(new EmptyBorder(0, 0, 0, 0));
+		scrollPaneLoadSeq.setViewportView(panelLoadSeq);
+		scrollPaneLoadSeq.setBackground(ThemeLIPPS.BLUE_DARK);
 		
-		panelRight.add(scrollPaneLoadSeq, BorderLayout.SOUTH);
+		panelRight.add(scrollPaneLoadSeq, BorderLayout.CENTER);
+
 		
 		JPanel panelButton = new JPanel();
 		add(panelButton, BorderLayout.SOUTH);
@@ -207,7 +197,7 @@ public class PanelMngModule extends JPanel {
 			{
 				// Edited by Michmich to include the selected formation in order to create module and sequences for it
 				Formation formationSelectionnee = new Formation();
-				String selectedFormation = formationSelectionnee.getIntitule();
+				String selectedFormation = listFormation.getSelectedValue();
 				
 				String[] split = selectedFormation.split(" ");
 				String intitule = split[0];
@@ -269,22 +259,29 @@ public class PanelMngModule extends JPanel {
 		return panelLoadMod;
 	}
 	
+	public JPanel getPanelLoadSeq() {
+		return panelLoadSeq;
+	}
 	
-	public void replaceLoadMod(JPanel newList) {
-	
-		this.panelLoadMod = newList;	
-		
+	public JList<String> getListFormation() {
+		return this.listFormation;
 	}
 	
 	public void removePanelLoadMod() {
-		this.remove(panelLoadMod);
+		this.remove(this.panelLoadMod);
+	}
+	
+	public void removePanelLoadSeq() {
+		this.remove(this.panelLoadSeq);
 	}
 	
 	public void setPanelLoadMod(JPanel panelLoadMod) {
 		this.panelLoadMod = panelLoadMod;
 	}
 	
-	
+	public PanelMngModule getPanelMngModule() {
+		return this;
+	}
 	
 	
 	
