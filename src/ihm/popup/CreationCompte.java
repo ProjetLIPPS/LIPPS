@@ -347,7 +347,7 @@ public class CreationCompte extends JDialog {
 		
 		for (int i = 0; !contains && i < listeFormData.length; i++)
 		{
-			if (listeFormData[i] == comboBoxForm.getSelectedItem())
+			if (listeFormData[i].equals(comboBoxForm.getSelectedItem()))
 				contains = true;
 		}
 		
