@@ -19,6 +19,7 @@ import ihm.popup.CreaForm;
 import ihm.popup.CreationCompte;
 import ihm.popup.CreationModele;
 import ihm.popup.CreationModule;
+import ihm.popup.ModificationCompte;
 import ihm.popup.RowSequence;
 import model.baseDAO.DaoFactory;
 import model.objet.AnnexeLivret;
@@ -303,20 +304,43 @@ public class PopupListener implements ActionListener, ListSelectionListener, Foc
 	public void focusGained(FocusEvent e) 
 	{
 		JRadioButton radbut = (JRadioButton) e.getSource();
-		CreationCompte creaComptePop = (CreationCompte) radbut.getRootPane().getParent();
+		if ( radbut.getRootPane().getParent().getClass().getSimpleName().equals("CreationCompte"))
+		{
+			CreationCompte creaComptePop = (CreationCompte) radbut.getRootPane().getParent();
+			
+			
+			if (radbut.getName().equals("admin"))
+			{
+				creaComptePop.getComboBoxSpe().setEnabled(false);
+				creaComptePop.getComboBoxForm().setEnabled(false);
+				creaComptePop.getBtnAjouter().setEnabled(false);
+				
+			}
+			else
+			{
+				creaComptePop.getComboBoxSpe().setEnabled(true);
+				creaComptePop.getComboBoxForm().setEnabled(true);
+				creaComptePop.getBtnAjouter().setEnabled(true);
+			}
+		}
+		else if (radbut.getRootPane().getParent().getClass().getSimpleName().equals("ModificationCompte"))
+		{
+			ModificationCompte modifComptePop = (ModificationCompte) radbut.getRootPane().getParent();
+			if (radbut.getName().equals("adminModif"))
+			{
+				modifComptePop.getComboBoxSpe().setEnabled(false);
+				modifComptePop.getComboBoxForm().setEnabled(false);
+				modifComptePop.getBtnAjouter().setEnabled(false);
+				
+			}
+			else
+			{
+				modifComptePop.getComboBoxSpe().setEnabled(true);
+				modifComptePop.getComboBoxForm().setEnabled(true);
+				modifComptePop.getBtnAjouter().setEnabled(true);
+			}
+		}
 		
-		if (radbut.getName().equals("admin"))
-		{
-			creaComptePop.getComboBoxSpe().setEnabled(false);
-			creaComptePop.getComboBoxForm().setEnabled(false);
-			creaComptePop.getBtnAjouter().setEnabled(false);
-		}
-		else
-		{
-			creaComptePop.getComboBoxSpe().setEnabled(true);
-			creaComptePop.getComboBoxForm().setEnabled(true);
-			creaComptePop.getBtnAjouter().setEnabled(true);
-		}
 		
 		
 	}

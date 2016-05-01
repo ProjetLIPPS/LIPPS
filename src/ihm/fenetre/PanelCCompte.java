@@ -29,10 +29,12 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import actionListener.BoutonCreerCompte;
+import actionListener.BoutonModifierCompte;
 import actionListener.FocusListeners;
 import actionListener.RechercherListener;
 import actionListener.SuppressionCompteListener;
 import actionListener.UtilisateurParTypeDeCompte;
+import ihm.popup.ModificationCompte;
 import ihm.theme.ThemeLIPPS;
 import model.baseDAO.DaoFactory;
 
@@ -62,6 +64,7 @@ public class PanelCCompte extends JPanel
 	private JComboBox<String> comboSecMetier = new JComboBox<String>();
 	private JButton btnCreer = new JButton("Créer");
 	private JButton btnSupprimer = new JButton("Supprimer");
+	private JButton btnModifier = new JButton("Modifier");
 
 	
 	/**
@@ -77,6 +80,7 @@ public class PanelCCompte extends JPanel
 		RechercherListener listenerBtnRecherche = new RechercherListener(this);
 		BoutonCreerCompte creerCompteListener = new  BoutonCreerCompte(this);
 		SuppressionCompteListener suppressionCompteListener = new SuppressionCompteListener(this) ;
+		BoutonModifierCompte modifierCompteListener = new BoutonModifierCompte(this);
 
 		this.setBorder(null);
 		this.setBackground(Color.WHITE);
@@ -363,7 +367,7 @@ public class PanelCCompte extends JPanel
 		btnCreer.setActionCommand("Créer");
 		panelButtonSub.add(btnCreer);
 
-		JButton btnModifier = new JButton("Modifier");
+		btnModifier.addMouseListener(modifierCompteListener);
 		btnModifier.setFocusable(false);
 		btnModifier.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnModifier.setPreferredSize(new Dimension(100, 36));
@@ -400,6 +404,20 @@ public class PanelCCompte extends JPanel
 	}
 	
 	
+
+	public JButton getBtnModifier()
+	{
+		return btnModifier;
+	}
+
+
+
+	public void setBtnModifier(JButton btnModifier)
+	{
+		this.btnModifier = btnModifier;
+	}
+
+
 
 	public JButton getBtnSupprimer()
 	{

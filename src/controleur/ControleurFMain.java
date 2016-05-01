@@ -11,12 +11,14 @@ import ihm.LippsIhm;
 import ihm.fenetre.PanelCCompte;
 import model.baseDAO.DaoFactory;
 import model.objet.Utilisateur;
+import model.objet.UtilisateurToRole;
 
 public class ControleurFMain
 
 	{
 	
-	private Utilisateur utilisateur ;
+	private static Utilisateur utilisateur ;
+	
 	
 	
 	public ControleurFMain()
@@ -42,6 +44,29 @@ public class ControleurFMain
 
 			}
 
-		
+		public static Utilisateur getUtilisateur()
+		{
+			return utilisateur;
+		}
+
+		public static void setUtilisateur(Utilisateur utilisateur)
+		{
+			ControleurFMain.utilisateur = utilisateur;
+		}
+
+		public static Boolean isUserAdmin()
+		{
+			Boolean isUserAdmin = false ;
+			for (UtilisateurToRole it : utilisateur.getUtilisateurToRole())
+			{
+				if (it.getRole().getType().equals("Administrateur"))
+				{
+					isUserAdmin = true ;
+				}
+			}
+			
+			return isUserAdmin;	
+			
+		}
 
 	}
