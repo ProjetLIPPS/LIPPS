@@ -5,6 +5,7 @@ public class DaoFactory {
 	private static DaoAnnexeLivret daoAnnexeLivret = null;
 	private static DaoContact daoContact = null;
 	private static DaoFormation daoFormation = null;
+	private static DaoFormationToModule daoFormationToModule = null;
 	private static DaoLivret daoLivret = null;
 	private static DaoLog daoLog = null;
 	private static DaoModule daoModule = null;
@@ -51,6 +52,16 @@ public class DaoFactory {
 		}
 		
 		return daoFormation;
+	}
+	
+	public static DaoFormationToModule getDaoFormationToModule()
+	{
+		if (daoFormationToModule == null)
+		{
+			daoFormationToModule = new DaoFormationToModule();
+		}
+		
+		return daoFormationToModule;
 	}
 	
 	public static DaoLivret getDaoLivret()
