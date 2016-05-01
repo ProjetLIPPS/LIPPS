@@ -79,6 +79,8 @@ public class DaoFormation extends DaoParent {
 		return result;
 	}
 	
+
+	
 	public Formation findModeleByIntitule (String intitule) throws Exception
 	{
 

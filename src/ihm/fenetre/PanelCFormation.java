@@ -25,6 +25,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 
 import actionListener.PanelCFormationListener;
@@ -70,7 +71,7 @@ public class PanelCFormation extends JPanel
 		
 		JPanel panelLeft = new JPanel();
 		panelLeft.setBackground(ThemeLIPPS.BLUE_DARK);
-		panelLeft.setPreferredSize(new Dimension(300, 10));
+		panelLeft.setPreferredSize(new Dimension(350, 10));
 		add(panelLeft, BorderLayout.WEST);
 		panelLeft.setLayout(new BorderLayout(0, 0));
 		
@@ -110,7 +111,7 @@ public class PanelCFormation extends JPanel
 		scrollPane.setBorder(new EmptyBorder(0, 0, 0, 0));
 		scrollPane.setOpaque(false);
 		scrollPane.setViewportView(list);
-		panelJlist.add(scrollPane, BorderLayout.NORTH);
+		panelJlist.add(scrollPane, BorderLayout.CENTER);
 		
 		
 		JPanel panelRight = new JPanel();
@@ -119,7 +120,7 @@ public class PanelCFormation extends JPanel
 		panelRight.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panelBox = new JPanel();
-		panelBox.setBorder(new EmptyBorder(20, 0, 10, 0));
+		panelBox.setBorder(new EmptyBorder(20, 0, 50, 0));
 		panelBox.setBackground(Color.WHITE);
 		panelBox.setPreferredSize(new Dimension(10, 550));
 		panelRight.add(panelBox, BorderLayout.CENTER);
@@ -331,7 +332,8 @@ public class PanelCFormation extends JPanel
 		
 		btnCrerOuvelleFormation.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			CreaForm newFormation = new CreaForm();
+			new CreaForm();
+			list.setListData(initList());
 			}
 		});
 
@@ -403,7 +405,8 @@ public class PanelCFormation extends JPanel
 			btnCrrNouvelleFormation.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_BUTTON));
 			btnCrrNouvelleFormation.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CreaForm newFormation = new CreaForm();
+				new CreaForm();
+				
 			}
 		});
 			panel.add(btnCrrNouvelleFormation);
@@ -430,7 +433,7 @@ public String[]  initList() {
 	
 	try {
 		
-		Utilisateur user = DaoFactory.getDaoUtilisateur().findById(Utilisateur.class, 1);
+		Utilisateur user = DaoFactory.getDaoUtilisateur().findById(Utilisateur.class, 2);
 		
 		List<Formation> listFormation = (List<Formation>) DaoFactory.getDaoFormation().readAllFormationFromUser(user);
 		
@@ -440,7 +443,7 @@ public String[]  initList() {
 			{
 					
 			System.out.println(listFormation.get(i).getIntitule());
-			values[i] = listFormation.get(i).getIntitule();
+			values[i] = listFormation.get(i).getIntitule() + " " + listFormation.get(i).getDateDebut() ;
 			
 			}
 		
@@ -492,6 +495,15 @@ public String[]  initList() {
 	
 	public JTextArea getTextDebouche() {
 		return textDebouche;
+	}
+	
+	public JList<String> getList() {
+		return list;
+	}
+
+	public void refreshList() {
+		SwingUtilities.updateComponentTreeUI(this.list);
+		
 	}
 	
 	
