@@ -49,12 +49,67 @@ public class PlanningPrevisionnelLivret extends DataParent
 	}
 
 
-	public PlanningPrevisionnelLivret(Integer id)
+
+	public PlanningPrevisionnelLivret(Integer id, Date dateEvaluationFinale, String descriptionEvaluationFinale,
+			Livret livret)
 	{
 		super();
 		this.id = id;
-
+		this.dateEvaluationFinale = dateEvaluationFinale;
+		this.descriptionEvaluationFinale = descriptionEvaluationFinale;
+		this.livret = livret;
 	}
+
+
+
+	public Integer getId() {
+		return id;
+	}
+
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+
+
+	public Date getDateEvaluationFinale() {
+		return dateEvaluationFinale;
+	}
+
+
+
+	public void setDateEvaluationFinale(Date dateEvaluationFinale) {
+		this.dateEvaluationFinale = dateEvaluationFinale;
+	}
+
+
+
+	public String getDescriptionEvaluationFinale() {
+		return descriptionEvaluationFinale;
+	}
+
+
+
+	public void setDescriptionEvaluationFinale(String descriptionEvaluationFinale) {
+		this.descriptionEvaluationFinale = descriptionEvaluationFinale;
+	}
+
+
+
+	public Livret getLivret() {
+		return livret;
+	}
+
+
+
+	public void setLivret(Livret livret) {
+		this.livret = livret;
+	}
+
+
+	
 	
 	
 	

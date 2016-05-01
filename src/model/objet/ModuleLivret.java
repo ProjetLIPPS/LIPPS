@@ -67,7 +67,14 @@ public class ModuleLivret extends DataParent {
 		this.position = position;
 	}
 
-
+	
+	
+	
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
+	
 	public String getIntitule() {
 		return intitule;
 	}
@@ -98,13 +105,30 @@ public class ModuleLivret extends DataParent {
 	}
 
 
-	
-
-	
-
-	public void setId(Integer id) {
-		this.id = id;
+	public Integer getPosition() {
+		return position;
 	}
+
+
+	public void setPosition(Integer position) {
+		this.position = position;
+	}
+
+
+	public PeriodeLivret getPeriodeLivret() {
+		return periodeLivret;
+	}
+
+
+	public void setPeriodeLivret(PeriodeLivret periodeLivret) {
+		this.periodeLivret = periodeLivret;
+	}
+
+
+
+	
+
+	
 
 
 	
