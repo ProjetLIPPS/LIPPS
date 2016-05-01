@@ -30,6 +30,7 @@ import javax.swing.border.EmptyBorder;
 
 import com.toedter.calendar.JDateChooser;
 
+import actionListener.ModifierCompteListener;
 import actionListener.PopupListener;
 import ihm.theme.ThemeLIPPS;
 import javafx.scene.control.RadioButton;
@@ -61,6 +62,7 @@ public class ModificationCompte extends JDialog
 	private JRadioButton rdbtnTuteur = new JRadioButton("Tuteur");
 	private Utilisateur utilisateurAModifier;
 	private Contact contactUtilisateurModifier ;
+	private JButton valider = new JButton("Valider");
 
 
 	
@@ -73,6 +75,7 @@ public class ModificationCompte extends JDialog
 	 */
 	public ModificationCompte(Utilisateur utilisateur) throws Exception
 	{
+		ModifierCompteListener modifierCompteListener = new ModifierCompteListener(this);
 		PopupListener listener = new PopupListener();
 		this.utilisateurAModifier = utilisateur;
 		setContactUtilisateurModifier();
@@ -199,18 +202,18 @@ public class ModificationCompte extends JDialog
 		rdbtnTuteur.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_DEFAULT));
 		groupRadioType.add(rdbtnTuteur);
 		
-		JButton btnNewButton = new JButton("Valider");
 		
-		btnNewButton.addActionListener(listener);
-		btnNewButton.setName("compteModif");
 		
-		btnNewButton.setBounds(229, 616, 101, 33);
-		getContentPane().add(btnNewButton);
-		btnNewButton.setForeground(Color.DARK_GRAY);
-		btnNewButton.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_BUTTON));
-		btnNewButton.setMargin(new Insets(6, 20, 6, 20));
+		valider.addMouseListener(modifierCompteListener);
+		valider.setName("compteModif");
 		
-		btnNewButton.setBackground(Color.WHITE);
+		valider.setBounds(229, 616, 101, 33);
+		getContentPane().add(valider);
+		valider.setForeground(Color.DARK_GRAY);
+		valider.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_BUTTON));
+		valider.setMargin(new Insets(6, 20, 6, 20));
+		
+		valider.setBackground(Color.WHITE);
 		
 		JButton btnNewButton_1 = new JButton("Annuler");
 		btnNewButton_1.addActionListener(new ActionListener() {
@@ -324,6 +327,51 @@ public class ModificationCompte extends JDialog
 
 
 
+	public Utilisateur getUtilisateurAModifier()
+	{
+		return utilisateurAModifier;
+	}
+
+
+
+
+
+	public void setUtilisateurAModifier(Utilisateur utilisateurAModifier)
+	{
+		this.utilisateurAModifier = utilisateurAModifier;
+	}
+
+
+
+
+
+	public JButton getValider()
+	{
+		return valider;
+	}
+
+
+
+
+
+	public void setValider(JButton valider)
+	{
+		this.valider = valider;
+	}
+
+
+
+
+
+	public void setContactUtilisateurModifier(Contact contactUtilisateurModifier)
+	{
+		this.contactUtilisateurModifier = contactUtilisateurModifier;
+	}
+
+
+
+
+
 	public ModificationCompte getThis()
 	{
 		return this;
@@ -373,7 +421,7 @@ public class ModificationCompte extends JDialog
 		
 		for (int i = 0; !contains && i < listeFormData.length; i++)
 		{
-			if (listeFormData[i] == comboBoxForm.getSelectedItem())
+			if (listeFormData[i].equals(comboBoxForm.getSelectedItem()))
 				contains = true;
 		}
 		
@@ -732,7 +780,7 @@ public class ModificationCompte extends JDialog
 		{
 			if (roleUti.getRole().getType().equals("Administrateur"))
 			{
-				rdbtnAdministrateur.doClick();
+				rdbtnAdministrateur.setFocusable(true);
 				rdbtnAdministrateur.setSelected(true);
 				rdbtnStagiaire.setEnabled(false);
 				rdbtnTuteur.setEnabled(false);
@@ -740,15 +788,18 @@ public class ModificationCompte extends JDialog
 			}
 			else if (roleUti.getRole().getType().equals("Formateur"))
 			{
-				rdbtnFormateur.doClick();
-				rdbtnFormateur.setSelected(true);
+				
 				rdbtnStagiaire.setEnabled(false);
 				rdbtnTuteur.setEnabled(false);
+				rdbtnFormateur.setSelected(true);
+				rdbtnAdministrateur.setFocusable(true);
+				
+
 				
 			}
 			else if (roleUti.getRole().getType().equals("Stagiaire"))
 			{
-				rdbtnStagiaire.doClick();
+				
 				rdbtnStagiaire.setSelected(true);
 				rdbtnStagiaire.setEnabled(false);
 				rdbtnTuteur.setEnabled(false);
@@ -757,12 +808,13 @@ public class ModificationCompte extends JDialog
 			}
 			else
 			{
-				rdbtnTuteur.doClick();
+				rdbtnAdministrateur.setSelected(false);
 				rdbtnTuteur.setSelected(true);
 				rdbtnStagiaire.setEnabled(false);
 				rdbtnTuteur.setEnabled(false);
 				rdbtnFormateur.setEnabled(false);
 				rdbtnAdministrateur.setEnabled(false);
+				
 			}
 		}
 		textField_NoAFPA.setText( utilisateurAModifier.getIdentifiantAFPA().toString());

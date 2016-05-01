@@ -29,7 +29,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import actionListener.BoutonCreerCompte;
-import actionListener.BoutonModifierCompte;
+import actionListener.ModifierCompteListener;
 import actionListener.FocusListeners;
 import actionListener.RechercherListener;
 import actionListener.SuppressionCompteListener;
@@ -80,7 +80,7 @@ public class PanelCCompte extends JPanel
 		RechercherListener listenerBtnRecherche = new RechercherListener(this);
 		BoutonCreerCompte creerCompteListener = new  BoutonCreerCompte(this);
 		SuppressionCompteListener suppressionCompteListener = new SuppressionCompteListener(this) ;
-		BoutonModifierCompte modifierCompteListener = new BoutonModifierCompte(this);
+		ModifierCompteListener modifierCompteListener = new ModifierCompteListener(this);
 
 		this.setBorder(null);
 		this.setBackground(Color.WHITE);
