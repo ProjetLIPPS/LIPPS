@@ -213,6 +213,11 @@ public class PopupListener implements ActionListener, ListSelectionListener, Foc
 				Specialisation spe = DaoFactory.getDaoSpecialisation().findByName((String) creaComptePop.getComboBoxSpe().getSelectedItem());
 				DaoFactory.getDaoUtilisateur().save(new UtilisateurToSpecialisation(user, spe));
 			}
+			
+			if (role.getType().equals("Stagiaire"))
+			{
+				creerLivret (user, form);
+			}
 			creaComptePop.dispose();
 			Object [][] refreshModel = DaoFactory.getDaoUtilisateur().executeLastQuery();
 			PanelCCompte.getTableau().setModel(new DefaultTableModel( refreshModel,PanelCCompte.getEnteteTableau()));
@@ -225,38 +230,6 @@ public class PopupListener implements ActionListener, ListSelectionListener, Foc
 		/*
 		if (role.getType().equals("Stagiaire"))
 		{
-			Livret livret = new Livret(null, false, user);
-			try 
-			{
-				DaoFactory.getDaoLivret().save(livret);
-				
-				DaoFactory.getDaoProjetProLivret().save(
-						new ProjetProLivret(null, null, null, null, null, null, livret));
-				
-				DaoFactory.getDaoSuiviLivret().save(
-						new SuiviLivret(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, livret));
-				
-				DaoFactory.getDaoResultatParcoursLivret().save(
-						new ResultatParcoursLivret(null, null, null, null, null, null, null, null, null, null, livret));
-				
-				DaoFactory.getDaoAnnexeLivret().save(
-						new AnnexeLivret(null, null, null, null, null, null, null, livret));
-				
-				DaoFactory.getDaoLivret().save(new PlanningPrevisionnelLivret(null, null, null, livret));
-				
-				List<FormationToModule> listeFTM= (List<FormationToModule>) DaoFactory.getDaoFormationToModule().getAllFormationToModuleFromFormation(form);
-				
-				for (FormationToModule ftm : listeFTM)
-				{
-					
-				}
-				
-				
-				
-				// TODO : terminer avec periodeLivret / type periodeLivret et moduleLivret / sequencesLivret
-			}
-			catch (Exception e)
-			{e.printStackTrace();}
 			
 		}
 		*/
@@ -265,6 +238,45 @@ public class PopupListener implements ActionListener, ListSelectionListener, Foc
 		
 	}
 	
+	private void creerLivret(Utilisateur user, Formation form)
+	{
+		Livret livret = new Livret(null, false, user);
+		try 
+		{
+			DaoFactory.getDaoLivret().save(livret);
+			
+			DaoFactory.getDaoProjetProLivret().save(
+					new ProjetProLivret(null, null, null, null, null, null, livret));
+			
+			DaoFactory.getDaoSuiviLivret().save(
+					new SuiviLivret(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, livret));
+			
+			DaoFactory.getDaoResultatParcoursLivret().save(
+					new ResultatParcoursLivret(null, null, null, null, null, null, null, null, null, null, livret));
+			
+			DaoFactory.getDaoAnnexeLivret().save(
+					new AnnexeLivret(null, null, null, null, null, null, null, livret));
+			
+			DaoFactory.getDaoLivret().save(new PlanningPrevisionnelLivret(null, null, null, livret));
+			
+			List<FormationToModule> listeFTM= (List<FormationToModule>) DaoFactory.getDaoFormationToModule().getAllFormationToModuleFromFormation(form);
+			
+			for (FormationToModule ftm : listeFTM)
+			{
+				
+			}
+			
+			
+			
+			// TODO : terminer avec periodeLivret / type periodeLivret et moduleLivret / sequencesLivret
+		}
+		catch (Exception e)
+		{e.printStackTrace();}
+		
+		
+	}
+
+
 	private void creerModele (CreationModele creaModelePop)
 	{
 		String intitule = creaModelePop.getTextField_Intitule().getText();

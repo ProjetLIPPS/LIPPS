@@ -23,6 +23,7 @@ public class DaoFactory {
 	private static DaoTypePeriodeLivret daoTypePeriodeLivret = null;
 	private static DaoUtilisateur daoUtilisateur = null;
 	private static DaoUtilisateurToFormation daoUtilisateurToFormation = null;
+	private static DaoUtilisateurToSpecialisation daoUtilisateurToSpecialisation = null;
 	
 	
 	public static DaoAnnexeLivret getDaoAnnexeLivret()
@@ -235,6 +236,16 @@ public class DaoFactory {
 		}
 		
 		return daoUtilisateurToFormation;
+	}
+	
+	public static DaoUtilisateurToSpecialisation getDaoUtilisateurToSpecialisation()
+	{
+		if (daoUtilisateurToSpecialisation == null)
+		{
+			daoUtilisateurToSpecialisation = new DaoUtilisateurToSpecialisation();
+		}
+		
+		return daoUtilisateurToSpecialisation;
 	}
 	
 	

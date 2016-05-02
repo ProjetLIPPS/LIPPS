@@ -4,10 +4,11 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-import javax.swing.AbstractAction;
-import javax.swing.AbstractListModel;
-import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -16,7 +17,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
-import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
@@ -24,10 +24,11 @@ import javax.swing.border.LineBorder;
 import com.toedter.calendar.JDateChooser;
 
 import actionListener.PopupListener;
+import controleur.ControleurFMain;
 import ihm.theme.ThemeLIPPS;
 import model.baseDAO.DaoFactory;
-
-import java.awt.event.ActionListener;
+import model.objet.Specialisation;
+import model.objet.UtilisateurToSpecialisation;
 
 public class CreaForm extends JDialog 
 {
@@ -246,10 +247,40 @@ public class CreaForm extends JDialog
 	
 	private void remplirListeModele()
 	{
-		//TODO : finir
-		//String [] nomSpe = DaoFactory.getDaoFormation().getListeNomModelesBySpe(spe);
 		
-		//listModele.setListData(nomSpe);
+		List<UtilisateurToSpecialisation> listeUTS = new ArrayList<UtilisateurToSpecialisation>();
+		
+		try
+		{
+			listeUTS = (List<UtilisateurToSpecialisation>) DaoFactory.getDaoUtilisateurToSpecialisation().readUtilisateurToSpecialisationFromUser(ControleurFMain.getUtilisateur());
+		} 
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		String [] nomToutModeleBySpe = new String[0];
+		for (UtilisateurToSpecialisation uts : listeUTS)
+		{
+			Specialisation spe = uts.getSpecialisation();
+			String [] nomModele = DaoFactory.getDaoFormation().getListeNomModelesBySpe(spe);
+			String [] temp = new String[nomModele.length + nomToutModeleBySpe.length];
+			
+			for (int i = 0 ; i < nomToutModeleBySpe.length; i++)
+			{
+				temp[i] = nomToutModeleBySpe[i];
+			}
+			for (int i = nomToutModeleBySpe.length ; i < temp.length ; i++)
+			{
+				temp[i] = nomModele[i-nomToutModeleBySpe.length];
+			}
+			nomToutModeleBySpe = temp;
+			
+		}
+		
+		Arrays.sort(nomToutModeleBySpe);
+		
+		listModele.setListData(nomToutModeleBySpe);
 		
 	}
 
