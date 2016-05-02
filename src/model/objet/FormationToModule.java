@@ -92,6 +92,36 @@ public class FormationToModule extends DataParent implements Serializable {
 	public void setPositionModule(Integer positionModuleDansPeriode) {
 		this.positionModuleDansPeriode = positionModuleDansPeriode;
 	}
+
+
+	public Periode getPeriode() {
+		return periode;
+	}
+
+
+	public void setPeriode(Periode periode) {
+		this.periode = periode;
+	}
+
+
+	public Integer getPositionModuleDansPeriode() {
+		return positionModuleDansPeriode;
+	}
+
+
+	public void setPositionModuleDansPeriode(Integer positionModuleDansPeriode) {
+		this.positionModuleDansPeriode = positionModuleDansPeriode;
+	}
+
+
+	public Integer getPositionPeriodeDansFormation() {
+		return positionPeriodeDansFormation;
+	}
+
+
+	public void setPositionPeriodeDansFormation(Integer positionPeriodeDansFormation) {
+		this.positionPeriodeDansFormation = positionPeriodeDansFormation;
+	}
 	
 	
 	

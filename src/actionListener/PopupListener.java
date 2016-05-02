@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -30,6 +31,7 @@ import model.objet.Formation;
 import model.objet.FormationToModule;
 import model.objet.Livret;
 import model.objet.Module;
+import model.objet.Periode;
 import model.objet.PlanningPrevisionnelLivret;
 import model.objet.ProjetProLivret;
 import model.objet.ResultatParcoursLivret;
@@ -54,30 +56,44 @@ public class PopupListener implements ActionListener, ListSelectionListener, Foc
 	{
 		JButton source = (JButton)e.getSource();
 		
-		int confirmation = JOptionPane.showConfirmDialog(source.getRootPane(), "Verifiez bien tout les champs avant de valider, vous ne pourrez plus les modifier ensuite. Continuer ?", "Confirmation", JOptionPane.YES_NO_OPTION);
+		//int confirmation = JOptionPane.showConfirmDialog(source.getRootPane(), "Verifiez bien tout les champs avant de valider, vous ne pourrez plus les modifier ensuite. Continuer ?", "Confirmation", JOptionPane.YES_NO_OPTION);
 
-		if (confirmation == JOptionPane.YES_OPTION)
-		{
-			
+		
 			if (source.getName().equals("formation"))
 			{
-				creerFormation((CreaForm) source.getRootPane().getParent());
+				int confirmation = JOptionPane.showConfirmDialog(source.getRootPane(), "Verifiez bien tout les champs avant de valider, vous ne pourrez plus les modifier ensuite. Continuer ?", "Confirmation", JOptionPane.YES_NO_OPTION);
+				if (confirmation == JOptionPane.YES_OPTION)
+				{
+					creerFormation((CreaForm) source.getRootPane().getParent());
+				}
 			}
 			else if (source.getName().equals("compte"))
 			{
-				creerCompte((CreationCompte) source.getRootPane().getParent());
-				
+				int confirmation = JOptionPane.showConfirmDialog(source.getRootPane(), "Verifiez bien tout les champs avant de valider. Continuer ?", "Confirmation", JOptionPane.YES_NO_OPTION);
+				if (confirmation == JOptionPane.YES_OPTION)
+				{
+					creerCompte((CreationCompte) source.getRootPane().getParent());
+				}
 			}
 			else if (source.getName().equals("modele"))
 			{
-				creerModele((CreationModele) source.getRootPane().getParent());
+				int confirmation = JOptionPane.showConfirmDialog(source.getRootPane(), "Verifiez bien tout les champs avant de valider, vous ne pourrez plus les modifier ensuite. Continuer ?", "Confirmation", JOptionPane.YES_NO_OPTION);
+				if (confirmation == JOptionPane.YES_OPTION)
+				{
+					creerModele((CreationModele) source.getRootPane().getParent());
+				}
 			}
 			else if (source.getName().equals("module"))
 			{
-				creerModule((CreationModule) source.getRootPane().getParent());
+				
+				int confirmation = JOptionPane.showConfirmDialog(source.getRootPane(), "Verifiez bien tout les champs avant de valider, vous ne pourrez plus les modifier ensuite. Continuer ?", "Confirmation", JOptionPane.YES_NO_OPTION);
+				if (confirmation == JOptionPane.YES_OPTION)
+				{
+					creerModule((CreationModule) source.getRootPane().getParent());
+				}
 			}
 			
-		}
+		
 		
 	}
 	
@@ -196,7 +212,12 @@ public class PopupListener implements ActionListener, ListSelectionListener, Foc
 			DaoFactory.getDaoContact().save(new Contact(null, null, null, null, null, null, email, user));
 			if (!role.getType().equals("Administrateur") && !role.getType().equals("Formateur") )
 			{
-				
+				if (formations.length == 0)
+				{
+					JOptionPane.showMessageDialog(null, "Ce type de compte doit être associé à une formation !", "Aucune formation associée", JOptionPane.WARNING_MESSAGE);
+					creaComptePop.dispose();
+					return;
+				}
 					String[] split = formations[0].split(" ");
 					String intitule = split[0];
 					String dateForm = split[1];
@@ -216,7 +237,7 @@ public class PopupListener implements ActionListener, ListSelectionListener, Foc
 			
 			if (role.getType().equals("Stagiaire"))
 			{
-				creerLivret (user, form);
+				//creerLivret (user, form);
 			}
 			creaComptePop.dispose();
 			Object [][] refreshModel = DaoFactory.getDaoUtilisateur().executeLastQuery();
@@ -226,14 +247,6 @@ public class PopupListener implements ActionListener, ListSelectionListener, Foc
 		{
 			e.printStackTrace();
 		}
-		
-		/*
-		if (role.getType().equals("Stagiaire"))
-		{
-			
-		}
-		*/
-		
 		
 		
 	}
@@ -257,13 +270,15 @@ public class PopupListener implements ActionListener, ListSelectionListener, Foc
 			DaoFactory.getDaoAnnexeLivret().save(
 					new AnnexeLivret(null, null, null, null, null, null, null, livret));
 			
-			DaoFactory.getDaoLivret().save(new PlanningPrevisionnelLivret(null, null, null, livret));
+			DaoFactory.getDaoLivret().save(
+					new PlanningPrevisionnelLivret(null, null, null, livret));
 			
-			List<FormationToModule> listeFTM= (List<FormationToModule>) DaoFactory.getDaoFormationToModule().getAllFormationToModuleFromFormation(form);
+			List<FormationToModule> listeFTM = (List<FormationToModule>) DaoFactory.getDaoFormationToModule().getAllFormationToModuleFromFormation(form);
 			
 			for (FormationToModule ftm : listeFTM)
 			{
-				
+				ArrayList<Periode> listPeriode = new ArrayList<Periode>();
+				ftm.getPeriode();
 			}
 			
 			
