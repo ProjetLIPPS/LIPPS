@@ -32,7 +32,7 @@ public class MngFormationRewriteInfo {
 				
 				formation= (Formation) DaoFactory.getDaoFormation().findModeleByIntitule(intituleFormation);
 				
-				System.out.println(formation.getIntitule());
+				
 				} catch (Exception e) {
 					
 					e.printStackTrace();

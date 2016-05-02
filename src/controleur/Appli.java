@@ -35,7 +35,7 @@ public class Appli {
 		catch (Exception e)
 		{
 			result = false;
-
+			e.printStackTrace();
 			JOptionPane.showMessageDialog(null, "Connexion à la base de donnée impossible, veuillez verifier vos paramètres ou réessayer plus tard.", "Erreur", JOptionPane.WARNING_MESSAGE);
 			System.exit(0);
 		}

@@ -246,9 +246,10 @@ public class CreaForm extends JDialog
 	
 	private void remplirListeModele()
 	{
-		String [] nomSpe = DaoFactory.getDaoFormation().getListeNomModeles();
+		//TODO : finir
+		//String [] nomSpe = DaoFactory.getDaoFormation().getListeNomModelesBySpe(spe);
 		
-		listModele.setListData(nomSpe);
+		//listModele.setListData(nomSpe);
 		
 	}
 

@@ -406,7 +406,7 @@ public class ModificationCompte extends JDialog
 		
 		for (int i = 0; i < listeForm.size(); i++)
 		{
-			comboBoxForm.addItem(listeForm.get(i).getIntitule());
+			comboBoxForm.addItem(listeForm.get(i).getIntitule() + " " + listeForm.get(i).getDateDebut() );
 		}
 		
 		
@@ -841,7 +841,7 @@ public class ModificationCompte extends JDialog
 		for ( int i = 0 ; i < listeFormationUtilisateur.length ; i++)
 		{
 		
-			listeFormationUtilisateur[i] = listeFormationTemp.get(i).getIntitule();
+			listeFormationUtilisateur[i] = listeFormationTemp.get(i).getIntitule()+ " "+ listeFormationTemp.get(i).getDateDebut();
 		}	
 	
 		
@@ -849,6 +849,15 @@ public class ModificationCompte extends JDialog
 		
 		return listeFormationUtilisateur;
 		
+	}
+
+
+
+
+
+	public JButton getBtnModifier()
+	{
+		return valider;
 	}
 	
 }

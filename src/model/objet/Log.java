@@ -26,32 +26,36 @@ public class Log extends DataParent {
 	@Column(name = NOM_ID)
 	private Integer id = null;
 
-	@Type(type = "date")
+	@Type(type = "timestamp")
 	@Column(name = "log_derniere_connexion")
 	@NotNull
 	protected Date derniereConnexion= null;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "uti_id")
+	@Column(name = "log_uti_mail")
 	@NotNull
-	private Utilisateur utilisateur = null;
+	private String mailUtilisateur = null;
 
-	public Integer getId() {
-		return id;
-	}
+	
 
 	public Log() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Log(Integer id, Date derniereConnexion, Utilisateur utilisateur) {
+	public Log(Integer id, Date derniereConnexion, String mailUtilisateur) {
 		super();
 		this.id = id;
 		this.derniereConnexion = derniereConnexion;
-		this.utilisateur = utilisateur;
+		this.mailUtilisateur = mailUtilisateur;
 	}
 
+	
+	public Integer getId()
+	{
+		return id;
+	}
+	
+	
 	public Date getDerniereConnexion() {
 		return derniereConnexion;
 	}
@@ -60,12 +64,12 @@ public class Log extends DataParent {
 		this.derniereConnexion = derniereConnexion;
 	}
 
-	public Utilisateur getUtilisateur() {
-		return utilisateur;
+	public String getUtilisateur() {
+		return mailUtilisateur;
 	}
 
-	public void setUtilisateur(Utilisateur utilisateur) {
-		this.utilisateur = utilisateur;
+	public void setUtilisateur(String mailUtilisateur) {
+		this.mailUtilisateur = mailUtilisateur;
 	}
 
 	public void setId(Integer id) {

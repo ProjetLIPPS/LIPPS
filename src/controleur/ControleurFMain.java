@@ -21,9 +21,10 @@ public class ControleurFMain
 	
 	
 	
-	public ControleurFMain()
+	public ControleurFMain(Utilisateur utilisateur)
 	
 	{
+		this.utilisateur = utilisateur;
 		init();
 	}
 		
@@ -32,15 +33,8 @@ public class ControleurFMain
 
 			
 				LippsIhm frame = new LippsIhm();
-				frame.setVisible(true);
-				try
-				{
-					
-				} catch (Exception e)
-				{
-					System.out.println("erreur");
-					e.printStackTrace();
-				}
+				
+				
 
 			}
 

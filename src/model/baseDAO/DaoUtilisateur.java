@@ -29,14 +29,9 @@ public class DaoUtilisateur extends DaoParent
 		int i = 0;
 		while (resultat.next())
 		{
+			resultAdmin[i] = resultat.get();
 
-			resultAdmin[i][0] = resultat.get()[0];
-			resultAdmin[i][1] = resultat.get()[1];
-			resultAdmin[i][2] = resultat.get()[2];
-			resultAdmin[i][3] = resultat.get()[3];
-			resultAdmin[i][4] = resultat.get()[4];
-			resultAdmin[i][5] = resultat.get()[5];
-			resultAdmin[i][6] = resultat.get()[6];
+			
 			i++;
 
 		}
@@ -59,14 +54,9 @@ public class DaoUtilisateur extends DaoParent
 		int i = 0;
 		while (resultat.next())
 		{
+			resultAdmin[i] = resultat.get();
 
-			resultAdmin[i][0] = resultat.get()[0];
-			resultAdmin[i][1] = resultat.get()[1];
-			resultAdmin[i][2] = resultat.get()[2];
-			resultAdmin[i][3] = resultat.get()[3];
-			resultAdmin[i][4] = resultat.get()[4];
-			resultAdmin[i][5] = resultat.get()[5];
-			resultAdmin[i][6] = resultat.get()[6];
+			
 			i++;
 
 		}
@@ -89,14 +79,8 @@ public class DaoUtilisateur extends DaoParent
 		int i = 0;
 		while (resultat.next())
 		{
-
-			resultAdmin[i][0] = resultat.get()[0];
-			resultAdmin[i][1] = resultat.get()[1];
-			resultAdmin[i][2] = resultat.get()[2];
-			resultAdmin[i][3] = resultat.get()[3];
-			resultAdmin[i][4] = resultat.get()[4];
-			resultAdmin[i][5] = resultat.get()[5];
-			resultAdmin[i][6] = resultat.get()[6];
+			resultAdmin[i] = resultat.get();
+			
 			i++;
 
 		}
@@ -118,14 +102,9 @@ public class DaoUtilisateur extends DaoParent
 		int i = 0;
 		while (resultat.next())
 		{
+			resultAdmin[i] = resultat.get();
 
-			resultAdmin[i][0] = resultat.get()[0];
-			resultAdmin[i][1] = resultat.get()[1];
-			resultAdmin[i][2] = resultat.get()[2];
-			resultAdmin[i][3] = resultat.get()[3];
-			resultAdmin[i][4] = resultat.get()[4];
-			resultAdmin[i][5] = resultat.get()[5];
-			resultAdmin[i][6] = resultat.get()[6];
+			
 			i++;
 
 		}
@@ -149,14 +128,8 @@ public class DaoUtilisateur extends DaoParent
 		int i = 0;
 		while (resultat.next())
 		{
+			resultRecherche[i] = resultat.get();
 
-			resultRecherche[i][0] = resultat.get()[0];
-			resultRecherche[i][1] = resultat.get()[1];
-			resultRecherche[i][2] = resultat.get()[2];
-			resultRecherche[i][3] = resultat.get()[3];
-			resultRecherche[i][4] = resultat.get()[4];
-			resultRecherche[i][5] = resultat.get()[5];
-			resultRecherche[i][6] = resultat.get()[6];
 			i++;
 
 		}
@@ -179,14 +152,9 @@ public class DaoUtilisateur extends DaoParent
 		int i = 0;
 		while (resultat.next())
 		{
+			resultRecherche[i] = resultat.get();
 
-			resultRecherche[i][0] = resultat.get()[0];
-			resultRecherche[i][1] = resultat.get()[1];
-			resultRecherche[i][2] = resultat.get()[2];
-			resultRecherche[i][3] = resultat.get()[3];
-			resultRecherche[i][4] = resultat.get()[4];
-			resultRecherche[i][5] = resultat.get()[5];
-			resultRecherche[i][6] = resultat.get()[6];
+			
 			i++;
 
 		}
@@ -209,14 +177,8 @@ public class DaoUtilisateur extends DaoParent
 		int i = 0;
 		while (resultat.next())
 		{
-
-			resultRecherche[i][0] = resultat.get()[0];
-			resultRecherche[i][1] = resultat.get()[1];
-			resultRecherche[i][2] = resultat.get()[2];
-			resultRecherche[i][3] = resultat.get()[3];
-			resultRecherche[i][4] = resultat.get()[4];
-			resultRecherche[i][5] = resultat.get()[5];
-			resultRecherche[i][6] = resultat.get()[6];
+			resultRecherche[i] = resultat.get();
+			
 			i++;
 
 		}
@@ -239,14 +201,8 @@ public class DaoUtilisateur extends DaoParent
 		int i = 0;
 		while (resultat.next())
 		{
-
-			resultAdmin[i][0] = resultat.get()[0];
-			resultAdmin[i][1] = resultat.get()[1];
-			resultAdmin[i][2] = resultat.get()[2];
-			resultAdmin[i][3] = resultat.get()[3];
-			resultAdmin[i][4] = resultat.get()[4];
-			resultAdmin[i][5] = resultat.get()[5];
-			resultAdmin[i][6] = resultat.get()[6];
+			resultAdmin[i] = resultat.get();
+			
 			i++;
 
 		}
@@ -268,14 +224,9 @@ public class DaoUtilisateur extends DaoParent
 		int i = 0;
 		while (resultat.next())
 		{
+			resultRecherche[i] = resultat.get();
 
-			resultRecherche[i][0] = resultat.get()[0];
-			resultRecherche[i][1] = resultat.get()[1];
-			resultRecherche[i][2] = resultat.get()[2];
-			resultRecherche[i][3] = resultat.get()[3];
-			resultRecherche[i][4] = resultat.get()[4];
-			resultRecherche[i][5] = resultat.get()[5];
-			resultRecherche[i][6] = resultat.get()[6];
+			
 			i++;
 
 		}
@@ -306,14 +257,9 @@ public class DaoUtilisateur extends DaoParent
 		int i = 0;
 		while (resultat.next())
 		{
+			resultRecherche[i] = resultat.get();
 
-			resultRecherche[i][0] = resultat.get()[0];
-			resultRecherche[i][1] = resultat.get()[1];
-			resultRecherche[i][2] = resultat.get()[2];
-			resultRecherche[i][3] = resultat.get()[3];
-			resultRecherche[i][4] = resultat.get()[4];
-			resultRecherche[i][5] = resultat.get()[5];
-			resultRecherche[i][6] = resultat.get()[6];
+			
 			i++;
 
 		}

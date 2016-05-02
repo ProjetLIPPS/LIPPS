@@ -12,21 +12,27 @@ import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 
+import controleur.ControleurFMain;
+import controleur.ControleurLogin;
 import ihm.fenetre.PanelCCompte;
 import ihm.fenetre.PanelCFormation;
 import ihm.fenetre.PanelMngModele;
 import ihm.fenetre.PanelMngModule;
 import ihm.theme.ThemeLIPPS;
+import javax.swing.BoxLayout;
+import javax.swing.SwingConstants;
+import java.awt.Cursor;
 
 
 public class LippsIhm extends JFrame {
 	
 	private JPanel contentPane;
-	private JPanel panelCenterFormation = new PanelMngModule();
+	private JPanel panelCenterFormation = panelLoad();
 	private JPanel panelCenterCompte = new PanelCCompte();
 	private JPanel panelCenterMain = new JPanel();
 	private JPanel contentPaneCenter;
@@ -72,11 +78,37 @@ public class LippsIhm extends JFrame {
 		label.setIcon(new ImageIcon("./img/Logo_couleur_200x76.png"));
 		SubPanelWest.add(label);
 		
-		JLabel lblNewLabel = new JLabel("Utilisateur");
+		JPanel panel = new JPanel();
+		panel.setOpaque(false);
+		panelNorth.add(panel, BorderLayout.EAST);
+		panel.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		JLabel lblNewLabel = new JLabel(ControleurFMain.getUtilisateur().getPrenom() + " " + ControleurFMain.getUtilisateur().getNom());
+		panel.add(lblNewLabel);
 		lblNewLabel.setForeground(Color.DARK_GRAY);
 		lblNewLabel.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 18));
-		panelNorth.add(lblNewLabel, BorderLayout.EAST);
 		lblNewLabel.setIcon(new ImageIcon("./img/icon_profil.png"));
+		
+		JLabel lblSeDconnecter = new JLabel("Déconnexion");
+		lblSeDconnecter.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e)
+			{
+				int confirmation = JOptionPane.showConfirmDialog(getThis(), "Voulez-vous vraiment vous déconnecter ?", "Confirmation", JOptionPane.YES_NO_OPTION);
+
+				if (confirmation == JOptionPane.YES_OPTION)
+				{
+					getThis().dispose();
+					new ControleurLogin();
+				}
+			}
+		});
+		lblSeDconnecter.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		lblSeDconnecter.setFont(new Font("Century Gothic", Font.BOLD, 14));
+		lblSeDconnecter.setForeground(ThemeLIPPS.BLUE_DARK);
+		lblSeDconnecter.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSeDconnecter.setHorizontalTextPosition(SwingConstants.CENTER);
+		panel.add(lblSeDconnecter);
 		
 		JPanel panelCenter = new JPanel();
 		panelCenter.setBackground(Color.WHITE);
@@ -150,6 +182,36 @@ public class LippsIhm extends JFrame {
 		
 	}
 	
+	private JPanel panelLoad()
+	{
+		if (ControleurFMain.getUtilisateur().getUtilisateurToRole().size() > 1)
+		{
+			int confirmation = JOptionPane.showConfirmDialog(this, "Voulez-vous vous connecter en tant qu'Administrateur (oui) ou Formateur (non) ?", "Confirmation", JOptionPane.YES_NO_OPTION);
+
+			if (confirmation == JOptionPane.YES_OPTION)
+			{
+				return new PanelMngModele();
+			}
+			else
+			{
+				return new PanelCFormation();
+			}
+			
+		}
+		else if (ControleurFMain.getUtilisateur().getUtilisateurToRole().get(0).getRole().getType().equals("Administrateur") )
+		{
+			return new PanelMngModele();
+		}
+		else
+		{
+			return new PanelCFormation();
+		}
+		
+		
+		
+		
+	}
+
 	public JPanel getPanelCenterFormation() {
 		return panelCenterFormation;
 	}
@@ -159,5 +221,31 @@ public class LippsIhm extends JFrame {
 		SwingUtilities.updateComponentTreeUI(panelCenterMain);
 	}
 	
+	public void reloadPanelCenterFormation()
+	{
+		
+		panelCenterMain.remove(contentPaneCenter);
+		panelCenterFormation = new PanelCFormation();
+		contentPaneCenter = panelCenterFormation;
+		panelCenterMain.add(contentPaneCenter);
+		refresh();
+		
+	}
+	
+	public void reloadPanelMngModule()
+	{
+		panelCenterMain.remove(contentPaneCenter);
+		panelCenterFormation = new PanelMngModule();
+		contentPaneCenter = panelCenterFormation;
+		panelCenterMain.add(contentPaneCenter);
+		refresh();
+				
+	}
+	
+	private LippsIhm getThis()
+	{
+		return this;
+	}
+
 	
 }

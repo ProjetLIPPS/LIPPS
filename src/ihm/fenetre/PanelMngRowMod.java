@@ -21,7 +21,7 @@ public class PanelMngRowMod extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private PanelMngModule panelMngModule;
+
 	
 	private JTextArea textArea = new JTextArea();
 	
@@ -29,8 +29,9 @@ public class PanelMngRowMod extends JPanel {
 		return textArea;
 	}
 
-	public PanelMngRowMod(String intitModule) 	{
-		
+	public PanelMngRowMod(String intitModule, PanelMngModule panelMngModule)
+	{
+
 		MngModuleListener mngModuleListener = new MngModuleListener(panelMngModule);
 		
 		
@@ -44,7 +45,7 @@ public class PanelMngRowMod extends JPanel {
 		textArea.setForeground(Color.WHITE);
 		textArea.setEditable(false);
 		textArea.setWrapStyleWord(true);
-		textArea.setText(" "+intitModule); 
+		textArea.setText(intitModule); 
 		textArea.setRows(3);
 		textArea.setLineWrap(true);
 		textArea.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.BOLD, ThemeLIPPS.FONT_SIZE_DEFAULT));

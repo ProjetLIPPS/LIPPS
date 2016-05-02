@@ -35,7 +35,7 @@ Boolean result = null;
 		{
 			System.out.println(String.valueOf(result));
 		}
-		ControleurFMain ctrl = new ControleurFMain();
+		//ControleurFMain ctrl = new ControleurFMain();
 
 	}
 

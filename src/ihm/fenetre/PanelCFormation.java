@@ -29,6 +29,8 @@ import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 
 import actionListener.PanelCFormationListener;
+import controleur.ControleurFMain;
+import ihm.LippsIhm;
 import ihm.popup.CreaForm;
 import ihm.theme.ThemeLIPPS;
 import model.baseDAO.DaoFactory;
@@ -324,20 +326,32 @@ public class PanelCFormation extends JPanel
 		JPanel panelBtn_1 = new JPanel();
 		panelBtn_1.setOpaque(false);
 		panelBox.add(panelBtn_1);
-		panelBtn_1.setLayout(new BoxLayout(panelBtn_1, BoxLayout.X_AXIS));
+		panelBtn_1.setLayout(new FlowLayout(FlowLayout.CENTER, 15, 0));
 		
 		JButton btnCrerOuvelleFormation = new JButton("Créer nouvelle formation");
-		btnCrerOuvelleFormation.setMnemonic('n');
 		btnCrerOuvelleFormation.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_BUTTON));
 		
 		btnCrerOuvelleFormation.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			new CreaForm();
-			list.setListData(initList());
+			refreshThis();
 			}
 		});
 
+	
 		panelBtn_1.add(btnCrerOuvelleFormation);
+		
+		JButton btnGererModule = new JButton("Gérer mes modules");
+		btnGererModule.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				refreshThat();
+			}
+		});
+		btnGererModule.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, ThemeLIPPS.FONT_SIZE_BUTTON));
+		
+		panelBtn_1.add(btnGererModule);
+		
 		
 		}
 		else {
@@ -406,7 +420,7 @@ public class PanelCFormation extends JPanel
 			btnCrrNouvelleFormation.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new CreaForm();
-				
+				refreshThis();
 			}
 		});
 			panel.add(btnCrrNouvelleFormation);
@@ -433,7 +447,7 @@ public String[]  initList() {
 	
 	try {
 		
-		Utilisateur user = DaoFactory.getDaoUtilisateur().findById(Utilisateur.class, 2);
+		Utilisateur user = ControleurFMain.getUtilisateur();
 		
 		List<Formation> listFormation = (List<Formation>) DaoFactory.getDaoFormation().readAllFormationFromUser(user);
 		
@@ -442,7 +456,7 @@ public String[]  initList() {
 		for (int i = 0 ; i < listFormation.size() ; i++)
 			{
 					
-			System.out.println(listFormation.get(i).getIntitule());
+			
 			values[i] = listFormation.get(i).getIntitule() + " " + listFormation.get(i).getDateDebut() ;
 			
 			}
@@ -501,10 +515,20 @@ public String[]  initList() {
 		return list;
 	}
 
-	public void refreshList() {
-		SwingUtilities.updateComponentTreeUI(this.list);
+	
+	private void refreshThis()
+	{
+		LippsIhm frame = (LippsIhm) this.getRootPane().getParent();
 		
+		frame.reloadPanelCenterFormation();
 	}
 	
+	private void refreshThat()
+
+	{
+		LippsIhm frame = (LippsIhm) this.getRootPane().getParent();
+		
+		frame.reloadPanelMngModule();
+	}
 	
 }

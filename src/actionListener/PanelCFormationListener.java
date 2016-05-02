@@ -27,8 +27,6 @@ public class PanelCFormationListener implements ListSelectionListener {
 		String[] split = selectedFormation.split(" ");
 		String intitule = split[0];
 		String date = split[1];
-		System.out.println(intitule);
-		System.out.println(date);
 
 		if (selection.getSelectedValue() != null)
 		{	

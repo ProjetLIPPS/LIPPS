@@ -37,6 +37,7 @@ import actionListener.UtilisateurParTypeDeCompte;
 import ihm.popup.ModificationCompte;
 import ihm.theme.ThemeLIPPS;
 import model.baseDAO.DaoFactory;
+import model.objet.Utilisateur;
 
 import java.awt.Component;
 import javax.swing.JScrollPane;
@@ -80,7 +81,7 @@ public class PanelCCompte extends JPanel
 		RechercherListener listenerBtnRecherche = new RechercherListener(this);
 		BoutonCreerCompte creerCompteListener = new  BoutonCreerCompte(this);
 		SuppressionCompteListener suppressionCompteListener = new SuppressionCompteListener(this) ;
-		ModifierCompteListener modifierCompteListener = new ModifierCompteListener(this);
+		
 
 		this.setBorder(null);
 		this.setBackground(Color.WHITE);
@@ -229,11 +230,6 @@ public class PanelCCompte extends JPanel
 		comboSecMetier.setPreferredSize(new Dimension(250, 30));
 		comboSecMetier.setBackground(SystemColor.window);
 		comboSecMetier.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 15));
-		/*comboSecMetier.setModel(new DefaultComboBoxModel(new String[]
-		{ "Secteur de métier", "Audiovisuel", "Automobile", "Autre", "Assurance", "Bâtiment", "Commerce",
-				"Communication", "Droit", "Enseignement", "Environnement", "Hôtellerie", "Immobilier", "Informatique",
-				"Langues", "Marketing", "Propreté", "Ressources Humaines", "Restauration", "Sciences Humaines",
-				"Secrétariat", "Social", "Tourisme", "Transport , Logistique" }));*/
 		comboSecMetier.setModel(new DefaultComboBoxModel(DaoFactory.getDaoSpecialisation().getNomSpecialisation()));
 		comboSecMetier.insertItemAt("Secteur de métier",0);
 		comboSecMetier.setSelectedIndex(0);
@@ -366,8 +362,27 @@ public class PanelCCompte extends JPanel
 		btnCreer.setFont(new Font(ThemeLIPPS.FONT_DEFAULT, Font.PLAIN, 15));
 		btnCreer.setActionCommand("Créer");
 		panelButtonSub.add(btnCreer);
+		btnModifier.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				Object [][] resultatRecherche = DaoFactory.getDaoUtilisateur().executeLastQuery();
+				Integer currentRow = PanelCCompte.getTableau().getSelectedRow();
+				Integer idAfpa = (Integer) resultatRecherche[currentRow][0];
+				Utilisateur utilisateurAModifier = new Utilisateur();
+				try
+				{
+					utilisateurAModifier = DaoFactory.getDaoUtilisateur().findByIdAfpa(idAfpa);
+					ModificationCompte popupModifierCompte = new ModificationCompte(utilisateurAModifier);
+				} catch (Exception e2)
+				{
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+				
+			}
+		});
 
-		btnModifier.addMouseListener(modifierCompteListener);
+		
 		btnModifier.setFocusable(false);
 		btnModifier.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnModifier.setPreferredSize(new Dimension(100, 36));

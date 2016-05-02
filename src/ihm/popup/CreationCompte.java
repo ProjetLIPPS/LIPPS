@@ -332,7 +332,7 @@ public class CreationCompte extends JDialog {
 		
 		for (int i = 0; i < listeForm.size(); i++)
 		{
-			comboBoxForm.addItem(listeForm.get(i).getIntitule());
+			comboBoxForm.addItem(listeForm.get(i).getIntitule() + " " + listeForm.get(i).getDateDebut() );
 		}
 		
 		

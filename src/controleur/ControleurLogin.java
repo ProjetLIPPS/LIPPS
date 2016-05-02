@@ -56,13 +56,13 @@ public class ControleurLogin
 					
 					try 
 					{
-						DaoFactory.getDaoLog().save(new Log(null, Date.from(Instant.now()), user));
+						DaoFactory.getDaoLog().save(new Log(null, Date.from(Instant.now()), DaoFactory.getDaoContact().getContactFromUser(user).getMail()));
 					}
 					catch (Exception e)
 					{e.printStackTrace();}
 					
-					ControleurFMain cfm = new ControleurFMain(/*user*/);
-					
+					ControleurFMain cfm = new ControleurFMain(user);
+					return;
 				}
 				else
 				{

@@ -15,6 +15,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
+import controleur.ControleurFMain;
 import ihm.fenetre.PanelCCompte;
 import ihm.popup.CreaForm;
 import ihm.popup.CreationCompte;
@@ -153,12 +154,19 @@ public class PopupListener implements ActionListener, ListSelectionListener, Foc
 			e.printStackTrace();
 		}
 		
-		/*
-		if (utilisateurconnecte.getRole.equals("Formateur"))
+		
+		
+		try
 		{
-			DaoFactory.getDaoFormation().save(new UtilisateurToFormation(utilisateur connecté, form));
+			DaoFactory.getDaoFormation().save(new UtilisateurToFormation(ControleurFMain.getUtilisateur(), form));
 		}
-		*/
+		catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 		
 	}
 	
@@ -186,16 +194,24 @@ public class PopupListener implements ActionListener, ListSelectionListener, Foc
 			DaoFactory.getDaoUtilisateur().save(user);
 			DaoFactory.getDaoUtilisateur().save(new UtilisateurToRole(user, role));
 			DaoFactory.getDaoContact().save(new Contact(null, null, null, null, null, null, email, user));
-			if (!role.getType().equals("Administrateur"))
+			if (!role.getType().equals("Administrateur") && !role.getType().equals("Formateur") )
 			{
-				for (int i = 0; i < formations.length; i++)
-				{
-					form = DaoFactory.getDaoFormation().findFormationByIntitule(formations[i]);
+				
+					String[] split = formations[0].split(" ");
+					String intitule = split[0];
+					String dateForm = split[1];
+					
+					form = DaoFactory.getDaoFormation().findFormationByIntituleAndDate(intitule, dateForm);
 					UtilisateurToFormation utf = new UtilisateurToFormation(user, form);
 					DaoFactory.getDaoFormation().save(utf);
 					Specialisation spe = form.getSpecialisation();
-					DaoFactory.getDaoUtilisateur().saveOrUpdate(new UtilisateurToSpecialisation(user, spe));
-				}
+					DaoFactory.getDaoUtilisateur().save(new UtilisateurToSpecialisation(user, spe));
+				
+			}
+			else if (role.getType().equals("Formateur"))
+			{
+				Specialisation spe = DaoFactory.getDaoSpecialisation().findByName((String) creaComptePop.getComboBoxSpe().getSelectedItem());
+				DaoFactory.getDaoUtilisateur().save(new UtilisateurToSpecialisation(user, spe));
 			}
 			creaComptePop.dispose();
 			Object [][] refreshModel = DaoFactory.getDaoUtilisateur().executeLastQuery();
@@ -206,7 +222,7 @@ public class PopupListener implements ActionListener, ListSelectionListener, Foc
 			e.printStackTrace();
 		}
 		
-		
+		/*
 		if (role.getType().equals("Stagiaire"))
 		{
 			Livret livret = new Livret(null, false, user);
@@ -243,7 +259,7 @@ public class PopupListener implements ActionListener, ListSelectionListener, Foc
 			{e.printStackTrace();}
 			
 		}
-		
+		*/
 		
 		
 		
@@ -333,6 +349,13 @@ public class PopupListener implements ActionListener, ListSelectionListener, Foc
 			if (radbut.getName().equals("admin"))
 			{
 				creaComptePop.getComboBoxSpe().setEnabled(false);
+				creaComptePop.getComboBoxForm().setEnabled(false);
+				creaComptePop.getBtnAjouter().setEnabled(false);
+				
+			}
+			else if (radbut.getName().equals("form"))
+			{
+				creaComptePop.getComboBoxSpe().setEnabled(true);
 				creaComptePop.getComboBoxForm().setEnabled(false);
 				creaComptePop.getBtnAjouter().setEnabled(false);
 				

@@ -54,7 +54,7 @@ public class MngModuleCtrl {
 
 	for (String intitModule : listModule)
 	{
-		PanelMngRowMod moduleRowMod = new PanelMngRowMod(intitModule);
+		PanelMngRowMod moduleRowMod = new PanelMngRowMod(intitModule, panelMngModule);
 //		//moduleRowMod.addFocusListener(new MngModuleListener(panelMngModule));
 		panelLoadMod.add(moduleRowMod);
 					
@@ -69,12 +69,12 @@ public class MngModuleCtrl {
 	
 	public static void mySequenceRowDisplay(String intituleModule, PanelMngModule panelMngModule)  {
 	
-	PanelMngModule panelMngModullll	= panelMngModule;
-	JPanel panelLoadSeq = panelMngModullll.getPanelLoadSeq();
-	panelLoadSeq.removeAll();	
-	panelMngModullll.removePanelLoadSeq();
 	
-	String intitFormation = panelMngModullll.getListFormation().getSelectedValue();
+	JPanel panelLoadSeq = panelMngModule.getPanelLoadSeq();
+	panelLoadSeq.removeAll();	
+	panelMngModule.removePanelLoadSeq();
+	
+	String intitFormation = panelMngModule.getListFormation().getSelectedValue();
 	System.out.println(intitFormation + "intitformation devrait etre la");
 	String[] split = intitFormation.split(" ");
 	String intituleFormation = split[0];
@@ -83,10 +83,11 @@ public class MngModuleCtrl {
 	Formation formation = new Formation();
 	ArrayList<Module> listModule = new ArrayList<Module>();
 		
-	System.out.println(formation.getIntitule());
+	
 	try {
 		
 		formation= (Formation) DaoFactory.getDaoFormation().findFormationByIntituleAndDate(intituleFormation, dateFormation);
+		System.out.println(formation.getIntitule()+ " on est ds le try ligne 90");
 		
 		listModule = (ArrayList<Module>) DaoFactory.getDaoModule().findModuleByFormation(formation);
 		
@@ -102,12 +103,14 @@ public class MngModuleCtrl {
 	
 	for (Module mod : listModule)  {
 		
-		System.out.println(mod.getIntitule());
+		
+		System.out.println(mod.getIntitule() + "1 2" + intituleModule + " comparaison");
 		
 		if (mod.getIntitule().equals(intituleModule)) {
 		
 			i++;
 			module = mod;
+			System.out.println(module.getIntitule() + " on a le module wesh");
 			
 		}
 	}
@@ -127,7 +130,7 @@ public class MngModuleCtrl {
 	
     String[] listSequence = new String[listSeq.size()];
 	
-	for (int y = 0 ; i < listSequence.length ; i++)
+	for (int y = 0 ; y < listSequence.length ; y++)
 	{
 		listSequence[y] = listSeq.get(y).getIntitule();
 		System.out.println(listSequence[y]);
@@ -144,7 +147,7 @@ public class MngModuleCtrl {
 		
 	panelMngModule.setPanelLoadMod(panelLoadSeq);
 	
-	panelMngModule.refresh();
+	panelMngModule.revalidate();
 	
 	
 	}

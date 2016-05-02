@@ -22,6 +22,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.border.MatteBorder;
 
 import actionListener.MngModuleListener;
+import controleur.ControleurFMain;
 import ihm.popup.CreationModule;
 import ihm.theme.ThemeLIPPS;
 import model.baseDAO.DaoFactory;
@@ -223,7 +224,7 @@ public class PanelMngModule extends JPanel {
 	
 		try {
 			
-			Utilisateur user = DaoFactory.getDaoUtilisateur().findById(Utilisateur.class, 2);
+			Utilisateur user = ControleurFMain.getUtilisateur();
 			
 			List<Formation> listFormation = (List<Formation>)DaoFactory.getDaoFormation().readAllFormationFromUser(user);
 			

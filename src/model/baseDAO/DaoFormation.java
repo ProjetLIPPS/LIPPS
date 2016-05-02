@@ -118,14 +118,14 @@ public class DaoFormation extends DaoParent {
 
 	
 	
-	public String[] getListeNomModeles()
+	public String[] getListeNomModelesBySpe(Specialisation spe)
 	{
 		
 		List<Formation> listeModeleFormation = new ArrayList<Formation>();
 		
 		try
 		{
-			listeModeleFormation = (List<Formation>) readAllModele();
+			listeModeleFormation = (List<Formation>) readAllModeleBySpe(spe);
 		}
 		catch (Exception e) 
 		{
@@ -164,6 +164,24 @@ public class DaoFormation extends DaoParent {
 	}
 	
 	
+	
+	public Collection<Formation> readAllModeleBySpe(Specialisation spe) throws Exception
+	{
+
+		Session session = BaseSession.getNewSession();
+
+		Criteria criteria = session.createCriteria(Formation.class);
+		criteria.add(Restrictions.eq("isModel", true));
+		criteria.add(Restrictions.eq("specialisation", spe));
+		
+
+		@SuppressWarnings("unchecked")
+		List<Formation> list = criteria.list();
+
+		session.close();
+
+		return list;
+	}
 
 	
 }
