@@ -31,12 +31,15 @@ import model.objet.Formation;
 import model.objet.FormationToModule;
 import model.objet.Livret;
 import model.objet.Module;
+import model.objet.ModuleLivret;
 import model.objet.Periode;
+import model.objet.PeriodeLivret;
 import model.objet.PlanningPrevisionnelLivret;
 import model.objet.ProjetProLivret;
 import model.objet.ResultatParcoursLivret;
 import model.objet.Role;
 import model.objet.Sequence;
+import model.objet.SequenceLivret;
 import model.objet.Specialisation;
 import model.objet.SuiviLivret;
 import model.objet.Utilisateur;
@@ -56,8 +59,7 @@ public class PopupListener implements ActionListener, ListSelectionListener, Foc
 	{
 		JButton source = (JButton)e.getSource();
 		
-		//int confirmation = JOptionPane.showConfirmDialog(source.getRootPane(), "Verifiez bien tout les champs avant de valider, vous ne pourrez plus les modifier ensuite. Continuer ?", "Confirmation", JOptionPane.YES_NO_OPTION);
-
+		
 		
 			if (source.getName().equals("formation"))
 			{
@@ -270,16 +272,41 @@ public class PopupListener implements ActionListener, ListSelectionListener, Foc
 			DaoFactory.getDaoAnnexeLivret().save(
 					new AnnexeLivret(null, null, null, null, null, null, null, livret));
 			
-			DaoFactory.getDaoLivret().save(
-					new PlanningPrevisionnelLivret(null, null, null, livret));
+			PlanningPrevisionnelLivret ppl = new PlanningPrevisionnelLivret(null, null, null, livret);
+			DaoFactory.getDaoLivret().save(ppl);
+			
+			
 			
 			List<FormationToModule> listeFTM = (List<FormationToModule>) DaoFactory.getDaoFormationToModule().getAllFormationToModuleFromFormation(form);
 			
+			ArrayList<Periode> listPeriode = new ArrayList<Periode>();
+			PeriodeLivret currentPeriodeLivret = null;
+			
 			for (FormationToModule ftm : listeFTM)
 			{
-				ArrayList<Periode> listPeriode = new ArrayList<Periode>();
-				ftm.getPeriode();
+				Periode currentPeriode = ftm.getPeriode();
+				Module currentModule = ftm.getModule();
+				
+				
+				if (!listPeriode.contains(currentPeriode))
+				{
+					listPeriode.add(currentPeriode);
+					
+					currentPeriodeLivret = new PeriodeLivret(null, null, null, null, null, null, null, ftm.getPositionPeriodeDansFormation(), ppl);
+					DaoFactory.getDaoPeriodeLivret().save(currentPeriodeLivret);
+				}
+				
+				ModuleLivret currentModuleLivret = new ModuleLivret(null, currentModule.getIntitule(), false, null, ftm.getPositionModuleDansPeriode(), currentPeriodeLivret);
+				DaoFactory.getDaoModuleLivret().save(currentModuleLivret);
+				
+				List<Sequence> currentListeSequence = DaoFactory.getDaoSequence().findSequenceFromModule(currentModule);
+				for (Sequence currentSequence : currentListeSequence)
+				{
+					DaoFactory.getDaoSequenceLivret().save(new SequenceLivret(null, currentSequence.getIntitule(), null, null, null, null, null, null, currentSequence.getPosition(), currentModuleLivret));
+				}
+				
 			}
+			
 			
 			
 			

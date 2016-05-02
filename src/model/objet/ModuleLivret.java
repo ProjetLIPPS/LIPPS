@@ -38,11 +38,35 @@ public class ModuleLivret extends DataParent {
 	
 	
 	
-	
 	@OneToOne (fetch=FetchType.LAZY)
 	@JoinColumn (name = "prl_id")
 	@NotNull
 	private PeriodeLivret periodeLivret = null;
+	
+
+	
+
+	
+	
+	
+	public ModuleLivret() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	
+	public ModuleLivret(Integer id, String intitule, boolean resultat, String observation, Integer position,
+			PeriodeLivret periodeLivret) {
+		super();
+		this.id = id;
+		this.intitule = intitule;
+		this.resultat = resultat;
+		this.observation = observation;
+		this.position = position;
+		this.periodeLivret = periodeLivret;
+	}
+
+	
 	
 
 	public Integer getId() {
@@ -50,31 +74,11 @@ public class ModuleLivret extends DataParent {
 	}
 
 
-	public ModuleLivret() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-
-	public ModuleLivret(Integer id, String intitule, boolean resultat, String observation,
-			Integer position) 
-	{
-		super();
-		this.id = id;
-		this.intitule = intitule;
-		this.resultat = resultat;
-		this.observation = observation;
-		this.position = position;
-	}
-
-	
-	
-	
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
-	
+
+
 	public String getIntitule() {
 		return intitule;
 	}
@@ -124,6 +128,8 @@ public class ModuleLivret extends DataParent {
 		this.periodeLivret = periodeLivret;
 	}
 
+
+	
 
 
 	

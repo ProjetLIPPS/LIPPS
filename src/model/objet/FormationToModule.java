@@ -84,15 +84,6 @@ public class FormationToModule extends DataParent implements Serializable {
 	}
 
 
-	public Integer getPositionModule() {
-		return positionModuleDansPeriode;
-	}
-
-
-	public void setPositionModule(Integer positionModuleDansPeriode) {
-		this.positionModuleDansPeriode = positionModuleDansPeriode;
-	}
-
 
 	public Periode getPeriode() {
 		return periode;

@@ -67,8 +67,27 @@ public class PeriodeLivret extends DataParent {
 	private PlanningPrevisionnelLivret planningPrevisionnelLivret = null;
 
 	
-	public Integer getId() {
-		return id;
+	
+	
+	
+	
+	
+	
+	
+
+	public PeriodeLivret(Integer id, Date dateCentre, String descriptionPeriodeCentre, Date dateEntreprise,
+			String descriptionPeriodeEntreprise, Date dateEcf, String texteEcf, Integer position,
+			PlanningPrevisionnelLivret planningPrevisionnelLivret) {
+		super();
+		this.id = id;
+		this.dateCentre = dateCentre;
+		this.descriptionPeriodeCentre = descriptionPeriodeCentre;
+		this.dateEntreprise = dateEntreprise;
+		this.descriptionPeriodeEntreprise = descriptionPeriodeEntreprise;
+		this.dateEcf = dateEcf;
+		this.texteEcf = texteEcf;
+		this.position = position;
+		this.planningPrevisionnelLivret = planningPrevisionnelLivret;
 	}
 
 	public PeriodeLivret() {
@@ -76,11 +95,84 @@ public class PeriodeLivret extends DataParent {
 		// TODO Auto-generated constructor stub
 	}
 
-	public PeriodeLivret(Integer id)
-	{
-		super();
+	
+	
+	
+	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
 		this.id = id;
 	}
+
+	public Date getDateCentre() {
+		return dateCentre;
+	}
+
+	public void setDateCentre(Date dateCentre) {
+		this.dateCentre = dateCentre;
+	}
+
+	public String getDescriptionPeriodeCentre() {
+		return descriptionPeriodeCentre;
+	}
+
+	public void setDescriptionPeriodeCentre(String descriptionPeriodeCentre) {
+		this.descriptionPeriodeCentre = descriptionPeriodeCentre;
+	}
+
+	public Date getDateEntreprise() {
+		return dateEntreprise;
+	}
+
+	public void setDateEntreprise(Date dateEntreprise) {
+		this.dateEntreprise = dateEntreprise;
+	}
+
+	public String getDescriptionPeriodeEntreprise() {
+		return descriptionPeriodeEntreprise;
+	}
+
+	public void setDescriptionPeriodeEntreprise(String descriptionPeriodeEntreprise) {
+		this.descriptionPeriodeEntreprise = descriptionPeriodeEntreprise;
+	}
+
+	public Date getDateEcf() {
+		return dateEcf;
+	}
+
+	public void setDateEcf(Date dateEcf) {
+		this.dateEcf = dateEcf;
+	}
+
+	public String getTexteEcf() {
+		return texteEcf;
+	}
+
+	public void setTexteEcf(String texteEcf) {
+		this.texteEcf = texteEcf;
+	}
+
+	public Integer getPosition() {
+		return position;
+	}
+
+	public void setPosition(Integer position) {
+		this.position = position;
+	}
+
+	public PlanningPrevisionnelLivret getPlanningPrevisionnelLivret() {
+		return planningPrevisionnelLivret;
+	}
+
+	public void setPlanningPrevisionnelLivret(PlanningPrevisionnelLivret planningPrevisionnelLivret) {
+		this.planningPrevisionnelLivret = planningPrevisionnelLivret;
+	}
+
+	
+	
 
 	
 	
